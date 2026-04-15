@@ -1,0 +1,14 @@
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\ComplianceServiceApplication.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\controller\ComplianceController.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\repository\ComplianceRecordRepository.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\config\SecurityConfig.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\dto\CreateSchoolRequest.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\controller\BoardController.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\dto\IdentityApiResponse.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\dto\SchoolDto.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\entity\ComplianceRecord.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\controller\RegulatorController.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\config\DataInitializer.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\security\JwtAuthFilter.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\dto\ApiResponse.java
+C:\Users\2479911\Downloads\EduLink-main 3\EduLink-main 3\EduLink-main\compliance-service\src\main\java\com\edulink\complianceservice\client\IdentityServiceClient.java
