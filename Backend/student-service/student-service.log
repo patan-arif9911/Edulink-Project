@@ -2897,3 +2897,4 @@ This generated password is for development use only. Your security configuration
 2026-04-16T17:37:09.849+05:30 DEBUG 29036 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for anilkumar@zphs.edu with role STUDENT
 2026-04-16T17:37:09.849+05:30 DEBUG 29036 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /student/grades
 2026-04-16T17:37:09.850+05:30 DEBUG 29036 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /student/attendance
+2026-04-16T21:07:56.892+05:30  WARN 29036 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h44m3s572ms629µs300ns).
