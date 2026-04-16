@@ -1,16 +1,22 @@
 package com.edulink.apigateway;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class FallbackController {
-    @RequestMapping("/fallback")
-    public ResponseEntity<String> fallback() {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                .body("Service temporarily unavailable. Please try again later.");
+
+    @RequestMapping(value = "/fallback", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, Object>> fallback() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", false);
+        response.put("message", "Service temporarily unavailable. Please try again later.");
+        response.put("data", null);
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(response);
     }
 }

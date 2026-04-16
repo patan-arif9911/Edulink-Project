@@ -1,2 +1,3 @@
 com\edulink\apigateway\FallbackController.class
 com\edulink\apigateway\ApiGatewayApplication.class
+com\edulink\apigateway\GlobalErrorHandler.class
