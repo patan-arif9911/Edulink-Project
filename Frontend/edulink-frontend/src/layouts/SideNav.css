@@ -1,0 +1,65 @@
+.sidenav {
+  width: 260px;
+  background: #1a1a2e;
+  color: #c4c4d4;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+.sidenav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.sidenav-logo {
+  font-size: 2rem;
+  color: #667eea;
+}
+.sidenav-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+.sidenav-role-tag {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #667eea;
+  font-weight: 600;
+}
+.sidenav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+.sidenav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.5rem;
+  color: #c4c4d4;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+  border-left: 3px solid transparent;
+}
+.sidenav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+.sidenav-active {
+  background: rgba(102, 126, 234, 0.15);
+  color: #667eea;
+  border-left-color: #667eea;
+  font-weight: 600;
+}
+.sidenav-item .material-icons-round {
+  font-size: 1.25rem;
+}
+.sidenav-label {
+  white-space: nowrap;
+}

@@ -1,0 +1,44 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import courseApi from "../../api/courseApi";
+import SectionHeader from "../../components/shared/SectionHeader";
+import GenericTable from "../../components/shared/GenericTable";
+import Spinner from "../../components/shared/Spinner";
+
+export default function MyClassesPage() {
+  const [classes, setClasses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    courseApi
+      .fetchTeacherClasses()
+      .then((res) => setClasses(res.data?.data || res.data || []))
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const columns = [
+    { key: "name", label: "Class Name" },
+    { key: "courseCode", label: "Course Code" },
+    { key: "id", label: "Actions", render: (r) => (
+        <button
+          className="submit-btn"
+          style={{ padding: "0.3rem 0.8rem", fontSize: "0.8rem" }}
+          onClick={() => navigate(`/teacher/classes/${r.id || r.classId}/students`)}
+        >
+          View Students
+        </button>
+      ),
+    },
+  ];
+
+  if (loading) return <Spinner />;
+
+  return (
+    <div>
+      <SectionHeader title="My Classes" subtitle="GET /teacher/classes" />
+      <GenericTable columns={columns} data={classes} emptyMessage="No classes assigned." />
+    </div>
+  );
+}

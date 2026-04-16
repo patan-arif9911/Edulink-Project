@@ -1,0 +1,33 @@
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+.generic-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.generic-table th {
+  background: #f5f7fa;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
+  color: #333;
+}
+.generic-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+}
+.generic-table tbody tr:hover {
+  background: #f8fafd;
+}
+.table-empty {
+  text-align: center;
+  color: #888;
+  padding: 2rem;
+  font-size: 0.95rem;
+}

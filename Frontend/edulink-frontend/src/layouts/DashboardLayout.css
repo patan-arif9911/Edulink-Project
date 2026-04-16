@@ -1,0 +1,16 @@
+.dash-shell {
+  display: flex;
+  min-height: 100vh;
+}
+.dash-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+  min-width: 0;
+}
+.dash-content {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+}
