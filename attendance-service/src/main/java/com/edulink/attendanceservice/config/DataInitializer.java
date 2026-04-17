@@ -21,9 +21,14 @@ public class DataInitializer {
         return args -> {
             if (repo.count() == 0) {
                 for (int i = 1; i <= 5; i++) {
-                    repo.save(Attendance.builder().studentId(1L).courseId(1L).schoolId("SCH001")
+                    repo.save(Attendance.builder()
+                            .rollNumber("SCH001101")   // Alice Smith - SCH001, class 1, roll 01
+                            .courseId(1L)
+                            .schoolId("SCH001")
                             .attendanceDate(LocalDate.now().minusDays(i))
-                            .status(i % 5 == 0 ? "ABSENT" : "PRESENT").markedBy("teacher@greenwood.edu").build());
+                            .status(i % 5 == 0 ? "ABSENT" : "PRESENT")
+                            .markedBy("teacher@greenwood.edu")
+                            .build());
                 }
                 log.info("==> Attendance sample data initialized");
             }

@@ -18,11 +18,15 @@ public class AttendanceService {
         return attendanceRepository.save(attendance);
     }
 
-    public List<Attendance> getStudentAttendance(Long studentId) {
-        return attendanceRepository.findByStudentId(studentId);
+    public List<Attendance> getAttendanceByRollNumber(String rollNumber) {
+        return attendanceRepository.findByRollNumber(rollNumber);
     }
 
     public List<Attendance> getAttendanceReport(String schoolId) {
         return attendanceRepository.findBySchoolId(schoolId);
+    }
+
+    public List<Attendance> getAttendanceByEmail(String email) {
+        return attendanceRepository.findByMarkedBy(email);
     }
 }

@@ -21,7 +21,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(c -> c.disable()).authorizeHttpRequests(a -> a.anyRequest().authenticated())
+        http.csrf(c -> c.disable())
+            .authorizeHttpRequests(a -> a
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/student/attendance").hasRole("STUDENT")
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/teacher/mark-attendance").hasRole("TEACHER")
+                .requestMatchers("/admin/**").hasAnyRole("SCHOOL_ADMIN", "TEACHER", "EDUCATION_BOARD_OFFICER")
+                .anyRequest().authenticated())
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

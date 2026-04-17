@@ -13,6 +13,7 @@ public class UserResponse {
     private String temporaryPassword;
     private String schoolId;
     private Long classId;
+    private String rollNumber;
     private LocalDateTime createdAt;
 
     // Getters and setters
@@ -88,6 +89,14 @@ public class UserResponse {
         this.classId = classId;
     }
 
+    public String getRollNumber() {
+        return rollNumber;
+    }
+
+    public void setRollNumber(String rollNumber) {
+        this.rollNumber = rollNumber;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -110,6 +119,7 @@ public class UserResponse {
         private String temporaryPassword;
         private String schoolId;
         private Long classId;
+        private String rollNumber;
         private LocalDateTime createdAt;
 
         public Builder id(String id) {
@@ -157,6 +167,11 @@ public class UserResponse {
             return this;
         }
 
+        public Builder rollNumber(String rollNumber) {
+            this.rollNumber = rollNumber;
+            return this;
+        }
+
         public Builder createdAt(LocalDateTime createdAt) {
             this.createdAt = createdAt;
             return this;
@@ -173,6 +188,7 @@ public class UserResponse {
             response.temporaryPassword = this.temporaryPassword;
             response.schoolId = this.schoolId;
             response.classId = this.classId;
+            response.rollNumber = this.rollNumber;
             response.createdAt = this.createdAt;
             return response;
         }

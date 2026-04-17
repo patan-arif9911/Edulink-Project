@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -86,15 +85,10 @@ public class UserManagementService {
         // Save to role-specific tables
         switch (saved.getRole()) {
             case STUDENT:
-                studentRepository.save(new Student(saved.getId(), saved.getEmail(), saved.getFullName(), 
-                        saved.getSchoolId(), saved.getClassId(), tempPassword));
-                Map<String, Object> studentProfileData = new HashMap<>();
-                studentProfileData.put("Id", saved.getId());
-                studentProfileData.put("fullName", saved.getFullName());
-                studentProfileData.put("email", saved.getEmail());
-                studentProfileData.put("schoolId", saved.getSchoolId());
-                studentProfileData.put("classId", saved.getClassId());
-                log.info("Student profile created for: {}", saved.getEmail());
+                String rollNumber = generateRollNumber(saved.getSchoolId(), saved.getClassId());
+                studentRepository.save(new Student(saved.getId(), saved.getEmail(), saved.getFullName(),
+                        saved.getSchoolId(), saved.getClassId(), tempPassword, rollNumber));
+                log.info("Student profile created for: {} with rollNumber: {}", saved.getEmail(), rollNumber);
                 break;
             case TEACHER:
                 teacherRepository.save(new Teacher(saved.getId(), saved.getEmail(), saved.getFullName(), 
@@ -171,6 +165,12 @@ public class UserManagementService {
     }
 
     private UserResponse mapToResponse(User user) {
+        String rollNumber = null;
+        if (user.getRole() == Role.STUDENT) {
+            rollNumber = studentRepository.findByUserId(user.getId())
+                    .map(s -> s.getRollNumber())
+                    .orElse(null);
+        }
         return UserResponse.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -181,7 +181,27 @@ public class UserManagementService {
                 .temporaryPassword(user.isMustChangePassword() ? user.getTemporaryPassword() : null)
                 .schoolId(user.getSchoolId())
                 .classId(user.getClassId())
+                .rollNumber(rollNumber)
                 .createdAt(user.getCreatedAt())
                 .build();
+    }
+
+    /**
+     * Generates the next roll number for a student.
+     * Format: {schoolId}{classId}{2-digit roll}
+     * Example: SCH001 + class 1 + roll 02 => SCH001102
+     */
+    private String generateRollNumber(String schoolId, Long classId) {
+        String prefix = schoolId + classId;
+        List<Student> existing = studentRepository.findBySchoolIdAndClassId(schoolId, classId);
+        int nextRoll = existing.stream()
+                .map(Student::getRollNumber)
+                .filter(r -> r != null && r.startsWith(prefix))
+                .mapToInt(r -> {
+                    try { return Integer.parseInt(r.substring(prefix.length())); }
+                    catch (Exception e) { return 0; }
+                })
+                .max().orElse(0) + 1;
+        return String.format("%s%02d", prefix, nextRoll);
     }
 }

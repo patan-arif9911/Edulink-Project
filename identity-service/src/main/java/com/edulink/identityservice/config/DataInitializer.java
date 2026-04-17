@@ -2,6 +2,7 @@ package com.edulink.identityservice.config;
 
 import com.edulink.identityservice.entity.Role;
 import com.edulink.identityservice.entity.User;
+import java.util.List;
 import com.edulink.identityservice.entity.SchoolAdmin;
 import com.edulink.identityservice.entity.Teacher;
 import com.edulink.identityservice.entity.Student;
@@ -208,13 +209,15 @@ public class DataInitializer {
                         .classId(1L)
                         .build();
                 userRepository.save(student);
-                studentRepository.save(new Student(student.getId(), student.getEmail(), student.getFullName(), student.getSchoolId(), student.getClassId(), student.getPassword()));
-                log.info("==> STUDENT created: student@greenwood.edu / Student@123");
+                String rollNum = generateRollNumber(student.getSchoolId(), student.getClassId());
+                studentRepository.save(new Student(student.getId(), student.getEmail(), student.getFullName(), student.getSchoolId(), student.getClassId(), student.getPassword(), rollNum));
+                log.info("==> STUDENT created: student@greenwood.edu / Student@123 / rollNumber={}", rollNum);
             } else {
                 userRepository.findByEmail("student@greenwood.edu").ifPresent(student -> {
                     if (studentRepository.findByUserId(student.getId()).isEmpty()) {
-                        studentRepository.save(new Student(student.getId(), student.getEmail(), student.getFullName(), student.getSchoolId(), student.getClassId(), student.getPassword()));
-                        log.info("==> STUDENT record added for existing user: student@greenwood.edu");
+                        String rollNum = generateRollNumber(student.getSchoolId(), student.getClassId());
+                        studentRepository.save(new Student(student.getId(), student.getEmail(), student.getFullName(), student.getSchoolId(), student.getClassId(), student.getPassword(), rollNum));
+                        log.info("==> STUDENT record added for existing user: student@greenwood.edu / rollNumber={}", rollNum);
                     }
                 });
             }
@@ -252,8 +255,18 @@ public class DataInitializer {
             });
             userRepository.findByRole(Role.STUDENT).forEach(user -> {
                 if (studentRepository.findByUserId(user.getEmail()).isEmpty()) {
-                    studentRepository.save(new Student(user.getEmail(), user.getEmail(), user.getFullName(), user.getSchoolId(), user.getClassId(), user.getPassword()));
-                    log.info("==> Reconciled STUDENT for {}", user.getEmail());
+                    String rollNum = generateRollNumber(user.getSchoolId(), user.getClassId());
+                    studentRepository.save(new Student(user.getEmail(), user.getEmail(), user.getFullName(), user.getSchoolId(), user.getClassId(), user.getPassword(), rollNum));
+                    log.info("==> Reconciled STUDENT for {} / rollNumber={}", user.getEmail(), rollNum);
+                } else {
+                    // Backfill rollNumber if null
+                    studentRepository.findByUserId(user.getEmail()).ifPresent(s -> {
+                        if (s.getRollNumber() == null && s.getSchoolId() != null && s.getClassId() != null) {
+                            s.setRollNumber(generateRollNumber(s.getSchoolId(), s.getClassId()));
+                            studentRepository.save(s);
+                            log.info("==> Backfilled rollNumber for STUDENT {} => {}", user.getEmail(), s.getRollNumber());
+                        }
+                    });
                 }
             });
 
@@ -267,5 +280,26 @@ public class DataInitializer {
 
             log.info("=== EduLink Data Initialization Complete ===");
         };
+    }
+
+    /**
+     * Generates the next available roll number for a student.
+     * Format: {schoolId}{classId}{2-digit roll number}
+     * Example: SCH001 + class 1 + roll 01 => SCH001101
+     */
+    private String generateRollNumber(String schoolId, Long classId) {
+        List<com.edulink.identityservice.entity.Student> existing =
+                studentRepository.findBySchoolIdAndClassId(schoolId, classId);
+        int nextRoll = existing.stream()
+                .map(com.edulink.identityservice.entity.Student::getRollNumber)
+                .filter(r -> r != null && r.startsWith(schoolId + classId))
+                .mapToInt(r -> {
+                    try {
+                        String suffix = r.substring((schoolId + classId).length());
+                        return Integer.parseInt(suffix);
+                    } catch (Exception e) { return 0; }
+                })
+                .max().orElse(0) + 1;
+        return String.format("%s%d%02d", schoolId, classId, nextRoll);
     }
 }

@@ -17,6 +17,7 @@ import com.edulink.identityservice.exception.EduLinkException;
 import com.edulink.identityservice.exception.InvalidCredentialsException;
 import com.edulink.identityservice.exception.UserNotFoundException;
 import com.edulink.identityservice.repository.UserRepository;
+import com.edulink.identityservice.repository.StudentRepository;
 import com.edulink.identityservice.util.JwtUtil;
 
 @Service
@@ -27,11 +28,13 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
+    private final StudentRepository studentRepository;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil, StudentRepository studentRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
+        this.studentRepository = studentRepository;
     }
 
     public LoginResponse login(LoginRequest request) {
@@ -46,7 +49,15 @@ public class AuthService {
             throw new InvalidCredentialsException("Invalid email or password");
         }
 
-        String accessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId());
+        String rollNumber = null;
+        if (user.getRole() == com.edulink.identityservice.entity.Role.STUDENT) {
+            rollNumber = studentRepository.findByUserId(user.getId())
+                    .map(s -> s.getRollNumber())
+                    .orElse(null);
+        }
+        String accessToken = rollNumber != null
+                ? jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), rollNumber)
+                : jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId());
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
         log.info("User logged in: {} with role: {}", user.getEmail(), user.getRole());

@@ -25,11 +25,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                         .build().parseClaimsJws(h.substring(7)).getBody();
                 String email = c.getSubject();
                 String role = c.get("role", String.class);
-                Object userId = c.get("userId");
+                String rollNumber = c.get("rollNumber", String.class);
                 if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                             email, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role)));
-                    auth.setDetails(userId);
+                    // Store rollNumber in details if present, otherwise fall back to userId
+                    Object userId = c.get("userId");
+                    auth.setDetails(rollNumber != null ? rollNumber : userId);
                     SecurityContextHolder.getContext().setAuthentication(auth);
                 }
             } catch (Exception ignored) {}

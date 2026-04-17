@@ -9,7 +9,11 @@ public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long studentId;
+
+    /** Roll number from identity-service students table e.g. SCH001101 */
+    @Column(nullable = false)
+    private String rollNumber;
+
     private Long courseId;
     private String schoolId;
     private LocalDate attendanceDate;
@@ -20,11 +24,11 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(Long id, Long studentId, Long courseId, String schoolId,
+    public Attendance(Long id, String rollNumber, Long courseId, String schoolId,
                       LocalDate attendanceDate, String status, String markedBy,
                       LocalDateTime createdAt) {
         this.id = id;
-        this.studentId = studentId;
+        this.rollNumber = rollNumber;
         this.courseId = courseId;
         this.schoolId = schoolId;
         this.attendanceDate = attendanceDate;
@@ -35,8 +39,8 @@ public class Attendance {
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public Long getStudentId() { return studentId; }
-    public void setStudentId(Long studentId) { this.studentId = studentId; }
+    public String getRollNumber() { return rollNumber; }
+    public void setRollNumber(String rollNumber) { this.rollNumber = rollNumber; }
     public Long getCourseId() { return courseId; }
     public void setCourseId(Long courseId) { this.courseId = courseId; }
     public String getSchoolId() { return schoolId; }
@@ -57,7 +61,7 @@ public class Attendance {
 
     public static class Builder {
         private Long id;
-        private Long studentId;
+        private String rollNumber;
         private Long courseId;
         private String schoolId;
         private LocalDate attendanceDate;
@@ -66,7 +70,7 @@ public class Attendance {
         private LocalDateTime createdAt;
 
         public Builder id(Long id) { this.id = id; return this; }
-        public Builder studentId(Long studentId) { this.studentId = studentId; return this; }
+        public Builder rollNumber(String rollNumber) { this.rollNumber = rollNumber; return this; }
         public Builder courseId(Long courseId) { this.courseId = courseId; return this; }
         public Builder schoolId(String schoolId) { this.schoolId = schoolId; return this; }
         public Builder attendanceDate(LocalDate attendanceDate) { this.attendanceDate = attendanceDate; return this; }
@@ -75,7 +79,7 @@ public class Attendance {
         public Builder createdAt(LocalDateTime createdAt) { this.createdAt = createdAt; return this; }
 
         public Attendance build() {
-            return new Attendance(id, studentId, courseId, schoolId, attendanceDate, status, markedBy, createdAt);
+            return new Attendance(id, rollNumber, courseId, schoolId, attendanceDate, status, markedBy, createdAt);
         }
     }
 }

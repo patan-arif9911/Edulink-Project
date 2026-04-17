@@ -25,18 +25,22 @@ public class AttendanceController {
 
     @GetMapping("/student/attendance")
     @PreAuthorize("hasRole('STUDENT')")
-    public ResponseEntity<ApiResponse<List<Attendance>>> getStudentAttendance(@RequestParam(required = false) Long studentId) {
-        if (studentId == null) {
+    public ResponseEntity<ApiResponse<List<Attendance>>> getStudentAttendance(
+            @RequestParam(required = false) String rollNumber) {
+        if (rollNumber == null || rollNumber.isBlank()) {
+            // Extract rollNumber stored in token details by JwtAuthFilter
             Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
-            if (details instanceof Long) {
-                studentId = (Long) details;
-            } else if (details instanceof String) {
-                studentId = Long.parseLong((String) details);
+            if (details instanceof String && !((String) details).contains("@")) {
+                rollNumber = (String) details; // it's a rollNumber like SCH001101
             } else {
-                throw new RuntimeException("Invalid student identity in token");
+                // Fallback: no rollNumber in token (old token), return empty
+                return ResponseEntity.ok(ApiResponse.success("Attendance retrieved",
+                        attendanceService.getAttendanceByEmail(
+                                SecurityContextHolder.getContext().getAuthentication().getName())));
             }
         }
-        return ResponseEntity.ok(ApiResponse.success("Attendance retrieved", attendanceService.getStudentAttendance(studentId)));
+        return ResponseEntity.ok(ApiResponse.success("Attendance retrieved",
+                attendanceService.getAttendanceByRollNumber(rollNumber)));
     }
 
     @GetMapping("/admin/attendance-report")

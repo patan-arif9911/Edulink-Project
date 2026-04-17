@@ -34,6 +34,16 @@ public class JwtUtil {
         return createToken(claims, email, expiration);
     }
 
+    public String generateToken(String email, String role, String userId, String rollNumber) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role);
+        claims.put("userId", userId);
+        if (rollNumber != null) {
+            claims.put("rollNumber", rollNumber);
+        }
+        return createToken(claims, email, expiration);
+    }
+
     public String generateRefreshToken(String email) {
         return createToken(new HashMap<>(), email, refreshExpiration);
     }
