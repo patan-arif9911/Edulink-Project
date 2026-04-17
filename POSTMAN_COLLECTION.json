@@ -406,7 +406,7 @@
               {"key": "Authorization", "value": "Bearer {{token}}"}
             ],
             "url": "{{attendance_url}}/teacher/mark-attendance",
-            "body": {"mode": "raw", "raw": "{\n  \"studentId\": 7,\n  \"classId\": 1,\n  \"date\": \"2024-03-10\",\n  \"status\": \"PRESENT\",\n  \"schoolId\": \"SCH001\"\n}"}
+            "body": {"mode": "raw", "raw": "{\n  \"rollNumber\": \"SCH001101\",\n  \"courseId\": 1,\n  \"schoolId\": \"SCH001\",\n  \"attendanceDate\": \"2026-04-17\",\n  \"status\": \"PRESENT\",\n  \"markedBy\": \"teacher@greenwood.edu\"\n}"}
           }
         }
       ]
@@ -567,7 +567,7 @@
           "request": {
             "method": "GET",
             "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
-            "url": {"raw": "{{student_url}}/student/attendance", "host": ["{{student_url}}"], "path": ["student", "attendance"]}
+            "url": {"raw": "{{attendance_url}}/student/attendance", "host": ["{{attendance_url}}"], "path": ["student", "attendance"]}
           }
         }
       ]

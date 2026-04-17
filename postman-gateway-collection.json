@@ -201,11 +201,11 @@
         },
         {
           "name": "Create Exam (Teacher - stub)",
-          "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{teacherToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"courseCode\": \"MATH101\",\n  \"examTitle\": \"Final Exam\",\n  \"examType\": \"FINAL\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/course/teacher/create-exam","host":["{{gatewayBaseUrl}}"],"path":["course","teacher","create-exam"]} }
+          "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{teacherToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"courseCode\": \"MATH101\",\n  \"examTitle\": \"Final Exam\",\n  \"examType\": \"FINAL\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/teacher/create-exam","host":["{{gatewayBaseUrl}}"],"path":["teacher","create-exam"]} }
         },
         {
           "name": "Grade Student (Teacher - stub)",
-          "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{teacherToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"studentId\": 7,\n  \"examId\": 1,\n  \"marksObtained\": 175,\n  \"totalMarks\": 200,\n  \"grade\": \"A\",\n  \"remarks\": \"Excellent\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/course/teacher/grade-student","host":["{{gatewayBaseUrl}}"],"path":["course","teacher","grade-student"]} }
+          "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{teacherToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"studentId\": 7,\n  \"examId\": 1,\n  \"marksObtained\": 175,\n  \"totalMarks\": 200,\n  \"grade\": \"A\",\n  \"remarks\": \"Excellent\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/teacher/grade-student","host":["{{gatewayBaseUrl}}"],"path":["teacher","grade-student"]} }
         }
       ]
     },
@@ -243,7 +243,7 @@
         },
         {
           "name": "Get Attendance Report (Admin)",
-          "request": { "method": "GET", "header": [{"key":"Authorization","value":"Bearer {{adminToken}}"}], "url": {"raw":"{{gatewayBaseUrl}}/course/admin/attendance-report","host":["{{gatewayBaseUrl}}"],"path":["course","admin","attendance-report"]} }
+          "request": { "method": "GET", "header": [{"key":"Authorization","value":"Bearer {{adminToken}}"}], "url": {"raw":"{{gatewayBaseUrl}}/admin/attendance-report?schoolId=SCH001","host":["{{gatewayBaseUrl}}"],"path":["admin","attendance-report"],"query":[{"key":"schoolId","value":"SCH001"}]} }
         }
       ]
     },
@@ -285,7 +285,7 @@
       "item": [
         {
           "name": "Mark Attendance (Teacher)",
-          "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{teacherToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"studentId\": 7,\n  \"classId\": 1,\n  \"date\": \"2026-04-15\",\n  \"status\": \"PRESENT\",\n  \"schoolId\": \"SCH001\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/teacher/mark-attendance","host":["{{gatewayBaseUrl}}"],"path":["teacher","mark-attendance"]} }
+          "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{teacherToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"rollNumber\": \"SCH001101\",\n  \"courseId\": 1,\n  \"schoolId\": \"SCH001\",\n  \"attendanceDate\": \"2026-04-17\",\n  \"status\": \"PRESENT\",\n  \"markedBy\": \"teacher@greenwood.edu\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/teacher/mark-attendance","host":["{{gatewayBaseUrl}}"],"path":["teacher","mark-attendance"]} }
         },
         {
           "name": "Get Student Attendance",
