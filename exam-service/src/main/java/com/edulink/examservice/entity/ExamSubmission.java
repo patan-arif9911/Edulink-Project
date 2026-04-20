@@ -10,13 +10,19 @@ public class ExamSubmission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "exam_id", nullable = false)
-    private String examId;
+    @Column(name = "course_code", nullable = false)
+    private String courseCode;
+
+    @Column(name = "exam_type", nullable = false)
+    private String examType;
+
+    @Column(name = "roll_number")
+    private String rollNumber;
 
     @Column(name = "student_email", nullable = false)
     private String studentEmail;
 
-    @Column(name = "submission_content")
+    @Column(name = "submission_content", columnDefinition = "TEXT")
     private String submissionContent;
 
     @Column(name = "submission_file_id")
@@ -30,9 +36,12 @@ public class ExamSubmission {
 
     public ExamSubmission() {}
 
-    public ExamSubmission(String examId, String studentEmail, String submissionContent,
+    public ExamSubmission(String courseCode, String examType, String rollNumber,
+                         String studentEmail, String submissionContent,
                          String submissionFileId, LocalDateTime submittedAt, boolean isLate) {
-        this.examId = examId;
+        this.courseCode = courseCode;
+        this.examType = examType;
+        this.rollNumber = rollNumber;
         this.studentEmail = studentEmail;
         this.submissionContent = submissionContent;
         this.submissionFileId = submissionFileId;
@@ -44,8 +53,14 @@ public class ExamSubmission {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getExamId() { return examId; }
-    public void setExamId(String examId) { this.examId = examId; }
+    public String getCourseCode() { return courseCode; }
+    public void setCourseCode(String courseCode) { this.courseCode = courseCode; }
+
+    public String getExamType() { return examType; }
+    public void setExamType(String examType) { this.examType = examType; }
+
+    public String getRollNumber() { return rollNumber; }
+    public void setRollNumber(String rollNumber) { this.rollNumber = rollNumber; }
 
     public String getStudentEmail() { return studentEmail; }
     public void setStudentEmail(String studentEmail) { this.studentEmail = studentEmail; }
@@ -71,7 +86,9 @@ public class ExamSubmission {
 
     public static class Builder {
         private Long id;
-        private String examId;
+        private String courseCode;
+        private String examType;
+        private String rollNumber;
         private String studentEmail;
         private String submissionContent;
         private String submissionFileId;
@@ -79,7 +96,9 @@ public class ExamSubmission {
         private boolean isLate;
 
         public Builder id(Long id) { this.id = id; return this; }
-        public Builder examId(String examId) { this.examId = examId; return this; }
+        public Builder courseCode(String courseCode) { this.courseCode = courseCode; return this; }
+        public Builder examType(String examType) { this.examType = examType; return this; }
+        public Builder rollNumber(String rollNumber) { this.rollNumber = rollNumber; return this; }
         public Builder studentEmail(String studentEmail) { this.studentEmail = studentEmail; return this; }
         public Builder submissionContent(String submissionContent) { this.submissionContent = submissionContent; return this; }
         public Builder submissionFileId(String submissionFileId) { this.submissionFileId = submissionFileId; return this; }
@@ -87,7 +106,8 @@ public class ExamSubmission {
         public Builder isLate(boolean isLate) { this.isLate = isLate; return this; }
 
         public ExamSubmission build() {
-            return new ExamSubmission(examId, studentEmail, submissionContent, submissionFileId, submittedAt, isLate);
+            return new ExamSubmission(courseCode, examType, rollNumber, studentEmail,
+                    submissionContent, submissionFileId, submittedAt, isLate);
         }
     }
 }

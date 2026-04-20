@@ -28,13 +28,17 @@ public class ExamSubmissionService {
     }
 
     @Transactional
-    public ExamSubmission submitExam(String examId, String studentEmail, String submissionContent) {
-        // Validate exam exists
-        Exam exam = examRepository.findById(examId)
-                .orElseThrow(() -> new InvalidExamException("Exam not found with ID: " + examId));
+    public ExamSubmission submitExam(String courseCode, String studentEmail, String rollNumber, String submissionContent) {
+        // Validate exam exists by courseCode
+        List<Exam> exams = examRepository.findByCourseCode(courseCode);
+        if (exams.isEmpty()) {
+            throw new InvalidExamException("No exam found for course: " + courseCode);
+        }
+        // Use the latest exam for this course
+        Exam exam = exams.get(exams.size() - 1);
 
-        // Check if student already submitted
-        if (examSubmissionRepository.existsByExamIdAndStudentEmail(examId, studentEmail)) {
+        // Check if student already submitted for this course + examType
+        if (examSubmissionRepository.existsByCourseCodeAndStudentEmailAndExamType(courseCode, studentEmail, exam.getExamType())) {
             throw new IllegalArgumentException("Student has already submitted for this exam");
         }
 
@@ -48,7 +52,9 @@ public class ExamSubmissionService {
 
         // Create submission
         ExamSubmission submission = ExamSubmission.builder()
-                .examId(examId)
+                .courseCode(courseCode)
+                .examType(exam.getExamType())
+                .rollNumber(rollNumber)
                 .studentEmail(studentEmail)
                 .submissionContent(submissionContent.trim())
                 .isLate(isLate)
@@ -57,8 +63,8 @@ public class ExamSubmissionService {
         return examSubmissionRepository.save(submission);
     }
 
-    public List<ExamSubmission> getSubmissionsByExam(String examId) {
-        return examSubmissionRepository.findByExamId(examId);
+    public List<ExamSubmission> getSubmissionsByCourseCode(String courseCode) {
+        return examSubmissionRepository.findByCourseCode(courseCode);
     }
 
     public List<ExamSubmission> getSubmissionsByStudent(String studentEmail) {
@@ -69,7 +75,7 @@ public class ExamSubmissionService {
         return examSubmissionRepository.findById(submissionId);
     }
 
-    public Optional<ExamSubmission> getSubmissionByExamAndStudent(String examId, String studentEmail) {
-        return examSubmissionRepository.findByExamIdAndStudentEmail(examId, studentEmail);
+    public Optional<ExamSubmission> getSubmissionByExamAndStudent(String courseCode, String studentEmail) {
+        return examSubmissionRepository.findByCourseCodeAndStudentEmail(courseCode, studentEmail);
     }
 }

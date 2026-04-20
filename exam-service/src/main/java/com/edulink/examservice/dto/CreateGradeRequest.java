@@ -3,93 +3,60 @@ package com.edulink.examservice.dto;
 import jakarta.validation.constraints.*;
 
 /**
- * Request DTO for grading a student with validation annotations.
+ * Request DTO for grading a student.
+ * Teacher provides rollNumber, courseCode, examType and marks.
+ * Grade letter is auto-calculated by the service.
  */
 public class CreateGradeRequest {
 
-    @NotBlank(message = "Exam ID is required")
-    @Size(min = 1, max = 100, message = "Exam ID must be between 1 and 100 characters")
-    private String examId;
+    @NotBlank(message = "Course code is required")
+    private String courseCode;
 
-    @NotNull(message = "Student ID is required")
-    @Positive(message = "Student ID must be greater than 0")
-    private Long studentId;
+    @NotBlank(message = "Exam type is required")
+    private String examType;
+
+    @NotBlank(message = "Roll number is required")
+    private String rollNumber;
+
+    private String studentEmail;
 
     @PositiveOrZero(message = "Marks obtained must be 0 or greater")
-    @DecimalMin(value = "0", message = "Marks obtained must be at least 0")
     private int marksObtained;
 
     @Positive(message = "Total marks must be greater than 0")
     @Max(value = 1000, message = "Total marks cannot exceed 1000")
     private int totalMarks;
 
-    @NotBlank(message = "Grade is required")
-    @Pattern(regexp = "^[A-F]$", message = "Grade must be A, B, C, D, E, or F")
-    private String grade;
+    private int passingMarks;
 
     @Size(max = 500, message = "Remarks must not exceed 500 characters")
     private String remarks;
 
-    // Constructors
     public CreateGradeRequest() {}
 
-    public CreateGradeRequest(String examId, Long studentId, int marksObtained, 
-                             int totalMarks, String grade, String remarks) {
-        this.examId = examId;
-        this.studentId = studentId;
-        this.marksObtained = marksObtained;
-        this.totalMarks = totalMarks;
-        this.grade = grade;
-        this.remarks = remarks;
-    }
-
     // Getters and Setters
-    public String getExamId() {
-        return examId;
-    }
+    public String getCourseCode() { return courseCode; }
+    public void setCourseCode(String courseCode) { this.courseCode = courseCode; }
 
-    public void setExamId(String examId) {
-        this.examId = examId;
-    }
+    public String getExamType() { return examType; }
+    public void setExamType(String examType) { this.examType = examType; }
 
-    public Long getStudentId() {
-        return studentId;
-    }
+    public String getRollNumber() { return rollNumber; }
+    public void setRollNumber(String rollNumber) { this.rollNumber = rollNumber; }
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
+    public String getStudentEmail() { return studentEmail; }
+    public void setStudentEmail(String studentEmail) { this.studentEmail = studentEmail; }
 
-    public int getMarksObtained() {
-        return marksObtained;
-    }
+    public int getMarksObtained() { return marksObtained; }
+    public void setMarksObtained(int marksObtained) { this.marksObtained = marksObtained; }
 
-    public void setMarksObtained(int marksObtained) {
-        this.marksObtained = marksObtained;
-    }
+    public int getTotalMarks() { return totalMarks; }
+    public void setTotalMarks(int totalMarks) { this.totalMarks = totalMarks; }
 
-    public int getTotalMarks() {
-        return totalMarks;
-    }
+    public int getPassingMarks() { return passingMarks; }
+    public void setPassingMarks(int passingMarks) { this.passingMarks = passingMarks; }
 
-    public void setTotalMarks(int totalMarks) {
-        this.totalMarks = totalMarks;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
+    public String getRemarks() { return remarks; }
+    public void setRemarks(String remarks) { this.remarks = remarks; }
 }
 

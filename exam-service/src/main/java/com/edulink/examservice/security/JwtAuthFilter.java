@@ -32,6 +32,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 String email = claims.getSubject();
                 String role = claims.get("role", String.class);
                 String userId = claims.get("userId", String.class);
+                String rollNumber = claims.get("rollNumber", String.class);
 
                 if (role != null && role.startsWith("ROLE_")) {
                     role = role.substring("ROLE_".length());
@@ -40,7 +41,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 if (email != null && role != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                             email, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role)));
-                    auth.setDetails(userId != null ? userId : email);
+                    // Store rollNumber in details for STUDENT role, otherwise store email
+                    auth.setDetails(rollNumber != null ? rollNumber : (userId != null ? userId : email));
                     SecurityContextHolder.getContext().setAuthentication(auth);
                 }
             } catch (Exception e) {

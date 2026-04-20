@@ -1,12 +1,18 @@
 package com.edulink.examservice.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "exams")
 public class Exam {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "course_code", nullable = false)
     private String courseCode;
     private String teacherEmail;
     private String examTitle;
@@ -23,9 +29,10 @@ public class Exam {
     public Exam() {
     }
 
-    public Exam(String courseCode, String teacherEmail, String examTitle, String examType,
+    public Exam(Long id, String courseCode, String teacherEmail, String examTitle, String examType,
                 int totalMarks, int passingMarks, String schoolId, String questionsFileId,
                 LocalDateTime examDate, LocalDateTime createdAt) {
+        this.id = id;
         this.courseCode = courseCode;
         this.teacherEmail = teacherEmail;
         this.examTitle = examTitle;
@@ -38,6 +45,8 @@ public class Exam {
         this.createdAt = createdAt;
     }
 
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     public String getCourseCode() { return courseCode; }
     public void setCourseCode(String courseCode) { this.courseCode = courseCode; }
     public String getTeacherEmail() { return teacherEmail; }
@@ -65,6 +74,7 @@ public class Exam {
     public static Builder builder() { return new Builder(); }
 
     public static class Builder {
+        private Long id;
         private String courseCode;
         private String teacherEmail;
         private String examTitle;
@@ -76,6 +86,7 @@ public class Exam {
         private LocalDateTime examDate;
         private LocalDateTime createdAt;
 
+        public Builder id(Long id) { this.id = id; return this; }
         public Builder courseCode(String courseCode) { this.courseCode = courseCode; return this; }
         public Builder teacherEmail(String teacherEmail) { this.teacherEmail = teacherEmail; return this; }
         public Builder examTitle(String examTitle) { this.examTitle = examTitle; return this; }
@@ -88,7 +99,7 @@ public class Exam {
         public Builder createdAt(LocalDateTime createdAt) { this.createdAt = createdAt; return this; }
 
         public Exam build() {
-            return new Exam(courseCode, teacherEmail, examTitle, examType, totalMarks, passingMarks, schoolId, questionsFileId, examDate, createdAt);
+            return new Exam(id, courseCode, teacherEmail, examTitle, examType, totalMarks, passingMarks, schoolId, questionsFileId, examDate, createdAt);
         }
     }
 }

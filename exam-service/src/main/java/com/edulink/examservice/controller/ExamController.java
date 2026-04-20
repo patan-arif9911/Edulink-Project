@@ -7,7 +7,6 @@ import com.edulink.examservice.dto.SubmitExamRequest;
 import com.edulink.examservice.entity.*;
 import com.edulink.examservice.exception.AccessDeniedException;
 import com.edulink.examservice.exception.InvalidExamException;
-import com.edulink.examservice.exception.InvalidGradeException;
 import com.edulink.examservice.service.*;
 import jakarta.validation.Valid;
 import org.springframework.http.*;
@@ -63,37 +62,28 @@ public class ExamController {
     @PostMapping("/teacher/grade-student")
     @PreAuthorize("hasRole('TEACHER')")
     public ResponseEntity<ApiResponse<Grade>> gradeStudent(@Valid @RequestBody CreateGradeRequest request) {
-        // Validate grade
-        if (request.getGrade() == null || !isValidGrade(request.getGrade())) {
-            throw new InvalidGradeException(request.getGrade(), "Invalid grade: " + request.getGrade());
-        }
-        
-        // Convert request to grade entity
         Grade grade = new Grade();
-        grade.setExamId(request.getExamId());
-        grade.setStudentId(request.getStudentId());
+        grade.setCourseCode(request.getCourseCode());
+        grade.setExamType(request.getExamType());
+        grade.setRollNumber(request.getRollNumber());
+        grade.setStudentEmail(request.getStudentEmail());
         grade.setMarksObtained(request.getMarksObtained());
         grade.setTotalMarks(request.getTotalMarks());
-        grade.setGrade(request.getGrade());
+        grade.setPassingMarks(request.getPassingMarks());
         grade.setRemarks(request.getRemarks());
-        
+
         return ResponseEntity.ok(ApiResponse.success("Student graded", gradeService.gradeStudent(grade)));
     }
 
     @GetMapping("/student/grades")
     @PreAuthorize("hasRole('STUDENT')")
-    public ResponseEntity<ApiResponse<List<Grade>>> getStudentGrades(@RequestParam(required = false) Long studentId) {
-        if (studentId == null) {
-            Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
-            if (details instanceof Long) {
-                studentId = (Long) details;
-            } else if (details instanceof String) {
-                studentId = Long.parseLong((String) details);
-            } else {
-                throw new RuntimeException("Invalid student identity in token");
-            }
+    public ResponseEntity<ApiResponse<List<Grade>>> getStudentGrades() {
+        Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        String rollNumber = (details instanceof String d && !d.contains("@")) ? d : null;
+        if (rollNumber == null) {
+            throw new RuntimeException("Roll number not found in token");
         }
-        return ResponseEntity.ok(ApiResponse.success("Grades retrieved", gradeService.getGradesByStudentId(studentId)));
+        return ResponseEntity.ok(ApiResponse.success("Grades retrieved", gradeService.getGradesByRollNumber(rollNumber)));
     }
 
     @GetMapping("/student/exams")
@@ -105,7 +95,7 @@ public class ExamController {
 
     @GetMapping("/student/download-exam-questions/{examId}")
     @PreAuthorize("hasRole('STUDENT')")
-    public ResponseEntity<byte[]> downloadExamQuestions(@PathVariable String examId) throws IOException {
+    public ResponseEntity<byte[]> downloadExamQuestions(@PathVariable Long examId) throws IOException {
         byte[] fileContent = examService.downloadExamQuestions(examId);
         String fileName = examService.getExamQuestionsFileName(examId);
         String contentType = examService.getExamQuestionsContentType(examId);
@@ -120,30 +110,28 @@ public class ExamController {
     @PreAuthorize("hasRole('STUDENT')")
     public ResponseEntity<ApiResponse<ExamSubmission>> submitExam(@RequestBody SubmitExamRequest request) {
 
-        // Get student email from JWT token
-        String studentEmail = (String) SecurityContextHolder.getContext()
-                .getAuthentication().getDetails();
+        // Get studentEmail and rollNumber from JWT token
+        // JwtAuthFilter now directly stores rollNumber in details for STUDENT role
+        String studentEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        String rollNumber = (details instanceof String detailStr && !detailStr.contains("@"))
+                ? detailStr : null;
 
         ExamSubmission submission = examSubmissionService.submitExam(
-            request.getExamId(),
+            request.getCourseCode(),  // courseCode instead of numeric examId
             studentEmail,
+            rollNumber,
             request.getSubmissionContent()
         );
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success("Exam submitted successfully", submission));
     }
 
-    @GetMapping("/teacher/exam-submissions/{examId}")
+    @GetMapping("/teacher/exam-submissions/{courseCode}")
     @PreAuthorize("hasRole('TEACHER')")
-    public ResponseEntity<ApiResponse<List<ExamSubmission>>> getExamSubmissions(@PathVariable String examId) {
-        List<ExamSubmission> submissions = examSubmissionService.getSubmissionsByExam(examId);
+    public ResponseEntity<ApiResponse<List<ExamSubmission>>> getExamSubmissions(@PathVariable String courseCode) {
+        List<ExamSubmission> submissions = examSubmissionService.getSubmissionsByCourseCode(courseCode);
         return ResponseEntity.ok(ApiResponse.success("Exam submissions retrieved", submissions));
     }
 
-    /**
-     * Validate grade is A-F
-     */
-    private boolean isValidGrade(String grade) {
-        return grade != null && grade.length() == 1 && "ABCDEF".contains(grade.toUpperCase());
-    }
 }

@@ -9,14 +9,18 @@ import java.util.Optional;
 
 public interface ExamSubmissionRepository extends JpaRepository<ExamSubmission, Long> {
 
-    List<ExamSubmission> findByExamId(String examId);
+    List<ExamSubmission> findByCourseCode(String courseCode);
 
     List<ExamSubmission> findByStudentEmail(String studentEmail);
 
-    Optional<ExamSubmission> findByExamIdAndStudentEmail(String examId, String studentEmail);
+    List<ExamSubmission> findByRollNumber(String rollNumber);
 
-    boolean existsByExamIdAndStudentEmail(String examId, String studentEmail);
+    List<ExamSubmission> findByCourseCodeAndExamType(String courseCode, String examType);
 
-    @Query("SELECT es FROM ExamSubmission es WHERE es.examId IN :examIds")
-    List<ExamSubmission> findByExamIds(@Param("examIds") List<String> examIds);
+    Optional<ExamSubmission> findByCourseCodeAndStudentEmail(String courseCode, String studentEmail);
+
+    boolean existsByCourseCodeAndStudentEmailAndExamType(String courseCode, String studentEmail, String examType);
+
+    @Query("SELECT es FROM ExamSubmission es WHERE es.courseCode IN :courseCodes")
+    List<ExamSubmission> findByCourseCodes(@Param("courseCodes") List<String> courseCodes);
 }

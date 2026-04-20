@@ -6,7 +6,7 @@
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
-    { "key": "gatewayBaseUrl", "value": "http://localhost:8060" },
+    { "key": "gatewayBaseUrl", "value": "http://localhost:9090" },
     { "key": "operatorToken", "value": "" },
     { "key": "adminToken", "value": "" },
     { "key": "teacherToken", "value": "" },

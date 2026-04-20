@@ -70,7 +70,7 @@ public class ExamService {
         return examRepository.findByCourseCodeIn(courseCodes);
     }
 
-    public byte[] downloadExamQuestions(String examId) throws IOException {
+    public byte[] downloadExamQuestions(Long examId) throws IOException {
         Exam exam = examRepository.findById(examId)
                 .orElseThrow(() -> new IllegalArgumentException("Exam not found with ID: " + examId));
 
@@ -81,7 +81,7 @@ public class ExamService {
         return gridFsService.downloadFile(exam.getQuestionsFileId());
     }
 
-    public String getExamQuestionsFileName(String examId) {
+    public String getExamQuestionsFileName(Long examId) {
         Exam exam = examRepository.findById(examId).orElse(null);
         if (exam == null || exam.getQuestionsFileId() == null) {
             return null;
@@ -89,7 +89,7 @@ public class ExamService {
         return gridFsService.getFileName(exam.getQuestionsFileId());
     }
 
-    public String getExamQuestionsContentType(String examId) {
+    public String getExamQuestionsContentType(Long examId) {
         Exam exam = examRepository.findById(examId).orElse(null);
         if (exam == null || exam.getQuestionsFileId() == null) {
             return "application/octet-stream";
