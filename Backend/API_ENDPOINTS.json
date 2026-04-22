@@ -1,0 +1,1403 @@
+{
+  "apiEndpoints": {
+    "identityService": {
+      "baseUrl": "http://localhost:8081",
+      "port": 8081,
+      "description": "Authentication and user management service",
+      "endpoints": {
+        "login": {
+          "method": "POST",
+          "endpoint": "/auth/login",
+          "description": "Authenticate user and get JWT tokens",
+          "requiresAuth": false,
+          "roles": ["PUBLIC"],
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "email": "student@greenwood.edu",
+            "password": "Student@123"
+          },
+          "response": {
+            "success": true,
+            "message": "Login successful",
+            "data": {
+              "accessToken": "eyJhbGciOiJIUzI1NiJ9...",
+              "refreshToken": "eyJhbGciOiJIUzI1NiJ9...",
+              "tokenType": "Bearer",
+              "role": "STUDENT",
+              "email": "student@greenwood.edu",
+              "fullName": "Alice Smith",
+              "userId": 7,
+              "mustChangePassword": false
+            }
+          }
+        },
+        "changePassword": {
+          "method": "POST",
+          "endpoint": "/auth/change-password",
+          "description": "Change user password",
+          "requiresAuth": true,
+          "roles": ["STUDENT", "TEACHER", "SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <accessToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "currentPassword": "Student@123",
+            "newPassword": "NewPassword@123"
+          },
+          "response": {
+            "success": true,
+            "message": "Password changed successfully",
+            "data": null
+          }
+        },
+        "getUserByEmail": {
+          "method": "GET",
+          "endpoint": "/auth/user-by-email",
+          "description": "Get user information by email",
+          "requiresAuth": false,
+          "roles": ["PUBLIC"],
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "queryParams": {
+            "email": "student@greenwood.edu"
+          },
+          "response": {
+            "success": true,
+            "data": {
+              "id": 7,
+              "email": "student@greenwood.edu",
+              "fullName": "Alice Smith",
+              "role": "STUDENT",
+              "active": true,
+              "schoolId": "SCH001",
+              "classId": 1
+            }
+          }
+        },
+        "createTeacher": {
+          "method": "POST",
+          "endpoint": "/admin/create-teacher",
+          "description": "Create a new teacher account",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "email": "teacher@greenwood.edu",
+            "fullName": "Mr. Robert Brown",
+            "classId": 1
+          },
+          "response": {
+            "success": true,
+            "message": "Teacher account created. Temporary password: TempPass@123",
+            "data": {
+              "id": 5,
+              "email": "teacher@greenwood.edu",
+              "fullName": "Mr. Robert Brown",
+              "role": "TEACHER",
+              "temporaryPassword": "TempPass@123",
+              "active": true
+            }
+          }
+        },
+        "createStudent": {
+          "method": "POST",
+          "endpoint": "/admin/create-student",
+          "description": "Create a new student account",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "email": "student@greenwood.edu",
+            "fullName": "Alice Smith",
+            "classId": 1
+          },
+          "response": {
+            "success": true,
+            "message": "Student account created. Temporary password: TempPass@123",
+            "data": {
+              "id": 7,
+              "email": "student@greenwood.edu",
+              "fullName": "Alice Smith",
+              "role": "STUDENT",
+              "temporaryPassword": "TempPass@123",
+              "active": true
+            }
+          }
+        },
+        "getTeachers": {
+          "method": "GET",
+          "endpoint": "/admin/teachers",
+          "description": "Get all teachers in school",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Teachers retrieved",
+            "data": [
+              {
+                "id": 5,
+                "email": "teacher@greenwood.edu",
+                "fullName": "Mr. Robert Brown",
+                "role": "TEACHER",
+                "active": true
+              }
+            ]
+          }
+        },
+        "getStudents": {
+          "method": "GET",
+          "endpoint": "/admin/students",
+          "description": "Get all students in school",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Students retrieved",
+            "data": [
+              {
+                "id": 7,
+                "email": "student@greenwood.edu",
+                "fullName": "Alice Smith",
+                "role": "STUDENT",
+                "active": true,
+                "schoolId": "SCH001",
+                "classId": 1
+              }
+            ]
+          }
+        },
+        "getStudentsByClass": {
+          "method": "GET",
+          "endpoint": "/teacher/students-by-class",
+          "description": "Get students in a specific class",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>"
+          },
+          "queryParams": {
+            "classId": 1,
+            "schoolId": "SCH001"
+          },
+          "response": {
+            "success": true,
+            "message": "Students retrieved for class 1 in school SCH001",
+            "data": [
+              {
+                "id": 7,
+                "email": "student@greenwood.edu",
+                "fullName": "Alice Smith",
+                "role": "STUDENT",
+                "active": true,
+                "schoolId": "SCH001",
+                "classId": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    "studentService": {
+      "baseUrl": "http://localhost:8082",
+      "port": 8082,
+      "description": "Student profile and enrollment management service",
+      "endpoints": {
+        "createStudentProfile": {
+          "method": "POST",
+          "endpoint": "/student/profile",
+          "description": "Create a student profile",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "userId": "student@greenwood.edu",
+            "fullName": "Alice Smith",
+            "email": "student@greenwood.edu",
+            "schoolId": "SCH001",
+            "classId": 1
+          },
+          "response": {
+            "success": true,
+            "message": "Student profile created",
+            "data": null
+          }
+        },
+        "getCourses": {
+          "method": "GET",
+          "endpoint": "/student/courses",
+          "description": "Get student's enrolled courses",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>",
+            "Content-Type": "application/json"
+          },
+          "response": {
+            "success": true,
+            "message": "Courses retrieved",
+            "data": [
+              {
+                "id": 1,
+                "studentId": 7,
+                "courseId": 1,
+                "courseName": "Mathematics",
+                "courseCode": "MATH101",
+                "status": "ACTIVE",
+                "enrolledAt": "2024-03-01T10:00:00"
+              }
+            ]
+          }
+        },
+        "enrollInCourse": {
+          "method": "POST",
+          "endpoint": "/student/enroll",
+          "description": "Enroll in a course by course code",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "courseCode": "MATH101"
+          },
+          "response": {
+            "success": true,
+            "message": "Enrolled in course successfully",
+            "data": {
+              "id": 5,
+              "studentId": 7,
+              "courseId": 1,
+              "courseCode": "MATH101",
+              "courseName": "Mathematics",
+              "status": "ACTIVE",
+              "enrolledAt": "2024-03-15T14:30:00"
+            }
+          }
+        },
+        "getMaterials": {
+          "method": "GET",
+          "endpoint": "/student/materials/{courseCode}",
+          "description": "Get learning materials for a course",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "pathParams": {
+            "courseCode": "MATH101"
+          },
+          "response": {
+            "success": true,
+            "message": "Materials retrieved",
+            "data": [
+              {
+                "id": 1,
+                "courseCode": "MATH101",
+                "teacherEmail": "teacher@school.com",
+                "title": "Algebra Basics",
+                "description": "Introduction to algebraic expressions",
+                "fileUrl": "https://edu.materials/math101/ch1.pdf",
+                "materialType": "PDF",
+                "uploadedAt": "2024-03-10T14:30:00"
+              }
+            ]
+          }
+        },
+        "getAssignments": {
+          "method": "GET",
+          "endpoint": "/student/assignments/{courseCode}",
+          "description": "Get assignments for a course",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "pathParams": {
+            "courseCode": "MATH101"
+          },
+          "response": {
+            "success": true,
+            "message": "Assignments retrieved",
+            "data": [
+              {
+                "id": 1,
+                "courseCode": "MATH101",
+                "teacherEmail": "teacher@school.com",
+                "title": "Homework 1",
+                "description": "Complete exercises 1-5",
+                "dueDate": "2024-03-15T23:59:59",
+                "maxMarks": 100,
+                "createdAt": "2024-03-10T14:30:00"
+              }
+            ]
+          }
+        },
+        "submitAssignment": {
+          "method": "POST",
+          "endpoint": "/student/assignments/upload",
+          "description": "Submit an assignment",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "assignmentNum": 1,
+            "courseCode": "MATH101",
+            "assignmentTitle": "Algebra Assignment 1",
+            "submissionContent": "My assignment solution",
+            "fileUrl": "https://edu.files/submission_1.pdf"
+          },
+          "response": {
+            "success": true,
+            "message": "Assignment submitted successfully",
+            "data": {
+              "id": 1,
+              "assignmentNum": 1,
+              "studentId": 7,
+              "assignmentTitle": "Homework 1",
+              "submissionContent": "My assignment solution",
+              "fileUrl": "https://edu.files/submission_1.pdf",
+              "status": "SUBMITTED",
+              "submittedAt": "2024-03-14T15:30:00"
+            }
+          }
+        },
+        "getGrades": {
+          "method": "GET",
+          "endpoint": "/student/grades",
+          "description": "Get student's exam grades",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Grades for student student@greenwood.edu",
+            "data": [
+              {
+                "id": 1,
+                "examId": 1,
+                "studentId": 7,
+                "marksObtained": 85,
+                "totalMarks": 100,
+                "grade": "A",
+                "remarks": "Excellent performance",
+                "createdAt": "2024-03-15T10:00:00"
+              }
+            ]
+          }
+        },
+        "getAttendance": {
+          "method": "GET",
+          "endpoint": "/student/attendance",
+          "description": "Get student's attendance records",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Attendance for student student@greenwood.edu",
+            "data": [
+              {
+                "id": 1,
+                "studentId": 7,
+                "classId": 1,
+                "date": "2024-03-10",
+                "status": "PRESENT",
+                "schoolId": "SCH001",
+                "markedAt": "2024-03-10T10:00:00"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "courseService": {
+      "baseUrl": "http://localhost:8083",
+      "port": 8083,
+      "description": "Course management and learning materials service",
+      "endpoints": {
+        "getClasses": {
+          "method": "GET",
+          "endpoint": "/teacher/classes",
+          "description": "Get teacher's assigned classes",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Classes retrieved",
+            "data": [
+              {
+                "id": 1,
+                "className": "10A Mathematics",
+                "grade": "Grade 10",
+                "section": "A",
+                "schoolId": "SCH001",
+                "teacherEmail": "teacher@school.com",
+                "courseId": 1,
+                "capacity": 35,
+                "createdAt": "2024-03-01T10:00:00"
+              }
+            ]
+          }
+        },
+        "uploadMaterial": {
+          "method": "POST",
+          "endpoint": "/teacher/upload-material",
+          "description": "Upload learning material file for a course (PDF, Video, Document, etc.)",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>",
+            "Content-Type": "multipart/form-data"
+          },
+          "formData": {
+            "courseCode": "MATH101",
+            "title": "Algebra Basics",
+            "description": "Introduction to algebraic expressions",
+            "materialType": "PDF",
+            "file": "<file_content>"
+          },
+          "response": {
+            "success": true,
+            "message": "Learning material uploaded successfully",
+            "data": {
+              "courseCode": "MATH101",
+              "teacherEmail": "teacher@school.com",
+              "title": "Algebra Basics",
+              "description": "Introduction to algebraic expressions",
+              "fileId": "507f1f77bcf86cd799439011",
+              "fileName": "algebra_basics.pdf",
+              "fileSize": 2048576,
+              "contentType": "application/pdf",
+              "materialType": "PDF",
+              "uploadedAt": "2024-03-10T14:30:00"
+            }
+          }
+        },
+        "createAssignment": {
+          "method": "POST",
+          "endpoint": "/teacher/create-assignment",
+          "description": "Create a new assignment for a course",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "courseCode": "MATH101",
+            "title": "Homework 1",
+            "description": "Complete exercises 1-5",
+            "dueDate": "2024-03-15T23:59:59",
+            "maxMarks": 100
+          },
+          "response": {
+            "success": true,
+            "message": "Assignment created",
+            "data": {
+              "id": 1,
+              "courseCode": "MATH101",
+              "teacherEmail": "teacher@school.com",
+              "title": "Homework 1",
+              "description": "Complete exercises 1-5",
+              "dueDate": "2024-03-15T23:59:59",
+              "maxMarks": 100,
+              "createdAt": "2024-03-10T14:30:00"
+            }
+          }
+        },
+        "getStudentsInClass": {
+          "method": "GET",
+          "endpoint": "/teacher/students/{classId}",
+          "description": "Get students in a specific class",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>"
+          },
+          "pathParams": {
+            "classId": 1
+          },
+          "response": {
+            "success": true,
+            "message": "Students in class 1 retrieved",
+            "data": [
+              {
+                "id": 7,
+                "email": "student@greenwood.edu",
+                "fullName": "Alice Smith",
+                "role": "STUDENT",
+                "active": true,
+                "schoolId": "SCH001",
+                "classId": 1
+              }
+            ]
+          }
+        },
+        "getCourseMaterialsTeacher": {
+          "method": "GET",
+          "endpoint": "/teacher/materials/{courseCode}",
+          "description": "Get all learning materials for a course (Teacher view)",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>"
+          },
+          "pathParams": {
+            "courseCode": "MATH101"
+          },
+          "response": {
+            "success": true,
+            "message": "Learning materials retrieved",
+            "data": [
+              {
+                "courseCode": "MATH101",
+                "teacherEmail": "teacher@school.com",
+                "title": "Algebra Basics",
+                "description": "Introduction to algebraic expressions",
+                "fileId": "507f1f77bcf86cd799439011",
+                "fileName": "algebra_basics.pdf",
+                "fileSize": 2048576,
+                "contentType": "application/pdf",
+                "materialType": "PDF",
+                "uploadedAt": "2024-03-10T14:30:00"
+              }
+            ]
+          }
+        },
+        "downloadMaterialTeacher": {
+          "method": "GET",
+          "endpoint": "/teacher/materials/download/{fileId}",
+          "description": "Download learning material file by file ID (Teacher)",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>"
+          },
+          "pathParams": {
+            "fileId": "507f1f77bcf86cd799439011"
+          },
+          "response": {
+            "description": "Returns the file content with appropriate headers",
+            "headers": {
+              "Content-Disposition": "attachment; filename=\"algebra_basics.pdf\"",
+              "Content-Type": "application/pdf"
+            },
+            "body": "<file_binary_content>"
+          }
+        },
+        "deleteMaterial": {
+          "method": "DELETE",
+          "endpoint": "/teacher/materials/{fileId}",
+          "description": "Delete learning material and its file",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>"
+          },
+          "pathParams": {
+            "fileId": "507f1f77bcf86cd799439011"
+          },
+          "response": {
+            "success": true,
+            "message": "Material deleted successfully",
+            "data": null
+          }
+        },
+        "getMaterialsStudent": {
+          "method": "GET",
+          "endpoint": "/student/materials/{courseCode}",
+          "description": "Get course materials by course code",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "pathParams": {
+            "courseCode": "MATH101"
+          },
+          "response": {
+            "success": true,
+            "message": "Materials retrieved",
+            "data": [
+              {
+                "courseCode": "MATH101",
+                "teacherEmail": "teacher@school.com",
+                "title": "Algebra Basics",
+                "description": "Introduction to algebraic expressions",
+                "fileId": "507f1f77bcf86cd799439011",
+                "fileName": "algebra_basics.pdf",
+                "fileSize": 2048576,
+                "contentType": "application/pdf",
+                "materialType": "PDF",
+                "uploadedAt": "2024-03-10T14:30:00"
+              }
+            ]
+          }
+        },
+        "downloadMaterialStudent": {
+          "method": "GET",
+          "endpoint": "/student/materials/download/{fileId}",
+          "description": "Download learning material file by file ID (Student)",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "pathParams": {
+            "fileId": "507f1f77bcf86cd799439011"
+          },
+          "response": {
+            "description": "Returns the file content with appropriate headers",
+            "headers": {
+              "Content-Disposition": "attachment; filename=\"algebra_basics.pdf\"",
+              "Content-Type": "application/pdf"
+            },
+            "body": "<file_binary_content>"
+          }
+        },
+        "getAssignmentsStudent": {
+          "method": "GET",
+          "endpoint": "/student/assignments/{courseCode}",
+          "description": "Get assignments for a course by course code",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "pathParams": {
+            "courseCode": "MATH101"
+          },
+          "response": {
+            "success": true,
+            "message": "Assignments retrieved",
+            "data": [
+              {
+                "id": 1,
+                "courseCode": "MATH101",
+                "teacherEmail": "teacher@school.com",
+                "title": "Homework 1",
+                "description": "Complete exercises 1-5",
+                "dueDate": "2024-03-15T23:59:59",
+                "maxMarks": 100,
+                "createdAt": "2024-03-10T14:30:00"
+              }
+            ]
+          }
+        },
+        "createCourse": {
+          "method": "POST",
+          "endpoint": "/admin/create-course",
+          "description": "Create a new course",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "courseCode": "MATH101",
+            "courseName": "Mathematics Grade 10",
+            "description": "Algebra, Geometry, Trigonometry",
+            "schoolId": "SCH001",
+            "subject": "Mathematics",
+            "grade": "Grade 10",
+            "active": true
+          },
+          "response": {
+            "success": true,
+            "message": "Course created",
+            "data": {
+              "id": 1,
+              "courseCode": "MATH101",
+              "courseName": "Mathematics Grade 10",
+              "description": "Algebra, Geometry, Trigonometry",
+              "schoolId": "SCH001",
+              "subject": "Mathematics",
+              "grade": "Grade 10",
+              "active": true,
+              "createdAt": "2024-03-01T10:00:00"
+            }
+          }
+        },
+        "createClass": {
+          "method": "POST",
+          "endpoint": "/admin/create-class",
+          "description": "Create a new class",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "className": "10A Mathematics",
+            "grade": "Grade 10",
+            "section": "A",
+            "schoolId": "SCH001",
+            "teacherEmail": "teacher@school.com",
+            "courseId": 1,
+            "capacity": 35
+          },
+          "response": {
+            "success": true,
+            "message": "Class created",
+            "data": {
+              "id": 1,
+              "className": "10A Mathematics",
+              "grade": "Grade 10",
+              "section": "A",
+              "schoolId": "SCH001",
+              "teacherEmail": "teacher@school.com",
+              "courseId": 1,
+              "capacity": 35,
+              "createdAt": "2024-03-01T10:00:00"
+            }
+          }
+        }
+      }
+    },
+    "examService": {
+      "baseUrl": "http://localhost:8084",
+      "port": 8084,
+      "description": "Exam creation and grading management service",
+      "endpoints": {
+        "createExam": {
+          "method": "POST",
+          "endpoint": "/teacher/create-exam",
+          "description": "Create a new exam",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "courseCode": "MATH101",
+            "examTitle": "Final Exam",
+            "examType": "FINAL",
+            "totalMarks": 200,
+            "passingMarks": 100,
+            "schoolId": "SCH001",
+            "examDate": "2024-05-15T09:00:00"
+          },
+          "response": {
+            "success": true,
+            "message": "Exam created",
+            "data": {
+              "id": 1,
+              "courseCode": "MATH101",
+              "examTitle": "Final Exam",
+              "examType": "FINAL",
+              "totalMarks": 200,
+              "passingMarks": 100,
+              "schoolId": "SCH001",
+              "examDate": "2024-05-15T09:00:00",
+              "createdAt": "2024-05-01T10:00:00"
+            }
+          }
+        },
+        "gradeStudent": {
+          "method": "POST",
+          "endpoint": "/teacher/grade-student",
+          "description": "Grade student's exam performance",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "examId": 1,
+            "studentId": 7,
+            "marksObtained": 175,
+            "totalMarks": 200,
+            "grade": "A",
+            "remarks": "Excellent performance"
+          },
+          "response": {
+            "success": true,
+            "message": "Student graded",
+            "data": {
+              "id": 1,
+              "examId": 1,
+              "studentId": 7,
+              "marksObtained": 175,
+              "totalMarks": 200,
+              "grade": "A",
+              "remarks": "Excellent performance",
+              "createdAt": "2024-05-15T11:00:00"
+            }
+          }
+        },
+        "getStudentGrades": {
+          "method": "GET",
+          "endpoint": "/student/grades",
+          "description": "Get student's exam grades",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "queryParams": {
+            "studentId": 7
+          },
+          "response": {
+            "success": true,
+            "message": "Grades retrieved",
+            "data": [
+              {
+                "id": 1,
+                "examId": "EXAM001",
+                "studentId": 7,
+                "teacherEmail": "teacher@greenwood.edu",
+                "marksObtained": 85,
+                "totalMarks": 100,
+                "grade": "A",
+                "remarks": "Excellent performance",
+                "gradedAt": "2024-03-15T10:00:00"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "attendanceService": {
+      "baseUrl": "http://localhost:8085",
+      "port": 8085,
+      "description": "Attendance tracking and reporting service",
+      "endpoints": {
+        "markAttendance": {
+          "method": "POST",
+          "endpoint": "/teacher/mark-attendance",
+          "description": "Mark student attendance",
+          "requiresAuth": true,
+          "roles": ["TEACHER"],
+          "headers": {
+            "Authorization": "Bearer <teacherToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "studentId": 7,
+            "classId": 1,
+            "date": "2024-03-10",
+            "status": "PRESENT",
+            "schoolId": "SCH001"
+          },
+          "response": {
+            "success": true,
+            "message": "Attendance marked",
+            "data": {
+              "id": 1,
+              "studentId": 7,
+              "classId": 1,
+              "date": "2024-03-10",
+              "status": "PRESENT",
+              "schoolId": "SCH001",
+              "markedAt": "2024-03-10T10:00:00"
+            }
+          }
+        },
+        "getStudentAttendance": {
+          "method": "GET",
+          "endpoint": "/student/attendance",
+          "description": "Get student's attendance records",
+          "requiresAuth": true,
+          "roles": ["STUDENT"],
+          "headers": {
+            "Authorization": "Bearer <studentToken>"
+          },
+          "queryParams": {
+            "studentId": 7
+          },
+          "response": {
+            "success": true,
+            "message": "Attendance retrieved",
+            "data": [
+              {
+                "id": 1,
+                "studentId": 7,
+                "classId": 1,
+                "date": "2024-03-10",
+                "status": "PRESENT",
+                "schoolId": "SCH001",
+                "markedAt": "2024-03-10T10:00:00"
+              },
+              {
+                "id": 2,
+                "studentId": 7,
+                "classId": 1,
+                "date": "2024-03-11",
+                "status": "ABSENT",
+                "schoolId": "SCH001",
+                "markedAt": "2024-03-11T10:00:00"
+              }
+            ]
+          }
+        },
+        "getAttendanceReport": {
+          "method": "GET",
+          "endpoint": "/admin/attendance-report",
+          "description": "Get attendance report for school",
+          "requiresAuth": true,
+          "roles": ["SCHOOL_ADMIN", "TEACHER", "EDUCATION_BOARD_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <adminToken>"
+          },
+          "queryParams": {
+            "schoolId": "SCH001"
+          },
+          "response": {
+            "success": true,
+            "message": "Attendance report",
+            "data": [
+              {
+                "id": 1,
+                "studentId": 7,
+                "classId": 1,
+                "date": "2024-03-10",
+                "status": "PRESENT",
+                "schoolId": "SCH001",
+                "markedAt": "2024-03-10T10:00:00"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "complianceService": {
+      "baseUrl": "http://localhost:8086",
+      "port": 8086,
+      "description": "School compliance and regulatory oversight service",
+      "endpoints": {
+        "createSchool": {
+          "method": "POST",
+          "endpoint": "/compliance/create-school",
+          "description": "Create a new school (delegates to identity service)",
+          "requiresAuth": true,
+          "roles": ["COMPLIANCE_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <complianceToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "id": "SCH003",
+            "name": "Lincoln High School",
+            "address": "789 Lincoln Ave, Lincoln, NE, USA",
+            "phone": "555-9012",
+            "email": "admin@lincoln.edu",
+            "principalName": "Principal Johnson",
+            "establishedDate": "2005-09-01"
+          },
+          "response": {
+            "success": true,
+            "message": "School created successfully",
+            "data": {
+              "id": "SCH003",
+              "name": "Lincoln High School",
+              "address": "789 Lincoln Ave, Lincoln, NE, USA",
+              "phone": "555-9012",
+              "email": "admin@lincoln.edu",
+              "principalName": "Principal Johnson",
+              "establishedDate": "2005-09-01",
+              "createdAt": "2024-01-15T10:00:00"
+            }
+          }
+        },
+        "auditSchool": {
+          "method": "POST",
+          "endpoint": "/compliance/audit-school",
+          "description": "Perform school audit",
+          "requiresAuth": true,
+          "roles": ["COMPLIANCE_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <complianceToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "schoolId": "SCH001",
+            "auditType": "ACADEMIC",
+            "notes": "Regular compliance check"
+          },
+          "response": {
+            "success": true,
+            "message": "Audit completed",
+            "data": {
+              "id": 1,
+              "schoolId": "SCH001",
+              "auditType": "ACADEMIC",
+              "notes": "Regular compliance check",
+              "auditedAt": "2024-03-10T15:00:00"
+            }
+          }
+        },
+        "getComplianceStatus": {
+          "method": "GET",
+          "endpoint": "/compliance/compliance-status",
+          "description": "Get compliance status of a school",
+          "requiresAuth": true,
+          "roles": ["COMPLIANCE_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <complianceToken>"
+          },
+          "queryParams": {
+            "schoolId": "SCH001"
+          },
+          "response": {
+            "success": true,
+            "message": "Compliance status retrieved",
+            "data": {
+              "schoolId": "SCH001",
+              "overallStatus": "COMPLIANT",
+              "academicCompliance": "COMPLIANT",
+              "administrativeCompliance": "COMPLIANT",
+              "lastAuditDate": "2024-03-10T15:00:00"
+            }
+          }
+        },
+        "getAuditRecords": {
+          "method": "GET",
+          "endpoint": "/compliance/audit-records",
+          "description": "Get audit records for a school",
+          "requiresAuth": true,
+          "roles": ["COMPLIANCE_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <complianceToken>"
+          },
+          "queryParams": {
+            "schoolId": "SCH001"
+          },
+          "response": {
+            "success": true,
+            "message": "Audit records retrieved",
+            "data": [
+              {
+                "id": 1,
+                "schoolId": "SCH001",
+                "auditType": "ACADEMIC",
+                "notes": "Regular compliance check",
+                "auditedAt": "2024-03-10T15:00:00"
+              }
+            ]
+          }
+        },
+        "getSchools": {
+          "method": "GET",
+          "endpoint": "/board/schools",
+          "description": "Get all schools",
+          "requiresAuth": true,
+          "roles": ["EDUCATION_BOARD_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <boardToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Schools retrieved",
+            "data": [
+              {
+                "id": 1,
+                "schoolId": "SCH001",
+                "name": "Greenwood High School",
+                "city": "Springfield",
+                "state": "IL",
+                "country": "USA"
+              }
+            ]
+          }
+        },
+        "getAcademicPerformance": {
+          "method": "GET",
+          "endpoint": "/board/academic-performance",
+          "description": "Get academic performance data",
+          "requiresAuth": true,
+          "roles": ["EDUCATION_BOARD_OFFICER"],
+          "headers": {
+            "Authorization": "Bearer <boardToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Academic performance data retrieved",
+            "data": {
+              "averagePassRate": 85.5,
+              "totalStudents": 1200,
+              "totalTeachers": 45,
+              "activeSchools": 8
+            }
+          }
+        },
+        "getComplianceReports": {
+          "method": "GET",
+          "endpoint": "/regulator/compliance-reports",
+          "description": "Get compliance reports (Regulator only)",
+          "requiresAuth": true,
+          "roles": ["REGULATOR"],
+          "headers": {
+            "Authorization": "Bearer <regulatorToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Compliance reports retrieved",
+            "data": [
+              {
+                "reportId": 1,
+                "schoolId": "SCH001",
+                "reportType": "ANNUAL_COMPLIANCE",
+                "generatedAt": "2024-01-01T00:00:00",
+                "status": "COMPLIANT"
+              }
+            ]
+          }
+        },
+        "getAccreditationStatus": {
+          "method": "GET",
+          "endpoint": "/regulator/accreditation-status",
+          "description": "Get accreditation status (Regulator only)",
+          "requiresAuth": true,
+          "roles": ["REGULATOR"],
+          "headers": {
+            "Authorization": "Bearer <regulatorToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Accreditation status retrieved",
+            "data": [
+              {
+                "schoolId": "SCH001",
+                "accreditationStatus": "ACCREDITED",
+                "accreditationLevel": "FULL",
+                "expiryDate": "2025-12-31"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "notificationService": {
+      "baseUrl": "http://localhost:8087",
+      "port": 8087,
+      "description": "Notification delivery and management service",
+      "endpoints": {
+        "sendNotification": {
+          "method": "POST",
+          "endpoint": "/notifications/send",
+          "description": "Send a notification to user",
+          "requiresAuth": true,
+          "roles": ["TEACHER", "SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <anyToken>",
+            "Content-Type": "application/json"
+          },
+          "requestBody": {
+            "recipientId": 7,
+            "recipientEmail": "student@greenwood.edu",
+            "recipientRole": "STUDENT",
+            "title": "Assignment Due",
+            "message": "Your math assignment is due tomorrow",
+            "type": "ASSIGNMENT_REMINDER",
+            "priority": "HIGH"
+          },
+          "response": {
+            "success": true,
+            "message": "Notification sent",
+            "data": {
+              "id": 1,
+              "recipientId": 7,
+              "recipientEmail": "student@greenwood.edu",
+              "recipientRole": "STUDENT",
+              "title": "Assignment Due",
+              "message": "Your math assignment is due tomorrow",
+              "type": "ASSIGNMENT_REMINDER",
+              "priority": "HIGH",
+              "readStatus": false,
+              "createdAt": "2024-03-10T14:00:00"
+            }
+          }
+        },
+        "getMyNotifications": {
+          "method": "GET",
+          "endpoint": "/notifications/my",
+          "description": "Get user's unread notifications",
+          "requiresAuth": true,
+          "roles": ["STUDENT", "TEACHER", "SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <anyToken>"
+          },
+          "response": {
+            "success": true,
+            "message": "Notifications",
+            "data": [
+              {
+                "id": 1,
+                "recipientId": 7,
+                "recipientEmail": "student@greenwood.edu",
+                "recipientRole": "STUDENT",
+                "title": "Assignment Due",
+                "message": "Your math assignment is due tomorrow",
+                "type": "ASSIGNMENT_REMINDER",
+                "priority": "HIGH",
+                "readStatus": false,
+                "createdAt": "2024-03-10T14:00:00"
+              },
+              {
+                "id": 2,
+                "recipientId": 7,
+                "recipientEmail": "student@greenwood.edu",
+                "recipientRole": "STUDENT",
+                "title": "Exam Schedule",
+                "message": "Final exam scheduled for March 20",
+                "type": "EXAM_NOTIFICATION",
+                "priority": "HIGH",
+                "readStatus": false,
+                "createdAt": "2024-03-05T10:00:00"
+              }
+            ]
+          }
+        },
+        "markAsRead": {
+          "method": "PUT",
+          "endpoint": "/notifications/{id}/read",
+          "description": "Mark notification as read",
+          "requiresAuth": true,
+          "roles": ["STUDENT", "TEACHER", "SCHOOL_ADMIN"],
+          "headers": {
+            "Authorization": "Bearer <anyToken>"
+          },
+          "pathParams": {
+            "id": 1
+          },
+          "response": {
+            "success": true,
+            "message": "Marked as read",
+            "data": {
+              "id": 1,
+              "recipientId": 7,
+              "recipientEmail": "student@greenwood.edu",
+              "recipientRole": "STUDENT",
+              "title": "Assignment Due",
+              "message": "Your math assignment is due tomorrow",
+              "type": "ASSIGNMENT_REMINDER",
+              "priority": "HIGH",
+              "readStatus": true,
+              "createdAt": "2024-03-10T14:00:00"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sampleCredentials": {
+    "student": {
+      "email": "student@greenwood.edu",
+      "password": "Student@123",
+      "role": "STUDENT",
+      "userId": 7
+    },
+    "teacher": {
+      "email": "teacher@greenwood.edu",
+      "password": "Teacher@123",
+      "role": "TEACHER",
+      "userId": 5
+    },
+    "schoolAdmin": {
+      "email": "admin@greenwood.edu",
+      "password": "Admin@1234",
+      "role": "SCHOOL_ADMIN"
+    }
+  },
+  "commonHeaders": {
+    "authorization": "Authorization: Bearer <accessToken>",
+    "contentType": "Content-Type: application/json",
+    "contentTypeMultipart": "Content-Type: multipart/form-data"
+  },
+  "responseFormat": {
+    "success": {
+      "success": true,
+      "message": "Operation successful",
+      "data": {}
+    },
+    "error": {
+      "success": false,
+      "message": "Error message",
+      "data": null
+    }
+  },
+  "httpStatusCodes": {
+    "200": "OK - Request successful",
+    "201": "CREATED - Resource created successfully",
+    "400": "BAD REQUEST - Invalid request parameters",
+    "401": "UNAUTHORIZED - Authentication required",
+    "403": "FORBIDDEN - Access denied",
+    "404": "NOT FOUND - Resource not found",
+    "500": "INTERNAL SERVER ERROR - Server error"
+  },
+  "requestExamples": {
+    "loginRequest": {
+      "email": "student@greenwood.edu",
+      "password": "Student@123"
+    },
+    "createCourseRequest": {
+      "courseCode": "MATH101",
+      "courseName": "Mathematics Grade 10",
+      "description": "Algebra, Geometry, Trigonometry",
+      "schoolId": "SCH001",
+      "subject": "Mathematics",
+      "grade": "Grade 10",
+      "active": true
+    },
+    "createClassRequest": {
+      "className": "10A Mathematics",
+      "grade": "Grade 10",
+      "section": "A",
+      "schoolId": "SCH001",
+      "teacherEmail": "teacher@school.com",
+      "courseId": 1,
+      "capacity": 35
+    },
+    "createExamRequest": {
+      "courseCode": "MATH101",
+      "examTitle": "Final Exam",
+      "examType": "FINAL",
+      "totalMarks": 200,
+      "passingMarks": 100,
+      "schoolId": "SCH001",
+      "examDate": "2024-05-15T09:00:00"
+    },
+    "gradeStudentRequest": {
+      "examId": 1,
+      "studentId": 7,
+      "marksObtained": 175,
+      "totalMarks": 200,
+      "grade": "A",
+      "remarks": "Excellent performance"
+    }
+  }
+}

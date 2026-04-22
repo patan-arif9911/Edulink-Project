@@ -1,0 +1,26 @@
+package com.edulink.examservice.repository;
+
+import com.edulink.examservice.entity.ExamSubmission;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import java.util.List;
+import java.util.Optional;
+
+public interface ExamSubmissionRepository extends JpaRepository<ExamSubmission, Long> {
+
+    List<ExamSubmission> findByCourseCode(String courseCode);
+
+    List<ExamSubmission> findByStudentEmail(String studentEmail);
+
+    List<ExamSubmission> findByRollNumber(String rollNumber);
+
+    List<ExamSubmission> findByCourseCodeAndExamType(String courseCode, String examType);
+
+    Optional<ExamSubmission> findByCourseCodeAndStudentEmail(String courseCode, String studentEmail);
+
+    boolean existsByCourseCodeAndStudentEmailAndExamType(String courseCode, String studentEmail, String examType);
+
+    @Query("SELECT es FROM ExamSubmission es WHERE es.courseCode IN :courseCodes")
+    List<ExamSubmission> findByCourseCodes(@Param("courseCodes") List<String> courseCodes);
+}

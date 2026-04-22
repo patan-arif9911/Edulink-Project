@@ -1,0 +1,338 @@
+2026-04-20T11:17:43.909+05:30  INFO 22744 --- [student-service] [main] c.e.s.StudentServiceApplication          : Starting StudentServiceApplication using Java 21.0.10 with PID 22744 (C:\Users\2479911\Desktop\EduLink-main\student-service\target\classes started by 2479911 in C:\Users\2479911\Desktop\EduLink-main\student-service)
+2026-04-20T11:17:43.940+05:30 DEBUG 22744 --- [student-service] [main] c.e.s.StudentServiceApplication          : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-20T11:17:43.942+05:30  INFO 22744 --- [student-service] [main] c.e.s.StudentServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-04-20T11:17:46.998+05:30  WARN 22744 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-04-20T11:17:47.004+05:30  WARN 22744 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-04-20T11:17:47.809+05:30 DEBUG 22744 --- [student-service] [main] c.e.s.security.JwtAuthFilter             : Filter 'jwtAuthFilter' configured for use
+2026-04-20T11:17:48.782+05:30  WARN 22744 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-20T11:17:48.787+05:30  WARN 22744 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2026-04-20T11:17:51.131+05:30  WARN 22744 --- [student-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-20T11:17:52.272+05:30  WARN 22744 --- [student-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5f0fa13e-7df4-413c-a605-94e3e490caa0
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-20T11:17:52.749+05:30  INFO 22744 --- [student-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@44986fae, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6161b9, org.springframework.security.web.context.SecurityContextHolderFilter@44881fcc, org.springframework.security.web.header.HeaderWriterFilter@1ccfa4b8, org.springframework.web.filter.CorsFilter@2d28114b, org.springframework.security.web.authentication.logout.LogoutFilter@762261fd, com.edulink.studentservice.security.JwtAuthFilter@456aa471, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7b2a6ed3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@28993a77, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79b9dfcd, org.springframework.security.web.session.SessionManagementFilter@3f634608, org.springframework.security.web.access.ExceptionTranslationFilter@6c1f1c03, org.springframework.security.web.access.intercept.AuthorizationFilter@4d248692]
+2026-04-20T11:17:53.352+05:30  WARN 22744 --- [student-service] [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-20T11:17:54.150+05:30  INFO 22744 --- [student-service] [main] c.e.s.StudentServiceApplication          : Started StudentServiceApplication in 11.836 seconds (process running for 12.818)
+2026-04-20T11:19:04.381+05:30  INFO 22744 --- [student-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-20T11:19:04.393+05:30  INFO 22744 --- [student-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-04-20T11:19:04.444+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:04.564+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:04.572+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:04.580+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:08.225+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:08.237+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:08.253+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:08.261+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:08.526+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:08.543+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:08.543+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:08.547+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:08.846+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:08.857+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:08.857+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:08.857+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:10.735+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:10.740+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:10.746+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:10.751+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:10.954+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:10.970+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:10.970+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:10.970+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:11.291+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:11.307+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:11.307+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:11.313+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:39.190+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:39.200+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:39.201+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:39.202+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:39.353+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:39.359+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:39.360+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:39.362+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:39.628+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:39.634+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:39.637+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:39.638+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T11:19:40.088+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /student/materials/MATH101
+2026-04-20T11:19:40.091+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-20T11:19:40.092+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-20T11:19:40.093+05:30 DEBUG 22744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /student/materials/MATH101
+2026-04-20T12:18:46.482+05:30  WARN 22744 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T12:18:46.511+05:30  WARN 22744 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T12:18:46.511+05:30  WARN 22744 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_STUDENT-SERVICE/localhost:student-service:8082 - registration failed Cannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T12:18:46.517+05:30  WARN 22744 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T12:18:46.565+05:30  WARN 22744 --- [student-service] [SpringApplicationShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE/localhost:student-service:8082": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T12:18:46.565+05:30 ERROR 22744 --- [student-service] [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_STUDENT-SERVICE/localhost:student-service:8082 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389) ~[spring-cloud-context-4.1.4.jar:4.1.4]
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136) ~[spring-cloud-context-4.1.4.jar:4.1.4]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1202) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1195) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1186) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1147) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1093) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T15:30:26.943+05:30  INFO 3532 --- [student-service] [main] c.e.s.StudentServiceApplication          : Starting StudentServiceApplication using Java 21.0.10 with PID 3532 (C:\Users\2479911\Desktop\EduLink-main\student-service\target\classes started by 2479911 in C:\Users\2479911\Desktop\EduLink-main\student-service)
+2026-04-20T15:30:26.951+05:30 DEBUG 3532 --- [student-service] [main] c.e.s.StudentServiceApplication          : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-20T15:30:26.954+05:30  INFO 3532 --- [student-service] [main] c.e.s.StudentServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-04-20T15:30:34.595+05:30  WARN 3532 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-04-20T15:30:34.604+05:30  WARN 3532 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-04-20T15:30:37.834+05:30 DEBUG 3532 --- [student-service] [main] c.e.s.security.JwtAuthFilter             : Filter 'jwtAuthFilter' configured for use
+2026-04-20T15:30:44.000+05:30  WARN 3532 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-20T15:30:44.029+05:30  WARN 3532 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2026-04-20T15:30:55.668+05:30  WARN 3532 --- [student-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-20T15:30:58.894+05:30  WARN 3532 --- [student-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 537d6e4d-3bf6-48ea-9876-9bbb13983bbd
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-20T15:31:00.353+05:30  INFO 3532 --- [student-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@764bf20d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@363bf9d, org.springframework.security.web.context.SecurityContextHolderFilter@397a70d8, org.springframework.security.web.header.HeaderWriterFilter@35abfeba, org.springframework.web.filter.CorsFilter@184218af, org.springframework.security.web.authentication.logout.LogoutFilter@37ec9c49, com.edulink.studentservice.security.JwtAuthFilter@68e24e7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1940bacd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7508912e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e7423bb, org.springframework.security.web.session.SessionManagementFilter@190ec769, org.springframework.security.web.access.ExceptionTranslationFilter@53f67af6, org.springframework.security.web.access.intercept.AuthorizationFilter@2c6b36d7]
+2026-04-20T15:31:02.327+05:30  WARN 3532 --- [student-service] [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-20T15:31:05.345+05:30  INFO 3532 --- [student-service] [main] c.e.s.StudentServiceApplication          : Started StudentServiceApplication in 42.98 seconds (process running for 45.634)
+2026-04-20T16:16:37.919+05:30  WARN 3532 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m53s657ms202µs900ns).
+2026-04-20T17:09:21.972+05:30  WARN 3532 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T17:09:22.069+05:30  WARN 3532 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T17:09:22.070+05:30  WARN 3532 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_STUDENT-SERVICE/localhost:student-service:8082 - registration failed Cannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T17:09:22.103+05:30  WARN 3532 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T17:09:22.132+05:30  WARN 3532 --- [student-service] [SpringApplicationShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE/localhost:student-service:8082": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T17:09:22.135+05:30 ERROR 3532 --- [student-service] [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_STUDENT-SERVICE/localhost:student-service:8082 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389) ~[spring-cloud-context-4.1.4.jar:4.1.4]
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136) ~[spring-cloud-context-4.1.4.jar:4.1.4]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1202) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1195) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1186) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1147) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1093) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T21:02:16.892+05:30  INFO 19864 --- [student-service] [main] c.e.s.StudentServiceApplication          : Starting StudentServiceApplication using Java 21.0.10 with PID 19864 (C:\Users\2479911\Desktop\EduLink-main\student-service\target\classes started by 2479911 in C:\Users\2479911\Desktop\EduLink-main\student-service)
+2026-04-20T21:02:16.893+05:30 DEBUG 19864 --- [student-service] [main] c.e.s.StudentServiceApplication          : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-20T21:02:16.893+05:30  INFO 19864 --- [student-service] [main] c.e.s.StudentServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-04-20T21:02:19.205+05:30  WARN 19864 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-04-20T21:02:19.207+05:30  WARN 19864 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-04-20T21:02:19.742+05:30 DEBUG 19864 --- [student-service] [main] c.e.s.security.JwtAuthFilter             : Filter 'jwtAuthFilter' configured for use
+2026-04-20T21:02:20.652+05:30  WARN 19864 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-20T21:02:20.652+05:30  WARN 19864 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2026-04-20T21:02:22.731+05:30  WARN 19864 --- [student-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-20T21:02:23.894+05:30  WARN 19864 --- [student-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2bdcd554-7b04-45a3-a829-0890a8489728
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-20T21:02:24.421+05:30  INFO 19864 --- [student-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3f1485c3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17e03804, org.springframework.security.web.context.SecurityContextHolderFilter@27bd124a, org.springframework.security.web.header.HeaderWriterFilter@53f67af6, org.springframework.web.filter.CorsFilter@764bf20d, org.springframework.security.web.authentication.logout.LogoutFilter@1fa35f7e, com.edulink.studentservice.security.JwtAuthFilter@2ae5bd34, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@397a70d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56a0dd11, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@363bf9d, org.springframework.security.web.session.SessionManagementFilter@1a389b39, org.springframework.security.web.access.ExceptionTranslationFilter@4d8458a1, org.springframework.security.web.access.intercept.AuthorizationFilter@7b2a6ed3]
+2026-04-20T21:02:24.926+05:30  WARN 19864 --- [student-service] [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-20T21:02:25.556+05:30  INFO 19864 --- [student-service] [main] c.e.s.StudentServiceApplication          : Started StudentServiceApplication in 10.063 seconds (process running for 10.73)
+2026-04-20T22:04:50.898+05:30  INFO 5512 --- [student-service] [main] c.e.s.StudentServiceApplication          : Starting StudentServiceApplication using Java 21.0.10 with PID 5512 (C:\Users\2479911\Desktop\EduLink-main\student-service\target\classes started by 2479911 in C:\Users\2479911\Desktop\EduLink-main\student-service)
+2026-04-20T22:04:50.900+05:30 DEBUG 5512 --- [student-service] [main] c.e.s.StudentServiceApplication          : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-20T22:04:50.904+05:30  INFO 5512 --- [student-service] [main] c.e.s.StudentServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-04-20T22:04:53.939+05:30  WARN 5512 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-04-20T22:04:53.948+05:30  WARN 5512 --- [student-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-04-20T22:04:54.613+05:30 DEBUG 5512 --- [student-service] [main] c.e.s.security.JwtAuthFilter             : Filter 'jwtAuthFilter' configured for use
+2026-04-20T22:04:55.859+05:30  WARN 5512 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-20T22:04:55.859+05:30  WARN 5512 --- [student-service] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2026-04-20T22:04:58.339+05:30  WARN 5512 --- [student-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-20T22:04:59.430+05:30  WARN 5512 --- [student-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e2155df1-64b0-455d-b266-8a9a334f666b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-20T22:04:59.787+05:30  INFO 5512 --- [student-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b2a6ed3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@28993a77, org.springframework.security.web.context.SecurityContextHolderFilter@1a389b39, org.springframework.security.web.header.HeaderWriterFilter@4149067d, org.springframework.web.filter.CorsFilter@2c6b36d7, org.springframework.security.web.authentication.logout.LogoutFilter@5bf86398, com.edulink.studentservice.security.JwtAuthFilter@2b3f7704, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@190ec769, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27bd124a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f1485c3, org.springframework.security.web.session.SessionManagementFilter@124b1369, org.springframework.security.web.access.ExceptionTranslationFilter@8cd00bc, org.springframework.security.web.access.intercept.AuthorizationFilter@28bf7bea]
+2026-04-20T22:05:00.300+05:30  WARN 5512 --- [student-service] [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-20T22:05:00.909+05:30  INFO 5512 --- [student-service] [main] c.e.s.StudentServiceApplication          : Started StudentServiceApplication in 11.69 seconds (process running for 12.534)
+2026-04-20T22:20:00.703+05:30  WARN 5512 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T22:20:00.765+05:30  WARN 5512 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T22:20:00.767+05:30  WARN 5512 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_STUDENT-SERVICE/localhost:student-service:8082 - registration failed Cannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T22:20:00.781+05:30  WARN 5512 --- [student-service] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-04-20T22:20:00.803+05:30  WARN 5512 --- [student-service] [SpringApplicationShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/STUDENT-SERVICE/localhost:student-service:8082": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-04-20T22:20:00.803+05:30 ERROR 5512 --- [student-service] [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_STUDENT-SERVICE/localhost:student-service:8082 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919) ~[eureka-client-2.0.3.jar:2.0.3]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900) ~[eureka-client-2.0.3.jar:2.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389) ~[spring-cloud-context-4.1.4.jar:4.1.4]
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136) ~[spring-cloud-context-4.1.4.jar:4.1.4]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1202) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1195) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1186) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1147) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1093) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
