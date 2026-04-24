@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import identityApi from "../../api/identityApi";
+import { useParams } from "react-router-dom";
+import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import GenericTable from "../../components/shared/GenericTable";
 import Spinner from "../../components/shared/Spinner";
 
 export default function ClassRosterPage() {
   const { classId } = useParams();
-  const [searchParams] = useSearchParams();
-  const schoolId = searchParams.get("schoolId");
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    identityApi
-      .fetchStudentsByClass({ classId, schoolId })
+    courseApi
+      .fetchClassStudents(classId)
       .then((res) => setStudents(res.data?.data || res.data || []))
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, [classId, schoolId]);
+  }, [classId]);
 
   const columns = [
     { key: "fullName", label: "Name" },

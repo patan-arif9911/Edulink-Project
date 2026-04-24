@@ -27,7 +27,7 @@ export default function MyClassesPage() {
         <button
           className="submit-btn"
           style={{ padding: "0.3rem 0.8rem", fontSize: "0.8rem" }}
-          onClick={() => navigate(`/teacher/classes/${r.id}/students?schoolId=${r.schoolId}`)}
+          onClick={() => navigate(`/teacher/classes/${r.id}/students`)}
         >
           View Students
         </button>
