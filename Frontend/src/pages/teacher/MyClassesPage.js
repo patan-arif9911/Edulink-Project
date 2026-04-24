@@ -19,13 +19,15 @@ export default function MyClassesPage() {
   }, []);
 
   const columns = [
-    { key: "name", label: "Class Name" },
-    { key: "courseCode", label: "Course Code" },
+    { key: "className", label: "Class Name" },
+    { key: "grade", label: "Grade" },
+    { key: "section", label: "Section" },
+    { key: "courseId", label: "Course ID" },
     { key: "id", label: "Actions", render: (r) => (
         <button
           className="submit-btn"
           style={{ padding: "0.3rem 0.8rem", fontSize: "0.8rem" }}
-          onClick={() => navigate(`/teacher/classes/${r.id || r.classId}/students`)}
+          onClick={() => navigate(`/teacher/classes/${r.id}/students?schoolId=${r.schoolId}`)}
         >
           View Students
         </button>

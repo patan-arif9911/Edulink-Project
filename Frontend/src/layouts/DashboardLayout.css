@@ -14,3 +14,13 @@
   padding: 1.5rem 2rem;
   overflow-y: auto;
 }
+
+@media (max-width: 1024px) {
+  .dash-shell {
+    flex-direction: column;
+  }
+  .dash-content {
+    padding: 1rem;
+  }
+}
+

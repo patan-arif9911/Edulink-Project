@@ -63,3 +63,27 @@
 .topbar-logout-btn .material-icons-round {
   font-size: 1.1rem;
 }
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0.65rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .topbar-greeting {
+    font-size: 0.95rem;
+  }
+  .topbar-right {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 0.6rem;
+  }
+  .topbar-role {
+    font-size: 0.68rem;
+  }
+  .topbar-logout-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+}
+

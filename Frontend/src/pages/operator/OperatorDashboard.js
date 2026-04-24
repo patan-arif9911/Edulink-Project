@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import identityApi from "../../api/identityApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import MetricCard from "../../components/shared/MetricCard";
@@ -24,8 +25,17 @@ export default function OperatorDashboard() {
     return acc;
   }, {});
 
+  const roleRows = [
+    { key: "COMPLIANCE_OFFICER", label: "Compliance Officers" },
+    { key: "EDUCATION_BOARD_OFFICER", label: "Board Officers" },
+    { key: "REGULATOR", label: "Regulators" },
+    { key: "SCHOOL_ADMIN", label: "School Admins" },
+    { key: "TEACHER", label: "Teachers" },
+    { key: "STUDENT", label: "Students" },
+  ];
+
   return (
-    <div>
+    <div className="dashboard-page">
       <SectionHeader title="Operator Dashboard" subtitle="System-level overview" />
       <div className="metrics-grid">
         <MetricCard icon="people" label="Total Users" value={users.length} color="#1a73e8" />
@@ -35,6 +45,31 @@ export default function OperatorDashboard() {
         <MetricCard icon="admin_panel_settings" label="School Admins" value={roleCounts.SCHOOL_ADMIN || 0} color="#c62828" />
         <MetricCard icon="school" label="Teachers" value={roleCounts.TEACHER || 0} color="#00695c" />
         <MetricCard icon="person" label="Students" value={roleCounts.STUDENT || 0} color="#ef6c00" />
+      </div>
+
+      <div className="dashboard-main-grid">
+        <section className="dashboard-panel dashboard-panel-wide">
+          <h3 className="dashboard-panel-title">Users by Role</h3>
+          <p className="dashboard-panel-subtitle">Distribution of accounts across the platform</p>
+          <ul className="dashboard-list">
+            {roleRows.map((role) => (
+              <li key={role.key} className="dashboard-list-item">
+                <span className="dashboard-item-label">{role.label}</span>
+                <span className="dashboard-chip info">{roleCounts[role.key] || 0}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="dashboard-panel">
+          <h3 className="dashboard-panel-title">Quick Actions</h3>
+          <p className="dashboard-panel-subtitle">Shortcuts to user onboarding pages</p>
+          <div className="dashboard-actions">
+            <Link to="/operator/add-compliance-officer" className="dashboard-link-btn">Add Compliance Officer</Link>
+            <Link to="/operator/add-board-officer" className="dashboard-link-btn">Add Board Officer</Link>
+            <Link to="/operator/add-regulator" className="dashboard-link-btn">Add Regulator</Link>
+          </div>
+        </section>
       </div>
     </div>
   );

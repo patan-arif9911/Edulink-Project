@@ -63,3 +63,47 @@
 .sidenav-label {
   white-space: nowrap;
 }
+
+@media (max-width: 1024px) {
+  .sidenav {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .sidenav-brand {
+    padding: 0.9rem 1rem;
+  }
+  .sidenav-role-tag {
+    padding: 0.4rem 1rem;
+  }
+  .sidenav-links {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0.4rem 0.5rem 0.8rem;
+    gap: 0.4rem;
+  }
+  .sidenav-item {
+    border-left: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 8px;
+    white-space: nowrap;
+    padding: 0.55rem 0.8rem;
+  }
+  .sidenav-active {
+    border-left-color: transparent;
+    border-bottom-color: #667eea;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidenav-title {
+    font-size: 1.1rem;
+  }
+  .sidenav-item .material-icons-round {
+    font-size: 1.1rem;
+  }
+  .sidenav-label {
+    font-size: 0.8rem;
+  }
+}
+

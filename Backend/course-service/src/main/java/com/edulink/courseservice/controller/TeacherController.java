@@ -50,7 +50,7 @@ public class TeacherController {
         try {
             // Upload file to GridFS
             String fileId = gridFsService.uploadFile(file, courseCode);
-            
+
             // Create LearningMaterial entity with metadata
             LearningMaterial material = LearningMaterial.builder()
                     .courseCode(courseCode)
@@ -64,10 +64,10 @@ public class TeacherController {
                     .materialType(materialType)
                     .uploadedAt(LocalDateTime.now())
                     .build();
-            
+
             // Save metadata to MySQL
             LearningMaterial saved = courseService.uploadMaterial(material);
-            
+
             // Convert to DTO
             LearningMaterialDto dto = new LearningMaterialDto(
                     saved.getCourseCode(), saved.getTeacherEmail(), saved.getTitle(),
@@ -75,7 +75,7 @@ public class TeacherController {
                     saved.getFileSize(), saved.getContentType(), saved.getMaterialType(),
                     saved.getUploadedAt()
             );
-            
+
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(ApiResponse.success("Learning material uploaded successfully", dto));
         } catch (IOException e) {
@@ -111,10 +111,10 @@ public class TeacherController {
         try {
             // Verify ownership - get the material and check if teacher owns it
             // (You may want to add this check based on your requirements)
-            
+
             gridFsService.deleteFile(fileId);
             courseService.deleteMaterialByFileId(fileId);
-            
+
             return ResponseEntity.ok(ApiResponse.success("Material deleted successfully", null));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -138,7 +138,7 @@ public class TeacherController {
         try {
             byte[] fileContent = gridFsService.downloadFile(fileId);
             String fileName = gridFsService.getFileName(fileId);
-            
+
             return ResponseEntity.ok()
                     .contentType(MediaType.APPLICATION_PDF)
                     .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + fileName + "\"")
@@ -159,7 +159,10 @@ public class TeacherController {
     }
 
     @GetMapping("/students/{classId}")
-    public ResponseEntity<ApiResponse<List<UserDto>>> getStudents(@PathVariable Long classId, Authentication auth) {
+    public ResponseEntity<ApiResponse<List<UserDto>>> getStudents(
+            @PathVariable Long classId,
+            @RequestHeader("Authorization") String authorization,
+            Authentication auth) {
         String email = auth.getName();
         // Get the class to find schoolId
         List<ClassRoom> classes = courseService.getClassesByTeacher(email);
@@ -171,12 +174,12 @@ public class TeacherController {
             return ResponseEntity.badRequest().body(ApiResponse.error("Class not found or not assigned to teacher"));
         }
         String schoolId = classRoom.getSchoolId();
-        ApiResponse<List<UserDto>> response = identityClient.getStudentsByClassAndSchool(classId, schoolId);
+        ApiResponse<List<UserDto>> response = identityClient.getStudentsByClassAndSchool(classId, schoolId, authorization);
         if (response.isSuccess()) {
             return ResponseEntity.ok(ApiResponse.success("Students in class " + classId + " retrieved", response.getData()));
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ApiResponse.error(response.getMessage()));
+                    .body(ApiResponse.error(response.getMessage()));
         }
     }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import studentApi from "../../api/studentApi";
 import { AuthContext } from "../../context/AuthContext";
 import SectionHeader from "../../components/shared/SectionHeader";
@@ -43,8 +44,25 @@ export default function StudentDashboard() {
         ).toFixed(1)
       : "—";
 
+  const attendanceRate =
+    attendance.length > 0
+      ? `${Math.round((presentCount / attendance.length) * 100)}%`
+      : "—";
+
+  const recentGrades = grades.slice(0, 5);
+  const recentCourses = courses.slice(0, 4);
+
+  const alerts = [
+    attendance.length > 0 && presentCount / attendance.length < 0.75
+      ? { id: "attendance", message: "Attendance is below 75%.", severity: "warning" }
+      : null,
+    grades.length === 0
+      ? { id: "grades", message: "No grades published yet.", severity: "info" }
+      : null,
+  ].filter(Boolean);
+
   return (
-    <div>
+    <div className="dashboard-page">
       <SectionHeader
         title={`Welcome, ${currentUser?.fullName || "Student"}`}
         subtitle="Your learning overview"
@@ -65,8 +83,8 @@ export default function StudentDashboard() {
         />
         <MetricCard
           icon="event_available"
-          label="Days Present"
-          value={presentCount}
+          label="Attendance Rate"
+          value={attendanceRate}
           color="#e65100"
         />
         <MetricCard
@@ -75,6 +93,103 @@ export default function StudentDashboard() {
           value={grades.length}
           color="#6a1b9a"
         />
+      </div>
+
+      <div className="dashboard-main-grid">
+        <section className="dashboard-panel dashboard-panel-wide">
+          <h3 className="dashboard-panel-title">Recent Grades</h3>
+          <p className="dashboard-panel-subtitle">Latest graded items from your courses</p>
+          {recentGrades.length ? (
+            <div className="dashboard-table-wrap">
+              <table className="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Assessment</th>
+                    <th>Marks</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentGrades.map((g, idx) => {
+                    const marks = g.marksObtained ?? g.score;
+                    const gradeStatus =
+                      typeof marks === "number"
+                        ? marks >= 70
+                          ? "success"
+                          : marks >= 50
+                            ? "warning"
+                            : "error"
+                        : "info";
+
+                    return (
+                      <tr key={g.id || `${g.courseCode || "COURSE"}-${idx}`}>
+                        <td>{g.courseCode || g.courseName || "—"}</td>
+                        <td>{g.examTitle || g.assignmentTitle || "Assessment"}</td>
+                        <td>{marks ?? "—"}</td>
+                        <td>
+                          <span className={`dashboard-chip ${gradeStatus}`}>
+                            {marks == null ? "Pending" : "Published"}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="dashboard-empty">No grade records available yet.</p>
+          )}
+        </section>
+
+        <section className="dashboard-panel">
+          <h3 className="dashboard-panel-title">Alerts</h3>
+          <p className="dashboard-panel-subtitle">Important updates for your progress</p>
+          {alerts.length ? (
+            <ul className="dashboard-list">
+              {alerts.map((item) => (
+                <li key={item.id} className="dashboard-list-item">
+                  <span className="dashboard-item-label">{item.message}</span>
+                  <span className={`dashboard-chip ${item.severity}`}>{item.severity}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="dashboard-empty">No new alerts right now.</p>
+          )}
+        </section>
+      </div>
+
+      <div className="dashboard-main-grid">
+        <section className="dashboard-panel dashboard-panel-wide">
+          <h3 className="dashboard-panel-title">My Courses</h3>
+          <p className="dashboard-panel-subtitle">Quick look at enrolled courses</p>
+          {recentCourses.length ? (
+            <ul className="dashboard-list">
+              {recentCourses.map((course, idx) => (
+                <li key={course.courseCode || `${course.title || "course"}-${idx}`} className="dashboard-list-item">
+                  <span className="dashboard-item-label">
+                    {course.courseCode || "COURSE"} - {course.courseTitle || course.title || "Untitled Course"}
+                  </span>
+                  <span className="dashboard-item-meta">{course.teacherName || "Instructor TBA"}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="dashboard-empty">You are not enrolled in any courses yet.</p>
+          )}
+        </section>
+
+        <section className="dashboard-panel">
+          <h3 className="dashboard-panel-title">Quick Actions</h3>
+          <p className="dashboard-panel-subtitle">Jump to your most-used pages</p>
+          <div className="dashboard-actions">
+            <Link to="/student/courses" className="dashboard-link-btn">View My Courses</Link>
+            <Link to="/student/submit-assignment" className="dashboard-link-btn">Submit Assignment</Link>
+            <Link to="/student/attendance" className="dashboard-link-btn">Check Attendance</Link>
+          </div>
+        </section>
       </div>
     </div>
   );
