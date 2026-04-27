@@ -31,11 +31,9 @@ const examApi = {
       paramsSerializer: { indexes: null },
     }),
 
-  /* GET /exam/student/grades?studentId=X */
-  fetchStudentGrades: (studentId) =>
-    httpClient.get(Endpoints.exam.studentGrades, {
-      params: { studentId },
-    }),
+  /* GET /exam/student/grades — rollNumber extracted from JWT by backend */
+  fetchStudentGrades: () =>
+    httpClient.get(Endpoints.exam.studentGrades),
 
   /* GET /exam/student/exams/{examId}/download-questions → binary */
   downloadExamQuestions: (examId) =>

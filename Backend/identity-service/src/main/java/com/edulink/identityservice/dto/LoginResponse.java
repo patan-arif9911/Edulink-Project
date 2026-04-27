@@ -8,6 +8,7 @@ public class LoginResponse {
     private String email;
     private String fullName;
     private String userId;
+    private String schoolId;
     private boolean mustChangePassword;
 
     // Getters and setters
@@ -67,6 +68,14 @@ public class LoginResponse {
         this.userId = userId;
     }
 
+    public String getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(String schoolId) {
+        this.schoolId = schoolId;
+    }
+
     public boolean isMustChangePassword() {
         return mustChangePassword;
     }
@@ -88,6 +97,7 @@ public class LoginResponse {
         private String email;
         private String fullName;
         private String userId;
+        private String schoolId;
         private boolean mustChangePassword;
 
         public Builder accessToken(String accessToken) {
@@ -125,6 +135,11 @@ public class LoginResponse {
             return this;
         }
 
+        public Builder schoolId(String schoolId) {
+            this.schoolId = schoolId;
+            return this;
+        }
+
         public Builder mustChangePassword(boolean mustChangePassword) {
             this.mustChangePassword = mustChangePassword;
             return this;
@@ -139,6 +154,7 @@ public class LoginResponse {
             response.email = this.email;
             response.fullName = this.fullName;
             response.userId = this.userId;
+            response.schoolId = this.schoolId;
             response.mustChangePassword = this.mustChangePassword;
             return response;
         }

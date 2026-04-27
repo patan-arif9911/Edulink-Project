@@ -22,10 +22,11 @@ export default function ViewGradesPage() {
   }, []);
 
   /* Backend response fields per grade (from exam-service):
-     id, examId, studentId, teacherEmail, marksObtained, totalMarks,
-     grade, remarks, gradedAt */
+     id, courseCode, examType, rollNumber, studentEmail, teacherEmail,
+     marksObtained, totalMarks, passingMarks, grade, remarks, gradedAt */
   const columns = [
-    { key: "examId", label: "Exam ID" },
+    { key: "courseCode", label: "Course" },
+    { key: "examType", label: "Exam Type" },
     { key: "marksObtained", label: "Marks" },
     { key: "totalMarks", label: "Total" },
     {

@@ -19,6 +19,8 @@ public class AttendanceController {
     @PostMapping("/teacher/mark-attendance")
     @PreAuthorize("hasRole('TEACHER')")
     public ResponseEntity<ApiResponse<Attendance>> markAttendance(@RequestBody Attendance attendance) {
+        String teacherEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        attendance.setMarkedBy(teacherEmail);
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(ApiResponse.success("Attendance marked", attendanceService.markAttendance(attendance)));
     }

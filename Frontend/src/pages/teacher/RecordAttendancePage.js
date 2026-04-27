@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import attendanceApi from "../../api/attendanceApi";
 import courseApi from "../../api/courseApi";
-import identityApi from "../../api/identityApi";
 import { AuthContext } from "../../context/AuthContext";
 import SectionHeader from "../../components/shared/SectionHeader";
 import AlertBanner from "../../components/shared/AlertBanner";
@@ -57,8 +56,8 @@ export default function RecordAttendancePage() {
       rollNumber: "",
     }));
     setLoadingStudents(true);
-    identityApi
-      .fetchStudentsByClass({ classId })
+    courseApi
+      .fetchClassStudents(classId)
       .then((res) => setStudents(res.data?.data || res.data || []))
       .catch(() => setError("Failed to load students for this class."))
       .finally(() => setLoadingStudents(false));

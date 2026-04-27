@@ -38,13 +38,13 @@ const studentApi = {
   uploadSubmissionLegacy: (payload) =>
     httpClient.post(Endpoints.student.uploadSubmissionLegacy, payload),
 
-  /* ── GET /student/grades ── */
+  /* ── GET /exam/student/grades — direct to exam-service via gateway ── */
   fetchGrades: () =>
-    httpClient.get(Endpoints.student.grades),
+    httpClient.get(Endpoints.exam.studentGrades),
 
-  /* ── GET /student/attendance ── */
+  /* ── GET /student/attendance — via attendance-service gateway route ── */
   fetchAttendance: () =>
-    httpClient.get(Endpoints.student.attendance),
+    httpClient.get(Endpoints.attendance.studentAttendance),
 
   /* ── POST /student/profile (public, no auth needed) ── */
   createProfile: (payload) =>

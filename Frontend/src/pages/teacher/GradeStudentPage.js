@@ -7,11 +7,11 @@ import "../../styles/pages.css";
 
 export default function GradeStudentPage() {
   const [form, setForm] = useState({
-    examId: "",
-    studentId: "",
+    courseCode: "",
+    examType: "",
+    rollNumber: "",
     marksObtained: "",
     totalMarks: "",
-    grade: "",
     remarks: "",
   });
   const [loading, setLoading] = useState(false);
@@ -25,12 +25,11 @@ export default function GradeStudentPage() {
     try {
       await examApi.gradeStudent({
         ...form,
-        studentId: Number(form.studentId),
         marksObtained: Number(form.marksObtained),
         totalMarks: Number(form.totalMarks),
       });
       setSuccess("Grade recorded successfully!");
-      setForm({ examId: "", studentId: "", marksObtained: "", totalMarks: "", grade: "", remarks: "" });
+      setForm({ courseCode: "", examType: "", rollNumber: "", marksObtained: "", totalMarks: "", remarks: "" });
     } catch (err) {
       setError(parseApiError(err));
     } finally {
@@ -46,12 +45,22 @@ export default function GradeStudentPage() {
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Exam ID</label>
-            <input value={form.examId} onChange={(e) => setForm({ ...form, examId: e.target.value })} required disabled={loading} />
+            <label>Course Code</label>
+            <input value={form.courseCode} onChange={(e) => setForm({ ...form, courseCode: e.target.value })} required disabled={loading} placeholder="e.g. MATH101" />
           </div>
           <div className="form-group">
-            <label>Student ID</label>
-            <input type="number" value={form.studentId} onChange={(e) => setForm({ ...form, studentId: e.target.value })} required disabled={loading} />
+            <label>Exam Type</label>
+            <select value={form.examType} onChange={(e) => setForm({ ...form, examType: e.target.value })} required disabled={loading}>
+              <option value="">— Select —</option>
+              <option value="MIDTERM">Midterm</option>
+              <option value="FINAL">Final</option>
+              <option value="QUIZ">Quiz</option>
+              <option value="ASSIGNMENT">Assignment</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Student Roll Number</label>
+            <input value={form.rollNumber} onChange={(e) => setForm({ ...form, rollNumber: e.target.value })} required disabled={loading} placeholder="e.g. SCH001101" />
           </div>
           <div className="form-group">
             <label>Marks Obtained</label>
@@ -60,10 +69,6 @@ export default function GradeStudentPage() {
           <div className="form-group">
             <label>Total Marks</label>
             <input type="number" value={form.totalMarks} onChange={(e) => setForm({ ...form, totalMarks: e.target.value })} required disabled={loading} />
-          </div>
-          <div className="form-group">
-            <label>Grade</label>
-            <input value={form.grade} onChange={(e) => setForm({ ...form, grade: e.target.value })} disabled={loading} placeholder="A, B, C…" />
           </div>
           <div className="form-group">
             <label>Remarks</label>

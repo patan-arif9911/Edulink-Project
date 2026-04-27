@@ -28,18 +28,22 @@ public class JwtUtil {
     }
 
     public String generateToken(String email, String role, String userId) {
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("role", role);
-        claims.put("userId", userId);
-        return createToken(claims, email, expiration);
+        return generateToken(email, role, userId, null, null);
     }
 
     public String generateToken(String email, String role, String userId, String rollNumber) {
+        return generateToken(email, role, userId, rollNumber, null);
+    }
+
+    public String generateToken(String email, String role, String userId, String rollNumber, String schoolId) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
         claims.put("userId", userId);
         if (rollNumber != null) {
             claims.put("rollNumber", rollNumber);
+        }
+        if (schoolId != null) {
+            claims.put("schoolId", schoolId);
         }
         return createToken(claims, email, expiration);
     }

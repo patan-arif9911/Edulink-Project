@@ -25,12 +25,12 @@ const courseApi = {
     httpClient.get(Endpoints.course.teacherMaterials(courseCode)),
 
   downloadMaterial: (courseCode, fileId) =>
-    httpClient.get(Endpoints.course.downloadMaterial(courseCode, fileId), {
+    httpClient.get(Endpoints.course.downloadMaterial(fileId), {
       responseType: "blob",
     }),
 
   deleteMaterial: (courseCode, materialId) =>
-    httpClient.delete(Endpoints.course.deleteMaterial(courseCode, materialId)),
+    httpClient.delete(Endpoints.course.deleteMaterial(materialId)),
 
   createAssignment: (formData) =>
     httpClient.post(Endpoints.course.createAssignment, formData, {

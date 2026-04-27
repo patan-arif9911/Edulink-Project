@@ -76,11 +76,10 @@ export default function StudentExamsPage() {
     setSubmitting(true);
     setError("");
     try {
-      /* POST /exam/student/submit
-         body: { examId, studentEmail, submissionContent } */
+      /* POST /exam/student/submit-exam
+         body: { courseCode, submissionContent } */
       await examApi.submitExam({
-        examId: submitModal,
-        studentEmail: currentUser?.email,
+        courseCode: submitModal,
         submissionContent: submissionText.trim(),
       });
       setSuccess("Exam submitted successfully!");

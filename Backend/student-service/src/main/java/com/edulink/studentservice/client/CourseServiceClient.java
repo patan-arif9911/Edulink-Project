@@ -16,12 +16,12 @@ import java.util.Map;
 @FeignClient(name = "course-service", url = "${course.service.url:http://localhost:8083}")
 public interface CourseServiceClient {
 
-    @GetMapping(value = "/student/materials/{courseCode}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/course/student/materials/{courseCode}", consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<List<LearningMaterialDto>> getMaterialsByCourseCode(
             @PathVariable("courseCode") String courseCode,
             @RequestHeader("Authorization") String authorization);
 
-    @GetMapping(value = "/student/assignments/{courseCode}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/course/student/assignments/{courseCode}", consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<List<AssignmentDto>> getAssignmentsByCourseCode(
             @PathVariable("courseCode") String courseCode,
             @RequestHeader("Authorization") String authorization);
@@ -42,4 +42,3 @@ public interface CourseServiceClient {
             @PathVariable("courseCode") String courseCode,
             @RequestHeader("Authorization") String authorization);
 }
-

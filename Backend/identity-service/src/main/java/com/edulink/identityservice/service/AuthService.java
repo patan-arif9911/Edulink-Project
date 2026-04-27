@@ -55,9 +55,7 @@ public class AuthService {
                     .map(s -> s.getRollNumber())
                     .orElse(null);
         }
-        String accessToken = rollNumber != null
-                ? jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), rollNumber)
-                : jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId());
+        String accessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), rollNumber, user.getSchoolId());
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
         log.info("User logged in: {} with role: {}", user.getEmail(), user.getRole());
@@ -70,6 +68,7 @@ public class AuthService {
                 .email(user.getEmail())
                 .fullName(user.getFullName())
                 .userId(user.getId())
+                .schoolId(user.getSchoolId())
                 .mustChangePassword(user.isMustChangePassword())
                 .build();
     }
@@ -103,7 +102,13 @@ public class AuthService {
             User user = userRepository.findByEmail(email)
                     .orElseThrow(() -> new UserNotFoundException("User not found"));
 
-            String newAccessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId());
+            String rollNumber = null;
+            if (user.getRole() == com.edulink.identityservice.entity.Role.STUDENT) {
+                rollNumber = studentRepository.findByUserId(user.getId())
+                        .map(s -> s.getRollNumber())
+                        .orElse(null);
+            }
+            String newAccessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), rollNumber, user.getSchoolId());
             String newRefreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
             return LoginResponse.builder()
@@ -114,6 +119,7 @@ public class AuthService {
                     .email(user.getEmail())
                     .fullName(user.getFullName())
                     .userId(user.getId())
+                    .schoolId(user.getSchoolId())
                     .mustChangePassword(user.isMustChangePassword())
                     .build();
         } catch (EduLinkException e) {

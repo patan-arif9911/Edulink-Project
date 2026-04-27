@@ -52,9 +52,9 @@ const Endpoints = {
     uploadSubmission:               `${BASE}/student/assignments/upload`,
     // POST /student/assignments/upload-legacy — JSON body
     uploadSubmissionLegacy:         `${BASE}/student/assignments/upload-legacy`,
-    // GET /student/grades — returns grades from exam-service
+    // GET /exam/student/grades — grades direct from exam-service
     grades:                         `${BASE}/exam/student/grades`,
-    // GET /student/attendance — returns attendance from attendance-service
+    // GET /student/attendance — attendance via attendance-service (gateway route[0])
     attendance:                     `${BASE}/student/attendance`,
   },
 
@@ -65,14 +65,14 @@ const Endpoints = {
     // School Admin
     createCourse:                   `${BASE}/course/admin/create-course`,
     createClass:                    `${BASE}/course/admin/create-class`,
-    attendanceReport:               `${BASE}/course/admin/attendance-report`,
+    attendanceReport:               `${BASE}/admin/attendance-report`,
 
     // Teacher
     teacherClasses:                 `${BASE}/course/teacher/classes`,
     uploadMaterial:                 `${BASE}/course/teacher/upload-material`,
     teacherMaterials:    (code) =>  `${BASE}/course/teacher/materials/${code}`,
-    downloadMaterial:    (code, fileId) => `${BASE}/course/teacher/materials/download/${fileId}`,
-    deleteMaterial:      (code, id) => `${BASE}/course/teacher/materials/${id}`,
+    downloadMaterial:    (fileId) => `${BASE}/course/teacher/materials/download/${fileId}`,
+    deleteMaterial:      (id) => `${BASE}/course/teacher/materials/${id}`,
     createAssignment:               `${BASE}/course/teacher/create-assignment`,
     downloadAssignmentQ: (fileId) =>  `${BASE}/course/teacher/assignments/download/${fileId}`,
     teacherCreateExam:              `${BASE}/course/teacher/create-exam`,
@@ -106,9 +106,9 @@ const Endpoints = {
    *  ATTENDANCE SERVICE  (Port 8085 behind gateway)
    * ═══════════════════════════════════════════════ */
   attendance: {
-    markAttendance:                 `${BASE}/attendance/teacher/mark-attendance`,
-    studentAttendance:              `${BASE}/attendance/student/attendance`,
-    adminReport:                    `${BASE}/attendance/admin/attendance-report`,
+    markAttendance:                 `${BASE}/teacher/mark-attendance`,
+    studentAttendance:              `${BASE}/student/attendance`,
+    adminReport:                    `${BASE}/admin/attendance-report`,
   },
 
   /* ═══════════════════════════════════════════════
