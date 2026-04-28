@@ -42,3 +42,206 @@ This generated password is for development use only. Your security configuration
 2026-04-28T09:01:07.884+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
 2026-04-28T09:01:07.884+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
 2026-04-28T09:01:07.884+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:01:25.668+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:01:25.683+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:01:25.683+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:01:25.683+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:01:25.733+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:01:25.750+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:01:25.750+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:01:25.750+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:01:27.075+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:01:27.089+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:01:27.091+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:01:27.093+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:01:27.148+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:01:27.159+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:01:27.161+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:01:27.163+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:06:43.627+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:06:43.637+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:06:43.639+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:06:43.639+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:06:43.777+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:06:43.787+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:06:43.789+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:06:43.790+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:06:44.259+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:06:44.265+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:06:44.266+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:06:44.267+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:06:44.452+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:06:44.455+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:06:44.455+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:06:44.456+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:06:55.450+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:06:55.460+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:06:55.460+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:06:55.461+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:06:55.516+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:06:55.525+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:06:55.526+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:06:55.526+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:07:03.637+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:07:03.651+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:07:03.653+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:07:03.655+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:07:03.711+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:07:03.718+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:07:03.720+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:07:03.722+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:07:04.756+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:07:04.769+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:07:04.769+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:07:04.771+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:07:04.822+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:07:04.833+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:07:04.835+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:07:04.836+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:07:15.302+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:07:15.306+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:07:15.308+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:07:15.310+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:07:15.511+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T09:07:15.516+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T09:07:15.517+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T09:07:15.519+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T09:13:28.820+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /student/assignments/upload
+2026-04-28T09:13:28.828+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T09:13:28.829+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T09:13:28.832+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /student/assignments/upload
+2026-04-28T09:13:29.908+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.service.StudentService             : Assignment submitted by student@greenwood.edu for course MATH101 (assignment #1)
+2026-04-28T09:13:32.223+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /student/assignments/upload
+2026-04-28T09:13:32.229+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T09:13:32.231+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T09:13:32.233+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /student/assignments/upload
+2026-04-28T09:13:32.413+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.service.StudentService             : Assignment submitted by student@greenwood.edu for course MATH101 (assignment #1)
+2026-04-28T11:09:03.904+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m13s817ms477µs500ns).
+2026-04-28T11:10:34.333+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/teacher-submissions/1
+2026-04-28T11:10:34.414+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=anandh@mits.ac.in, role=TEACHER
+2026-04-28T11:10:34.419+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for anandh@mits.ac.in with role TEACHER
+2026-04-28T11:10:34.423+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /student/teacher-submissions/1
+2026-04-28T11:10:34.609+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.controller.StudentController       : Teacher anandh@mits.ac.in fetching submissions for course 1
+2026-04-28T11:10:34.870+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /student/teacher-submissions/1
+2026-04-28T11:10:34.885+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=anandh@mits.ac.in, role=TEACHER
+2026-04-28T11:10:34.888+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for anandh@mits.ac.in with role TEACHER
+2026-04-28T11:10:34.888+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /student/teacher-submissions/1
+2026-04-28T11:10:34.903+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.controller.StudentController       : Teacher anandh@mits.ac.in fetching submissions for course 1
+2026-04-28T11:12:12.337+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:12:12.347+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T11:12:12.347+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T11:12:12.347+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:12:12.409+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:12:12.410+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T11:12:12.410+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T11:12:12.410+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:12:42.938+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:12:42.954+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T11:12:42.955+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T11:12:42.957+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:12:42.993+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:12:43.012+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T11:12:43.012+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T11:12:43.012+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:12:54.733+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:12:54.733+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T11:12:54.733+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T11:12:54.733+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:12:54.777+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:12:54.785+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=john@greenwood.edu, role=STUDENT
+2026-04-28T11:12:54.785+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for john@greenwood.edu with role STUDENT
+2026-04-28T11:12:54.786+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:13:38.410+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:13:38.434+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T11:13:38.435+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T11:13:38.436+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:13:38.476+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:13:38.492+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T11:13:38.492+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T11:13:38.492+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:16:24.967+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:16:24.977+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T11:16:24.977+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T11:16:24.985+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:16:25.025+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:16:25.025+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T11:16:25.025+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T11:16:25.025+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:24:35.381+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:24:35.402+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T11:24:35.402+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T11:24:35.402+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:24:35.462+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T11:24:35.465+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T11:24:35.465+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T11:24:35.465+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T11:29:02.599+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /student/teacher-submissions/3
+2026-04-28T11:29:02.610+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=robert@greenwood.edu, role=TEACHER
+2026-04-28T11:29:02.610+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for robert@greenwood.edu with role TEACHER
+2026-04-28T11:29:02.610+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /student/teacher-submissions/3
+2026-04-28T11:29:02.626+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-6] c.e.s.controller.StudentController       : Teacher robert@greenwood.edu fetching submissions for course 3
+2026-04-28T11:29:02.643+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /student/teacher-submissions/3
+2026-04-28T11:29:02.663+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=robert@greenwood.edu, role=TEACHER
+2026-04-28T11:29:02.663+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for robert@greenwood.edu with role TEACHER
+2026-04-28T11:29:02.664+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /student/teacher-submissions/3
+2026-04-28T11:29:02.666+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.controller.StudentController       : Teacher robert@greenwood.edu fetching submissions for course 3
+2026-04-28T13:18:07.812+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54m32s623ms786µs700ns).
+2026-04-28T13:55:41.015+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m32s926ms50µs800ns).
+2026-04-28T14:17:15.619+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m34s285ms516µs700ns).
+2026-04-28T15:32:32.761+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /student/assignments/upload
+2026-04-28T15:32:32.864+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:32:32.869+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:32:32.884+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /student/assignments/upload
+2026-04-28T15:32:34.329+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.service.StudentService             : Assignment submitted by student@greenwood.edu for course MATH101 (assignment #1)
+2026-04-28T15:32:36.129+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /student/assignments/upload
+2026-04-28T15:32:36.135+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:32:36.136+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:32:36.136+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /student/assignments/upload
+2026-04-28T15:32:36.219+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.service.StudentService             : Assignment submitted by student@greenwood.edu for course MATH101 (assignment #1)
+2026-04-28T15:35:11.865+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:35:11.874+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:35:11.875+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:35:11.875+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T15:40:14.275+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:40:14.289+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:40:14.290+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:40:14.293+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T15:40:16.138+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:40:16.143+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:40:16.144+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:40:16.145+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T15:41:37.721+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:41:37.729+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:41:37.729+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:41:37.730+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T15:41:54.586+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:41:54.592+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=anandh@mits.ac.in, role=TEACHER
+2026-04-28T15:41:54.592+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-8] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for anandh@mits.ac.in with role TEACHER
+2026-04-28T15:41:57.806+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:41:57.813+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=anandh@mits.ac.in, role=TEACHER
+2026-04-28T15:41:57.814+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-9] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for anandh@mits.ac.in with role TEACHER
+2026-04-28T15:42:27.952+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:42:27.961+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:42:27.961+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:42:27.963+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T15:43:04.548+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /student/assignments/upload
+2026-04-28T15:43:04.551+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:43:04.551+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:43:04.551+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /student/assignments/upload
+2026-04-28T15:43:04.616+05:30  INFO 16744 --- [student-service] [http-nio-8082-exec-2] c.e.s.service.StudentService             : Assignment submitted by student@greenwood.edu for course MATH101 (assignment #1)
+2026-04-28T15:43:31.009+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:43:31.023+05:30  WARN 16744 --- [student-service] [http-nio-8082-exec-3] c.e.s.security.JwtAuthFilter             : JWT filter: Invalid JWT signature: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+2026-04-28T15:43:31.030+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-04-28T15:43:43.604+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:43:43.615+05:30  WARN 16744 --- [student-service] [http-nio-8082-exec-4] c.e.s.security.JwtAuthFilter             : JWT filter: Invalid JWT signature: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+2026-04-28T15:43:43.616+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-04-28T15:43:59.635+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:43:59.646+05:30  WARN 16744 --- [student-service] [http-nio-8082-exec-5] c.e.s.security.JwtAuthFilter             : JWT filter: Invalid JWT signature: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+2026-04-28T15:43:59.647+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-04-28T15:44:19.103+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /student/courses
+2026-04-28T15:44:19.114+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: token parsed successfully, subject=student@greenwood.edu, role=STUDENT
+2026-04-28T15:44:19.115+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] c.e.s.security.JwtAuthFilter             : JWT filter: authentication set for student@greenwood.edu with role STUDENT
+2026-04-28T15:44:19.116+05:30 DEBUG 16744 --- [student-service] [http-nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /student/courses
+2026-04-28T16:22:17.371+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57s563ms799µs600ns).
+2026-04-28T16:29:23.052+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m5s590ms344µs).
+2026-04-28T17:20:46.491+05:30  WARN 16744 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m22s528ms462µs100ns).
