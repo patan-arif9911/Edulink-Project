@@ -95,6 +95,7 @@ export function AuthProvider({ children }) {
       authenticated,
       mustChangePassword,
       setMustChangePassword,
+      setCurrentUser,
       signIn,
       signOut,
       checkRole,

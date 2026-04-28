@@ -65,6 +65,14 @@
         {
           "name": "Get User By Email",
           "request": { "method": "GET", "header": [], "url": {"raw":"{{gatewayBaseUrl}}/auth/user-by-email?email=student@greenwood.edu","host":["{{gatewayBaseUrl}}"],"path":["auth","user-by-email"],"query":[{"key":"email","value":"student@greenwood.edu"}]} }
+        },
+        {
+          "name": "Get Profile",
+          "request": { "method": "GET", "header": [{"key":"Authorization","value":"Bearer {{studentToken}}"}], "url": {"raw":"{{gatewayBaseUrl}}/auth/profile","host":["{{gatewayBaseUrl}}"],"path":["auth","profile"]} }
+        },
+        {
+          "name": "Update Profile",
+          "request": { "method": "PUT", "header": [{"key":"Authorization","value":"Bearer {{studentToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"fullName\": \"Updated Name\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/auth/update-profile","host":["{{gatewayBaseUrl}}"],"path":["auth","update-profile"]} }
         }
       ]
     },

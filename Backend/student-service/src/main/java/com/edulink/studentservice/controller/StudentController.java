@@ -93,6 +93,33 @@ public class StudentController {
 
     // The /grades, /attendance, and /profile endpoints using StudentProfile have been removed.
 
+    // ── Teacher: View assignment submissions by course ──
+    @GetMapping("/teacher-submissions/{courseCode}")
+    public ResponseEntity<ApiResponse<List<AssignmentSubmission>>> getSubmissionsByCourse(
+            @PathVariable String courseCode, HttpServletRequest req) {
+        log.info("Teacher {} fetching submissions for course {}", jwtExtractor.extractEmail(req), courseCode);
+        List<AssignmentSubmission> submissions = studentService.getSubmissionsByCourseCode(courseCode);
+        return ResponseEntity.ok(ApiResponse.success("Submissions fetched", submissions));
+    }
+
+    // ── Teacher: Download submitted assignment file ──
+    @GetMapping("/teacher-submissions/download/{fileId}")
+    public ResponseEntity<Resource> downloadSubmissionFile(
+            @PathVariable String fileId, HttpServletRequest req) {
+        log.info("Teacher {} downloading submission file {}", jwtExtractor.extractEmail(req), fileId);
+        try {
+            byte[] fileContent = gridFsService.downloadFile(fileId);
+            String fileName = gridFsService.getFileName(fileId);
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                    .body(new ByteArrayResource(fileContent));
+        } catch (Exception e) {
+            log.error("Failed to download submission file {}: {}", fileId, e.getMessage());
+            return ResponseEntity.status(500).build();
+        }
+    }
+
     @GetMapping("/materials/download/{fileId}")
     public ResponseEntity<Resource> downloadMaterial(@PathVariable String fileId) {
         try {

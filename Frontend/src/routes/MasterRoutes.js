@@ -14,6 +14,9 @@ import LoginPage from "../pages/auth/LoginPage";
 import ChangePasswordPage from "../pages/auth/ChangePasswordPage";
 import ForbiddenPage from "../pages/auth/ForbiddenPage";
 
+// ── Profile ──
+import EditProfilePage from "../pages/profile/EditProfilePage";
+
 // ── Operator ──
 import OperatorDashboard from "../pages/operator/OperatorDashboard";
 import ManageUsersPage from "../pages/operator/ManageUsersPage";
@@ -62,6 +65,8 @@ import NewAssignmentPage from "../pages/teacher/NewAssignmentPage";
 import NewExamPage from "../pages/teacher/NewExamPage";
 import GradeStudentPage from "../pages/teacher/GradeStudentPage";
 import RecordAttendancePage from "../pages/teacher/RecordAttendancePage";
+import SubmissionsCoursePicker from "../pages/teacher/SubmissionsCoursePicker";
+import ViewSubmissionsPage from "../pages/teacher/ViewSubmissionsPage";
 
 // ── Student ──
 import StudentDashboard from "../pages/student/StudentDashboard";
@@ -96,18 +101,25 @@ export default function MasterRoutes() {
       {/* ════════ PUBLIC ════════ */}
       <Route element={<PublicLayout />}>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/change-password" element={<ChangePasswordPage />} />
         <Route path="/forbidden" element={<ForbiddenPage />} />
       </Route>
 
       {/* ════════ AUTHENTICATED ════════ */}
       <Route element={<AuthGuard />}>
+        {/* Change password – outside PasswordChangeGuard so forced-change works */}
+        <Route element={<DashboardLayout />}>
+          <Route path="/change-password" element={<ChangePasswordPage />} />
+        </Route>
+
         <Route element={<PasswordChangeGuard />}>
           <Route element={<DashboardLayout />}>
 
             {/* ── Notifications (all roles) ── */}
             <Route path="/notifications" element={<InboxPage />} />
             <Route path="/notifications/compose" element={<ComposeNotificationPage />} />
+
+            {/* ── Profile (all roles) ── */}
+            <Route path="/profile/edit" element={<EditProfilePage />} />
 
             {/* ── OPERATOR ── */}
             <Route element={<RoleGuard permitted={[OPERATOR]} />}>
@@ -168,12 +180,15 @@ export default function MasterRoutes() {
               <Route path="/teacher/new-exam" element={<NewExamPage />} />
               <Route path="/teacher/grade" element={<GradeStudentPage />} />
               <Route path="/teacher/attendance" element={<RecordAttendancePage />} />
+              <Route path="/teacher/submissions" element={<SubmissionsCoursePicker />} />
+              <Route path="/teacher/submissions/:courseCode" element={<ViewSubmissionsPage />} />
             </Route>
 
             {/* ── STUDENT ── */}
             <Route element={<RoleGuard permitted={[STUDENT]} />}>
               <Route path="/student/dashboard" element={<StudentDashboard />} />
               <Route path="/student/courses" element={<EnrolledCoursesPage />} />
+              <Route path="/student/enroll" element={<EnrolledCoursesPage />} />
               <Route path="/student/courses/:courseCode/materials" element={<CourseMaterialsPage />} />
               <Route path="/student/courses/:courseCode/assignments" element={<CourseAssignmentsPage />} />
               <Route path="/student/exams" element={<StudentExamsPage />} />

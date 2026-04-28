@@ -10,6 +10,7 @@ import com.edulink.identityservice.dto.ApiResponse;
 import com.edulink.identityservice.dto.ChangePasswordRequest;
 import com.edulink.identityservice.dto.LoginRequest;
 import com.edulink.identityservice.dto.LoginResponse;
+import com.edulink.identityservice.dto.UpdateProfileRequest;
 import com.edulink.identityservice.dto.UserResponse;
 import com.edulink.identityservice.entity.User;
 import com.edulink.identityservice.exception.BadRequestException;
@@ -140,6 +141,23 @@ public class AuthService {
                 .active(user.isActive())
                 .mustChangePassword(user.isMustChangePassword())
                 .temporaryPassword(user.isMustChangePassword() ? user.getTemporaryPassword() : null)
+                .schoolId(user.getSchoolId())
+                .classId(user.getClassId())
+                .createdAt(user.getCreatedAt())
+                .build();
+    }
+
+    public UserResponse updateProfile(String email, UpdateProfileRequest request) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        user.setFullName(request.getFullName());
+        userRepository.save(user);
+        return UserResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .fullName(user.getFullName())
+                .role(user.getRole())
+                .active(user.isActive())
                 .schoolId(user.getSchoolId())
                 .classId(user.getClassId())
                 .createdAt(user.getCreatedAt())

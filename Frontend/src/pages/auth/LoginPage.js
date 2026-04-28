@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { getDashboardPath } from "../../config/roles";
 import AlertBanner from "../../components/shared/AlertBanner";
+import { parseApiError } from "../../utils/apiErrorParser";
 import "./AuthPages.css";
 
 export default function LoginPage() {
@@ -30,6 +31,10 @@ export default function LoginPage() {
       setError("Please enter both email and password.");
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Please enter a valid email address.");
+      return;
+    }
 
     setLoading(true);
     try {
@@ -40,12 +45,7 @@ export default function LoginPage() {
         navigate(result.destination, { replace: true });
       }
     } catch (err) {
-      const msg =
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        err.message ||
-        "Login failed. Please check your credentials.";
-      setError(msg);
+      setError(parseApiError(err));
     } finally {
       setLoading(false);
     }

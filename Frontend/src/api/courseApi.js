@@ -45,6 +45,15 @@ const courseApi = {
   fetchClassStudents: (classId) =>
     httpClient.get(Endpoints.course.teacherClassStudents(classId)),
 
+  /* ── Teacher: Student Submissions ── */
+  fetchSubmissions: (courseCode) =>
+    httpClient.get(Endpoints.course.teacherSubmissions(courseCode)),
+
+  downloadSubmission: (fileId) =>
+    httpClient.get(Endpoints.course.teacherDownloadSubmission(fileId), {
+      responseType: "blob",
+    }),
+
   /* ── Student ── */
   fetchStudentMaterials: (courseCode) =>
     httpClient.get(Endpoints.course.studentMaterials(courseCode)),

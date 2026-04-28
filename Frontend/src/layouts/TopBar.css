@@ -1,89 +1,224 @@
+/* ═══════════ TOP BAR ═══════════ */
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 2rem;
+  padding: 0.65rem 1.5rem;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.topbar-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  padding: 0.35rem;
+  border-radius: 6px;
+}
+.topbar-hamburger:hover {
+  background: #f0f0f0;
 }
 .topbar-greeting {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: #333;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .topbar-greeting span {
   font-weight: 700;
   color: #1a1a2e;
 }
+
+/* ── Right section ── */
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 .topbar-icon-btn {
   background: none;
   border: none;
   cursor: pointer;
   color: #555;
-  padding: 0.4rem;
+  padding: 0.45rem;
   border-radius: 50%;
   transition: background 0.15s;
+  position: relative;
 }
 .topbar-icon-btn:hover {
   background: #f0f0f0;
   color: #1a73e8;
 }
-.topbar-role {
-  font-size: 0.75rem;
-  background: #e8f0fe;
-  color: #1a73e8;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-weight: 600;
+
+/* ── Profile avatar button ── */
+.topbar-profile-wrapper {
+  position: relative;
 }
-.topbar-logout-btn {
+.topbar-avatar-btn {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.8rem;
+  gap: 0.3rem;
+  background: none;
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background: #fff;
-  color: #c62828;
+  border-radius: 40px;
+  padding: 0.2rem 0.5rem 0.2rem 0.2rem;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-.topbar-logout-btn:hover {
-  background: #fdecea;
-  border-color: #c62828;
+.topbar-avatar-btn:hover {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102,126,234,0.12);
 }
-.topbar-logout-btn .material-icons-round {
-  font-size: 1.1rem;
+.topbar-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.topbar-caret {
+  font-size: 1.2rem !important;
+  color: #888;
 }
 
-@media (max-width: 768px) {
+/* ── Dropdown ── */
+.topbar-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 260px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  z-index: 200;
+  animation: dropIn 0.15s ease-out;
+  overflow: hidden;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.topbar-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1rem 0.5rem;
+}
+.topbar-dropdown-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.topbar-dropdown-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.topbar-dropdown-email {
+  margin: 0.1rem 0 0;
+  font-size: 0.75rem;
+  color: #777;
+}
+.topbar-dropdown-badge {
+  padding: 0.35rem 1rem 0.5rem;
+}
+.topbar-role-tag {
+  font-size: 0.7rem;
+  background: #e8f0fe;
+  color: #1a73e8;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.topbar-dropdown-divider {
+  height: 1px;
+  background: #eee;
+  margin: 0;
+}
+.topbar-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #333;
+  transition: background 0.12s;
+}
+.topbar-dropdown-item:hover {
+  background: #f5f7fa;
+}
+.topbar-dropdown-item .material-icons-round {
+  font-size: 1.15rem;
+  color: #666;
+}
+.topbar-dropdown-logout {
+  color: #c62828;
+}
+.topbar-dropdown-logout:hover {
+  background: #fdecea;
+}
+.topbar-dropdown-logout .material-icons-round {
+  color: #c62828;
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 1024px) {
+  .topbar-hamburger {
+    display: flex;
+  }
+}
+@media (max-width: 640px) {
   .topbar {
-    padding: 0.65rem 1rem;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
   }
   .topbar-greeting {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
   }
-  .topbar-right {
-    width: 100%;
-    justify-content: flex-end;
-    gap: 0.6rem;
+  .topbar-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.72rem;
   }
-  .topbar-role {
-    font-size: 0.68rem;
-  }
-  .topbar-logout-btn {
-    padding: 0.35rem 0.65rem;
-    font-size: 0.78rem;
+  .topbar-dropdown {
+    width: 240px;
   }
 }
 

@@ -93,6 +93,10 @@ public class StudentService {
         return enrollmentRepo.findByStudentEmail(email);
     }
 
+    public List<AssignmentSubmission> getSubmissionsByCourseCode(String courseCode) {
+        return submissionRepo.findByCourseCode(courseCode);
+    }
+
     private boolean hasText(String value) {
         return value != null && !value.trim().isEmpty();
     }

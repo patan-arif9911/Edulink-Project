@@ -30,9 +30,33 @@ public class AuthController {
         return ResponseEntity.ok(authService.changePassword(authentication.getName(), request));
     }
 
+    @PostMapping("/refresh")
+    public ResponseEntity<ApiResponse<LoginResponse>> refreshToken(@RequestBody java.util.Map<String, String> body) {
+        String refreshToken = body.get("refreshToken");
+        if (refreshToken == null || refreshToken.isBlank()) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Refresh token is required"));
+        }
+        LoginResponse response = authService.refreshToken(refreshToken);
+        return ResponseEntity.ok(ApiResponse.success("Token refreshed", response));
+    }
+
     @GetMapping("/user-by-email")
     public ResponseEntity<UserResponse> getUserByEmail(@RequestParam String email) {
         UserResponse user = authService.getUserByEmail(email);
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<ApiResponse<UserResponse>> getProfile(Authentication authentication) {
+        UserResponse user = authService.getUserByEmail(authentication.getName());
+        return ResponseEntity.ok(ApiResponse.success("Profile fetched", user));
+    }
+
+    @PutMapping("/update-profile")
+    public ResponseEntity<ApiResponse<UserResponse>> updateProfile(
+            Authentication authentication,
+            @Valid @RequestBody com.edulink.identityservice.dto.UpdateProfileRequest request) {
+        UserResponse updated = authService.updateProfile(authentication.getName(), request);
+        return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", updated));
     }
 }

@@ -7,7 +7,6 @@ const menusByRole = {
     { label: "Add Compliance Officer", path: "/operator/add-compliance-officer", icon: "person_add" },
     { label: "Add Board Officer",      path: "/operator/add-board-officer",      icon: "person_add" },
     { label: "Add Regulator",          path: "/operator/add-regulator",          icon: "person_add" },
-    { label: "Notifications",          path: "/notifications",                   icon: "notifications" },
   ],
 
   [EduLinkRoles.COMPLIANCE_OFFICER]: [
@@ -17,7 +16,6 @@ const menusByRole = {
     { label: "Audit School",      path: "/compliance/audit",            icon: "fact_check" },
     { label: "Compliance Status", path: "/compliance/status",           icon: "verified" },
     { label: "Audit Records",     path: "/compliance/audit-records",    icon: "history" },
-    { label: "Notifications",     path: "/notifications",               icon: "notifications" },
   ],
 
   [EduLinkRoles.EDUCATION_BOARD_OFFICER]: [
@@ -26,7 +24,6 @@ const menusByRole = {
     { label: "Academic Performance",   path: "/board/performance",         icon: "trending_up" },
     { label: "Board Reports",          path: "/board/reports",             icon: "assessment" },
     { label: "Compliance Summary",     path: "/board/compliance-summary",  icon: "checklist" },
-    { label: "Notifications",          path: "/notifications",             icon: "notifications" },
   ],
 
   [EduLinkRoles.REGULATOR]: [
@@ -35,7 +32,6 @@ const menusByRole = {
     { label: "Accreditation",       path: "/regulator/accreditation",       icon: "workspace_premium" },
     { label: "System Audit",        path: "/regulator/system-audit",        icon: "security" },
     { label: "Audit Records",       path: "/regulator/audit-records",       icon: "history" },
-    { label: "Notifications",       path: "/notifications",                 icon: "notifications" },
   ],
 
   [EduLinkRoles.SCHOOL_ADMIN]: [
@@ -47,28 +43,27 @@ const menusByRole = {
     { label: "Create Course",      path: "/school-admin/add-course",        icon: "menu_book" },
     { label: "Create Class",       path: "/school-admin/add-class",         icon: "class" },
     { label: "Attendance Report",  path: "/school-admin/attendance-report", icon: "bar_chart" },
-    { label: "Notifications",      path: "/notifications",                  icon: "notifications" },
   ],
 
   [EduLinkRoles.TEACHER]: [
-    { label: "Dashboard",         path: "/teacher/dashboard",       icon: "dashboard" },
-    { label: "My Classes",        path: "/teacher/classes",         icon: "class" },
-    { label: "Upload Material",   path: "/teacher/upload-material", icon: "cloud_upload" },
-    { label: "New Assignment",    path: "/teacher/new-assignment",  icon: "assignment" },
-    { label: "New Exam",          path: "/teacher/new-exam",        icon: "quiz" },
-    { label: "Grade Student",     path: "/teacher/grade",           icon: "grading" },
-    { label: "Mark Attendance",   path: "/teacher/attendance",      icon: "how_to_reg" },
-    { label: "Notifications",     path: "/notifications",           icon: "notifications" },
+    { label: "Dashboard",           path: "/teacher/dashboard",       icon: "dashboard" },
+    { label: "My Classes",          path: "/teacher/classes",         icon: "class" },
+    { label: "Upload Material",     path: "/teacher/upload-material", icon: "cloud_upload" },
+    { label: "New Assignment",      path: "/teacher/new-assignment",  icon: "assignment" },
+    { label: "View Submissions",    path: "/teacher/submissions",     icon: "fact_check" },
+    { label: "New Exam",            path: "/teacher/new-exam",        icon: "quiz" },
+    { label: "Grade Student",       path: "/teacher/grade",           icon: "grading" },
+    { label: "Mark Attendance",     path: "/teacher/attendance",      icon: "how_to_reg" },
   ],
 
   [EduLinkRoles.STUDENT]: [
     { label: "Dashboard",         path: "/student/dashboard",        icon: "dashboard" },
     { label: "My Courses",        path: "/student/courses",          icon: "menu_book" },
+    { label: "Enroll in Course",  path: "/student/enroll",           icon: "add_circle" },
     { label: "My Exams",          path: "/student/exams",            icon: "quiz" },
     { label: "Submit Assignment", path: "/student/submit-assignment", icon: "upload_file" },
     { label: "My Grades",         path: "/student/grades",           icon: "grade" },
     { label: "My Attendance",     path: "/student/attendance",       icon: "event_available" },
-    { label: "Notifications",     path: "/notifications",            icon: "notifications" },
   ],
 };
 

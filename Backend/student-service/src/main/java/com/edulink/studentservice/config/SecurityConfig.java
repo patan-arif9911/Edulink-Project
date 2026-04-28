@@ -26,6 +26,7 @@ public class SecurityConfig {
         http.csrf(c -> c.disable())
             .authorizeHttpRequests(a -> a
                 .requestMatchers(HttpMethod.POST, "/student/profile").permitAll()
+                .requestMatchers("/student/teacher-submissions/**").hasRole("TEACHER")
                 .requestMatchers("/student/**").hasRole("STUDENT")
                 .requestMatchers("/admin/**").hasRole("SCHOOL_ADMIN")
                 .anyRequest().authenticated())

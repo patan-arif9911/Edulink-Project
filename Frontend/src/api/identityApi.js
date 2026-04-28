@@ -6,11 +6,20 @@ const identityApi = {
   login: (payload) =>
     httpClient.post(Endpoints.identity.login, payload),
 
+  refreshToken: (refreshToken) =>
+    httpClient.post(Endpoints.identity.refreshToken, { refreshToken }),
+
   changePassword: (payload) =>
     httpClient.post(Endpoints.identity.changePassword, payload),
 
   validateToken: () =>
     httpClient.get(Endpoints.identity.validateToken),
+
+  getProfile: () =>
+    httpClient.get(Endpoints.identity.getProfile),
+
+  updateProfile: (payload) =>
+    httpClient.put(Endpoints.identity.updateProfile, payload),
 
   /* ── Operator Actions ── */
   createComplianceOfficer: (payload) =>

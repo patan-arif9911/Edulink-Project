@@ -7,8 +7,11 @@ const Endpoints = {
   identity: {
     // Auth (public)
     login:                          `${BASE}/auth/login`,
+    refreshToken:                   `${BASE}/auth/refresh`,
     changePassword:                 `${BASE}/auth/change-password`,
     validateToken:                  `${BASE}/auth/validate`,
+    getProfile:                     `${BASE}/auth/profile`,
+    updateProfile:                  `${BASE}/auth/update-profile`,
 
     // Operator endpoints
     createComplianceOfficer:        `${BASE}/operator/create-compliance-officer`,
@@ -78,6 +81,11 @@ const Endpoints = {
     teacherCreateExam:              `${BASE}/course/teacher/create-exam`,
     teacherGradeStudent:            `${BASE}/course/teacher/grade-student`,
     teacherClassStudents:(classId)=> `${BASE}/course/teacher/students/${classId}`,
+
+    // Teacher: view student submissions (routed to student-service)
+    teacherSubmissions:  (code) =>  `${BASE}/student/teacher-submissions/${code}`,
+    teacherDownloadSubmission: (fileId) => `${BASE}/student/teacher-submissions/download/${fileId}`,
+
 
     // Student
     studentMaterials:    (code) =>  `${BASE}/course/student/materials/${code}`,

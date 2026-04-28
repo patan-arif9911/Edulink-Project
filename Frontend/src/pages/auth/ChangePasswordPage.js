@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import identityApi from "../../api/identityApi";
 import { getDashboardPath } from "../../config/roles";
 import AlertBanner from "../../components/shared/AlertBanner";
+import { parseApiError } from "../../utils/apiErrorParser";
 import "./AuthPages.css";
 
 export default function ChangePasswordPage() {
@@ -30,6 +31,10 @@ export default function ChangePasswordPage() {
       setError("New password must be at least 8 characters.");
       return;
     }
+    if (!/[A-Z]/.test(newPwd) || !/[a-z]/.test(newPwd) || !/[0-9]/.test(newPwd)) {
+      setError("Password must contain at least one uppercase letter, one lowercase letter, and one number.");
+      return;
+    }
 
     setLoading(true);
     try {
@@ -46,9 +51,7 @@ export default function ChangePasswordPage() {
         navigate(getDashboardPath(currentUser?.role), { replace: true });
       }, 1500);
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Password change failed. Try again."
-      );
+      setError(parseApiError(err));
     } finally {
       setLoading(false);
     }

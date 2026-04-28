@@ -31,7 +31,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/login", "/auth/refresh-token", "/auth/user-by-email", "/compliance/identity/schools/**").permitAll()
+                .requestMatchers("/auth/login", "/auth/refresh", "/auth/refresh-token", "/auth/user-by-email", "/compliance/identity/schools/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/operator/**").hasRole("OPERATOR")
                 .requestMatchers("/admin/**").hasRole("SCHOOL_ADMIN")
