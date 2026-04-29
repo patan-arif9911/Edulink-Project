@@ -121,6 +121,10 @@ public class GridFsService {
      */
     public String getContentType(String fileId) {
         GridFSFile gridFSFile = getFileMetadata(fileId);
-        return gridFSFile != null ? gridFSFile.getMetadata().getString("_contentType") : "application/octet-stream";
+        if (gridFSFile != null && gridFSFile.getMetadata() != null) {
+            String contentType = gridFSFile.getMetadata().getString("_contentType");
+            return contentType != null ? contentType : "application/octet-stream";
+        }
+        return "application/octet-stream";
     }
 }

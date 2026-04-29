@@ -47,8 +47,8 @@ const Endpoints = {
     enrollCourse:                   `${BASE}/student/enroll`,
     // GET /student/materials/{courseCode} — proxied from course-service
     materials:           (code) =>  `${BASE}/course/student/materials/${code}`,
-    // GET /student/materials/download/{fileId} — binary file download
-    downloadMaterial:    (fileId) => `${BASE}/student/materials/download/${fileId}`,
+    // GET /course/student/materials/download/{fileId} — binary file download
+    downloadMaterial:    (fileId) => `${BASE}/course/student/materials/download/${fileId}`,
     // GET /student/assignments/{courseCode} — proxied from course-service
     assignments:         (code) =>  `${BASE}/course/student/assignments/${code}`,
     // POST /student/assignments/upload — multipart form
