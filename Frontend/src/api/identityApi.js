@@ -46,6 +46,12 @@ const identityApi = {
 
   fetchStudents: () =>
     httpClient.get(Endpoints.identity.students),
+  
+  deleteTeacher: (id) =>
+    httpClient.delete(Endpoints.identity.deleteTeacher(id)),
+
+  deleteStudent: (id) =>
+    httpClient.delete(Endpoints.identity.deleteStudent(id)),
 
   /* ── Compliance Officer Actions ── */
   createSchoolAdmin: (payload) =>

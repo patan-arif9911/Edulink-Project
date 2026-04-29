@@ -109,6 +109,14 @@
           "request": { "method": "POST", "header": [{"key":"Authorization","value":"Bearer {{adminToken}}"},{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"email\": \"student2@greenwood.edu\",\n  \"fullName\": \"Bob Jones\",\n  \"classId\": 1,\n  \"schoolId\": \"SCH001\"\n}"}, "url": {"raw":"{{gatewayBaseUrl}}/admin/create-student","host":["{{gatewayBaseUrl}}"],"path":["admin","create-student"]} }
         },
         {
+          "name": "Delete Teacher",
+          "request": { "method": "DELETE", "header": [{"key":"Authorization","value":"Bearer {{adminToken}}"}], "url": {"raw":"{{gatewayBaseUrl}}/admin/delete-teacher/:id","host":["{{gatewayBaseUrl}}"],"path":["admin","delete-teacher",":id"],"variable":[{"key":"id","value":"teacher-123"}]} }
+        },
+        {
+          "name": "Delete Student",
+          "request": { "method": "DELETE", "header": [{"key":"Authorization","value":"Bearer {{adminToken}}"}], "url": {"raw":"{{gatewayBaseUrl}}/admin/delete-student/:id","host":["{{gatewayBaseUrl}}"],"path":["admin","delete-student",":id"],"variable":[{"key":"id","value":"student-123"}]} }
+        },
+        {
           "name": "Get All Teachers",
           "request": { "method": "GET", "header": [{"key":"Authorization","value":"Bearer {{adminToken}}"}], "url": {"raw":"{{gatewayBaseUrl}}/admin/teachers","host":["{{gatewayBaseUrl}}"],"path":["admin","teachers"]} }
         },

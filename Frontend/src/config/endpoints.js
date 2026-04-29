@@ -24,6 +24,8 @@ const Endpoints = {
     createStudent:                  `${BASE}/admin/create-student`,
     teachers:                       `${BASE}/admin/teachers`,
     students:                       `${BASE}/admin/students`,
+    deleteTeacher:                  (id) => `${BASE}/admin/delete-teacher/${id}`,
+    deleteStudent:                  (id) => `${BASE}/admin/delete-student/${id}`,
 
     // Compliance Officer endpoints
     createSchoolAdmin:              `${BASE}/compliance/identity/create-school-admin`,
