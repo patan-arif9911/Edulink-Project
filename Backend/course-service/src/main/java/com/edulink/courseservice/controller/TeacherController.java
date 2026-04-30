@@ -48,6 +48,8 @@ public class TeacherController {
             @RequestParam("file") MultipartFile file,
             Authentication auth) {
         try {
+
+            System.out.println("I am in upload material");
             // Upload file to GridFS
             String fileId = gridFsService.uploadFile(file, courseCode);
 
