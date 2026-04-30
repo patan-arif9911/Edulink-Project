@@ -131,6 +131,42 @@ public class UserManagementService {
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
     }
+    public void deleteUser(String userId, Role expectedRole) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EduLinkException("User not found with ID: " + userId, HttpStatus.NOT_FOUND));
+
+        if (user.getRole() != expectedRole) {
+            throw new EduLinkException("User is not a " + expectedRole.name(), HttpStatus.BAD_REQUEST);
+        }
+
+        // Delete from role-specific table first
+        switch (user.getRole()) {
+            case STUDENT:
+                studentRepository.findByUserId(userId).ifPresent(studentRepository::delete);
+                break;
+            case TEACHER:
+                teacherRepository.findByUserId(userId).ifPresent(teacherRepository::delete);
+                break;
+            case COMPLIANCE_OFFICER:
+                complianceOfficerRepository.findById(Long.valueOf(userId)).ifPresent(complianceOfficerRepository::delete);
+                break;
+            case SCHOOL_ADMIN:
+                schoolAdminRepository.findById(Long.valueOf(userId)).ifPresent(schoolAdminRepository::delete);
+                break;
+            case REGULATOR:
+                regulatorRepository.findById(Long.valueOf(userId)).ifPresent(regulatorRepository::delete);
+                break;
+            case EDUCATION_BOARD_OFFICER:
+                boardOfficerRepository.findById(Long.valueOf(userId)).ifPresent(boardOfficerRepository::delete);
+                break;
+            default:
+                break;
+        }
+
+        // Delete from user table
+        userRepository.delete(user);
+        log.info("User deleted: {} with role: {}", user.getEmail(), user.getRole());
+    }
 
     public UserResponse getUserById(String id) {
         User user = userRepository.findById(id)

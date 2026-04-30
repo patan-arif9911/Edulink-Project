@@ -25,23 +25,38 @@ export default function CourseMaterialsPage() {
   }, [courseCode]);
 
   /* Backend response fields per material:
-     courseCode, teacherEmail, title, description, fileUrl, materialType, uploadedAt */
-  const handleDownload = async (fileUrl, title) => {
-    if (!fileUrl) {
+     courseCode, teacherEmail, title, description, fileId, fileName, fileSize, contentType, materialType, uploadedAt */
+  const handleDownload = async (fileId, fileName) => {
+    if (!fileId) {
       setError("No file available for download.");
       return;
     }
     try {
-      const res = await studentApi.downloadMaterial(fileUrl);
+      const res = await studentApi.downloadMaterial(fileId);
       const blob = new Blob([res.data]);
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", title || "material");
+      link.setAttribute("download", fileName || "material.pdf");
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
+    } catch (err) {
+      setError(parseApiError(err));
+    }
+  };
+
+  const handlePreview = async (fileId, fileName) => {
+    if (!fileId) {
+      setError("No file available for preview.");
+      return;
+    }
+    try {
+      const res = await studentApi.downloadMaterial(fileId);
+      const blob = new Blob([res.data], { type: "application/pdf" });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url, "_blank");
     } catch (err) {
       setError(parseApiError(err));
     }
@@ -58,17 +73,28 @@ export default function CourseMaterialsPage() {
       render: (r) => formatDateTime(r.uploadedAt),
     },
     {
-      key: "download",
-      label: "Action",
+      key: "actions",
+      label: "Actions",
       render: (r) =>
-        r.fileUrl ? (
-          <button
-            className="submit-btn"
-            style={{ padding: "0.25rem 0.6rem", fontSize: "0.8rem" }}
-            onClick={() => handleDownload(r.fileUrl, r.title)}
-          >
-            Download
-          </button>
+        r.fileId ? (
+          <div style={{ display: "flex", gap: "0.4rem" }}>
+            {r.materialType === "PDF" && (
+              <button
+                className="submit-btn"
+                style={{ padding: "0.25rem 0.6rem", fontSize: "0.8rem", background: "#1a73e8" }}
+                onClick={() => handlePreview(r.fileId, r.fileName)}
+              >
+                Preview
+              </button>
+            )}
+            <button
+              className="submit-btn"
+              style={{ padding: "0.25rem 0.6rem", fontSize: "0.8rem" }}
+              onClick={() => handleDownload(r.fileId, r.fileName)}
+            >
+              Download
+            </button>
+          </div>
         ) : (
           <span style={{ color: "#999" }}>No file</span>
         ),

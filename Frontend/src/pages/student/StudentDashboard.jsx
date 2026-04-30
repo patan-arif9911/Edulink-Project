@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import studentApi from "../../api/studentApi";
 import { AuthContext } from "../../context/AuthContext";
@@ -51,6 +51,7 @@ export default function StudentDashboard() {
 
   const recentGrades = grades.slice(0, 5);
   const recentCourses = courses.slice(0, 4);
+  const recentAttendance = attendance.slice(0, 5);
 
   const alerts = [
     attendance.length > 0 && presentCount / attendance.length < 0.75
@@ -163,18 +164,62 @@ export default function StudentDashboard() {
 
       <div className="dashboard-main-grid">
         <section className="dashboard-panel dashboard-panel-wide">
+          <h3 className="dashboard-panel-title">My Attendance</h3>
+          <p className="dashboard-panel-subtitle">Recent attendance records</p>
+          {recentAttendance.length ? (
+            <div className="dashboard-table-wrap">
+              <table className="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentAttendance.map((a, idx) => {
+                    const isPresent = a.status === "PRESENT";
+                    return (
+                      <tr key={a.id || `att-${idx}`}>
+                        <td>{a.courseCode || a.courseName || "—"}</td>
+                        <td>{a.date || a.attendanceDate || "—"}</td>
+                        <td>
+                          <span className={`dashboard-chip ${isPresent ? "success" : "error"}`}>
+                            {a.status || "—"}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="dashboard-empty">No attendance records available yet.</p>
+          )}
+        </section>
+      </div>
+
+      <div className="dashboard-main-grid">
+        <section className="dashboard-panel dashboard-panel-wide">
           <h3 className="dashboard-panel-title">My Courses</h3>
           <p className="dashboard-panel-subtitle">Quick look at enrolled courses</p>
           {recentCourses.length ? (
             <ul className="dashboard-list">
-              {recentCourses.map((course, idx) => (
-                <li key={course.courseCode || `${course.title || "course"}-${idx}`} className="dashboard-list-item">
-                  <span className="dashboard-item-label">
-                    {course.courseCode || "COURSE"} - {course.courseTitle || course.title || "Untitled Course"}
-                  </span>
-                  <span className="dashboard-item-meta">{course.teacherName || "Instructor TBA"}</span>
-                </li>
-              ))}
+              {recentCourses.map((course, idx) => {
+                const courseStatus = course.status || course.enrollmentStatus;
+                const isDone = courseStatus === "COMPLETED" || courseStatus === "DONE" || courseStatus === "ACTIVE";
+                return (
+                  <li key={course.courseCode || `${course.title || "course"}-${idx}`} className="dashboard-list-item">
+                    <span className="dashboard-item-label">
+                      {course.courseCode || "COURSE"} - {course.courseTitle || course.title || "Untitled Course"}
+                    </span>
+                    <span className={`dashboard-chip ${isDone ? "success" : "error"}`}>
+                      {isDone ? "Active" : "Inactive"}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <p className="dashboard-empty">You are not enrolled in any courses yet.</p>

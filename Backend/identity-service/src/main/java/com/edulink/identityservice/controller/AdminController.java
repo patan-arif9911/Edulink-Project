@@ -58,4 +58,16 @@ public class AdminController {
         return ResponseEntity.ok(ApiResponse.success("Students retrieved",
                 userManagementService.getUsersByRole(Role.STUDENT)));
     }
+
+    @DeleteMapping("/delete-teacher/{id}")
+    public ResponseEntity<ApiResponse<Void>> deleteTeacher(@PathVariable String id) {
+        userManagementService.deleteUser(id, Role.TEACHER);
+        return ResponseEntity.ok(ApiResponse.success("Teacher deleted successfully", null));
+    }
+
+    @DeleteMapping("/delete-student/{id}")
+    public ResponseEntity<ApiResponse<Void>> deleteStudent(@PathVariable String id) {
+        userManagementService.deleteUser(id, Role.STUDENT);
+        return ResponseEntity.ok(ApiResponse.success("Student deleted successfully", null));
+    }
 }
