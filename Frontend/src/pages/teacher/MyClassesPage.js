@@ -22,7 +22,6 @@ export default function MyClassesPage() {
     { key: "className", label: "Class Name" },
     { key: "grade", label: "Grade" },
     { key: "section", label: "Section" },
-    { key: "courseId", label: "Course ID" },
     { key: "id", label: "Actions", render: (r) => (
         <button
           className="submit-btn"

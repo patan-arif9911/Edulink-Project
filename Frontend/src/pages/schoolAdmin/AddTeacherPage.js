@@ -10,8 +10,6 @@ export default function AddTeacherPage() {
   const fields = [
     { name: "fullName", label: "Full Name", placeholder: "Teacher Name" },
     { name: "email", label: "Email", type: "email", placeholder: "teacher@school.edu" },
-    { name: "schoolId", label: "School ID", placeholder: "SCH001" },
-    { name: "classId", label: "Class ID", type: "number", placeholder: "1", required: false },
   ];
 
   return (

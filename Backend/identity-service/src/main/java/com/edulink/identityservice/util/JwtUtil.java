@@ -35,15 +35,12 @@ public class JwtUtil {
         return generateToken(email, role, userId, rollNumber, null);
     }
 
-    public String generateToken(String email, String role, String userId, String rollNumber, String schoolId) {
+    public String generateToken(String email, String role, String userId, String extraKey, String extraValue) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
         claims.put("userId", userId);
-        if (rollNumber != null) {
-            claims.put("rollNumber", rollNumber);
-        }
-        if (schoolId != null) {
-            claims.put("schoolId", schoolId);
+        if (extraKey != null && extraValue != null) {
+            claims.put(extraKey, extraValue);
         }
         return createToken(claims, email, expiration);
     }

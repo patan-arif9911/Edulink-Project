@@ -27,21 +27,34 @@ public class DataInitializer {
     @Bean
     public CommandLineRunner init() {
         return args -> {
+            // Create class first so we can reference its ID in courses
+            ClassRoom classRoom = null;
+            if (classRepo.count() == 0) {
+                classRoom = classRepo.save(ClassRoom.builder().className("Class 10A").grade(10).section("A")
+                        .schoolId("SCH001").teacherEmail("teacher@greenwood.edu.com").capacity(35).build());
+                log.info("==> Sample class created with ID: {}", classRoom.getId());
+            } else {
+                classRoom = classRepo.findByClassName("Class 10A").orElse(null);
+            }
+
+            final Long sampleClassId = classRoom != null ? classRoom.getId() : null;
+
             Course math = courseRepo.findByCourseCode("MATH101").orElseGet(() ->
                     courseRepo.save(Course.builder().courseCode("MATH101").courseName("Mathematics Grade 10")
-                            .description("Algebra, Geometry, Trigonometry").schoolId("SCH001").teacherId(6L)
+                            .description("Algebra, Geometry, Trigonometry").classId(sampleClassId).schoolId("SCH001").teacherId(6L)
                             .subject("Mathematics").grade("Grade 10").active(true).build()));
 
             if (courseRepo.count() == 1) {
                 courseRepo.findByCourseCode("PHY101").orElseGet(() ->
                         courseRepo.save(Course.builder().courseCode("PHY101").courseName("Physics Grade 10")
-                                .description("Mechanics and Waves").schoolId("SCH001").teacherId(6L)
+                                .description("Mechanics and Waves").classId(sampleClassId).schoolId("SCH001").teacherId(6L)
                                 .subject("Physics").grade("Grade 10").active(true).build()));
                 courseRepo.findByCourseCode("ENG101").orElseGet(() ->
                         courseRepo.save(Course.builder().courseCode("ENG101").courseName("English Literature")
-                                .description("Classic and Modern Literature").schoolId("SCH001").teacherId(6L)
+                                .description("Classic and Modern Literature").classId(sampleClassId).schoolId("SCH001").teacherId(6L)
                                 .subject("English").grade("Grade 10").active(true).build()));
             }
+
 
             try {
                 if (materialRepo.findByCourseCode("MATH101").isEmpty()) {
@@ -60,11 +73,7 @@ public class DataInitializer {
                         .dueDate(LocalDateTime.now().plusDays(7)).build());
             }
 
-            if (classRepo.count() == 0) {
-                classRepo.save(ClassRoom.builder().className("10A Mathematics").grade("Grade 10").section("A")
-                        .schoolId("SCH001").teacherEmail("teacher@school.com").courseId(math.getId()).capacity(35).build());
-                log.info("==> Course sample data initialized");
-            }
+            log.info("==> Course sample data initialized");
         };
     }
 }

@@ -37,6 +37,7 @@ public class TeacherController {
                         .active(true)
                         .schoolId(student.getSchoolId())
                         .classId(student.getClassId())
+                        .rollNumber(student.getRollNumber())
                         .build())
                 .collect(Collectors.toList());
         return ResponseEntity.ok(ApiResponse.success("Students retrieved for class " + classId + " in school " + schoolId, students));

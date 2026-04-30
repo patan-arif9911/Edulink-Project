@@ -12,6 +12,12 @@ const courseApi = {
   fetchAttendanceReport: (params) =>
     httpClient.get(Endpoints.course.attendanceReport, { params }),
 
+  fetchAdminClasses: () =>
+    httpClient.get(Endpoints.course.adminClasses),
+
+  fetchAdminCourses: () =>
+    httpClient.get(Endpoints.course.adminCourses),
+
   /* ── Teacher ── */
   fetchTeacherClasses: () =>
     httpClient.get(Endpoints.course.teacherClasses),
