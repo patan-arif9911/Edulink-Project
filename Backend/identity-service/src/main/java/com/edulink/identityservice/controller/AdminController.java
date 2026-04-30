@@ -1,5 +1,4 @@
 package com.edulink.identityservice.controller;
-
 import com.edulink.identityservice.dto.*;
 import com.edulink.identityservice.entity.Role;
 import com.edulink.identityservice.service.UserManagementService;
@@ -31,6 +30,11 @@ public class AdminController {
     public ResponseEntity<ApiResponse<UserResponse>> createTeacher(
             HttpServletRequest req, Authentication auth, @Valid @RequestBody CreateUserRequest request) {
         request.setRole(Role.TEACHER);
+        // Auto-derive schoolId from admin's JWT
+        String schoolId = jwtExtractor.extractSchoolId(req);
+        if (schoolId != null && (request.getSchoolId() == null || request.getSchoolId().isEmpty())) {
+            request.setSchoolId(schoolId);
+        }
         String token = jwtExtractor.extractToken(req);
         UserResponse response = userManagementService.createUser(request, auth.getName(), token);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -41,6 +45,11 @@ public class AdminController {
     public ResponseEntity<ApiResponse<UserResponse>> createStudent(
             HttpServletRequest req, Authentication auth, @Valid @RequestBody CreateUserRequest request) {
         request.setRole(Role.STUDENT);
+        // Auto-derive schoolId from admin's JWT
+        String schoolId = jwtExtractor.extractSchoolId(req);
+        if (schoolId != null && (request.getSchoolId() == null || request.getSchoolId().isEmpty())) {
+            request.setSchoolId(schoolId);
+        }
         String token = jwtExtractor.extractToken(req);
         UserResponse response = userManagementService.createUser(request, auth.getName(), token);
         return ResponseEntity.status(HttpStatus.CREATED)

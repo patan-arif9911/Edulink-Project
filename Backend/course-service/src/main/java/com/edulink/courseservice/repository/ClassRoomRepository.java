@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 public interface ClassRoomRepository extends JpaRepository<ClassRoom, Long> {
     List<ClassRoom> findBySchoolId(String schoolId);
-    List<ClassRoom> findByCourseId(Long courseId);
     List<ClassRoom> findByTeacherEmail(String teacherEmail);
     Optional<ClassRoom> findByClassName(String className);
     boolean existsByClassName(String className);

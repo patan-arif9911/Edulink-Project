@@ -84,15 +84,30 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
         {fields.map((f) => (
           <div className="form-group" key={f.name}>
             <label>{f.label}</label>
-            <input
-              name={f.name}
-              type={f.type || "text"}
-              placeholder={f.placeholder || ""}
-              value={formData[f.name] || ""}
-              onChange={handleChange}
-              required={f.required !== false}
-              disabled={loading}
-            />
+            {f.options ? (
+              <select
+                name={f.name}
+                value={formData[f.name] || ""}
+                onChange={handleChange}
+                required={f.required !== false}
+                disabled={loading}
+              >
+                <option value="">{f.placeholder || `— Select ${f.label} —`}</option>
+                {f.options.map((opt) => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+            ) : (
+              <input
+                name={f.name}
+                type={f.type || "text"}
+                placeholder={f.placeholder || ""}
+                value={formData[f.name] || ""}
+                onChange={handleChange}
+                required={f.required !== false}
+                disabled={loading}
+              />
+            )}
           </div>
         ))}
         <button type="submit" className="submit-btn" disabled={loading}>

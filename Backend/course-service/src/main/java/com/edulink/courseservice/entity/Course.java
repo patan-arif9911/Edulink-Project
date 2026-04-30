@@ -8,6 +8,7 @@ public class Course {
     @Column(unique = true) private String courseCode;
     private String courseName;
     private String description;
+    private Long classId;
     private String schoolId;
     private Long teacherId;
     private String subject;
@@ -18,12 +19,13 @@ public class Course {
     public Course() {
     }
 
-    public Course(Long id, String courseCode, String courseName, String description, String schoolId,
+    public Course(Long id, String courseCode, String courseName, String description, Long classId, String schoolId,
                   Long teacherId, String subject, String grade, boolean active, LocalDateTime createdAt) {
         this.id = id;
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.description = description;
+        this.classId = classId;
         this.schoolId = schoolId;
         this.teacherId = teacherId;
         this.subject = subject;
@@ -40,6 +42,8 @@ public class Course {
     public void setCourseName(String courseName) { this.courseName = courseName; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+    public Long getClassId() { return classId; }
+    public void setClassId(Long classId) { this.classId = classId; }
     public String getSchoolId() { return schoolId; }
     public void setSchoolId(String schoolId) { this.schoolId = schoolId; }
     public Long getTeacherId() { return teacherId; }
@@ -62,6 +66,7 @@ public class Course {
         private String courseCode;
         private String courseName;
         private String description;
+        private Long classId;
         private String schoolId;
         private Long teacherId;
         private String subject;
@@ -73,6 +78,7 @@ public class Course {
         public Builder courseCode(String courseCode) { this.courseCode = courseCode; return this; }
         public Builder courseName(String courseName) { this.courseName = courseName; return this; }
         public Builder description(String description) { this.description = description; return this; }
+        public Builder classId(Long classId) { this.classId = classId; return this; }
         public Builder schoolId(String schoolId) { this.schoolId = schoolId; return this; }
         public Builder teacherId(Long teacherId) { this.teacherId = teacherId; return this; }
         public Builder subject(String subject) { this.subject = subject; return this; }
@@ -80,7 +86,7 @@ public class Course {
         public Builder active(boolean active) { this.active = active; return this; }
         public Builder createdAt(LocalDateTime createdAt) { this.createdAt = createdAt; return this; }
         public Course build() {
-            return new Course(id, courseCode, courseName, description, schoolId, teacherId, subject, grade, active, createdAt);
+            return new Course(id, courseCode, courseName, description, classId, schoolId, teacherId, subject, grade, active, createdAt);
         }
     }
 }

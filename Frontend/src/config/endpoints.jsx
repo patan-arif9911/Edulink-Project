@@ -70,6 +70,8 @@ const Endpoints = {
     // School Admin
     createCourse:                   `${BASE}/course/admin/create-course`,
     createClass:                    `${BASE}/course/admin/create-class`,
+    adminClasses:                   `${BASE}/course/admin/classes`,
+    adminCourses:                   `${BASE}/course/admin/courses`,
     attendanceReport:               `${BASE}/admin/attendance-report`,
 
     // Teacher

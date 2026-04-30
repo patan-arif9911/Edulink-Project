@@ -56,7 +56,14 @@ public class AuthService {
                     .map(s -> s.getRollNumber())
                     .orElse(null);
         }
-        String accessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), rollNumber, user.getSchoolId());
+        String accessToken;
+        if (rollNumber != null) {
+            accessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), "rollNumber", rollNumber);
+        } else if (user.getSchoolId() != null) {
+            accessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId(), "schoolId", user.getSchoolId());
+        } else {
+            accessToken = jwtUtil.generateToken(user.getEmail(), user.getRole().name(), user.getId());
+        }
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
         log.info("User logged in: {} with role: {}", user.getEmail(), user.getRole());

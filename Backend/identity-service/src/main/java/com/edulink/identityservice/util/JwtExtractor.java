@@ -53,4 +53,13 @@ public class JwtExtractor {
                 .getBody();
         return claims.get("role", String.class);
     }
+    public String extractSchoolId(HttpServletRequest request) {
+        String token = extractToken(request);
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        return claims.get("schoolId", String.class);
+    }
 }

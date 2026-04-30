@@ -1,30 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
+import GenericTable from "../../components/shared/GenericTable";
 import AlertBanner from "../../components/shared/AlertBanner";
+import Spinner from "../../components/shared/Spinner";
 import { parseApiError } from "../../utils/apiErrorParser";
+import { formatDateTime } from "../../utils/dateFormatters";
 import "../../styles/pages.css";
 
 export default function AddCoursePage() {
-  const [form, setForm] = useState({ courseCode: "", courseName: "", description: "", schoolId: "", subject: "", grade: "" });
+  const [form, setForm] = useState({ courseCode: "", courseName: "", description: "", classId: "", subject: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [classes, setClasses] = useState([]);
+  const [classesLoading, setClassesLoading] = useState(true);
+  const [courses, setCourses] = useState([]);
+  const [coursesLoading, setCoursesLoading] = useState(true);
+
+  const loadCourses = () => {
+    setCoursesLoading(true);
+    courseApi.fetchAdminCourses()
+      .then((res) => setCourses(res.data?.data || []))
+      .catch(() => {})
+      .finally(() => setCoursesLoading(false));
+  };
+
+  useEffect(() => {
+    courseApi.fetchAdminClasses()
+      .then((res) => setClasses(res.data?.data || []))
+      .catch(() => {})
+      .finally(() => setClassesLoading(false));
+    loadCourses();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); setSuccess("");
+    if (!form.classId) {
+      setError("Please select a class.");
+      return;
+    }
     setLoading(true);
     try {
-      await courseApi.createCourse(form);
+      await courseApi.createCourse({ ...form, classId: Number(form.classId) });
       setSuccess(`Course "${form.courseName}" created successfully!`);
-      setForm({ courseCode: "", courseName: "", description: "", schoolId: "", subject: "", grade: "" });
+      setForm({ courseCode: "", courseName: "", description: "", classId: "", subject: "" });
+      loadCourses();
     } catch (err) {
       setError(parseApiError(err));
     } finally {
       setLoading(false);
     }
   };
+
+  const courseColumns = [
+    { key: "courseCode", label: "Code" },
+    { key: "courseName", label: "Course Name" },
+    { key: "subject", label: "Subject" },
+    { key: "classId", label: "Class ID" },
+    {
+      key: "active",
+      label: "Status",
+      render: (r) => (
+        <span className={`dashboard-chip ${r.active ? "success" : "error"}`}>
+          {r.active ? "Active" : "Inactive"}
+        </span>
+      ),
+    },
+    {
+      key: "createdAt",
+      label: "Created",
+      render: (r) => formatDateTime(r.createdAt),
+    },
+  ];
 
   return (
     <div>
@@ -42,16 +91,23 @@ export default function AddCoursePage() {
             <input value={form.courseName} onChange={(e) => setForm({ ...form, courseName: e.target.value })} required disabled={loading} placeholder="Mathematics" />
           </div>
           <div className="form-group">
-            <label>School ID</label>
-            <input value={form.schoolId} onChange={(e) => setForm({ ...form, schoolId: e.target.value })} required disabled={loading} placeholder="SCH001" />
+            <label>Class</label>
+            {classesLoading ? (
+              <select disabled><option>Loading classes...</option></select>
+            ) : (
+              <select value={form.classId} onChange={(e) => setForm({ ...form, classId: e.target.value })} required disabled={loading}>
+                <option value="">— Select a class —</option>
+                {classes.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.className} (Grade {c.grade}, Section {c.section})
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
           <div className="form-group">
             <label>Subject</label>
             <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} required disabled={loading} placeholder="Mathematics" />
-          </div>
-          <div className="form-group">
-            <label>Grade</label>
-            <input value={form.grade} onChange={(e) => setForm({ ...form, grade: e.target.value })} required disabled={loading} placeholder="10" />
           </div>
           <div className="form-group">
             <label>Description</label>
@@ -59,6 +115,13 @@ export default function AddCoursePage() {
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Course"}</button>
         </form>
+      </div>
+
+      <div style={{ marginTop: "2rem" }}>
+        <SectionHeader title="Available Courses" subtitle="Courses in your school" />
+        {coursesLoading ? <Spinner /> : (
+          <GenericTable columns={courseColumns} data={courses} emptyMessage="No courses created yet." />
+        )}
       </div>
     </div>
   );

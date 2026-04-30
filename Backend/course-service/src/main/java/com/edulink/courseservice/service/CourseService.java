@@ -44,11 +44,14 @@ public class CourseService {
             throw new CourseAlreadyExistsException(course.getCourseCode());
         });
 
-        if (course.getSchoolId() == null || course.getSchoolId().isEmpty()) {
-            throw new IllegalArgumentException("schoolId must be provided in course payload");
+        if (course.getClassId() == null) {
+            throw new IllegalArgumentException("classId must be provided in course payload");
         }
 
-        verifySchoolExists(course.getSchoolId());
+        // Auto-derive schoolId from the class
+        ClassRoom classRoom = classRepo.findById(course.getClassId())
+                .orElseThrow(() -> new IllegalArgumentException("Class not found with ID: " + course.getClassId()));
+        course.setSchoolId(classRoom.getSchoolId());
 
         return courseRepo.save(course);
     }
@@ -96,16 +99,16 @@ public class CourseService {
     public Assignment createAssignment(CreateAssignmentRequest request, String teacherEmail) throws IOException {
         courseRepo.findByCourseCode(request.getCourseCode())
                 .orElseThrow(() -> new CourseNotFoundException(request.getCourseCode()));
-        
+
         // Upload the questions file to GridFS
         String questionsFileId = null;
         if (request.getQuestionsFile() != null && !request.getQuestionsFile().isEmpty()) {
             questionsFileId = gridFsService.uploadFile(request.getQuestionsFile(), request.getCourseCode());
         }
-        
+
         List<Assignment> existing = assignmentRepo.findByCourseCodeOrderByAssignmentNumDesc(request.getCourseCode());
         int nextNum = existing.isEmpty() ? 1 : existing.get(0).getAssignmentNum() + 1;
-        
+
         Assignment assignment = Assignment.builder()
                 .courseCode(request.getCourseCode())
                 .teacherEmail(teacherEmail)
@@ -116,7 +119,7 @@ public class CourseService {
                 .maxMarks(request.getMaxMarks())
                 .questionsFileId(questionsFileId)
                 .build();
-        
+
         return assignmentRepo.save(assignment);
     }
 
@@ -134,18 +137,20 @@ public class CourseService {
         return assignmentRepo.findByCourseCode(course.getCourseCode());
     }
     public List<LearningMaterial> getMaterialsByClassId(Long classId) {
-        ClassRoom classRoom = classRepo.findById(classId).orElse(null);
-        if (classRoom == null) return List.of();
-        Course course = courseRepo.findById(classRoom.getCourseId()).orElse(null);
-        if (course == null) return List.of();
-        return materialRepo.findByCourseCode(course.getCourseCode());
+        List<Course> courses = courseRepo.findByClassId(classId);
+        List<LearningMaterial> materials = new ArrayList<>();
+        for (Course course : courses) {
+            materials.addAll(materialRepo.findByCourseCode(course.getCourseCode()));
+        }
+        return materials;
     }
     public List<Assignment> getAssignmentsByClassId(Long classId) {
-        ClassRoom classRoom = classRepo.findById(classId).orElse(null);
-        if (classRoom == null) return List.of();
-        Course course = courseRepo.findById(classRoom.getCourseId()).orElse(null);
-        if (course == null) return List.of();
-        return assignmentRepo.findByCourseCode(course.getCourseCode());
+        List<Course> courses = courseRepo.findByClassId(classId);
+        List<Assignment> assignments = new ArrayList<>();
+        for (Course course : courses) {
+            assignments.addAll(assignmentRepo.findByCourseCode(course.getCourseCode()));
+        }
+        return assignments;
     }
     public List<LearningMaterial> getMaterialsByCourseId(Long courseId) {
         Course course = courseRepo.findById(courseId).orElse(null);

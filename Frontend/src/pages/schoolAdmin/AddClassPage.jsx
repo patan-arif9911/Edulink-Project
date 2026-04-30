@@ -1,30 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
+import GenericTable from "../../components/shared/GenericTable";
 import AlertBanner from "../../components/shared/AlertBanner";
+import Spinner from "../../components/shared/Spinner";
 import { parseApiError } from "../../utils/apiErrorParser";
+import { formatDateTime } from "../../utils/dateFormatters";
 import "../../styles/pages.css";
 
 export default function AddClassPage() {
-  const [form, setForm] = useState({ className: "", grade: "", section: "", schoolId: "", teacherEmail: "", courseId: "", capacity: "" });
+  const [form, setForm] = useState({ grade: "", section: "", teacherEmail: "", capacity: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [createdClass, setCreatedClass] = useState(null);
+  const [classes, setClasses] = useState([]);
+  const [classesLoading, setClassesLoading] = useState(true);
+
+  const loadClasses = () => {
+    setClassesLoading(true);
+    courseApi.fetchAdminClasses()
+      .then((res) => setClasses(res.data?.data || []))
+      .catch(() => {})
+      .finally(() => setClassesLoading(false));
+  };
+
+  useEffect(() => {
+    loadClasses();
+  }, []);
+
+  // Auto-generate classId and className from grade + section
+  const classId = form.grade && form.section ? `${form.grade}${form.section.toUpperCase()}` : "";
+  const className = classId ? `Class ${classId}` : "";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); setSuccess("");
+    setError(""); setSuccess(""); setCreatedClass(null);
+    if (!form.grade || !form.section) {
+      setError("Grade and Section are required.");
+      return;
+    }
     setLoading(true);
     try {
-      await courseApi.createClass({ ...form, courseId: Number(form.courseId) || null, capacity: Number(form.capacity) || 0 });
-      setSuccess(`Class "${form.className}" created successfully!`);
-      setForm({ className: "", grade: "", section: "", schoolId: "", teacherEmail: "", courseId: "", capacity: "" });
+      const res = await courseApi.createClass({
+        grade: Number(form.grade),
+        section: form.section.toUpperCase(),
+        teacherEmail: form.teacherEmail,
+        capacity: Number(form.capacity) || 0,
+      });
+      const data = res.data?.data;
+      setCreatedClass(data);
+      setSuccess(`Class "${data?.className || className}" created successfully!`);
+      setForm({ grade: "", section: "", teacherEmail: "", capacity: "" });
+      loadClasses();
     } catch (err) {
       setError(parseApiError(err));
     } finally {
       setLoading(false);
     }
   };
+
+  const classColumns = [
+    { key: "className", label: "Class Name" },
+    { key: "grade", label: "Grade" },
+    { key: "section", label: "Section" },
+    { key: "teacherEmail", label: "Teacher" },
+    { key: "capacity", label: "Capacity" },
+    {
+      key: "createdAt",
+      label: "Created",
+      render: (r) => formatDateTime(r.createdAt),
+    },
+  ];
 
   return (
     <div>
@@ -34,35 +81,45 @@ export default function AddClassPage() {
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Class Name</label>
-            <input value={form.className} onChange={(e) => setForm({ ...form, className: e.target.value })} required disabled={loading} placeholder="10A Mathematics" />
-          </div>
-          <div className="form-group">
             <label>Grade</label>
-            <input value={form.grade} onChange={(e) => setForm({ ...form, grade: e.target.value })} required disabled={loading} placeholder="Grade 10" />
+            <input type="number" value={form.grade} onChange={(e) => setForm({ ...form, grade: e.target.value })} required disabled={loading} placeholder="10" min="1" max="12" />
           </div>
           <div className="form-group">
             <label>Section</label>
-            <input value={form.section} onChange={(e) => setForm({ ...form, section: e.target.value })} required disabled={loading} placeholder="A" />
+            <input value={form.section} onChange={(e) => setForm({ ...form, section: e.target.value.toUpperCase() })} required disabled={loading} placeholder="A" maxLength={2} />
           </div>
-          <div className="form-group">
-            <label>School ID</label>
-            <input value={form.schoolId} onChange={(e) => setForm({ ...form, schoolId: e.target.value })} required disabled={loading} placeholder="SCH001" />
-          </div>
+          {classId && (
+            <div style={{ marginBottom: "1rem", padding: "0.75rem", background: "#e8f5e9", borderRadius: "6px", fontSize: "0.9rem" }}>
+              <strong>Auto-generated:</strong> Class ID = <code>{classId}</code> &nbsp;|&nbsp; Class Name = <code>{className}</code>
+            </div>
+          )}
+          {createdClass && (
+            <div style={{ marginBottom: "1rem", padding: "0.75rem", background: "#e3f2fd", borderRadius: "6px", fontSize: "0.9rem", border: "1px solid #90caf9" }}>
+              <strong>✅ Created Class Details:</strong><br />
+              <span>DB ID: <code>{createdClass.id}</code></span> &nbsp;|&nbsp;
+              <span>Class ID: <code>{createdClass.grade}{createdClass.section}</code></span> &nbsp;|&nbsp;
+              <span>Class Name: <code>{createdClass.className}</code></span> &nbsp;|&nbsp;
+              <span>Grade: <code>{createdClass.grade}</code></span> &nbsp;|&nbsp;
+              <span>Section: <code>{createdClass.section}</code></span>
+            </div>
+          )}
           <div className="form-group">
             <label>Teacher Email</label>
             <input type="email" value={form.teacherEmail} onChange={(e) => setForm({ ...form, teacherEmail: e.target.value })} required disabled={loading} placeholder="teacher@school.edu" />
           </div>
           <div className="form-group">
-            <label>Course ID</label>
-            <input type="number" value={form.courseId} onChange={(e) => setForm({ ...form, courseId: e.target.value })} required disabled={loading} placeholder="1" />
-          </div>
-          <div className="form-group">
             <label>Capacity</label>
-            <input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} required disabled={loading} placeholder="35" />
+            <input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} required disabled={loading} placeholder="35" min="1" />
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Class"}</button>
         </form>
+      </div>
+
+      <div style={{ marginTop: "2rem" }}>
+        <SectionHeader title="Available Classes" subtitle="Classes in your school" />
+        {classesLoading ? <Spinner /> : (
+          <GenericTable columns={classColumns} data={classes} emptyMessage="No classes created yet." />
+        )}
       </div>
     </div>
   );
