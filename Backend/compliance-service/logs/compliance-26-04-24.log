@@ -1,0 +1,131 @@
+26-04-24 11:32:49 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 30464 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 11:32:49 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 11:32:49 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 11:33:22 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 11:33:33 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 49.107 seconds (process running for 50.338)
+26-04-24 11:52:34 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-24 11:52:34 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-24 11:52:35 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 11:52:35 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:16:29 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-24 12:16:29 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-24 12:16:32 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:16:32 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:23:51 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:24:22 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:24:22 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:24:44 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 12:24:44 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 13:42:13 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 13:42:13 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 13:42:18 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 13:43:00 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 13:43:00 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 14:39:45 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 26992 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 14:39:45 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 14:39:45 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 14:39:50 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 14:39:53 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 8.565 seconds (process running for 9.174)
+26-04-24 14:42:24 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 31692 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 14:42:24 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 14:42:24 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 14:42:32 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 14:42:35 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 11.88 seconds (process running for 12.676)
+26-04-24 14:43:39 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 22808 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 14:43:39 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 14:43:39 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 14:43:44 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 14:43:47 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.167 seconds (process running for 9.868)
+26-04-24 14:45:57 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 75899607 milliseconds ago at 2026-04-23T12:10:58.000Z. Current time: 2026-04-24T09:15:57.607Z. Allowed clock skew: 0 milliseconds.
+26-04-24 14:46:29 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 14:50:36 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 14:51:01 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 14:51:27 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 14:53:35 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 14:58:10 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 19136 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 14:58:10 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 14:58:10 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 14:58:36 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 14:58:46 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 39.017 seconds (process running for 39.787)
+26-04-24 14:59:22 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 15:00:05 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:02:19 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 5160 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 16:02:19 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 16:02:19 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 16:02:29 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 16:02:35 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 17.733 seconds (process running for 18.55)
+26-04-24 16:03:25 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:03:28 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:05:16 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 3704 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 16:05:16 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 16:05:16 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 16:05:48 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 16:06:01 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 48.85 seconds (process running for 49.72)
+26-04-24 16:06:29 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:12:12 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 2132065799 milliseconds ago at 2026-03-30T18:27:47.000Z. Current time: 2026-04-24T10:42:12.799Z. Allowed clock skew: 0 milliseconds.
+26-04-24 16:12:26 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 2132079355 milliseconds ago at 2026-03-30T18:27:47.000Z. Current time: 2026-04-24T10:42:26.355Z. Allowed clock skew: 0 milliseconds.
+26-04-24 16:14:41 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance-service/health.
+26-04-24 16:16:00 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:16:36 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:16:58 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:17:18 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:29:30 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 29220 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 16:29:30 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 16:29:30 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 16:29:38 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 16:29:42 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 14.516 seconds (process running for 15.484)
+26-04-24 16:30:53 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 16:31:33 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/getReports.
+26-04-24 17:35:19 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource COMPLIANCE-SERVICE/board/rule-create.
+26-04-24 17:36:28 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance-service/compliance/reports.
+26-04-24 17:41:15 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 18780 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-24 17:41:15 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-24 17:41:15 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-24 17:41:29 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-24 17:41:34 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 22.766 seconds (process running for 23.831)
+26-04-24 17:43:19 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 17:43:19 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-24 17:43:24 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:43:25 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:43:26 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:43:26 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:43:48 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:43:48 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:44:20 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:44:20 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:44:24 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:45:00 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:45:00 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:47:47 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:47:47 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:48:53 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:48:53 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:48:58 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:48:58 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:51:53 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:52:12 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:53:25 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:54:52 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 17:59:42 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 18:04:18 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:04:20 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:04:22 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:05:39 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 18:06:06 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 18:11:14 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:17 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:19 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:20 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:22 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:23 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:25 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:26 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:27 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:29 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:30 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:32 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:33 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:11:35 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-24 18:12:04 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 18:15:27 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-24 18:19:06 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]

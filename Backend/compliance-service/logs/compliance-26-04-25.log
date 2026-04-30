@@ -1,0 +1,232 @@
+26-04-25 12:51:02 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 26176 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 12:51:02 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 12:51:02 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 12:51:22 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 12:51:30 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 30.362 seconds (process running for 32.343)
+26-04-25 13:04:42 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:04:42 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:04:46 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:04:46 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:04:49 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:04:49 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:04:52 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:04:52 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:04:58 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:04:58 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:05:16 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:05:16 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:05:26 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:05:26 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:07:55 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:07:55 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 13:09:22 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:22 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:25 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:25 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:29 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:09:29 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:09:30 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:30 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:50 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:09:50 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-25 13:16:22 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'GET' is not supported
+26-04-25 13:20:50 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:20:50 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:20:53 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:20:53 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 13:37:49 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 31104 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 13:37:49 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 13:37:49 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 13:37:56 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 13:44:00 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 29036 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 13:44:00 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 13:44:00 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 13:44:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 13:44:09 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 10.606 seconds (process running for 11.201)
+26-04-25 13:44:44 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 12564 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 13:44:44 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 13:44:44 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 13:44:49 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 13:44:52 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.015 seconds (process running for 9.459)
+26-04-25 13:48:53 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 2514525817 milliseconds ago at 2026-03-27T05:50:08.000Z. Current time: 2026-04-25T08:18:53.817Z. Allowed clock skew: 0 milliseconds.
+26-04-25 13:49:13 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'GET' is not supported
+26-04-25 13:49:51 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'GET' is not supported
+26-04-25 13:51:39 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 12836 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 13:51:39 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 13:51:39 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 13:51:44 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 13:51:46 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 7.954 seconds (process running for 8.445)
+26-04-25 13:53:21 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 2144 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 13:53:21 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 13:53:21 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 13:53:26 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 13:53:28 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.146 seconds (process running for 9.572)
+26-04-25 13:55:45 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 30028 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 13:55:45 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 13:55:45 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 13:55:50 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 13:55:53 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.07 seconds (process running for 9.556)
+26-04-25 14:02:04 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/rule-validate/2/undefined/rejected.
+26-04-25 14:02:34 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'GET' is not supported
+26-04-25 14:02:43 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'GET' is not supported
+26-04-25 14:27:02 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:27:02 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:27:06 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:27:06 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:27 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:27 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:40 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:40 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:43 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:44 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:49 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 14:59:49 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:08:19 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:08:19 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:09:04 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:09:04 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:09:12 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:09:12 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:13:41 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:13:41 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:13:45 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:13:45 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:20 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:21 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:26 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:26 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:29 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:29 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:34 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:14:34 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:15:22 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 15:15:22 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 16:15:26 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 11884 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 16:15:26 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 16:15:26 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 16:15:34 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 16:15:45 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 21.364 seconds (process running for 22.361)
+26-04-25 16:24:52 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 2356 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 16:24:52 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 16:24:52 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 16:24:59 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 16:25:02 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 12.009 seconds (process running for 12.811)
+26-04-25 16:26:43 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 32148 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 16:26:43 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 16:26:43 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 16:26:55 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 16:26:59 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 19.323 seconds (process running for 20.013)
+26-04-25 16:31:01 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 19892 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 16:31:01 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 16:31:01 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 16:31:27 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 16:31:43 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 45.266 seconds (process running for 46.178)
+26-04-25 16:57:45 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 16:57:45 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 16:57:51 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 16:57:51 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:11:54 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 15096 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 23:11:54 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 23:11:54 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 23:12:02 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 23:12:06 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 14.383 seconds (process running for 15.955)
+26-04-25 23:13:11 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-25 23:13:12 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-25 23:13:24 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:13:24 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:15:31 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-25 23:15:31 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-04-25 23:16:05 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:16:05 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:17:17 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:17:17 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:17:25 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:17:25 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-25 23:18:33 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:18:33 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:18:36 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:18:36 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:18:37 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:18:37 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:18:39 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:18:39 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:18:41 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:18:41 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:18:43 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:18:43 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:18:48 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:18:48 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:18:49 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:18:49 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:19:46 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:19:46 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:20:25 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:20:25 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:20:27 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:20:27 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:20:29 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:20:29 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:24:04 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:24:04 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:24:05 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:24:05 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:24:08 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:24:08 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:24:10 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:24:10 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:24:11 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:24:11 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:24:12 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:24:12 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:24:13 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:24:13 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:24:13 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:24:13 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:36:40 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:36:40 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:36:41 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:36:41 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:36:43 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:36:43 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:36:45 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:36:45 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:36:46 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:36:46 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:36:47 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:36:47 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-25 23:36:48 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:36:48 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:36:48 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:36:48 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-25 23:40:03 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:40:03 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:40:05 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:40:05 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:41:37 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:41:37 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:41:37 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:41:37 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:42:09 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:42:09 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:42:09 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-25 23:42:09 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:46:50 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:46:50 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:48:41 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 29776 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 23:48:41 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 23:48:41 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 23:48:47 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 23:48:50 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.928 seconds (process running for 10.533)
+26-04-25 23:49:26 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:49:26 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:49:29 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:49:29 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:51:41 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 24844 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-25 23:51:41 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-25 23:51:41 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-25 23:51:48 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-25 23:51:51 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 11.734 seconds (process running for 12.238)
+26-04-25 23:54:22 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:54:22 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:56:07 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-25 23:56:08 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.

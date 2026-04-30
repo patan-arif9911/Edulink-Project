@@ -1,0 +1,142 @@
+26-04-26 00:14:55 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 31956 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-26 00:14:55 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-26 00:14:55 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-26 00:15:01 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-26 00:15:03 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 10.196 seconds (process running for 10.832)
+26-04-26 00:17:21 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 12148 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-26 00:17:21 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-26 00:17:21 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-26 00:17:26 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-26 00:17:29 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.884 seconds (process running for 10.476)
+26-04-26 00:18:13 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 00:18:13 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 00:18:14 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-26 00:18:14 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-26 00:18:15 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:18:15 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:18:16 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-26 00:18:16 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-26 00:19:33 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:19:33 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:19:38 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:19:38 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:20:24 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 00:20:24 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:01:25 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 15592 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-26 21:01:25 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-26 21:01:25 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-26 21:01:48 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-26 21:02:04 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 44.205 seconds (process running for 45.842)
+26-04-26 21:03:20 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:03:20 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:03:36 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:03:36 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:06:14 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:06:14 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:06:14 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:06:14 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:08:46 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:08:46 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:08:47 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:08:47 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:08:47 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:08:47 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:08:49 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-26 21:08:49 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-26 21:08:51 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:08:51 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:08:52 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-26 21:08:52 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/audit-records.
+26-04-26 21:08:55 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:08:55 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:08:55 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:08:55 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:10:58 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:10:58 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/boardService.
+26-04-26 21:14:13 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:14:13 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:16:38 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-26 21:16:38 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-26 21:16:50 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:16:50 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:19:15 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 103347458 milliseconds ago at 2026-04-25T11:06:48.000Z. Current time: 2026-04-26T15:49:15.458Z. Allowed clock skew: 0 milliseconds.
+26-04-26 21:19:47 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/allRules.
+26-04-26 21:38:56 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:38:56 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:47:22 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:47:22 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:54:44 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:54:44 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:55:05 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:55:05 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/compliance-reports.
+26-04-26 21:55:06 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-26 21:55:06 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/accreditation-status.
+26-04-26 21:55:18 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 21:55:18 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource regulator/system-audit.
+26-04-26 22:19:30 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 16852 (C:\Users\2479791\Desktop\module\compliance-service-v2\target\classes started by 2479791 in C:\Users\2479791\Desktop\module\compliance-service-v2)
+26-04-26 22:19:30 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-26 22:19:30 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-26 22:19:36 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-26 22:19:39 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 10.114 seconds (process running for 10.71)
+26-04-26 22:20:33 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:20:33 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:21:32 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/compliance-summary.
+26-04-26 22:21:32 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/compliance-summary.
+26-04-26 22:24:24 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/compliance-summary.
+26-04-26 22:24:24 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/compliance-summary.
+26-04-26 22:26:54 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:26:54 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:26:56 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:26:56 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:39:16 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/allrules.
+26-04-26 22:53:51 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:53:51 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:53:54 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:53:54 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:53:59 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/compliance-summary.
+26-04-26 22:53:59 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/compliance-summary.
+26-04-26 22:54:33 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:54:33 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:56:33 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:56:33 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/schools.
+26-04-26 22:56:34 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 22:56:34 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/academic-performance.
+26-04-26 23:19:05 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 32612 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:05.612Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:05 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 32661 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:05.661Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:08 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 35808 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:08.808Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:08 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 35836 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:08.836Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:13 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 40835 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:13.835Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:13 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 40857 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:13.857Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:15 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 42427 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:15.427Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:15 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 42444 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:15.444Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:17 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 44453 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:17.453Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:17 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 44473 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:17.473Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:21 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 48634 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:21.634Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:19:21 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 48663 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:49:21.663Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:20:57 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 144227 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:50:57.227Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:20:57 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 144246 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:50:57.246Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:20:58 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 145943 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:50:58.943Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:20:58 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 145953 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:50:58.953Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:02 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 149123 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:02.123Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:02 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 149141 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:02.141Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:03 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 150380 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:03.380Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:03 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 150404 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:03.404Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:06 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 153996 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:06.996Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:07 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 154017 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:07.017Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:08 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 155443 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:08.443Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:08 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 155463 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:08.463Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:10 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 157091 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:10.091Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:10 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 157105 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:10.105Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:50 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 197605 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:50.605Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:21:50 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 197624 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:51:50.624Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:22:01 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 208865 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:52:01.865Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:22:01 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 208895 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:52:01.895Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:22:03 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 210770 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:52:03.770Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:22:03 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid JWT expired 210782 milliseconds ago at 2026-04-26T17:48:33.000Z. Current time: 2026-04-26T17:52:03.782Z. Allowed clock skew: 0 milliseconds.
+26-04-26 23:23:19 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-26 23:23:19 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource compliance/compliance-status.
+26-04-26 23:25:57 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource rule-create.
+26-04-26 23:26:15 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource rule-create.
+26-04-26 23:49:36 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-26 23:54:51 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported
+26-04-26 23:55:11 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - This method is not valid at this End-point Request method 'POST' is not supported

@@ -1,0 +1,41 @@
+<configuration >
+
+
+
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <file>
+            log/compliance.log
+        </file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+           <fileNamePattern>logs/compliance-%d{yy-MM-dd}.log </fileNamePattern>
+            <maxHistory>50</maxHistory>
+       </rollingPolicy>
+
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <logger name="com.edulink.complianceservice" level="ERROR" additivity="true">
+        <appender-ref ref="myFileAppender" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender" />
+    </root>
+
+</configuration>
