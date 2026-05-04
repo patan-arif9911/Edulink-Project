@@ -185,6 +185,10 @@ public class CourseService {
         return courseRepo.findByCourseCode(courseCode).orElse(null);
     }
 
+    public List<Course> getAllCourses() {
+        return courseRepo.findAll();
+    }
+
     public void deleteMaterialByFileId(String fileId) {
         materialRepo.deleteByFileId(fileId);
     }

@@ -3,18 +3,28 @@ import { Link } from "react-router-dom";
 import identityApi from "../../api/identityApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import MetricCard from "../../components/shared/MetricCard";
+import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
+import { parseApiError } from "../../utils/apiErrorParser";
 import "../../styles/pages.css";
 
 export default function OperatorDashboard() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     identityApi
       .fetchAllUsers()
-      .then((res) => setUsers(res.data?.data || res.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setUsers(res.data?.data || res.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch users:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -37,6 +47,12 @@ export default function OperatorDashboard() {
   return (
     <div className="dashboard-page">
       <SectionHeader title="Operator Dashboard" subtitle="System-level overview" />
+      <AlertBanner
+        type="error"
+        message={error}
+        onClose={() => setError("")}
+      />
+      {/* metric cards */}
       <div className="metrics-grid">
         <MetricCard icon="people" label="Total Users" value={users.length} color="#1a73e8" />
         <MetricCard icon="verified_user" label="Compliance Officers" value={roleCounts.COMPLIANCE_OFFICER || 0} color="#e65100" />

@@ -45,21 +45,23 @@ const Endpoints = {
     createProfile:                  `${BASE}/student/profile`,
     // GET /student/courses — returns enrolled courses list
     enrolledCourses:                `${BASE}/student/courses`,
+    // GET /student/available-courses — returns available/non-enrolled courses list
+    availableCourses:               `${BASE}/student/available-courses`,
     // POST /student/enroll — body: { courseCode }
     enrollCourse:                   `${BASE}/student/enroll`,
-    // GET /student/materials/{courseCode} — proxied from course-service
+    // ...existing code...
     materials:           (code) =>  `${BASE}/course/student/materials/${code}`,
-    // GET /course/student/materials/download/{fileId} — binary file download
+    // ...existing code...
     downloadMaterial:    (fileId) => `${BASE}/course/student/materials/download/${fileId}`,
-    // GET /student/assignments/{courseCode} — proxied from course-service
+    // ...existing code...
     assignments:         (code) =>  `${BASE}/course/student/assignments/${code}`,
-    // POST /student/assignments/upload — multipart form
+    // ...existing code...
     uploadSubmission:               `${BASE}/student/assignments/upload`,
-    // POST /student/assignments/upload-legacy — JSON body
+    // ...existing code...
     uploadSubmissionLegacy:         `${BASE}/student/assignments/upload-legacy`,
-    // GET /exam/student/grades — grades direct from exam-service
+    // ...existing code...
     grades:                         `${BASE}/exam/student/grades`,
-    // GET /student/attendance — attendance via attendance-service (gateway route[0])
+    // ...existing code...
     attendance:                     `${BASE}/student/attendance`,
   },
 

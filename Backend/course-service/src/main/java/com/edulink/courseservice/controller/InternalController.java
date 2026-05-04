@@ -7,7 +7,9 @@ import com.edulink.courseservice.service.CourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/course/internal")
@@ -32,6 +34,26 @@ public class InternalController {
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(ApiResponse.error("Course not found: " + courseCode));
+        }
+    }
+
+    @GetMapping("/courses")
+    public ResponseEntity<?> getAllCourses() {
+        try {
+            List<Course> courses = courseService.getAllCourses();
+            List<Map<String, Object>> response = courses.stream()
+                    .map(course -> {
+                        Map<String, Object> courseMap = new HashMap<>();
+                        courseMap.put("id", course.getId());
+                        courseMap.put("courseCode", course.getCourseCode());
+                        courseMap.put("courseName", course.getCourseName());
+                        courseMap.put("schoolId", course.getSchoolId());
+                        return courseMap;
+                    })
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(ApiResponse.success("Courses retrieved", response));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Failed to retrieve courses: " + e.getMessage()));
         }
     }
 

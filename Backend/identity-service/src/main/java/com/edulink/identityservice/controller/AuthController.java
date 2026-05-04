@@ -55,7 +55,7 @@ public class AuthController {
     @PutMapping("/update-profile")
     public ResponseEntity<ApiResponse<UserResponse>> updateProfile(
             Authentication authentication,
-            @Valid @RequestBody com.edulink.identityservice.dto.UpdateProfileRequest request) {
+            @Valid @RequestBody UpdateProfileRequest request) {
         UserResponse updated = authService.updateProfile(authentication.getName(), request);
         return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", updated));
     }

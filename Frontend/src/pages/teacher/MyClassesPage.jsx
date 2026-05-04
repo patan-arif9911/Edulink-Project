@@ -3,18 +3,28 @@ import { useNavigate } from "react-router-dom";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import GenericTable from "../../components/shared/GenericTable";
+import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
+import { parseApiError } from "../../utils/apiErrorParser";
 
 export default function MyClassesPage() {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     courseApi
       .fetchTeacherClasses()
-      .then((res) => setClasses(res.data?.data || res.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setClasses(res.data?.data || res.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch classes:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -39,7 +49,17 @@ export default function MyClassesPage() {
   return (
     <div>
       <SectionHeader title="My Classes" subtitle="GET /teacher/classes" />
-      <GenericTable columns={columns} data={classes} emptyMessage="No classes assigned." />
+      <AlertBanner
+        type="error"
+        message={error}
+        onClose={() => setError("")}
+      />
+      <GenericTable
+        columns={columns}
+        data={classes}
+        emptyMessage="No classes assigned."
+        pageSize={10}
+      />
     </div>
   );
 }

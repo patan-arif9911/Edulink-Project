@@ -6,6 +6,10 @@ const studentApi = {
   fetchEnrolledCourses: () =>
     httpClient.get(Endpoints.student.enrolledCourses),
 
+  /* ── GET /student/available-courses ── */
+  fetchAvailableCourses: () =>
+    httpClient.get(Endpoints.student.availableCourses),
+
   /* ── POST /student/enroll  body: { courseCode } ── */
   enrollCourse: (courseCode) =>
     httpClient.post(Endpoints.student.enrollCourse, { courseCode }),

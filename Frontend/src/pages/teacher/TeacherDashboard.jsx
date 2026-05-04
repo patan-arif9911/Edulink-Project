@@ -3,18 +3,28 @@ import { Link } from "react-router-dom";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import MetricCard from "../../components/shared/MetricCard";
+import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
+import { parseApiError } from "../../utils/apiErrorParser";
 import "../../styles/pages.css";
 
 export default function TeacherDashboard() {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     courseApi
       .fetchTeacherClasses()
-      .then((res) => setClasses(res.data?.data || res.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setClasses(res.data?.data || res.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch classes:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -25,8 +35,16 @@ export default function TeacherDashboard() {
   return (
     <div className="dashboard-page">
       <SectionHeader title="Teacher Dashboard" subtitle="Manage your classes and students" />
+      <AlertBanner
+        type="error"
+        message={error}
+        onClose={() => setError("")}
+      />
+
       <div className="metrics-grid">
         <MetricCard icon="class" label="My Classes" value={classes.length} color="#1a73e8" />
+        <MetricCard icon="schedule" label="Recent Classes" value={recentClasses.length} color="#6a1b9a" />
+        <MetricCard icon="people" label="Students" value={classes.reduce((acc, c) => acc + (c.studentCount || 0), 0)} color="#2e7d32" />
       </div>
 
       <div className="dashboard-main-grid">

@@ -1,0 +1,5 @@
+26-05-04 17:34:59 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 13084 (C:\Users\2479954\Documents\Backup\Edulink-Project\Backend\compliance-service\target\classes started by 2479954 in C:\Users\2479954\Documents\Backup\Edulink-Project)
+26-05-04 17:34:59 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 17:34:59 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 17:35:11 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 17:35:16 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 21.217 seconds (process running for 23.217)

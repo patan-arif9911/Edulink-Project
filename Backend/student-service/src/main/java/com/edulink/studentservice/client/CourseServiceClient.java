@@ -41,4 +41,8 @@ public interface CourseServiceClient {
             @PathVariable("assignmentNum") Integer assignmentNum,
             @PathVariable("courseCode") String courseCode,
             @RequestHeader("Authorization") String authorization);
+
+        @GetMapping(value = "/course/internal/courses", consumes = MediaType.APPLICATION_JSON_VALUE)
+    ApiResponse<List<Map<String, Object>>> getAllCourses(
+            @RequestHeader("Authorization") String authorization);
 }
