@@ -13,49 +13,18 @@ import "../../styles/pages.css";
 export default function EnrolledCoursesPage() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [enrollCode, setEnrollCode] = useState("");
-  const [enrolling, setEnrolling] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  const loadCourses = () => {
+  useEffect(() => {
     setLoading(true);
     studentApi
       .fetchEnrolledCourses()
       .then((res) => setCourses(res.data?.data || []))
       .catch((err) => setError(parseApiError(err)))
       .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    loadCourses();
   }, []);
 
-  const handleEnroll = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-    const code = enrollCode.trim().toUpperCase();
-    if (!code) {
-      setError("Please enter a course code.");
-      return;
-    }
-    setEnrolling(true);
-    try {
-      const res = await studentApi.enrollCourse(code);
-      const enrolled = res.data?.data;
-      setSuccess(
-        `Successfully enrolled in ${enrolled?.courseName || code}!`
-      );
-      setEnrollCode("");
-      loadCourses();
-    } catch (err) {
-      setError(parseApiError(err));
-    } finally {
-      setEnrolling(false);
-    }
-  };
 
   /* Backend response fields:
      id, studentId, courseId, courseName, courseCode, status, enrolledAt */
@@ -106,45 +75,14 @@ export default function EnrolledCoursesPage() {
     <div>
       <SectionHeader
         title="My Courses"
-        subtitle="View enrolled courses and enroll in new ones"
+        subtitle="View your enrolled courses"
       />
       <AlertBanner type="error" message={error} onClose={() => setError("")} />
-      <AlertBanner
-        type="success"
-        message={success}
-        onClose={() => setSuccess("")}
-      />
-
-      {/* Enroll form */}
-      <div className="page-form" style={{ marginBottom: "1.5rem" }}>
-        <form
-          onSubmit={handleEnroll}
-          style={{ display: "flex", gap: "0.75rem", alignItems: "flex-end" }}
-        >
-          <div className="form-group" style={{ flex: 1, marginBottom: 0 }}>
-            <label>Enroll in a new course</label>
-            <input
-              value={enrollCode}
-              onChange={(e) => setEnrollCode(e.target.value)}
-              placeholder="Enter course code (e.g. MATH101)"
-              disabled={enrolling}
-            />
-          </div>
-          <button
-            type="submit"
-            className="submit-btn"
-            disabled={enrolling}
-            style={{ height: "38px" }}
-          >
-            {enrolling ? "Enrolling…" : "Enroll"}
-          </button>
-        </form>
-      </div>
 
       <GenericTable
         columns={columns}
         data={courses}
-        emptyMessage="No enrolled courses yet. Enter a course code above to enroll."
+        emptyMessage="No enrolled courses yet."
       />
     </div>
   );

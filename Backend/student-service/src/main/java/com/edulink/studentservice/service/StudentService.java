@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -146,6 +147,34 @@ public class StudentService {
 
     public List<AssignmentSubmission> getSubmissions(String userId) {
         throw new UnsupportedOperationException("Student profile logic removed. Implement submission lookup via identity-service.");
+    }
+
+    public List<Map<String, Object>> getAvailableCourses(String email, String token) {
+        try {
+            // Get all courses from course-service
+            com.edulink.studentservice.dto.ApiResponse<List<Map<String, Object>>> allCoursesResponse = 
+                courseServiceClient.getAllCourses(token);
+            
+            if (allCoursesResponse == null || allCoursesResponse.getData() == null) {
+                return List.of();
+            }
+            
+            List<Map<String, Object>> allCourses = allCoursesResponse.getData();
+            
+            // Get enrolled courses for the student
+            List<Enrollment> enrolledCourses = enrollmentRepo.findByStudentEmail(email);
+            List<String> enrolledCourseIds = enrolledCourses.stream()
+                    .map(e -> String.valueOf(e.getCourseId()))
+                    .collect(Collectors.toList());
+            
+            // Filter out enrolled courses
+            return allCourses.stream()
+                    .filter(course -> !enrolledCourseIds.contains(String.valueOf(course.get("id"))))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            log.error("Failed to get available courses for {}: {}", email, e.getMessage());
+            return List.of();
+        }
     }
 
 

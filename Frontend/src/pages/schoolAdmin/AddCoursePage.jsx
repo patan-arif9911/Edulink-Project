@@ -21,15 +21,28 @@ export default function AddCoursePage() {
   const loadCourses = () => {
     setCoursesLoading(true);
     courseApi.fetchAdminCourses()
-      .then((res) => setCourses(res.data?.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setCourses(res.data?.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch courses:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setCoursesLoading(false));
   };
 
   useEffect(() => {
+    setClassesLoading(true);
     courseApi.fetchAdminClasses()
-      .then((res) => setClasses(res.data?.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setClasses(res.data?.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch classes:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setClassesLoading(false));
     loadCourses();
   }, []);

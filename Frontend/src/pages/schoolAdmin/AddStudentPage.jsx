@@ -3,18 +3,28 @@ import identityApi from "../../api/identityApi";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import CreateUserForm from "../../components/shared/CreateUserForm";
+import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
 import { AuthContext } from "../../context/AuthContext";
+import { parseApiError } from "../../utils/apiErrorParser";
 
 export default function AddStudentPage() {
   const { currentUser } = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
   const [classesLoading, setClassesLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setClassesLoading(true);
     courseApi.fetchAdminClasses()
-      .then((res) => setClasses(res.data?.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setClasses(res.data?.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch classes:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setClassesLoading(false));
   }, []);
 
@@ -34,6 +44,11 @@ export default function AddStudentPage() {
   return (
     <div>
       <SectionHeader title="Add Student" subtitle="POST /admin/create-student" />
+      <AlertBanner
+        type="error"
+        message={error}
+        onClose={() => setError("")}
+      />
       <CreateUserForm
         title="New Student"
         fields={fields}

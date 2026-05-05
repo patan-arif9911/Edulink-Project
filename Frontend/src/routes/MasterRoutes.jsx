@@ -65,6 +65,7 @@ import ViewSubmissionsPage from "../pages/teacher/ViewSubmissionsPage";
 // ── Student ──
 import StudentDashboard from "../pages/student/StudentDashboard";
 import EnrolledCoursesPage from "../pages/student/EnrolledCoursesPage";
+import EnrollCoursePage from "../pages/student/EnrollCoursePage";
 import CourseMaterialsPage from "../pages/student/CourseMaterialsPage";
 import CourseAssignmentsPage from "../pages/student/CourseAssignmentsPage";
 import StudentExamsPage from "../pages/student/StudentExamsPage";
@@ -176,7 +177,7 @@ export default function MasterRoutes() {
             <Route element={<RoleGuard permitted={[STUDENT]} />}>
               <Route path="/student/dashboard" element={<StudentDashboard />} />
               <Route path="/student/courses" element={<EnrolledCoursesPage />} />
-              <Route path="/student/enroll" element={<EnrolledCoursesPage />} />
+              <Route path="/student/enroll" element={<EnrollCoursePage />} />
               <Route path="/student/courses/:courseCode/materials" element={<CourseMaterialsPage />} />
               <Route path="/student/courses/:courseCode/assignments" element={<CourseAssignmentsPage />} />
               <Route path="/student/exams" element={<StudentExamsPage />} />

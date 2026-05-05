@@ -20,8 +20,14 @@ export default function AddClassPage() {
   const loadClasses = () => {
     setClassesLoading(true);
     courseApi.fetchAdminClasses()
-      .then((res) => setClasses(res.data?.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setClasses(res.data?.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch classes:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setClassesLoading(false));
   };
 

@@ -4,7 +4,7 @@ const GATEWAY_BASE = process.env.REACT_APP_GATEWAY_URL || "http://localhost:9090
 
 const httpClient = axios.create({
   baseURL: GATEWAY_BASE,
-  timeout: 20000,
+  timeout: process.env.REACT_APP_API_TIMEOUT || 20000,
   headers: { "Content-Type": "application/json" },
 });
 

@@ -42,6 +42,13 @@ public class StudentController {
         return ResponseEntity.ok(ApiResponse.success("Courses retrieved", studentService.getEnrolledCoursesByEmail(email)));
     }
 
+    @GetMapping("/available-courses")
+    public ResponseEntity<ApiResponse<List<Map<String, Object>>>> getAvailableCourses(HttpServletRequest req) {
+        String email = jwtExtractor.extractEmail(req);
+        String token = jwtExtractor.extractToken(req);
+        return ResponseEntity.ok(ApiResponse.success("Available courses retrieved", studentService.getAvailableCourses(email, "Bearer " + token)));
+    }
+
     @PostMapping("/enroll")
     public ResponseEntity<ApiResponse<Enrollment>> enrollInCourse(HttpServletRequest req, @RequestBody Map<String, String> request) {
         String email = jwtExtractor.extractEmail(req);

@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from "react";
 import notificationApi from "../../api/notificationApi";
 import SectionHeader from "../../components/shared/SectionHeader";
+import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
+import { parseApiError } from "../../utils/apiErrorParser";
 import { formatDateTime } from "../../utils/dateFormatters";
 import "../../styles/pages.css";
 
 export default function InboxPage() {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     notificationApi
       .fetchInbox()
-      .then((res) => setNotifications(res.data?.data || res.data || []))
-      .catch(() => {})
+      .then((res) => {
+        setNotifications(res.data?.data || res.data || []);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to fetch notifications:", err);
+        setError(parseApiError(err));
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -23,7 +33,9 @@ export default function InboxPage() {
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, read: true } : n))
       );
-    } catch {}
+    } catch (err) {
+      console.error("Failed to mark notification as read:", err);
+    }
   };
 
   if (loading) return <Spinner />;
@@ -31,6 +43,11 @@ export default function InboxPage() {
   return (
     <div>
       <SectionHeader title="Notifications" subtitle="GET /notifications/my" />
+      <AlertBanner
+        type="error"
+        message={error}
+        onClose={() => setError("")}
+      />
       {notifications.length === 0 ? (
         <p style={{ color: "#888", textAlign: "center", padding: "2rem" }}>No notifications.</p>
       ) : (
