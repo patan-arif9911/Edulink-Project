@@ -6,6 +6,15 @@ public class ReportDto {
     private int pendingRules;
     private int rejectedRules;
     private int acceptedRules;
+    private int reviewRules;
+
+    public int getReviewRules() {
+        return reviewRules;
+    }
+
+    public void setReviewRules(int reviewRules) {
+        this.reviewRules = reviewRules;
+    }
 
     public ReportDto(){
 

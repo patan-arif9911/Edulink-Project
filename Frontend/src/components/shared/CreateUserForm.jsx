@@ -3,14 +3,7 @@ import AlertBanner from "../shared/AlertBanner";
 import { parseApiError } from "../../utils/apiErrorParser";
 import "../../styles/pages.css";
 
-/**
- * Reusable form for creating users (compliance officer, board officer, regulator, school admin, teacher, student).
- * Props:
- *   - title: form heading
- *   - fields: [{ name, label, type, placeholder, required }]
- *   - onSubmit: async (formData) => response
- *   - successExtractor: (response) => { message, tempPassword }
- */
+
 export default function CreateUserForm({ title, fields, onSubmit, successExtractor, defaultValues }) {
   const [formData, setFormData] = useState(defaultValues || {});
   const [loading, setLoading] = useState(false);
@@ -26,13 +19,13 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
     setError("");
     setResult(null);
     setLoading(true);
-
     try {
-      /* Clean payload: convert numeric fields, strip empty optional values */
+      
       const cleaned = {};
       fields.forEach((f) => {
         const val = formData[f.name];
-        if (val === undefined || val === "") {
+        const dob= formData[f.dob];
+        if (val === undefined || val === "" || dob === undefined || dob === "") {
           if (f.required === false) return;         // skip empty optional fields
           cleaned[f.name] = f.type === "number" ? null : val;
         } else {

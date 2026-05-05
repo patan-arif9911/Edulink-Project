@@ -40,6 +40,7 @@ public class ComplianceUserController {
     @PostMapping("/create-school-admin")
     public ResponseEntity<ApiResponse<UserResponse>> createSchoolAdmin(
             HttpServletRequest req, Authentication auth, @Valid @RequestBody CreateUserRequest request) {
+        System.out.println("IN identify controller");
         request.setRole(Role.SCHOOL_ADMIN);
         String token = jwtExtractor.extractToken(req);
         UserResponse response = userManagementService.createUser(request, auth.getName(), token);

@@ -54,8 +54,6 @@ export default function AuditRules({ complianceId }) {
                                                 }
                                             }
                                     );
-            // await complianceApi.ruleValidate(ruleId, complianceId, status);
-            // Refresh the rules list
             fetchRules();
             alert(`Rule ${status} successfully`);
         } catch (err) {
@@ -104,6 +102,7 @@ export default function AuditRules({ complianceId }) {
                                 <option value="pending">Pending</option>
                                 <option value="approved">Approved</option>
                                 <option value="rejected">Rejected</option>
+                               
                             </select>
                         </div>
                     </div>

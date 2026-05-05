@@ -33,6 +33,17 @@ public class User {
     @Column(name = "class_id")
     private Long classId;
 
+    @Column(name = "dob")
+    private String dob;
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
@@ -155,6 +166,7 @@ public class User {
         private String email;
         private String password;
         private String fullName;
+        private String dob;
         private Role role;
         private boolean active = true;
         private boolean mustChangePassword = false;
@@ -181,6 +193,11 @@ public class User {
 
         public Builder fullName(String fullName) {
             this.fullName = fullName;
+            return this;
+        }
+
+        public Builder dob(String dob) {
+            this.dob = dob;
             return this;
         }
 
@@ -229,6 +246,7 @@ public class User {
             user.email = this.email;
             user.password = this.password;
             user.fullName = this.fullName;
+            user.dob=this.dob;
             user.role = this.role;
             user.active = this.active;
             user.mustChangePassword = this.mustChangePassword;

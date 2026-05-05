@@ -3,8 +3,11 @@ import identityApi from "../../api/identityApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import AlertBanner from "../../components/shared/AlertBanner";
 import { parseApiError } from "../../utils/apiErrorParser";
+import axios from "axios";
+const BASE = process.env.REACT_APP_GATEWAY_URL ;
 
 export default function RegisterSchoolPage() {
+  const key=localStorage.getItem("edu_access_token");
   const [form, setForm] = useState({
     id: "",
     name: "",
@@ -20,13 +23,20 @@ export default function RegisterSchoolPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
     setLoading(true);
     try {
-      const res = await identityApi.createSchool(form);
+      // const res = await identityApi.createSchool(form);
+
+      const res = await axios.post(`${BASE}/compliance-service/compliance/create-school`,form,{
+                          headers:{
+                            Authorization: `Bearer ${key}`
+                          }
+                        });
       const data = res.data?.data || res.data;
       setSuccess(data?.message || `School "${form.name}" registered successfully!`);
       setForm({

@@ -13,7 +13,8 @@ const COLORS = {
   pending: '#f59e0b',
   primary: '#2091b9',
   secondary: '#208ab4',
-  accent: '#5b98ad'
+  accent: '#5b98ad',
+  review:'#FF9800'
 };
 
 export default function DashBoard(){
@@ -46,18 +47,20 @@ export default function DashBoard(){
             const reject=data.rejectedRules || 0;
             const accept=data.acceptedRules || 0;
             const pending=data.pendingRules || 0;
-            const total = live + reject + accept + pending;
+            const review=data.reviewRules || 0;
+            const total = live + reject + accept + pending+review;
             console.log("data",data);
             console.log("pending=",pending);
             
             
-            setRulesData({ live, reject, accept, pending, total });
+            setRulesData({ live,review, reject, accept, pending, total });
             
             const chartData = [
                 { name: 'Live', value: live, fill: COLORS.live },
                 { name: 'Accept', value: accept, fill: COLORS.accept },
                 { name: 'Reject', value: reject, fill: COLORS.reject },
-                { name: 'Pending', value: pending, fill: COLORS.pending }
+                { name: 'Pending', value: pending, fill: COLORS.pending },
+                { name: 'Review', value: review, fill: COLORS.review },
             ];
 
             console.log("charData=",chartData);
@@ -186,6 +189,19 @@ export default function DashBoard(){
                             </div>
                         </div>
 
+                        {/* Review Card */}
+                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.6s'}}>
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 sm:p-4 rounded-lg bg-orange-100 text-orange-600">
+                                    <FiAlertCircle size={24} className="sm:w-6 sm:h-6" />
+                                </div>
+                                <div>
+                                    <p className="text-gray-600 text-sm font-medium">Review</p>
+                                    <h3 className="text-2xl sm:text-3xl font-bold text-orange-600">{rulesData.review}</h3>
+                                </div>
+                            </div>
+                        </div>
+
                         {/* Total Users Card */}
                         <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.6s'}}>
                             <div className="flex items-center gap-4">
@@ -283,10 +299,15 @@ export default function DashBoard(){
                                             <td className="px-4 py-3 text-gray-900 font-medium">{rulesData.reject}</td>
                                             <td className="px-4 py-3 text-gray-600">{rulesData.total > 0 ? ((rulesData.reject / rulesData.total) * 100).toFixed(1) : 0}%</td>
                                         </tr>
-                                        <tr className="hover:bg-gray-50 transition-colors">
+                                        <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                             <td className="px-4 py-3"><span className="px-3 py-1 rounded-full text-white text-sm font-medium" style={{ backgroundColor: COLORS.pending }}>Pending</span></td>
                                             <td className="px-4 py-3 text-gray-900 font-medium">{rulesData.pending}</td>
                                             <td className="px-4 py-3 text-gray-600">{rulesData.total > 0 ? ((rulesData.pending / rulesData.total) * 100).toFixed(1) : 0}%</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50 transition-colors">
+                                            <td className="px-4 py-3"><span className="px-3 py-1 rounded-full text-white text-sm font-medium" style={{ backgroundColor: COLORS.review }}>Review</span></td>
+                                            <td className="px-4 py-3 text-gray-900 font-medium">{rulesData.review}</td>
+                                            <td className="px-4 py-3 text-gray-600">{rulesData.total > 0 ? ((rulesData.review / rulesData.total) * 100).toFixed(1) : 0}%</td>
                                         </tr>
                                     </tbody>
                                 </table>

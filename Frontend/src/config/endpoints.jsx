@@ -1,4 +1,4 @@
-const BASE = process.env.REACT_APP_GATEWAY_URL || "http://localhost:9090";;
+const BASE = process.env.REACT_APP_GATEWAY_URL || "http://localhost:9090";
 
 const Endpoints = {
   /* ═══════════════════════════════════════════════
@@ -128,21 +128,22 @@ const Endpoints = {
    * ═══════════════════════════════════════════════ */
   compliance: {
     // Compliance Officer
-    auditSchool:                    `${BASE}/compliance/audit-school`,
-    complianceStatus:               `${BASE}/compliance/compliance-status`,
-    registerSchool:                 `${BASE}/compliance/register-school`,
-    auditRecords:                   `${BASE}/compliance/audit-records`,
+    auditSchool:                    `${BASE}/compliance-service/compliance/audit-school`,
+    complianceStatus:               `${BASE}/compliance-service/compliance/compliance-status`,
+    createSchoolAdmin:              `${BASE}/compliance-service/compliance/create-school-admin`,
+    registerSchool:                 `${BASE}/compliance-service/compliance/register-school`,
+    auditRecords:                   `${BASE}/compliance-service/compliance/audit-records`,
 
     // Board Officer
-    boardSchools:                   `${BASE}/board/schools`,
-    boardAcademicPerformance:       `${BASE}/board/academic-performance`,
-    boardReports:                   `${BASE}/board/reports`,
-    boardComplianceSummary:         `${BASE}/board/compliance-summary`,
+    boardSchools:                   `${BASE}/compliance-service/board/schools`,
+    boardAcademicPerformance:       `${BASE}/compliance-service/board/academic-performance`,
+    boardReports:                   `${BASE}/compliance-service/board/reports`,
+    boardComplianceSummary:         `${BASE}/compliance-service/board/compliance-summary`,
 
     // Regulator
-    regulatorComplianceReports:     `${BASE}/regulator/compliance-reports`,
-    regulatorAccreditation:         `${BASE}/regulator/accreditation-status`,
-    regulatorSystemAudit:           `${BASE}/regulator/system-audit`,
+    regulatorComplianceReports:     `${BASE}/compliance-service/regulator/compliance-reports`,
+    regulatorAccreditation:         `${BASE}/compliance-service/regulator/accreditation-status`,
+    regulatorSystemAudit:           `${BASE}/compliance-service/regulator/system-audit`,
   },
 
   /* ═══════════════════════════════════════════════

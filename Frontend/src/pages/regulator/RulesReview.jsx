@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FiFlag, FiMessageSquare, FiCheck, FiAlertTriangle, FiX } from 'react-icons/fi';
+import { FiFlag, FiMessageSquare, FiCheck, FiAlertTriangle, FiX  } from 'react-icons/fi';
+import { FaStamp } from "react-icons/fa";
 
 const BASE = process.env.REACT_APP_GATEWAY_URL;
 
@@ -64,8 +65,10 @@ export default function RulesReview() {
             const reviewData = {
                 ruleId: ruleId,
                 flag: flag,
-                message: message.trim()
+                message: message
             };
+
+            console.log("review value",reviewData);
 
             await axios.post(
                 BASE + "/compliance-service/regulator/markRules",
@@ -125,7 +128,7 @@ export default function RulesReview() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-slate-100 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className=" min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-slate-100 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
            
             {loading && (
                 <div className="flex flex-col items-center justify-center min-h-screen gap-5">
@@ -145,8 +148,8 @@ export default function RulesReview() {
                     </div>
 
                    
-                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow">
-                        <div className="flex items-center gap-2 mb-6">
+                    <div className="w-[70vw]  bg-white rounded-xl shadow-md border border-gray-100  hover:shadow-lg transition-shadow overflow-hidden">
+                        <div className="mt-[50px] ml-[50px] flex items-center gap-2 mb-6">
                             <FiFlag className="text-purple-600 text-xl sm:text-2xl" />
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Active Rules Review</h2>
                         </div>
@@ -158,19 +161,22 @@ export default function RulesReview() {
                                 <p className="text-gray-500">There are currently no active rules requiring review.</p>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                            <div className="w-[100%] pl-[3%] flex flex-wrap overflow-hidden">
                                 {activeRules.map((rule, index) => (
                                     <div
                                         key={rule.id || index}
-                                        className={`rounded-lg border-2 p-6 transition-all duration-300 hover:shadow-lg ${getFlagColor(flagReviews[rule.id])}`}
+                                        className={`relative w-[47%] mr-[3%] mb-[3%] rounded-lg border-2 p-6 transition-all duration-300 hover:shadow-lg ${getFlagColor(flagReviews[rule.id])} overflow-hidden`}
                                     >
+                                        {
+                                            rule.review?(<FaStamp className="absolute right-[5%] text-[300%]"/>):null
+                                        }
                                        
-                                        <div className="mb-4">
-                                            <div className="flex items-center justify-between mb-2">
+                                        <div className="mb-4 relative overflow-hidden">
+                                            <div className="flex items-center justify-between mb-2 overflow-hidden">
                                                 <h3 className="font-semibold text-gray-900 text-lg">{rule.ruleType || 'Rule'}</h3>
                                                 {flagReviews[rule.id] && getFlagIcon(flagReviews[rule.id])}
                                             </div>
-                                            <div className="text-sm text-gray-600 space-y-1">
+                                            <div className="text-sm text-gray-600 space-y-1 overflow-hidden">
                                                 <p><span className="font-medium">ID:</span> {rule.id}</p>
                                                 <p><span className="font-medium">Board Officer:</span> {rule.boardOfficerId}</p>
                                                 <p><span className="font-medium">Compliance Officer:</span> {rule.complianceOfferId}</p>
@@ -196,16 +202,16 @@ export default function RulesReview() {
                                         </div>
 
                                        
-                                        <div className="space-y-4">
+                                        <div className="space-y-4 overflow-hidden">
                                            
                                             <div>
                                                 <label className="block text-sm font-medium text-gray-700 mb-2">
                                                     Review Flag *
                                                 </label>
-                                                <div className="grid grid-cols-3 gap-2">
+                                                <div className="grid grid-cols-3 gap-2 overflow-hidden">
                                                     <button
                                                         onClick={() => setFlagReviews(prev => ({ ...prev, [rule.id]: 'green' }))}
-                                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
+                                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all overflow-hidden ${
                                                             flagReviews[rule.id] === 'green'
                                                                 ? 'bg-green-600 text-white shadow-md'
                                                                 : 'bg-green-100 text-green-700 hover:bg-green-200'
@@ -216,7 +222,7 @@ export default function RulesReview() {
                                                     </button>
                                                     <button
                                                         onClick={() => setFlagReviews(prev => ({ ...prev, [rule.id]: 'amber' }))}
-                                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
+                                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all overflow-hidden ${
                                                             flagReviews[rule.id] === 'amber'
                                                                 ? 'bg-amber-600 text-white shadow-md'
                                                                 : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
@@ -227,7 +233,7 @@ export default function RulesReview() {
                                                     </button>
                                                     <button
                                                         onClick={() => setFlagReviews(prev => ({ ...prev, [rule.id]: 'red' }))}
-                                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
+                                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition- overflow-hidden ${
                                                             flagReviews[rule.id] === 'red'
                                                                 ? 'bg-red-600 text-white shadow-md'
                                                                 : 'bg-red-100 text-red-700 hover:bg-red-200'
@@ -257,7 +263,7 @@ export default function RulesReview() {
                                             <button
                                                 onClick={() => submitRuleReview(rule.id, flagReviews[rule.id], messageReviews[rule.id])}
                                                 disabled={!flagReviews[rule.id] || !messageReviews[rule.id]?.trim() || submitting}
-                                                className="w-full bg-purple-600 text-white py-3 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+                                                className="w-full bg-purple-600 text-white py-3 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium overflow-hidden"
                                             >
                                                 {submitting ? (
                                                     <div className="flex items-center justify-center gap-2">

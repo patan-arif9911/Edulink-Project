@@ -3,6 +3,7 @@ package com.edulink.complianceservice.controller;
 import com.edulink.complianceservice.dto.ReportDto;
 import com.edulink.complianceservice.dto.RuleDto;
 
+import com.edulink.complianceservice.entity.Regulator;
 import com.edulink.complianceservice.entity.Rule;
 import com.edulink.complianceservice.service.BoardService;
 import com.edulink.complianceservice.service.ComplianceService;
@@ -71,6 +72,26 @@ public class BoardController {
     @PreAuthorize("hasRole('EDUCATION_BOARD_OFFICER')")
     public ResponseEntity<Rule> ruleCreate(@RequestBody RuleDto ruleDto){
         return ResponseEntity.ok(boardService.rulesCreate(ruleDto));
+    }
+
+    @PostMapping("/rule-review")
+    @PreAuthorize("hasRole('EDUCATION_BOARD_OFFICER')")
+    public ResponseEntity<Rule> ruleReview(@RequestBody RuleDto ruleDto){
+//        return ResponseEntity.ok("ok");
+        return ResponseEntity.ok(boardService.ruleReview(ruleDto));
+    }
+
+    @DeleteMapping("/rule-delete/{id}")
+    @PreAuthorize("hasRole('EDUCATION_BOARD_OFFICER')")
+    public ResponseEntity<String> ruleDelete(@PathVariable(name="id") Long id){
+        System.out.println("id = "+id);
+        return ResponseEntity.ok(boardService.ruleDelete(id));
+    }
+
+    @GetMapping("/getRegulatorReviewById/{id}")
+    public ResponseEntity<Regulator> getRegulatorReviewById(@PathVariable("id") Long id){
+        System.out.println("I am in");
+        return ResponseEntity.ok(boardService.getRegulatorReviewById(id));
     }
 
     @PutMapping("/ruleActivate/{ruleId}/{active}")

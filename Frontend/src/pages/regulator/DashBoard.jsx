@@ -183,7 +183,6 @@ export default function RegulatorDashBoard() {
                                                 <Cell key={`cell-${index}`} fill={entry.fill} />
                                             ))}
                                         </Pie>
-                                        <Tooltip formatter={(value) => value} />
                                     </PieChart>
                                 </ResponsiveContainer>
                             </div>

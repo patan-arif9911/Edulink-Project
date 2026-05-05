@@ -19,11 +19,20 @@ public class UserDto {
 
     @NotBlank(message = "schoolId not fill")
     private String schoolId;
+    private String dob;
 
     private Long classId;
 
     public UserDto(){
 
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getEmail() {

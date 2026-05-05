@@ -10,13 +10,6 @@ public class RegulatorDto {
     private String flag;
     private String message;
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public RegulatorDto(){
 
@@ -38,11 +31,11 @@ public class RegulatorDto {
         this.ruleId = ruleId;
     }
 
-    public @NotNull(message = "RuleId not valid") String getRegulatorOfficer() {
+    public String getRegulatorOfficer() {
         return regulatorOfficer;
     }
 
-    public void setRegulatorOfficer(@NotNull(message = "RuleId not valid") String regulatorOfficer) {
+    public void setRegulatorOfficer(String regulatorOfficer) {
         this.regulatorOfficer = regulatorOfficer;
     }
 
@@ -52,5 +45,13 @@ public class RegulatorDto {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

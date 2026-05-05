@@ -10,8 +10,19 @@ public class CreateUserRequest {
     private String email;
     @NotBlank
     private String fullName;
+    @NotBlank
+    private String dob;
     private Role role;
     private String schoolId;
+
+    public @NotBlank String getDob() {
+        return dob;
+    }
+
+    public void setDob(@NotBlank String dob) {
+        this.dob = dob;
+    }
+
     private Long classId;
 
     // Getters and setters

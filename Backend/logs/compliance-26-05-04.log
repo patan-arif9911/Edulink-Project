@@ -1,0 +1,217 @@
+26-05-04 00:21:32 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Argument not Valid Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.edulink.complianceservice.entity.Regulator> com.edulink.complianceservice.controller.RegulatorController.markRules(com.edulink.complianceservice.dto.RegulatorDto): [Field error in object 'regulatorDto' on field 'regulatorOfficer': rejected value [null]; codes [NotNull.regulatorDto.regulatorOfficer,NotNull.regulatorOfficer,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [regulatorDto.regulatorOfficer,regulatorOfficer]; arguments []; default message [regulatorOfficer]]; default message [RuleId not valid]] 
+26-05-04 00:32:35 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 11908 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 00:32:35 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 00:32:35 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 00:32:58 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 00:33:05 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 32.294 seconds (process running for 33.569)
+26-05-04 01:27:27 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 19176 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 01:27:27 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 01:27:27 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 01:27:37 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 01:27:42 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 16.922 seconds (process running for 18.402)
+26-05-04 02:20:08 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 31012 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 02:20:08 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 02:20:08 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 02:20:23 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 02:26:46 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36080 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 02:26:46 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 02:26:46 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 02:26:57 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 02:27:03 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 19.843 seconds (process running for 21.494)
+26-05-04 08:43:09 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 200 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 08:43:09 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 08:43:09 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 08:43:26 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 08:43:34 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 26.704 seconds (process running for 28.721)
+26-05-04 09:25:54 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 17384 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 09:25:54 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 09:25:54 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 09:26:03 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 09:26:07 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 15.768 seconds (process running for 17.096)
+26-05-04 09:27:24 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 30548 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 09:27:24 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 09:27:24 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 09:28:01 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 09:28:15 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 56.63 seconds (process running for 58.308)
+26-05-04 11:59:01 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 35588 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 11:59:01 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 11:59:01 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 11:59:05 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 11:59:07 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.969 seconds (process running for 35.281)
+26-05-04 13:47:58 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36544 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 13:47:58 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 13:47:58 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 13:48:23 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 13:48:33 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 50.267 seconds (process running for 112.964)
+26-05-04 13:49:03 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 14144 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 13:49:03 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 13:49:03 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 13:49:19 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 13:49:27 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 25.46 seconds (process running for 26.286)
+26-05-04 13:53:14 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 28168 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 13:53:14 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 13:53:14 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 13:53:32 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 13:53:42 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 29.393 seconds (process running for 30.126)
+26-05-04 14:04:28 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Argument not Valid Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.edulink.complianceservice.entity.Regulator> com.edulink.complianceservice.controller.RegulatorController.markRules(com.edulink.complianceservice.dto.RegulatorDto): [Field error in object 'regulatorDto' on field 'regulatorOfficer': rejected value [null]; codes [NotNull.regulatorDto.regulatorOfficer,NotNull.regulatorOfficer,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [regulatorDto.regulatorOfficer,regulatorOfficer]; arguments []; default message [regulatorOfficer]]; default message [RuleId not valid]] 
+26-05-04 14:06:12 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Argument not Valid Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.edulink.complianceservice.entity.Regulator> com.edulink.complianceservice.controller.RegulatorController.markRules(com.edulink.complianceservice.dto.RegulatorDto): [Field error in object 'regulatorDto' on field 'regulatorOfficer': rejected value [null]; codes [NotNull.regulatorDto.regulatorOfficer,NotNull.regulatorOfficer,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [regulatorDto.regulatorOfficer,regulatorOfficer]; arguments []; default message [regulatorOfficer]]; default message [RuleId not valid]] 
+26-05-04 14:09:46 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Argument not Valid Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.edulink.complianceservice.entity.Regulator> com.edulink.complianceservice.controller.RegulatorController.markRules(com.edulink.complianceservice.dto.RegulatorDto): [Field error in object 'regulatorDto' on field 'regulatorOfficer': rejected value [null]; codes [NotNull.regulatorDto.regulatorOfficer,NotNull.regulatorOfficer,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [regulatorDto.regulatorOfficer,regulatorOfficer]; arguments []; default message [regulatorOfficer]]; default message [RuleId not valid]] 
+26-05-04 14:21:21 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Argument not Valid Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.edulink.complianceservice.entity.Regulator> com.edulink.complianceservice.controller.RegulatorController.markRules(com.edulink.complianceservice.dto.RegulatorDto): [Field error in object 'regulatorDto' on field 'regulatorOfficer': rejected value [null]; codes [NotNull.regulatorDto.regulatorOfficer,NotNull.regulatorOfficer,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [regulatorDto.regulatorOfficer,regulatorOfficer]; arguments []; default message [regulatorOfficer]]; default message [RuleId not valid]] 
+26-05-04 14:28:29 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36524 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 14:28:29 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 14:28:29 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 14:28:43 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 14:28:54 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 26.436 seconds (process running for 27.508)
+26-05-04 14:36:14 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 15288 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 14:36:14 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 14:36:14 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 14:36:33 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 14:36:43 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 30.145 seconds (process running for 31.045)
+26-05-04 14:42:12 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 4024 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 14:42:12 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 14:42:12 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 14:42:18 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 14:42:23 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 11.544 seconds (process running for 12.348)
+26-05-04 14:52:50 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 14:53:56 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 14:57:16 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 34104 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 14:57:16 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 14:57:16 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 14:57:20 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 14:57:22 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.894 seconds (process running for 7.612)
+26-05-04 14:57:56 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:00:05 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 15800 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 15:00:05 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 15:00:05 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 15:00:09 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 15:00:11 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.001 seconds (process running for 6.726)
+26-05-04 15:00:45 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:04:20 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:14:01 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 21244 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 15:14:01 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 15:14:01 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 15:14:04 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 15:14:06 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.822 seconds (process running for 7.584)
+26-05-04 15:14:48 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid No static resource board/rule-delete1.
+26-05-04 15:15:45 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:16:44 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:19:09 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 9824 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 15:19:09 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 15:19:09 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 15:19:14 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 15:19:17 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 8.741 seconds (process running for 9.875)
+26-05-04 15:19:50 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:22:02 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 15968 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 15:22:02 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 15:22:02 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 15:22:05 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 15:22:07 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.269 seconds (process running for 7.011)
+26-05-04 15:22:50 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:23:46 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 12132 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 15:23:46 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 15:23:46 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 15:23:54 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 15:24:01 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 15.968 seconds (process running for 16.876)
+26-05-04 15:30:19 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:30:29 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:37:53 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 15:42:52 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 16:03:47 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 14252 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:03:47 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:03:47 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:04:00 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:04:10 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 27.319 seconds (process running for 42.353)
+26-05-04 16:07:29 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 25200 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:07:29 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:07:29 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:07:35 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:07:38 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 9.668 seconds (process running for 10.529)
+26-05-04 16:07:50 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 33432 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:07:50 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:07:50 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:07:56 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:08:00 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 11.571 seconds (process running for 12.404)
+26-05-04 16:08:14 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 19204 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:08:14 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:08:14 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:08:24 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:08:30 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 17.513 seconds (process running for 18.664)
+26-05-04 16:08:59 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 16:11:53 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 5628 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:11:53 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:11:53 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:11:57 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:11:59 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.274 seconds (process running for 6.934)
+26-05-04 16:22:02 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 9984 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:22:02 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:22:02 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:22:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:22:08 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.483 seconds (process running for 7.229)
+26-05-04 16:23:41 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 9776 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:23:41 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:23:41 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:23:44 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:23:47 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 7.528 seconds (process running for 8.406)
+26-05-04 16:25:25 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 16:26:08 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 32480 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:26:08 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:26:08 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:26:12 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:26:14 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 7.355 seconds (process running for 8.091)
+26-05-04 16:27:01 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid class com.edulink.complianceservice.entity.Regulator cannot be cast to class java.lang.Boolean (com.edulink.complianceservice.entity.Regulator is in unnamed module of loader 'app'; java.lang.Boolean is in module java.base of loader 'bootstrap')
+26-05-04 16:27:25 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 5108 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:27:25 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:27:25 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:27:34 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:27:36 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 11.593 seconds (process running for 12.384)
+26-05-04 16:29:13 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid Null return value from advice does not match primitive return type for: public abstract boolean com.edulink.complianceservice.repository.RegulatorRepository.existsByRuleId(long)
+26-05-04 16:41:51 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 1772 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:41:51 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:41:51 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:41:55 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:41:57 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.861 seconds (process running for 7.551)
+26-05-04 16:42:43 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36212 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 16:42:43 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 16:42:43 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 16:42:47 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 16:42:49 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 7.119 seconds (process running for 7.884)
+26-05-04 16:45:55 [http-nio-8086-exec-7] ERROR c.e.c.exception.GlobalExceptional - Token in valid Null return value from advice does not match primitive return type for: public abstract boolean com.edulink.complianceservice.repository.RegulatorRepository.existsByRuleId(long)
+26-05-04 21:47:54 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [409] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school] [SchoolClient#createSchool(SchoolDto)]: [{"success":false,"message":"School with ID SCHOOL2 already exists","data":null}]
+26-05-04 22:00:56 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 28216 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 22:00:56 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 22:00:56 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 22:01:22 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 22:01:36 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 63.376 seconds (process running for 113.273)
+26-05-04 22:19:30 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools] [SchoolClient#getAllSchools()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-05-04 22:19:30 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools] [SchoolClient#getAllSchools()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-05-04 22:19:35 [http-nio-8086-exec-3] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools] [SchoolClient#getAllSchools()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-05-04 22:19:35 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [503] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools] [SchoolClient#getAllSchools()]: [Load balancer does not contain an instance for the service IDENTITY-SERVICE]
+26-05-04 23:10:30 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 4832 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 23:10:30 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 23:10:30 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 23:10:34 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 23:10:37 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 7.431 seconds (process running for 8.309)
+26-05-04 23:13:12 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [500] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools//compliance/identity/schools/] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Internal server error: No static resource compliance/identity/schools/compliance/identity/schools.","data":null}]
+26-05-04 23:13:26 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [500] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools//compliance/identity/schools/] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Internal server error: No static resource compliance/identity/schools/compliance/identity/schools.","data":null}]
+26-05-04 23:16:07 [http-nio-8086-exec-5] ERROR c.e.c.exception.GlobalExceptional - Token in valid [500] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools//compliance/identity/schools/] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Internal server error: No static resource compliance/identity/schools/compliance/identity/schools.","data":null}]
+26-05-04 23:18:31 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36776 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 23:18:31 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 23:18:31 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 23:18:34 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 23:18:36 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 6.636 seconds (process running for 7.469)
+26-05-04 23:23:18 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [500] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/schools//compliance/identity/schools/] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Internal server error: No static resource compliance/identity/schools/compliance/identity/schools.","data":null}]
+26-05-04 23:29:01 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 14480 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 23:29:01 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 23:29:01 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 23:29:05 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 23:29:07 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 7.206 seconds (process running for 8.027)
+26-05-04 23:30:14 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [400] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Validation failed","data":{"dob":"must not be blank"}}]
+26-05-04 23:35:57 [http-nio-8086-exec-10] ERROR c.e.c.exception.GlobalExceptional - Token in valid [400] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Validation failed","data":{"dob":"must not be blank"}}]
+26-05-04 23:37:38 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36040 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-04 23:37:38 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-04 23:37:38 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-04 23:37:52 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-04 23:38:00 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 23.045 seconds (process running for 23.808)
+26-05-04 23:38:43 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [400] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Validation failed","data":{"dob":"must not be blank"}}]
+26-05-04 23:39:19 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [400] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Validation failed","data":{"dob":"must not be blank"}}]
+26-05-04 23:43:20 [http-nio-8086-exec-6] ERROR c.e.c.exception.GlobalExceptional - Token in valid [400] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Validation failed","data":{"dob":"must not be blank"}}]

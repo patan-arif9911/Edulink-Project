@@ -15,14 +15,25 @@ public class Rule {
 
     private String boardOfficerId;
     private String complianceOfferId;
+    private Date ruleCreate=new Date();
+    private Date ruleActive;
 
     @Column(columnDefinition = "TEXT")
     private String ruleConfig;
 
     private String status="pending";
     private  boolean active=false;
-    private Date ruleCreate=new Date();
-    private Date ruleActive;
+    private boolean review=false;
+
+    public boolean isReview() {
+        return review;
+    }
+
+    public void setReview(boolean review) {
+        this.review = review;
+    }
+
+
 
     public Date getRuleCreate() {
         return ruleCreate;

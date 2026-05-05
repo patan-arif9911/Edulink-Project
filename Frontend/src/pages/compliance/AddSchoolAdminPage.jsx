@@ -7,7 +7,9 @@ const fields = [
   { name: "fullName", label: "Full Name", placeholder: "Admin Name" },
   { name: "email", label: "Email", type: "email", placeholder: "admin@school.edu" },
   { name: "schoolId", label: "School ID", placeholder: "SCH001" },
+  { name: "dob", label: "DOB", placeholder: "mm/dd/yy",type:"date" },
 ];
+
 
 export default function AddSchoolAdminPage() {
   return (

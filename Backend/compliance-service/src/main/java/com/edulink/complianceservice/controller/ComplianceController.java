@@ -64,6 +64,7 @@ public class ComplianceController {
     //create School Admin
     @PostMapping("/create-school-admin")
     public ResponseEntity<UserDto> createSchoolAdmin(@RequestBody @Valid UserDto newUser){
+        System.out.println("IN compliance controller");
         return ResponseEntity.ok(complianceService.createSchoolAdmin(newUser));
     }
 

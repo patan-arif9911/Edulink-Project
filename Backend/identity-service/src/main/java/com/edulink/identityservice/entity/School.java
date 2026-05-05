@@ -13,18 +13,22 @@ public class School {
     private String address;
     private String phone;
     private String email;
+    private long teacherNumber;
+    private long studentNumber;
     private String principalName;
     private LocalDate establishedDate;
     private LocalDateTime createdAt;
 
     public School() {}
 
-    public School(String id, String name, String address, String phone, String email, String principalName, LocalDate establishedDate, LocalDateTime createdAt) {
+    public School(String id, String name, String address, String phone, String email,Long teacherNumber,Long studentNumber, String principalName, LocalDate establishedDate, LocalDateTime createdAt) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.teacherNumber=teacherNumber;
+        this.studentNumber=studentNumber;
         this.principalName = principalName;
         this.establishedDate = establishedDate;
         this.createdAt = createdAt;
@@ -33,6 +37,22 @@ public class School {
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
+    }
+
+    public long getTeacherNumber() {
+        return teacherNumber;
+    }
+
+    public void setTeacherNumber(long teacherNumber) {
+        this.teacherNumber = teacherNumber;
+    }
+
+    public long getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(long studentNumber) {
+        this.studentNumber = studentNumber;
     }
 
     // Getters and setters

@@ -72,6 +72,8 @@ public class DataInitializer {
                 school.setPhone("9876543210");
                 school.setEmail("info@greenwood.edu");
                 school.setPrincipalName("Emily Carter");
+                school.setTeacherNumber(3);
+                school.setStudentNumber(100);
                 school.setEstablishedDate(java.time.LocalDate.of(1998, 1, 1));
                 schoolRepository.save(school);
                 log.info("==> SCHOOL created: SCH001 / Greenwood High School");

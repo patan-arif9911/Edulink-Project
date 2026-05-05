@@ -8,6 +8,10 @@ import java.util.Date;
 
 @Component
 public class RuleDto {
+    private long id;
+
+
+
     @NotNull(message = "ruleType not valid")
     private String ruleType;
     private String boardOfficerId;
@@ -21,9 +25,26 @@ public class RuleDto {
     private  boolean active;
 
     private Date ruleCreate;
+    private Date ruleActive;
 
     public RuleDto(){
 
+    }
+
+    public Date getRuleActive() {
+        return ruleActive;
+    }
+
+    public void setRuleActive(Date ruleActive) {
+        this.ruleActive = ruleActive;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public @NotNull(message = "ruleType not valid") String getRuleType() {

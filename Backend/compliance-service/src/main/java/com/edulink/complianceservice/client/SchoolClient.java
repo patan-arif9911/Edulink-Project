@@ -22,7 +22,6 @@ public interface SchoolClient {
     @GetMapping("/compliance/identity/usersStatus")
     public ResponseEntity<Map<String,Integer>> getUsers();
 
-    @GetMapping("/compliance/identity/schools/{schoolId}")
 
 
     @PostMapping("/compliance/identity/create-school-admin")

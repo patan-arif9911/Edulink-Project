@@ -31,7 +31,7 @@ public class OperatorController {
     @PostMapping("/create-compliance-officer")
     public ResponseEntity<ApiResponse<UserResponse>> createComplianceOfficer(
             HttpServletRequest req, Authentication auth, @Valid @RequestBody CreateUserRequest request) {
-        request.setRole(Role.COMPLIANCE_OFFICER);
+                request.setRole(Role.COMPLIANCE_OFFICER);
         String token = jwtExtractor.extractToken(req);
         UserResponse response = userManagementService.createUser(request, auth.getName(), token);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -39,9 +39,9 @@ public class OperatorController {
     }
 
     @PostMapping("/create-board-officer")
-    public ResponseEntity<ApiResponse<UserResponse>> createBoardOfficer(
+     public ResponseEntity<ApiResponse<UserResponse>> createBoardOfficer(
             HttpServletRequest req, Authentication auth, @Valid @RequestBody CreateUserRequest request) {
-        request.setRole(Role.EDUCATION_BOARD_OFFICER);
+                request.setRole(Role.EDUCATION_BOARD_OFFICER);
         String token = jwtExtractor.extractToken(req);
         UserResponse response = userManagementService.createUser(request, auth.getName(), token);
         return ResponseEntity.status(HttpStatus.CREATED)

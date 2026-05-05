@@ -66,7 +66,7 @@ public class ComplianceService {
 
 
     public UserDto createSchoolAdmin(UserDto newUser)throws ResourceNotFoundException {
-
+        System.out.println("IN compliance service");
         String token="Bearer "+ TokenContext.getToken();
         ResponseEntity<ApiResponse<UserDto>> tem=schoolClient.createSchoolAdmin(token,newUser);
 
