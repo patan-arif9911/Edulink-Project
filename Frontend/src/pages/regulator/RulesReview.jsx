@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Heading from "../../components/compliance/Heading"
 import { FiFlag, FiMessageSquare, FiCheck, FiAlertTriangle, FiX  } from 'react-icons/fi';
 import { FaStamp } from "react-icons/fa";
-
+import BgRandomIcons from "../../components/compliance/BgRandomIcons"
 const BASE = process.env.REACT_APP_GATEWAY_URL;
 
 const COLORS = {
@@ -138,18 +139,18 @@ export default function RulesReview() {
             )}
 
             {!loading && (
-                <div className="max-w-7xl mx-auto">
+                <div className="relative max-w-7xl mx-auto">
                    
-                    <div className="mb-8 sm:mb-12 text-center animate-fadeDown">
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                            Rules Review
-                        </h1>
-                        <p className="text-gray-600 text-base sm:text-lg">Review and flag active compliance rules</p>
-                    </div>
+                   <Heading title="Rules Review Dashboard" subtitle="Review and flag compliance rules" />
+                  
+                    
+                  <div className="relative w-[100%]">
+                     <BgRandomIcons min={20} max={50} minTextSize={150} maxTextSize={300} />
 
-                   
-                    <div className="w-[70vw]  bg-white rounded-xl shadow-md border border-gray-100  hover:shadow-lg transition-shadow overflow-hidden">
-                        <div className="mt-[50px] ml-[50px] flex items-center gap-2 mb-6">
+                    <div className="relative w-[70vw]  bg-[#ffffffab] rounded-xl shadow-md border border-gray-100  hover:shadow-lg transition-shadow overflow-hidden">
+                        
+    
+                        <div className="relative z-[1] mt-[50px] ml-[50px] flex items-center gap-2 mb-6">
                             <FiFlag className="text-purple-600 text-xl sm:text-2xl" />
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Active Rules Review</h2>
                         </div>
@@ -280,6 +281,7 @@ export default function RulesReview() {
                             </div>
                         )}
                     </div>
+                    </div> 
                 </div>
             )}
 

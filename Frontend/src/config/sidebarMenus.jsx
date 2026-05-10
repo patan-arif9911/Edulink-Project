@@ -15,20 +15,20 @@ const menusByRole = {
     { label: "Register School",   path: "/compliance/register-school",  icon: "add_business" },
     { label: "Add School Admin",  path: "/compliance/add-school-admin", icon: "admin_panel_settings" },
     { label: "Audit Records",     path: "/compliance/audit-records",    icon: "history" },
-    { label: "Notifications",     path: "/notifications",               icon: "notifications" },
+    // { label: "Notifications",     path: "/notifications",               icon: "notifications" },
   ],
 
   [EduLinkRoles.EDUCATION_BOARD_OFFICER]: [
      { label: "Dashboard",              path: "/board/dashboard",           icon: "dashboard" },
     { label: "Create Rule",            path: "/board/create-rule",         icon: "add_circle" },
     { label: "Activate Rules",         path: "/board/rules-activate",     icon: "toggle_on" },
-    { label: "Notifications",          path: "/notifications",             icon: "notifications" },
+    // { label: "Notifications",          path: "/notifications",             icon: "notifications" },
   ],
 
   [EduLinkRoles.REGULATOR]: [
      { label: "Dashboard",           path: "/regulator/dashboard",           icon: "dashboard" },
     { label: "Rules Review",        path: "/regulator/rules-review",        icon: "flag" },
-    { label: "Notifications",       path: "/notifications",                 icon: "notifications" },
+    // { label: "Notifications",       path: "/notifications",                 icon: "notifications" },
   ],
 
   [EduLinkRoles.SCHOOL_ADMIN]: [

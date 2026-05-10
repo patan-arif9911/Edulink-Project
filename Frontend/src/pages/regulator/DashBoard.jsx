@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StatusCard from "../../components/compliance/StatusCard"
+import GraphCards from "../../components/compliance/GraphCards"
+import Heading from "../../components/compliance/Heading"
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { FiTrendingUp, FiUsers, FiCheck, FiAlertCircle, FiClock } from 'react-icons/fi';
 
@@ -18,6 +21,7 @@ const COLORS = {
 export default function RegulatorDashBoard() {
     const key = localStorage.getItem("edu_access_token");
     const [loading, setLoading] = useState(true);
+    const [rulesStatus,setRulesStatus]=useState();
     
     const [rulesData, setRulesData] = useState({
         approved: 0,
@@ -55,6 +59,15 @@ export default function RegulatorDashBoard() {
                     { name: 'Pending', value: pending, fill: COLORS.pending }
                 ];
 
+                const status = [
+                    { name: 'Total Rules', value: total,sign:FiTrendingUp,signColor:"text-amber-600",signBgColor:"bg-amber-100"},
+                    { name: 'Approved Rules', value: approved,sign:FiCheck,signColor:"text-amber-600",signBgColor:"bg-amber-100"},
+                    { name: 'Live Rules', value: live,sign:FiUsers,signColor:"text-amber-600",signBgColor:"bg-amber-100"},
+                    { name: 'Pending Rules', value: pending,sign:FiClock,signColor:"text-amber-600",signBgColor:"bg-amber-100"},
+                    { name: 'Rejected', value: rejected,sign:FiAlertCircle,signColor:"text-amber-600",signBgColor:"bg-amber-100"},
+                ];
+
+                setRulesStatus(status);
                 setRulesChartData(chartData);
             } else {
                 setRulesData({ approved: 0, rejected: 0, pending: 0, live: 0, total: 0 });
@@ -85,140 +98,22 @@ export default function RegulatorDashBoard() {
 
             {!loading && (
                 <div className="max-w-7xl mx-auto">
-                    {/* Header */}
-                    <div className="mb-8 sm:mb-12 text-center animate-fadeDown">
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                            Rules Review Dashboard
-                        </h1>
-                        <p className="text-gray-600 text-base sm:text-lg">Review and flag compliance rules</p>
-                    </div>
+                    
+                    <Heading title="Rules Review Dashboard" subtitle="Review and flag compliance rules" />
+                   
 
                     {/* Stats Cards Section */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
-                        {/* Total Rules Card */}
-                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.1s'}}>
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 sm:p-4 rounded-lg bg-gradient-to-br from-purple-600 to-purple-700 text-white">
-                                    <FiTrendingUp size={24} className="sm:w-6 sm:h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-gray-600 text-sm font-medium">Total Rules</p>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">{rulesData.total}</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Approved Rules Card */}
-                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.2s'}}>
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 sm:p-4 rounded-lg bg-green-100 text-green-600">
-                                    <FiCheck size={24} className="sm:w-6 sm:h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-gray-600 text-sm font-medium">Approved Rules</p>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-green-600">{rulesData.approved}</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Live Rules Card */}
-                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.3s'}}>
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 sm:p-4 rounded-lg bg-blue-100 text-blue-600">
-                                    <FiUsers size={24} className="sm:w-6 sm:h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-gray-600 text-sm font-medium">Live Rules</p>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-blue-600">{rulesData.live}</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Pending Rules Card */}
-                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.4s'}}>
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 sm:p-4 rounded-lg bg-amber-100 text-amber-600">
-                                    <FiClock size={24} className="sm:w-6 sm:h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-gray-600 text-sm font-medium">Pending Rules</p>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-amber-600">{rulesData.pending}</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Rejected Rules Card */}
-                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 border border-gray-100 animate-fadeUp" style={{animationDelay: '0.4s'}}>
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 sm:p-4 rounded-lg bg-red-100 text-red-600">
-                                    <FiAlertCircle size={24} className="sm:w-6 sm:h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-gray-600 text-sm font-medium">Rejected</p>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-red-600">{rulesData.reject}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                      
+                        <StatusCard props={rulesStatus} />
+                   
 
                     {/* Charts Section */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-                        {/* Rules Status Chart */}
-                        <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow">
-                            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Rules Status Distribution</h2>
-                            <div className="w-full h-72 sm:h-80">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                        <Pie
-                                            data={rulesChartData}
-                                            cx="50%"
-                                            cy="50%"
-                                            labelLine={false}
-                                            label={({ name, value }) => `${name}: ${value}`}
-                                            outerRadius={80}
-                                            fill="#8884d8"
-                                            dataKey="value"
-                                        >
-                                            {rulesChartData.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={entry.fill} />
-                                            ))}
-                                        </Pie>
-                                    </PieChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
 
-                        {/* Rules Status Bar Chart */}
-                        <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow">
-                            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Rules Status Overview</h2>
-                            <div className="w-full h-72 sm:h-80">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <BarChart data={rulesChartData}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                                        <XAxis 
-                                            dataKey="name" 
-                                            angle={-45} 
-                                            textAnchor="end" 
-                                            height={80} 
-                                            interval={0}
-                                            fontSize={12}
-                                        />
-                                        <YAxis />
-                                        <Tooltip 
-                                            contentStyle={{
-                                                backgroundColor: '#fff',
-                                                border: '1px solid #e5e7eb',
-                                                borderRadius: '8px'
-                                            }}
-                                        />
-                                        <Bar dataKey="value" fill={COLORS.primary} radius={[8, 8, 0, 0]} />
-                                    </BarChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
-                    </div>
+                    <GraphCards circleChart={rulesChartData} barChart={rulesChartData} COLORS={COLORS} />
+                    
 
                     {/* Rules Summary Table */}
+
                     <div className="mb-8 sm:mb-12">
                         <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow">
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Rules Summary</h2>
