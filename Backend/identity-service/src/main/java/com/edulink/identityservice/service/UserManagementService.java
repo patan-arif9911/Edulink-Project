@@ -63,15 +63,15 @@ public class UserManagementService {
         }
 
         boolean needsTempPassword = (request.getRole() == Role.TEACHER || request.getRole() == Role.STUDENT || request.getRole() == Role.SCHOOL_ADMIN);
-//        String tempPassword = passwordGenerator.generateTemporaryPassword();
-//        String encodedPassword = needsTempPassword
-//                ? passwordEncoder.encode(tempPassword)
-//                : passwordEncoder.encode(passwordGenerator.generateTemporaryPassword());
+        String tempPassword = passwordGenerator.generateTemporaryPassword();
+        String encodedPassword = needsTempPassword
+                ? passwordEncoder.encode(tempPassword)
+                : passwordEncoder.encode(passwordGenerator.generateTemporaryPassword());
 
-        String tempPassword=request.getFullName();
-        tempPassword=tempPassword.toUpperCase().charAt(0)+tempPassword.substring(1,4)+request.getDob().substring(0,4);
+//        String tempPassword=request.getFullName();
+//        tempPassword=tempPassword.toUpperCase().charAt(0)+tempPassword.substring(1,4)+request.getDob().substring(0,4);
 
-        String encodedPassword=passwordEncoder.encode(tempPassword);
+//        String encodedPassword=passwordEncoder.encode(tempPassword);
 
         User user = User.builder()
                 .email(request.getEmail())
