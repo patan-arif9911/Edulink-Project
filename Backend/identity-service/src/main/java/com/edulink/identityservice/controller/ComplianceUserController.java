@@ -43,7 +43,7 @@ public class ComplianceUserController {
         System.out.println("IN identify controller");
         request.setRole(Role.SCHOOL_ADMIN);
         String token = jwtExtractor.extractToken(req);
-        UserResponse response = userManagementService.createUser(request, auth.getName(), token);
+        UserResponse response = complianceService.createUser(request, auth.getName(), token);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success("School Admin created successfully", response));
     }

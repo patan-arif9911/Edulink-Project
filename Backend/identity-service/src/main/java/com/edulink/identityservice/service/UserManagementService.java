@@ -49,7 +49,7 @@ public class UserManagementService {
     }
 
     public UserResponse createUser(CreateUserRequest request, String createdByEmail, String authorizationToken) {
-        System.out.println("IN identify service");
+
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new EduLinkException("Email already registered: " + request.getEmail(), HttpStatus.CONFLICT);
         }

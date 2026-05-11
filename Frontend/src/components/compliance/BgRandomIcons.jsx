@@ -33,9 +33,6 @@ export default function BgRandomIcons({min=10,max=20,minTextSize=110,maxTextSize
         setIconsData(tem);
     }
     
-    useEffect(()=>{
-        toRandomPosition();
-    },[])
 
 
     return(

@@ -64,7 +64,7 @@ export default function RegisterSchoolPage() {
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto">
-        <SectionHeader title="Register School" subtitle="POST /compliance/identity/create-school" />
+        <SectionHeader title="Register School" subtitle="" />
         
         <div className="bg-white rounded-lg shadow-md p-6">
           <AlertBanner type="error" message={error} onClose={() => setError("")} />

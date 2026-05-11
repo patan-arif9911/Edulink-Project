@@ -14,7 +14,7 @@ const fields = [
 export default function AddSchoolAdminPage() {
   return (
     <div>
-      <SectionHeader title="Add School Admin" subtitle="POST /compliance/identity/create-school-admin" />
+      <SectionHeader title="Add School Admin" subtitle="" />
       <CreateUserForm
         title="New School Administrator"
         fields={fields}

@@ -103,6 +103,7 @@ export default function GraphCards({ circleChart, barChart, titleCircle, subtitl
                                     axisLine={false} 
                                     tickLine={false} 
                                     tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
+                                    tickFormatter={(value) => value?.slice(0, 2)}
                                     dy={10}
                                 />
                                 <YAxis 

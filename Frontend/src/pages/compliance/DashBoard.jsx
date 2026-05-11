@@ -97,7 +97,7 @@ export default function DashBoard(){
                 for(let u=0;u<chartData.length;u++){
                         totalUser+=chartData[u].value;
                 }
-                console.log("totallog = ",totalUser);
+                
                 setTotalUser(totalUser);
             }
                 

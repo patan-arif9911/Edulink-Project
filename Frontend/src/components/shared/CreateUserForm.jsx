@@ -14,6 +14,8 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+ 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -34,8 +36,10 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
       });
 
       const res = await onSubmit(cleaned);
+     
       const wrapper = res.data;                     // { success, message, data }
       const inner   = wrapper?.data || wrapper;
+      
       if (successExtractor) {
         setResult(successExtractor(inner));
       } else {
@@ -51,6 +55,9 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
     } finally {
       setLoading(false);
     }
+
+    console.log("inner",error);
+    console.log("typer",typeof error);
   };
 
   return (

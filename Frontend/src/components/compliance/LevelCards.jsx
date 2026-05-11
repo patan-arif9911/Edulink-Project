@@ -2,10 +2,7 @@ import { useEffect } from "react";
 
 //datas={name,value,fill(color)}
 export default function LevelCards({title,summary,datas,totalScore}){
-    useEffect(()=>{
-        console.log("datas",datas)
-        console.log("type of data",typeof datas)
-    },[])
+    
     return(
         <>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
@@ -18,7 +15,7 @@ export default function LevelCards({title,summary,datas,totalScore}){
                                             datas.map((data,index) => {
                                                     const pct = totalScore > 0 ? ((data.value / totalScore) * 100).toFixed(1) : 0;
                                                     return (
-                                                        <div key={index} className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                                                        <div key={index} className="flex items-center gap-4 p-3 rounded-xl hover:bg-[#5f585c30] transition-colors">
                                                             <span
                                                                 className="min-w-[80px] text-center px-3 py-1 rounded-full text-white text-xs font-semibold"
                                                                 style={{ backgroundColor: data.fill }}
