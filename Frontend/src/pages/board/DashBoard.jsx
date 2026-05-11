@@ -138,7 +138,7 @@ export default function DashBoard(){
 
 
                      {/* Rules and Users Cards Section */}
-                    <GraphCards circleChart={rulesChartData} barChart={userChartData} COLORS={COLORS} />
+                    <GraphCards circleChart={rulesChartData} barChart={userChartData} titleCircle="Rules Distribution" subtitleCircle="Breakdown by rule status" titleBar="Users by Type" subtitleBar="Distribution across user roles" COLORS={COLORS} />
 
 
                     {/* Detailed Stats Tables */}

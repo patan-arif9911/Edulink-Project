@@ -109,7 +109,7 @@ export default function RegulatorDashBoard() {
 
                     {/* Charts Section */}
 
-                    <GraphCards circleChart={rulesChartData} barChart={rulesChartData} COLORS={COLORS} />
+                    <GraphCards circleChart={rulesChartData} barChart={rulesChartData} titleCircle="Rules Distribution" subtitleCircle="Breakdown by rule status" titleBar="Rules Distribution" subtitleBar="Breakdown by rule status" COLORS={COLORS} />
                     
 
                     {/* Rules Summary Table */}
