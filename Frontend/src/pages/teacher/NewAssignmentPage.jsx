@@ -1,40 +1,85 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import AlertBanner from "../../components/shared/AlertBanner";
+import Spinner from "../../components/shared/Spinner";
 import { parseApiError } from "../../utils/apiErrorParser";
 import "../../styles/pages.css";
 
 export default function NewAssignmentPage() {
-  const [courseCode, setCourseCode] = useState("");
+  // Cascading dropdowns: class → course
+  const [classes, setClasses] = useState([]);
+  const [classesLoading, setClassesLoading] = useState(true);
+  const [selectedClassId, setSelectedClassId] = useState("");
+  const [courses, setCourses] = useState([]);
+  const [coursesLoading, setCoursesLoading] = useState(false);
+  const [selectedCourseCode, setSelectedCourseCode] = useState("");
+
+  // Assignment fields
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [maxMarks, setMaxMarks] = useState("");
-  const [assignmentNum, setAssignmentNum] = useState("");
   const [file, setFile] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  useEffect(() => {
+    courseApi
+      .fetchTeacherClasses()
+      .then((res) => setClasses(res.data?.data || res.data || []))
+      .catch((err) => setError(parseApiError(err) || "Failed to load classes."))
+      .finally(() => setClassesLoading(false));
+  }, []);
+
+  useEffect(() => {
+    if (!selectedClassId) {
+      setCourses([]);
+      setSelectedCourseCode("");
+      return;
+    }
+    setCoursesLoading(true);
+    setSelectedCourseCode("");
+    courseApi
+      .fetchCoursesByClass(selectedClassId)
+      .then((res) => setCourses(res.data?.data || res.data || []))
+      .catch((err) => setError(parseApiError(err) || "Failed to load courses for this class."))
+      .finally(() => setCoursesLoading(false));
+  }, [selectedClassId]);
+
+  const selectedClass = classes.find((c) => String(c.id || c.classId) === selectedClassId);
+  const selectedCourse = courses.find((c) => c.courseCode === selectedCourseCode);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); setSuccess("");
+    setError("");
+    setSuccess("");
+
+    if (!selectedClassId) { setError("Please select a class."); return; }
+    if (!selectedCourseCode) { setError("Please select a course."); return; }
 
     const formData = new FormData();
-    formData.append("courseCode", courseCode);
+    formData.append("courseCode", selectedCourseCode);
     formData.append("title", title);
     formData.append("description", description);
     if (dueDate) formData.append("dueDate", dueDate + "T23:59:59");
     if (maxMarks) formData.append("maxMarks", maxMarks);
-    if (assignmentNum) formData.append("assignmentNum", assignmentNum);
     if (file) formData.append("questionsFile", file);
 
     setLoading(true);
     try {
       await courseApi.createAssignment(formData);
-      setSuccess("Assignment created successfully!");
-      setCourseCode(""); setTitle(""); setDescription(""); setDueDate(""); setMaxMarks(""); setAssignmentNum(""); setFile(null);
+      setSuccess(`Assignment created for ${selectedCourse?.courseName || selectedCourseCode} in ${selectedClass?.className || ""}.`);
+      // Keep class/course selection so the teacher can quickly add another assignment to the same course
+      setTitle("");
+      setDescription("");
+      setDueDate("");
+      setMaxMarks("");
+      setFile(null);
+      const fileInput = document.getElementById("assignment-questions-file");
+      if (fileInput) fileInput.value = "";
     } catch (err) {
       setError(parseApiError(err));
     } finally {
@@ -42,21 +87,65 @@ export default function NewAssignmentPage() {
     }
   };
 
+  if (classesLoading) return <Spinner />;
+
   return (
     <div>
-      <SectionHeader title="New Assignment" subtitle="POST /teacher/create-assignment" />
+      <SectionHeader title="New Assignment" subtitle="Select a class and course, then enter assignment details" />
       <div className="page-form">
         <AlertBanner type="error" message={error} onClose={() => setError("")} />
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Course Code</label>
-            <input value={courseCode} onChange={(e) => setCourseCode(e.target.value)} required disabled={loading} placeholder="MATH101" />
+            <label>Class</label>
+            <select
+              value={selectedClassId}
+              onChange={(e) => setSelectedClassId(e.target.value)}
+              disabled={loading}
+              required
+            >
+              <option value="">— Select a class —</option>
+              {classes.map((c) => (
+                <option key={c.id || c.classId} value={c.id || c.classId}>
+                  {c.className || `Class ${c.grade || ""}${c.section || ""}`}
+                </option>
+              ))}
+            </select>
+            {classes.length === 0 && (
+              <small style={{ color: "#b45309" }}>
+                You aren't assigned to any classes yet. Ask your school admin to assign you.
+              </small>
+            )}
           </div>
+
           <div className="form-group">
-            <label>Assignment Number</label>
-            <input type="number" value={assignmentNum} onChange={(e) => setAssignmentNum(e.target.value)} required disabled={loading} placeholder="1" />
+            <label>Course</label>
+            <select
+              value={selectedCourseCode}
+              onChange={(e) => setSelectedCourseCode(e.target.value)}
+              disabled={loading || !selectedClassId || coursesLoading}
+              required
+            >
+              <option value="">
+                {!selectedClassId
+                  ? "— Select a class first —"
+                  : coursesLoading
+                    ? "Loading…"
+                    : courses.length === 0
+                      ? "No courses for this class"
+                      : "— Select a course —"}
+              </option>
+              {courses.map((c) => (
+                <option key={c.courseCode} value={c.courseCode}>
+                  {c.courseName ? `${c.courseName} (${c.courseCode})` : c.courseCode}
+                </option>
+              ))}
+            </select>
+            <small style={{ color: "#666" }}>
+              Assignment number is auto-generated based on existing assignments for this course.
+            </small>
           </div>
+
           <div className="form-group">
             <label>Title</label>
             <input value={title} onChange={(e) => setTitle(e.target.value)} required disabled={loading} />
@@ -75,7 +164,7 @@ export default function NewAssignmentPage() {
           </div>
           <div className="form-group">
             <label>Questions File (optional)</label>
-            <input type="file" onChange={(e) => setFile(e.target.files[0])} disabled={loading} />
+            <input id="assignment-questions-file" type="file" onChange={(e) => setFile(e.target.files[0])} disabled={loading} />
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Assignment"}</button>
         </form>

@@ -21,6 +21,10 @@ public interface ExamSubmissionRepository extends JpaRepository<ExamSubmission, 
 
     boolean existsByCourseCodeAndStudentEmailAndExamType(String courseCode, String studentEmail, String examType);
 
+    /** Find an in-progress OR finalised submission for resumption / submit lookup. */
+    Optional<ExamSubmission> findByCourseCodeAndExamTypeAndStudentEmail(
+            String courseCode, String examType, String studentEmail);
+
     @Query("SELECT es FROM ExamSubmission es WHERE es.courseCode IN :courseCodes")
     List<ExamSubmission> findByCourseCodes(@Param("courseCodes") List<String> courseCodes);
 }

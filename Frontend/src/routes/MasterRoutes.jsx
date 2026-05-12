@@ -64,6 +64,8 @@ import ViewSubmissionsPage from "../pages/teacher/ViewSubmissionsPage";
 import ExamSubmissionsPage from "../pages/teacher/ExamSubmissionsPage";
 import ExamSubmissionsBrowserPage from "../pages/teacher/ExamSubmissionsBrowserPage";
 import EvaluateSubmissionPage from "../pages/teacher/EvaluateSubmissionPage";
+import AssignmentSubmissionsBrowserPage from "../pages/teacher/AssignmentSubmissionsBrowserPage";
+import AssignmentSubmissionsPage from "../pages/teacher/AssignmentSubmissionsPage";
 
 // ── Student ──
 import StudentDashboard from "../pages/student/StudentDashboard";
@@ -72,6 +74,7 @@ import EnrollCoursePage from "../pages/student/EnrollCoursePage";
 import CourseMaterialsPage from "../pages/student/CourseMaterialsPage";
 import CourseAssignmentsPage from "../pages/student/CourseAssignmentsPage";
 import StudentExamsPage from "../pages/student/StudentExamsPage";
+import TakeExamPage from "../pages/student/TakeExamPage";
 import SubmitAssignmentPage from "../pages/student/SubmitAssignmentPage";
 import ViewGradesPage from "../pages/student/ViewGradesPage";
 import ViewAttendancePage from "../pages/student/ViewAttendancePage";
@@ -180,6 +183,8 @@ export default function MasterRoutes() {
                {/* Legacy per-course-only route — page detects missing examType and redirects to browser */}
                <Route path="/teacher/exam-submissions/:courseCode" element={<ExamSubmissionsPage />} />
                <Route path="/teacher/evaluate/:submissionId" element={<EvaluateSubmissionPage />} />
+               <Route path="/teacher/assignment-submissions-browser" element={<AssignmentSubmissionsBrowserPage />} />
+               <Route path="/teacher/assignment-submissions/:courseCode/:assignmentNum" element={<AssignmentSubmissionsPage />} />
             </Route>
 
             {/* ── STUDENT ── */}
@@ -190,6 +195,7 @@ export default function MasterRoutes() {
               <Route path="/student/courses/:courseCode/materials" element={<CourseMaterialsPage />} />
               <Route path="/student/courses/:courseCode/assignments" element={<CourseAssignmentsPage />} />
               <Route path="/student/exams" element={<StudentExamsPage />} />
+              <Route path="/student/exams/take/:examId" element={<TakeExamPage />} />
               <Route path="/student/submit-assignment" element={<SubmitAssignmentPage />} />
               <Route path="/student/grades" element={<ViewGradesPage />} />
               <Route path="/student/attendance" element={<ViewAttendancePage />} />

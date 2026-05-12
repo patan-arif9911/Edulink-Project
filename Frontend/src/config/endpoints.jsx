@@ -79,6 +79,8 @@ const Endpoints = {
 
     // Teacher
     teacherClasses:                 `${BASE}/course/teacher/classes`,
+    teacherAllAssignments:          `${BASE}/course/teacher/assignments`,
+    teacherCoursesByClass: (classId) => `${BASE}/course/teacher/courses-by-class/${classId}`,
     uploadMaterial:                 `${BASE}/course/teacher/upload-material`,
     teacherMaterials:    (code) =>  `${BASE}/course/teacher/materials/${code}`,
     downloadMaterial:    (fileId) => `${BASE}/course/teacher/materials/download/${fileId}`,
@@ -119,6 +121,7 @@ const Endpoints = {
       studentGrades:                  `${BASE}/exam/student/grades`,
       downloadExamQ:       (examId) => `${BASE}/exam/student/download-exam-questions/${examId}`,
       submitExam:                     `${BASE}/exam/student/submit-exam`,
+      startExam:                      `${BASE}/exam/student/start-exam`,
     },
 
   /* ═══════════════════════════════════════════════

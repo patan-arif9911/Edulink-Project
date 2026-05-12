@@ -43,6 +43,7 @@ public class ExamController {
             @RequestParam int passingMarks,
             @RequestParam String schoolId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime examDate,
+            @RequestParam(required = false) Integer durationMinutes,
             @RequestParam(required = false) MultipartFile questionsFile) throws IOException {
 
         // Convert request to exam entity
@@ -54,6 +55,7 @@ public class ExamController {
         exam.setPassingMarks(passingMarks);
         exam.setSchoolId(schoolId);
         exam.setExamDate(examDate);
+        exam.setDurationMinutes(durationMinutes);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success("Exam created", examService.createExam(exam, questionsFile)));
@@ -106,24 +108,36 @@ public class ExamController {
                 .body(fileContent);
     }
 
+    /**
+     * Student clicks "Start Exam". Creates (or returns) the in-progress submission row
+     * carrying startedAt. Frontend uses startedAt + exam.durationMinutes to compute the
+     * countdown deadline. Refresh-safe: re-calling returns the same startedAt.
+     */
+    @PostMapping("/student/start-exam")
+    @PreAuthorize("hasRole('STUDENT')")
+    public ResponseEntity<ApiResponse<ExamSubmission>> startExam(@RequestBody SubmitExamRequest request) {
+        String studentEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        String rollNumber = (details instanceof String s && !s.contains("@")) ? s : null;
+
+        ExamSubmission attempt = examSubmissionService.startExam(
+                request.getCourseCode(), request.getExamType(), studentEmail, rollNumber);
+        return ResponseEntity.ok(ApiResponse.success("Exam started", attempt));
+    }
+
+    /**
+     * Final submission — text answer only. Students type their answer; no file uploads.
+     */
     @PostMapping("/student/submit-exam")
     @PreAuthorize("hasRole('STUDENT')")
     public ResponseEntity<ApiResponse<ExamSubmission>> submitExam(@Valid @RequestBody SubmitExamRequest request) {
-
-        // Get studentEmail and rollNumber from JWT token
-        // JwtAuthFilter now directly stores rollNumber in details for STUDENT role
         String studentEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        String rollNumber = (details instanceof String detailStr && !detailStr.contains("@"))
-                ? detailStr : null;
+        String rollNumber = (details instanceof String s && !s.contains("@")) ? s : null;
 
         ExamSubmission submission = examSubmissionService.submitExam(
-            request.getCourseCode(),
-            request.getExamType(),
-            studentEmail,
-            rollNumber,
-            request.getSubmissionContent()
-        );
+                request.getCourseCode(), request.getExamType(),
+                studentEmail, rollNumber, request.getSubmissionContent());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success("Exam submitted successfully", submission));
     }

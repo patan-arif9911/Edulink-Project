@@ -506,3 +506,84 @@
   font-size: 1rem;
   color: #1a1a2e;
 }
+
+/* ─────────────────────────────────────────────
+   Take Exam page (student exam-taking experience)
+   ───────────────────────────────────────────── */
+.take-exam-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.take-exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.exam-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #1e3a8a;
+  font-variant-numeric: tabular-nums;
+  min-width: 110px;
+}
+.exam-timer-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #475569;
+}
+.exam-timer-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.exam-timer.is-danger {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #991b1b;
+  animation: examTimerPulse 1s ease-in-out infinite alternate;
+}
+@keyframes examTimerPulse {
+  from { background: #fee2e2; }
+  to   { background: #fecaca; }
+}
+
+.take-exam-body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.take-exam-questions,
+.take-exam-answer {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.take-exam-questions iframe {
+  display: block;
+}
+.take-exam-answer textarea {
+  font-family: inherit;
+  resize: vertical;
+  min-height: 200px;
+}
+
+@media (max-width: 1024px) {
+  .take-exam-body { grid-template-columns: 1fr; }
+  .take-exam-questions iframe { height: 50vh !important; }
+}

@@ -22,46 +22,87 @@ public class ExamSubmissionService {
     private final ExamRepository examRepository;
 
     public ExamSubmissionService(ExamSubmissionRepository examSubmissionRepository,
-                                ExamRepository examRepository) {
+                                 ExamRepository examRepository) {
         this.examSubmissionRepository = examSubmissionRepository;
         this.examRepository = examRepository;
     }
 
+    /**
+     * Called when the student clicks "Start Exam". Creates (or returns the existing) in-progress
+     * row carrying the startedAt timestamp the frontend uses to compute the countdown deadline.
+     */
     @Transactional
-    public ExamSubmission submitExam(String courseCode, String examType, String studentEmail, String rollNumber, String submissionContent) {
-        if (examType == null || examType.isBlank()) {
-            throw new IllegalArgumentException("examType is required");
+    public ExamSubmission startExam(String courseCode, String examType,
+                                    String studentEmail, String rollNumber) {
+        Exam exam = resolveExam(courseCode, examType);
+        Optional<ExamSubmission> existing = examSubmissionRepository
+                .findByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
+        if (existing.isPresent()) {
+            ExamSubmission row = existing.get();
+            if (row.getSubmittedAt() != null) {
+                throw new IllegalArgumentException("Student has already submitted for this exam");
+            }
+            // Resume: keep the original startedAt so refreshes don't reset the timer
+            return row;
         }
-        // Find the specific exam by (courseCode, examType). If a course has multiple exams of the
-        // same type (e.g. a retake), we attach to the most recently created one.
-        List<Exam> exams = examRepository.findByCourseCodeAndExamType(courseCode, examType);
-        if (exams.isEmpty()) {
-            throw new InvalidExamException(
-                "No " + examType + " exam found for course: " + courseCode);
-        }
-        Exam exam = exams.get(exams.size() - 1);
+        ExamSubmission row = ExamSubmission.builder()
+                .courseCode(courseCode)
+                .examType(exam.getExamType())
+                .rollNumber(rollNumber)
+                .studentEmail(studentEmail)
+                .startedAt(LocalDateTime.now())
+                .build();
+        return examSubmissionRepository.save(row);
+    }
 
-        // Check if student already submitted for this specific exam
-        if (examSubmissionRepository.existsByCourseCodeAndStudentEmailAndExamType(courseCode, studentEmail, exam.getExamType())) {
-            throw new IllegalArgumentException("Student has already submitted for this exam");
-        }
+    /**
+     * Finalises the submission with the student's typed text answer.
+     * Looks up the in-progress row (created by startExam) and updates it; if no prior start
+     * exists (e.g. legacy clients), a fresh row is created on the fly.
+     */
+    @Transactional
+    public ExamSubmission submitExam(String courseCode, String examType,
+                                     String studentEmail, String rollNumber,
+                                     String submissionContent) {
+        Exam exam = resolveExam(courseCode, examType);
 
         if (submissionContent == null || submissionContent.trim().isEmpty()) {
             throw new IllegalArgumentException("Submission content cannot be empty");
         }
 
-        boolean isLate = LocalDateTime.now().isAfter(exam.getExamDate());
+        Optional<ExamSubmission> existing = examSubmissionRepository
+                .findByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
+        ExamSubmission row;
+        if (existing.isPresent()) {
+            row = existing.get();
+            if (row.getSubmittedAt() != null) {
+                throw new IllegalArgumentException("Student has already submitted for this exam");
+            }
+        } else {
+            row = ExamSubmission.builder()
+                    .courseCode(courseCode)
+                    .examType(exam.getExamType())
+                    .rollNumber(rollNumber)
+                    .studentEmail(studentEmail)
+                    .startedAt(LocalDateTime.now())
+                    .build();
+        }
 
-        ExamSubmission submission = ExamSubmission.builder()
-                .courseCode(courseCode)
-                .examType(exam.getExamType())
-                .rollNumber(rollNumber)
-                .studentEmail(studentEmail)
-                .submissionContent(submissionContent.trim())
-                .isLate(isLate)
-                .build();
+        row.setSubmissionContent(submissionContent.trim());
+        row.setSubmittedAt(LocalDateTime.now());
+        row.setLate(LocalDateTime.now().isAfter(exam.getExamDate()));
+        return examSubmissionRepository.save(row);
+    }
 
-        return examSubmissionRepository.save(submission);
+    private Exam resolveExam(String courseCode, String examType) {
+        if (examType == null || examType.isBlank()) {
+            throw new IllegalArgumentException("examType is required");
+        }
+        List<Exam> exams = examRepository.findByCourseCodeAndExamType(courseCode, examType);
+        if (exams.isEmpty()) {
+            throw new InvalidExamException("No " + examType + " exam found for course: " + courseCode);
+        }
+        return exams.get(exams.size() - 1);
     }
 
     public List<ExamSubmission> getSubmissionsByCourseCode(String courseCode) {

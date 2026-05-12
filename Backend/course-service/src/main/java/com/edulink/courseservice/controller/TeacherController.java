@@ -39,6 +39,12 @@ public class TeacherController {
         return ResponseEntity.ok(ApiResponse.success("Classes retrieved", classes));
     }
 
+    /** Courses offered in a specific class — drives the cascading dropdown on assignment/exam creation. */
+    @GetMapping("/courses-by-class/{classId}")
+    public ResponseEntity<ApiResponse<List<Course>>> getCoursesByClass(@PathVariable Long classId) {
+        return ResponseEntity.ok(ApiResponse.success("Courses retrieved", courseService.getCoursesByClassId(classId)));
+    }
+
     @PostMapping("/upload-material")
     public ResponseEntity<ApiResponse<LearningMaterialDto>> uploadMaterial(
             @RequestParam String courseCode,
@@ -122,6 +128,13 @@ public class TeacherController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(ApiResponse.error("Failed to delete material: " + e.getMessage()));
         }
+    }
+
+    /** Every assignment the authenticated teacher has created (across all courses). */
+    @GetMapping("/assignments")
+    public ResponseEntity<ApiResponse<List<Assignment>>> getMyAssignments(Authentication auth) {
+        List<Assignment> assignments = courseService.getAssignmentsByTeacherEmail(auth.getName());
+        return ResponseEntity.ok(ApiResponse.success("Assignments retrieved", assignments));
     }
 
     @PostMapping(value = "/create-assignment", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

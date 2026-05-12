@@ -22,6 +22,14 @@ const courseApi = {
   fetchTeacherClasses: () =>
     httpClient.get(Endpoints.course.teacherClasses),
 
+  /* GET /course/teacher/assignments — every assignment the teacher has created */
+  fetchTeacherAssignments: () =>
+    httpClient.get(Endpoints.course.teacherAllAssignments),
+
+  /* GET /course/teacher/courses-by-class/{classId} — courses offered in the chosen class */
+  fetchCoursesByClass: (classId) =>
+    httpClient.get(Endpoints.course.teacherCoursesByClass(classId)),
+
   uploadMaterial: (formData) =>
     httpClient.post(Endpoints.course.uploadMaterial, formData, {
       headers: { "Content-Type": "multipart/form-data" },

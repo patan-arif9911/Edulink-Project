@@ -57,8 +57,13 @@ const examApi = {
       responseType: "blob",
     }),
 
-  /* POST /exam/student/submit — JSON body:
-     { examId, studentEmail, submissionContent } */
+  /* POST /exam/student/start-exam — JSON body: { courseCode, examType }
+     Creates or returns the in-progress submission row carrying startedAt. */
+  startExam: ({ courseCode, examType }) =>
+    httpClient.post(Endpoints.exam.startExam, { courseCode, examType }),
+
+  /* POST /exam/student/submit-exam — JSON body:
+     { courseCode, examType, submissionContent } */
   submitExam: (payload) =>
     httpClient.post(Endpoints.exam.submitExam, payload),
 };
