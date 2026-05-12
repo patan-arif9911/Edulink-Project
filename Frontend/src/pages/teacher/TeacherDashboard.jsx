@@ -72,6 +72,7 @@ export default function TeacherDashboard() {
             <Link to="/teacher/upload-material" className="dashboard-link-btn">Upload Material</Link>
             <Link to="/teacher/new-assignment" className="dashboard-link-btn">Create Assignment</Link>
             <Link to="/teacher/attendance" className="dashboard-link-btn">Record Attendance</Link>
+            <Link to="/teacher/exam-submissions-browser" className="dashboard-link-btn">View Exam Submissions</Link>
           </div>
         </section>
       </div>

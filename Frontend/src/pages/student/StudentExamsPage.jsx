@@ -73,13 +73,18 @@ export default function StudentExamsPage() {
       setError("Please enter your submission content.");
       return;
     }
+    if (!submitModal?.courseCode || !submitModal?.examType) {
+      setError("Missing exam context — please reopen the submit dialog.");
+      return;
+    }
     setSubmitting(true);
     setError("");
     try {
       /* POST /exam/student/submit-exam
-         body: { courseCode, submissionContent } */
+         body: { courseCode, examType, submissionContent } */
       await examApi.submitExam({
-        courseCode: submitModal,
+        courseCode: submitModal.courseCode,
+        examType: submitModal.examType,
         submissionContent: submissionText.trim(),
       });
       setSuccess("Exam submitted successfully!");
@@ -124,7 +129,13 @@ export default function StudentExamsPage() {
             className="submit-btn"
             style={{ padding: "0.25rem 0.5rem", fontSize: "0.78rem" }}
             onClick={() => {
-              setSubmitModal(r.courseCode);
+              // Carry both courseCode and examType so the backend attaches the submission
+              // to the correct exam (a course can have several exam types).
+              setSubmitModal({
+                courseCode: r.courseCode,
+                examType: r.examType,
+                examTitle: r.examTitle,
+              });
               setSubmissionText("");
               setSuccess("");
             }}
@@ -183,7 +194,12 @@ export default function StudentExamsPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 style={{ marginBottom: "1rem" }}>
-              Submit Exam: {submitModal}
+              Submit Exam: {submitModal.examTitle || submitModal.courseCode}
+              {submitModal.examType && (
+                <span style={{ marginLeft: "0.5rem", fontSize: "0.85rem", color: "#64748b" }}>
+                  ({submitModal.examType})
+                </span>
+              )}
             </h3>
             <div className="form-group">
               <label>Your Answer / Submission</label>

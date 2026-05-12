@@ -61,6 +61,9 @@ import GradeStudentPage from "../pages/teacher/GradeStudentPage";
 import RecordAttendancePage from "../pages/teacher/RecordAttendancePage";
 import SubmissionsCoursePicker from "../pages/teacher/SubmissionsCoursePicker";
 import ViewSubmissionsPage from "../pages/teacher/ViewSubmissionsPage";
+import ExamSubmissionsPage from "../pages/teacher/ExamSubmissionsPage";
+import ExamSubmissionsBrowserPage from "../pages/teacher/ExamSubmissionsBrowserPage";
+import EvaluateSubmissionPage from "../pages/teacher/EvaluateSubmissionPage";
 
 // ── Student ──
 import StudentDashboard from "../pages/student/StudentDashboard";
@@ -169,8 +172,14 @@ export default function MasterRoutes() {
               <Route path="/teacher/new-exam" element={<NewExamPage />} />
               <Route path="/teacher/grade" element={<GradeStudentPage />} />
               <Route path="/teacher/attendance" element={<RecordAttendancePage />} />
-              <Route path="/teacher/submissions" element={<SubmissionsCoursePicker />} />
-              <Route path="/teacher/submissions/:courseCode" element={<ViewSubmissionsPage />} />
+               <Route path="/teacher/submissions" element={<SubmissionsCoursePicker />} />
+               <Route path="/teacher/submissions/:courseCode" element={<ViewSubmissionsPage />} />
+               <Route path="/teacher/exam-submissions-browser" element={<ExamSubmissionsBrowserPage />} />
+               {/* Per-exam roster: courseCode + examType identify the exam */}
+               <Route path="/teacher/exam-submissions/:courseCode/:examType" element={<ExamSubmissionsPage />} />
+               {/* Legacy per-course-only route — page detects missing examType and redirects to browser */}
+               <Route path="/teacher/exam-submissions/:courseCode" element={<ExamSubmissionsPage />} />
+               <Route path="/teacher/evaluate/:submissionId" element={<EvaluateSubmissionPage />} />
             </Route>
 
             {/* ── STUDENT ── */}

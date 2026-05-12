@@ -43,14 +43,15 @@ const menusByRole = {
   ],
 
   [EduLinkRoles.TEACHER]: [
-    { label: "Dashboard",           path: "/teacher/dashboard",       icon: "dashboard" },
-    { label: "My Classes",          path: "/teacher/classes",         icon: "class" },
-    { label: "Upload Material",     path: "/teacher/upload-material", icon: "cloud_upload" },
-    { label: "New Assignment",      path: "/teacher/new-assignment",  icon: "assignment" },
-    { label: "View Submissions",    path: "/teacher/submissions",     icon: "fact_check" },
-    { label: "New Exam",            path: "/teacher/new-exam",        icon: "quiz" },
-    { label: "Grade Student",       path: "/teacher/grade",           icon: "grading" },
-    { label: "Mark Attendance",     path: "/teacher/attendance",      icon: "how_to_reg" },
+    { label: "Dashboard",           path: "/teacher/dashboard",                 icon: "dashboard" },
+    { label: "My Classes",          path: "/teacher/classes",                   icon: "class" },
+    { label: "Upload Material",     path: "/teacher/upload-material",           icon: "cloud_upload" },
+    { label: "New Assignment",      path: "/teacher/new-assignment",            icon: "assignment" },
+    { label: "View Submissions",    path: "/teacher/submissions",               icon: "fact_check" },
+    { label: "New Exam",            path: "/teacher/new-exam",                  icon: "quiz" },
+    { label: "Exam Submissions",    path: "/teacher/exam-submissions-browser",  icon: "fact_check" },
+    { label: "Grade Student",       path: "/teacher/grade",                     icon: "grading" },
+    { label: "Mark Attendance",     path: "/teacher/attendance",                icon: "how_to_reg" },
   ],
 
   [EduLinkRoles.STUDENT]: [

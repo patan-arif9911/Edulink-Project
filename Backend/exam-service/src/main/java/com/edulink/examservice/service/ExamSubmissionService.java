@@ -28,29 +28,30 @@ public class ExamSubmissionService {
     }
 
     @Transactional
-    public ExamSubmission submitExam(String courseCode, String studentEmail, String rollNumber, String submissionContent) {
-        // Validate exam exists by courseCode
-        List<Exam> exams = examRepository.findByCourseCode(courseCode);
-        if (exams.isEmpty()) {
-            throw new InvalidExamException("No exam found for course: " + courseCode);
+    public ExamSubmission submitExam(String courseCode, String examType, String studentEmail, String rollNumber, String submissionContent) {
+        if (examType == null || examType.isBlank()) {
+            throw new IllegalArgumentException("examType is required");
         }
-        // Use the latest exam for this course
+        // Find the specific exam by (courseCode, examType). If a course has multiple exams of the
+        // same type (e.g. a retake), we attach to the most recently created one.
+        List<Exam> exams = examRepository.findByCourseCodeAndExamType(courseCode, examType);
+        if (exams.isEmpty()) {
+            throw new InvalidExamException(
+                "No " + examType + " exam found for course: " + courseCode);
+        }
         Exam exam = exams.get(exams.size() - 1);
 
-        // Check if student already submitted for this course + examType
+        // Check if student already submitted for this specific exam
         if (examSubmissionRepository.existsByCourseCodeAndStudentEmailAndExamType(courseCode, studentEmail, exam.getExamType())) {
             throw new IllegalArgumentException("Student has already submitted for this exam");
         }
 
-        // Validate submission content is not empty
         if (submissionContent == null || submissionContent.trim().isEmpty()) {
             throw new IllegalArgumentException("Submission content cannot be empty");
         }
 
-        // Check if submission is late
         boolean isLate = LocalDateTime.now().isAfter(exam.getExamDate());
 
-        // Create submission
         ExamSubmission submission = ExamSubmission.builder()
                 .courseCode(courseCode)
                 .examType(exam.getExamType())

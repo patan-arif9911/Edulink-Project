@@ -284,3 +284,225 @@
     min-width: 500px;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Mark Attendance page (RecordAttendancePage)
+   ───────────────────────────────────────────── */
+.att-controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.att-summary {
+  font-size: 0.9rem;
+  color: #334155;
+  margin: 0.5rem 0 0.75rem;
+}
+.att-empty {
+  color: #77839a;
+  font-style: italic;
+  margin: 1rem 0;
+}
+.att-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 1rem;
+}
+.att-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+.att-table thead th {
+  background: #f8fafc;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.att-table tbody td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1f2937;
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+.att-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status pill buttons: outlined by default, solid when selected */
+.att-pill-group {
+  display: inline-flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.att-pill {
+  border: 1px solid currentColor;
+  background: transparent;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.att-pill:disabled { cursor: not-allowed; opacity: 0.55; }
+.att-pill:not(.is-selected):hover { background: rgba(0, 0, 0, 0.03); }
+
+.att-pill-present       { color: #2e7d32; }
+.att-pill-present.is-selected { background: #2e7d32; color: #fff; border-color: #2e7d32; }
+
+.att-pill-absent        { color: #c62828; }
+.att-pill-absent.is-selected  { background: #c62828; color: #fff; border-color: #c62828; }
+
+/* OD → violet per spec */
+.att-pill-od            { color: #6a1b9a; }
+.att-pill-od.is-selected      { background: #6a1b9a; color: #fff; border-color: #6a1b9a; }
+
+/* Legacy statuses (LATE/EXCUSED) read from existing data — display only, not selectable */
+.att-pill-legacy        { color: #64748b; background: #e2e8f0; border-color: #cbd5e1; cursor: default; }
+
+@media (max-width: 640px) {
+  .att-controls { grid-template-columns: 1fr; }
+  .att-table { min-width: 460px; }
+}
+
+/* ─────────────────────────────────────────────
+   Exam Submissions roster (ExamSubmissionsPage)
+   + Evaluation page (EvaluateSubmissionPage)
+   ───────────────────────────────────────────── */
+.sub-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem;
+}
+.sub-counts {
+  margin-left: auto;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.sub-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid currentColor;
+  background: transparent;
+}
+.sub-pill.is-selected { color: #fff; border-color: transparent; }
+.sub-pill-submitted        { color: #2e7d32; }
+.sub-pill-submitted.is-selected { background: #2e7d32; }
+.sub-pill-pending          { color: #c62828; }
+.sub-pill-pending.is-selected   { background: #c62828; }
+.sub-pill-graded           { color: #1565c0; }
+.sub-pill-graded.is-selected    { background: #1565c0; }
+
+.sub-late-tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  background: #fff4e5;
+  color: #b45309;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Action button styled as a link so it sits cleanly in a table cell */
+.link-btn {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.link-btn:hover { text-decoration: underline; }
+.link-btn:disabled { color: #94a3b8; cursor: not-allowed; }
+.muted { color: #94a3b8; }
+
+/* Secondary submit-btn variant (used for Back buttons) */
+.submit-btn.secondary {
+  background: #e2e8f0;
+  color: #1f2937;
+}
+.submit-btn.secondary:hover { background: #cbd5e1; }
+
+/* Evaluation page two-column layout */
+.eval-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.eval-panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.eval-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.eval-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1rem;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+}
+.eval-meta div { display: flex; flex-direction: column; }
+.eval-meta dt { color: #64748b; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.eval-meta dd { margin: 0; color: #0f172a; }
+.eval-answer {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: inherit;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 280px;
+  overflow: auto;
+  font-size: 0.88rem;
+  color: #1f2937;
+}
+
+@media (max-width: 900px) {
+  .eval-grid { grid-template-columns: 1fr; }
+}
+
+/* Exam Submissions Browser — grouped by course */
+.exam-course-group {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem 1rem 1rem;
+}
+.exam-course-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.exam-course-head h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+}

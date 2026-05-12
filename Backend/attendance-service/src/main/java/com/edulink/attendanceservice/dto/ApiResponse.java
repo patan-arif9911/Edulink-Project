@@ -25,6 +25,10 @@ public class ApiResponse<T> {
         return new ApiResponse<>(true, msg, d);
     }
 
+    public static <T> ApiResponse<T> error(String msg) {
+        return new ApiResponse<>(false, msg, null);
+    }
+
     public static Builder builder() {
         return new Builder();
     }

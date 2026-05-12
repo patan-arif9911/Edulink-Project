@@ -17,8 +17,8 @@ export default function SubmissionsCoursePicker() {
     courseApi
       .fetchTeacherClasses()
       .then((res) => {
-        const data = res.data?.data || res.data || [];
-        setClasses(Array.isArray(data) ? data : []);
+        const classData = res.data?.data || res.data || [];
+        setClasses(Array.isArray(classData) ? classData : []);
       })
       .catch((err) => setError(parseApiError(err)))
       .finally(() => setLoading(false));
@@ -26,49 +26,38 @@ export default function SubmissionsCoursePicker() {
 
   if (loading) return <Spinner />;
 
-  // Build unique course list from classes
-  const courseMap = {};
-  classes.forEach((c) => {
-    const code = c.courseCode || c.courseId;
-    if (code && !courseMap[code]) {
-      courseMap[code] = {
-        courseCode: code,
-        className: c.className || c.courseName || code,
-      };
-    }
-  });
-  const courses = Object.values(courseMap);
-
   return (
     <div>
       <SectionHeader
         title="View Student Submissions"
-        subtitle="Select a course to view submitted assignments"
+        subtitle="Select a class to view submitted assignments and exams"
       />
 
       <AlertBanner type="error" message={error} onClose={() => setError("")} />
 
-      {courses.length === 0 && !error ? (
+      {classes.length === 0 && !error ? (
         <div className="empty-state">
           <span className="material-icons-round" style={{ fontSize: 48, color: "#ccc" }}>
             folder_off
           </span>
-          <p>No courses found. You need assigned classes first.</p>
+          <p>No classes assigned to you yet.</p>
         </div>
       ) : (
         <div className="card-grid" style={{ marginTop: "1rem" }}>
-          {courses.map((c) => (
+          {classes.map((cls) => (
             <div
-              key={c.courseCode}
+              key={cls.id}
               className="metric-card"
               style={{ cursor: "pointer" }}
-              onClick={() => navigate(`/teacher/submissions/${c.courseCode}`)}
+              onClick={() => navigate(`/teacher/submissions/${cls.courseCode || cls.id}`)}
             >
               <span className="material-icons-round" style={{ fontSize: 36, color: "#4361ee" }}>
                 assignment
               </span>
-              <h4 style={{ margin: "0.5rem 0 0.25rem" }}>{c.courseCode}</h4>
-              <p style={{ color: "#666", fontSize: "0.85rem" }}>{c.className}</p>
+              <h4 style={{ margin: "0.5rem 0 0.25rem" }}>{cls.courseCode || `Class ${cls.id}`}</h4>
+              <p style={{ color: "#666", fontSize: "0.85rem" }}>
+                {cls.className || "Course"}
+              </p>
               <span style={{ color: "#4361ee", fontSize: "0.8rem" }}>View Submissions →</span>
             </div>
           ))}

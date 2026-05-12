@@ -74,6 +74,7 @@ const Endpoints = {
     createClass:                    `${BASE}/course/admin/create-class`,
     adminClasses:                   `${BASE}/course/admin/classes`,
     adminCourses:                   `${BASE}/course/admin/courses`,
+    internalCourses:                `${BASE}/course/internal/courses`,
     attendanceReport:               `${BASE}/admin/attendance-report`,
 
     // Teacher
@@ -104,23 +105,29 @@ const Endpoints = {
    *  EXAM SERVICE  (Port 8084 behind gateway)
    *  Controller: @RequestMapping("/exam")
    * ═══════════════════════════════════════════════ */
-  exam: {
-    // Teacher endpoints
-    createExam:                     `${BASE}/exam/teacher/create-exam`,
-    gradeStudent:                   `${BASE}/exam/teacher/grade-student`,
-    examSubmissions:     (examId) => `${BASE}/exam/teacher/exam-submissions/${examId}`,
-    // Student endpoints
-    studentExams:                   `${BASE}/exam/student/exams`,
-    studentGrades:                  `${BASE}/exam/student/grades`,
-    downloadExamQ:       (examId) => `${BASE}/exam/student/download-exam-questions/${examId}`,
-    submitExam:                     `${BASE}/exam/student/submit-exam`,
-  },
+   exam: {
+      // Teacher endpoints
+      createExam:                     `${BASE}/exam/teacher/create-exam`,
+      gradeStudent:                   `${BASE}/exam/teacher/grade-student`,
+      examSubmissions:     (courseCode) => `${BASE}/exam/teacher/exam-submissions/${courseCode}`,
+      submissionById:      (id) =>    `${BASE}/exam/teacher/submission/${id}`,
+      gradesByExam:                   `${BASE}/exam/teacher/grades`,
+      examsByCourseCode:   (code) =>  `${BASE}/exam/teacher/exams/${code}`,
+      teacherAllExams:                `${BASE}/exam/teacher/exams`,
+      // Student endpoints
+      studentExams:                   `${BASE}/exam/student/exams`,
+      studentGrades:                  `${BASE}/exam/student/grades`,
+      downloadExamQ:       (examId) => `${BASE}/exam/student/download-exam-questions/${examId}`,
+      submitExam:                     `${BASE}/exam/student/submit-exam`,
+    },
 
   /* ═══════════════════════════════════════════════
    *  ATTENDANCE SERVICE  (Port 8085 behind gateway)
    * ═══════════════════════════════════════════════ */
   attendance: {
     markAttendance:                 `${BASE}/teacher/mark-attendance`,
+    markAttendanceBulk:             `${BASE}/teacher/mark-attendance/bulk`,
+    teacherClassAttendance:         `${BASE}/teacher/attendance`,
     studentAttendance:              `${BASE}/student/attendance`,
     adminReport:                    `${BASE}/admin/attendance-report`,
   },

@@ -70,6 +70,15 @@ public class ExamService {
         return examRepository.findByCourseCodeIn(courseCodes);
     }
 
+    public List<Exam> getExamsByCourseCode(String courseCode) {
+        return examRepository.findByCourseCode(courseCode);
+    }
+
+    /** Every exam this teacher has created across all their courses. */
+    public List<Exam> getExamsByTeacherEmail(String teacherEmail) {
+        return examRepository.findByTeacherEmail(teacherEmail);
+    }
+
     public byte[] downloadExamQuestions(Long examId) throws IOException {
         Exam exam = examRepository.findById(examId)
                 .orElseThrow(() -> new IllegalArgumentException("Exam not found with ID: " + examId));

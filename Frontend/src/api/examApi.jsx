@@ -17,9 +17,25 @@ const examApi = {
   gradeStudent: (payload) =>
     httpClient.post(Endpoints.exam.gradeStudent, payload),
 
-  /* GET /exam/submissions/{examId} */
-  fetchExamSubmissions: (examId) =>
-    httpClient.get(Endpoints.exam.examSubmissions(examId)),
+  /* GET /exam/teacher/exam-submissions/{courseCode} — all submissions for a course (caller filters by examType) */
+  fetchExamSubmissions: (courseCode) =>
+    httpClient.get(Endpoints.exam.examSubmissions(courseCode)),
+
+  /* GET /exam/teacher/submission/{id} — single submission with content for the evaluate page */
+  fetchSubmissionById: (id) =>
+    httpClient.get(Endpoints.exam.submissionById(id)),
+
+  /* GET /exam/teacher/grades?courseCode=&examType= — used to mark "Graded" rows on the roster */
+  fetchGradesByExam: ({ courseCode, examType }) =>
+    httpClient.get(Endpoints.exam.gradesByExam, { params: { courseCode, examType } }),
+
+  /* GET /exam/teacher/exams/{courseCode} - Get exams by course code */
+  fetchExamsByCourseCode: (courseCode) =>
+    httpClient.get(Endpoints.exam.examsByCourseCode(courseCode)),
+
+  /* GET /exam/teacher/exams — every exam the teacher has created */
+  fetchTeacherExams: () =>
+    httpClient.get(Endpoints.exam.teacherAllExams),
 
   /* ── Student endpoints ── */
 

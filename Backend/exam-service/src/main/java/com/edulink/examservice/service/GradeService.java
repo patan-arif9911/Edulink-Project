@@ -5,6 +5,7 @@ import com.edulink.examservice.repository.GradeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GradeService {
@@ -59,5 +60,15 @@ public class GradeService {
 
     public List<Grade> getGradesByCourseCode(String courseCode) {
         return gradeRepository.findByCourseCode(courseCode);
+    }
+
+    /** Used by the per-exam roster page to mark which students are already graded. */
+    public List<Grade> getGradesByCourseCodeAndExamType(String courseCode, String examType) {
+        return gradeRepository.findByCourseCodeAndExamType(courseCode, examType);
+    }
+
+    /** Used by the contextual evaluate page to detect already-graded state. */
+    public Optional<Grade> getGradeForStudent(String courseCode, String examType, String rollNumber) {
+        return gradeRepository.findByCourseCodeAndExamTypeAndRollNumber(courseCode, examType, rollNumber);
     }
 }

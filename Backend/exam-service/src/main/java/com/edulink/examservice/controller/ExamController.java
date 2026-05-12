@@ -108,7 +108,7 @@ public class ExamController {
 
     @PostMapping("/student/submit-exam")
     @PreAuthorize("hasRole('STUDENT')")
-    public ResponseEntity<ApiResponse<ExamSubmission>> submitExam(@RequestBody SubmitExamRequest request) {
+    public ResponseEntity<ApiResponse<ExamSubmission>> submitExam(@Valid @RequestBody SubmitExamRequest request) {
 
         // Get studentEmail and rollNumber from JWT token
         // JwtAuthFilter now directly stores rollNumber in details for STUDENT role
@@ -118,7 +118,8 @@ public class ExamController {
                 ? detailStr : null;
 
         ExamSubmission submission = examSubmissionService.submitExam(
-            request.getCourseCode(),  // courseCode instead of numeric examId
+            request.getCourseCode(),
+            request.getExamType(),
             studentEmail,
             rollNumber,
             request.getSubmissionContent()
@@ -132,6 +133,42 @@ public class ExamController {
     public ResponseEntity<ApiResponse<List<ExamSubmission>>> getExamSubmissions(@PathVariable String courseCode) {
         List<ExamSubmission> submissions = examSubmissionService.getSubmissionsByCourseCode(courseCode);
         return ResponseEntity.ok(ApiResponse.success("Exam submissions retrieved", submissions));
+    }
+
+    /** Fetch a single submission with its content — backs the contextual evaluate page. */
+    @GetMapping("/teacher/submission/{id}")
+    @PreAuthorize("hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<ExamSubmission>> getSubmissionById(@PathVariable Long id) {
+        ExamSubmission submission = examSubmissionService.getSubmissionById(id)
+                .orElseThrow(() -> new com.edulink.examservice.exception.ResourceNotFoundException(
+                        "Submission not found: " + id));
+        return ResponseEntity.ok(ApiResponse.success("Submission retrieved", submission));
+    }
+
+    /** Used by the per-exam roster table to mark students that already have a grade. */
+    @GetMapping("/teacher/grades")
+    @PreAuthorize("hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<List<Grade>>> getGradesByExam(
+            @RequestParam String courseCode,
+            @RequestParam String examType) {
+        List<Grade> grades = gradeService.getGradesByCourseCodeAndExamType(courseCode, examType);
+        return ResponseEntity.ok(ApiResponse.success("Grades retrieved", grades));
+    }
+
+    @GetMapping("/teacher/exams/{courseCode}")
+    @PreAuthorize("hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<List<Exam>>> getExamsByCourseCode(@PathVariable String courseCode) {
+        List<Exam> exams = examService.getExamsByCourseCode(courseCode);
+        return ResponseEntity.ok(ApiResponse.success("Exams retrieved", exams));
+    }
+
+    /** Returns every exam the authenticated teacher has created (across all courses). */
+    @GetMapping("/teacher/exams")
+    @PreAuthorize("hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<List<Exam>>> getMyExams() {
+        String teacherEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<Exam> exams = examService.getExamsByTeacherEmail(teacherEmail);
+        return ResponseEntity.ok(ApiResponse.success("Exams retrieved", exams));
     }
 
 }
