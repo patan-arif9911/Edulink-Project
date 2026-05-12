@@ -25,3 +25,8 @@
 26-05-11 15:32:20 [http-nio-8086-exec-9] ERROR c.e.c.exception.GlobalExceptional - Token in valid [409] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Email already registered: Monukumar@gmail.com","data":null}]
 26-05-11 15:38:12 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [409] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Email already registered: Monukumar@gmail.com","data":null}]
 26-05-11 16:09:02 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [409] during [POST] to [http://IDENTITY-SERVICE/compliance/identity/create-school-admin] [SchoolClient#createSchoolAdmin(String,UserDto)]: [{"success":false,"message":"Email already registered: Monukumar@gmail.com","data":null}]
+26-05-11 22:38:28 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 11024 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-11 22:38:28 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-11 22:38:28 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-11 22:38:41 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-11 22:38:49 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 23.678 seconds (process running for 25.49)

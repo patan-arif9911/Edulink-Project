@@ -17,7 +17,7 @@ export function parseApiError(err) {
             }
 
       } catch (e) {
-        // fallback if parsing fails
+        
       }
 
       return data;
