@@ -10,6 +10,8 @@ public class SchoolCreateRequest {
     private String email;
     private String principalName;
     private LocalDate establishedDate;
+    private int studentNumber;
+    private int teacherNumber;
 
     public SchoolCreateRequest() {}
 
@@ -28,4 +30,20 @@ public class SchoolCreateRequest {
     public void setPrincipalName(String principalName) { this.principalName = principalName; }
     public LocalDate getEstablishedDate() { return establishedDate; }
     public void setEstablishedDate(LocalDate establishedDate) { this.establishedDate = establishedDate; }
+
+    public int getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(int studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public int getTeacherNumber() {
+        return teacherNumber;
+    }
+
+    public void setTeacherNumber(int teacherNumber) {
+        this.teacherNumber = teacherNumber;
+    }
 }

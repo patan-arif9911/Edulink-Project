@@ -1,0 +1,8 @@
+/* AttendanceReportPage — page-specific overrides.
+   Main visual system lives in src/styles/attendance-theme.css. */
+
+.report-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

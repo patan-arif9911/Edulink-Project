@@ -16,10 +16,12 @@ public class School {
     private String principalName;
     private LocalDate establishedDate;
     private LocalDateTime createdAt;
+    private int studentNumber;
+    private int teacherNumber;
 
     public School() {}
 
-    public School(String id, String name, String address, String phone, String email, String principalName, LocalDate establishedDate, LocalDateTime createdAt) {
+    public School(String id, String name, String address, String phone, String email, String principalName, LocalDate establishedDate, LocalDateTime createdAt,int studentNumber,int teacherNumber) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -28,6 +30,8 @@ public class School {
         this.principalName = principalName;
         this.establishedDate = establishedDate;
         this.createdAt = createdAt;
+        this.teacherNumber=teacherNumber;
+        this.studentNumber=studentNumber;
     }
 
     @PrePersist
@@ -52,4 +56,20 @@ public class School {
     public void setEstablishedDate(LocalDate establishedDate) { this.establishedDate = establishedDate; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public int getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(int studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public int getTeacherNumber() {
+        return teacherNumber;
+    }
+
+    public void setTeacherNumber(int teacherNumber) {
+        this.teacherNumber = teacherNumber;
+    }
 }

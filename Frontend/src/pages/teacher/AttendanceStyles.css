@@ -1,0 +1,9 @@
+/* RecordAttendancePage — page-specific overrides.
+   Main visual system lives in src/styles/attendance-theme.css. */
+
+/* Keep the .att-page class working for any callers still using it. */
+.att-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

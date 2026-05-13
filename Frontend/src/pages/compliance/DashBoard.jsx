@@ -93,12 +93,12 @@ export default function DashBoard(){
                 fill: Object.values(COLORS)[index % Object.values(COLORS).length]
             }));
             {
-                let totalUser=0;
+                let temtotalUser=0;
                 for(let u=0;u<chartData.length;u++){
-                        totalUser+=chartData[u].value;
+                        temtotalUser+=chartData[u].value;
                 }
                 
-                setTotalUser(totalUser);
+                setTotalUser(temtotalUser);
             }
                 
             setUserChartData(chartData);
@@ -112,8 +112,12 @@ export default function DashBoard(){
 
     useEffect(()=>{
         collectUsersData();
-        collectRulesData();
     },[])
+    useEffect(()=>{
+        if(totalUser){
+            collectRulesData();
+        }
+    },[totalUser])
 
 
     return(

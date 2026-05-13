@@ -1,5 +1,8 @@
 package com.edulink.attendanceservice.entity;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -11,14 +14,40 @@ public class Attendance {
     private Long id;
 
     /** Roll number from identity-service students table e.g. SCH001101 */
+    @NotBlank(message = "Roll number is required")
+    @Pattern(regexp = "^[A-Z]{3}\\d{6}$",
+            message = "Roll number must follow pattern: 3 uppercase letters followed by 6 digits (e.g., SCH001101)")
+    @Size(max = 20, message = "Roll number must not exceed 20 characters")
     @Column(nullable = false)
     private String rollNumber;
 
+    @NotNull(message = "Course ID is required")
+    @Positive(message = "Course ID must be a positive number")
+    @Column(nullable = false)
     private Long courseId;
+
+    @NotBlank(message = "School ID is required")
+    @Size(max = 20, message = "School ID must not exceed 20 characters")
+    @Column(nullable = false)
     private String schoolId;
+
+    @NotNull(message = "Attendance date is required")
+    @PastOrPresent(message = "Attendance date cannot be in the future")
+    @Column(nullable = false)
     private LocalDate attendanceDate;
+
+    @NotBlank(message = "Status is required")
+    @Pattern(regexp = "^(PRESENT|ABSENT|LATE|EXCUSED)$",
+            message = "Status must be one of: PRESENT, ABSENT, LATE, EXCUSED")
+    @Column(nullable = false)
     private String status; // PRESENT, ABSENT, LATE, EXCUSED
+
+    @NotBlank(message = "MarkedBy field is required")
+    @Size(max = 50, message = "MarkedBy must not exceed 50 characters")
+    @Column(nullable = false)
     private String markedBy;
+
+    @PastOrPresent(message = "Created date cannot be in the future")
     private LocalDateTime createdAt;
 
     public Attendance() {

@@ -62,15 +62,11 @@ public class UserManagementService {
 
         boolean needsTempPassword = (request.getRole() == Role.TEACHER || request.getRole() == Role.STUDENT || request.getRole() == Role.SCHOOL_ADMIN);
 
+        String tempPassword = request.getFullName();
+        String tem = tempPassword.toUpperCase().charAt(0) + "";
 
-        String encodedPassword;
-        String tempPassword;
-
-            tempPassword = request.getFullName();
-
-            String tem = tempPassword.toUpperCase().charAt(0) + "";
             for (int i = 1; i < 4; i++) {
-                if (tempPassword.charAt(i) == ' ') {
+                if (tempPassword.length()<=i || tempPassword.charAt(i) == ' ') {
                     tem = tem + "x";
                 } else {
                     tem = tem + (tempPassword.toLowerCase().charAt(i));
@@ -78,7 +74,7 @@ public class UserManagementService {
             }
 
             tempPassword = tem + "@" + request.getDob().substring(0, 4);
-            encodedPassword = passwordEncoder.encode(tempPassword);
+        String encodedPassword = passwordEncoder.encode(tempPassword);
 
 
 
@@ -201,6 +197,8 @@ public class UserManagementService {
         school.setAddress(request.getAddress());
         school.setPhone(request.getPhone());
         school.setEmail(request.getEmail());
+        school.setTeacherNumber(request.getTeacherNumber());
+        school.setStudentNumber(request.getStudentNumber());
         school.setPrincipalName(request.getPrincipalName());
         school.setEstablishedDate(request.getEstablishedDate());
         School saved = schoolRepository.save(school);

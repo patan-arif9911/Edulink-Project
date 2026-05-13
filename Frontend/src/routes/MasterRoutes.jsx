@@ -86,6 +86,7 @@ import ComposeNotificationPage from "../pages/notifications/ComposeNotificationP
 
 // ── Shared ──
 import PageNotFound from "../pages/shared/PageNotFound";
+import LandingPage from "../pages/shared/LandingPage";
 
 const {
   OPERATOR,
@@ -209,7 +210,7 @@ export default function MasterRoutes() {
       </Route>
 
       {/* ════════ FALLBACKS ════════ */}
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/404" element={<PageNotFound />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
     </Routes>

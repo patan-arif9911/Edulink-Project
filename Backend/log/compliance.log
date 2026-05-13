@@ -18,3 +18,18 @@
 26-05-13 15:35:59 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
 26-05-13 15:36:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
 26-05-13 15:36:10 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 12.416 seconds (process running for 13.308)
+26-05-13 17:42:01 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 31352 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 17:42:01 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 17:42:01 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 17:42:20 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 17:42:37 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 40.24 seconds (process running for 43.281)
+26-05-13 21:04:58 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 27220 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 21:04:58 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 21:04:58 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 21:05:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 21:05:10 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 13.84 seconds (process running for 15.564)
+26-05-13 23:11:22 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 26572 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 23:11:22 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 23:11:22 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 23:11:43 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 23:11:55 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 35.03 seconds (process running for 36.496)
