@@ -6,4 +6,7 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
     List<Assignment> findByCourseCode(String courseCode);
     List<Assignment> findByCourseCodeOrderByAssignmentNumDesc(String courseCode);
     Assignment findByCourseCodeAndAssignmentNum(String courseCode, Integer assignmentNum);
+
+    /** Backs the "My Assignments" browser — every assignment this teacher has created. */
+    List<Assignment> findByTeacherEmail(String teacherEmail);
 }

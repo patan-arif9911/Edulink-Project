@@ -27,6 +27,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(a -> a
                 .requestMatchers(HttpMethod.POST, "/student/profile").permitAll()
                 .requestMatchers("/student/teacher-submissions/**").hasRole("TEACHER")
+                // Single-submission endpoints used by the assignment grading flow
+                .requestMatchers("/student/teacher-submission/**").hasRole("TEACHER")
                 .requestMatchers("/student/**").hasRole("STUDENT")
                 .requestMatchers("/admin/**").hasRole("SCHOOL_ADMIN")
                 .anyRequest().authenticated())

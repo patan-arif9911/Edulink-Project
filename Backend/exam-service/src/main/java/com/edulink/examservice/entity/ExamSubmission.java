@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "exam_submissions")
+@Table(name = "exam_submissions", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"course_code", "exam_type", "student_email"})
+})
 public class ExamSubmission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +36,16 @@ public class ExamSubmission {
     @Column(name = "is_late")
     private boolean isLate;
 
+    /** When the student opened the exam (clicked "Start Exam"). Drives the countdown timer. */
+    @Column(name = "started_at")
+    private LocalDateTime startedAt;
+
     public ExamSubmission() {}
 
     public ExamSubmission(String courseCode, String examType, String rollNumber,
-                         String studentEmail, String submissionContent,
-                         String submissionFileId, LocalDateTime submittedAt, boolean isLate) {
+                          String studentEmail, String submissionContent,
+                          String submissionFileId, LocalDateTime submittedAt, boolean isLate,
+                          LocalDateTime startedAt) {
         this.courseCode = courseCode;
         this.examType = examType;
         this.rollNumber = rollNumber;
@@ -47,6 +54,7 @@ public class ExamSubmission {
         this.submissionFileId = submissionFileId;
         this.submittedAt = submittedAt;
         this.isLate = isLate;
+        this.startedAt = startedAt;
     }
 
     // Getters and Setters
@@ -77,10 +85,9 @@ public class ExamSubmission {
     public boolean isLate() { return isLate; }
     public void setLate(boolean late) { isLate = late; }
 
-    @PrePersist
-    protected void onCreate() {
-        submittedAt = LocalDateTime.now();
-    }
+    public LocalDateTime getStartedAt() { return startedAt; }
+    public void setStartedAt(LocalDateTime startedAt) { this.startedAt = startedAt; }
+
 
     public static Builder builder() { return new Builder(); }
 
@@ -94,6 +101,7 @@ public class ExamSubmission {
         private String submissionFileId;
         private LocalDateTime submittedAt;
         private boolean isLate;
+        private LocalDateTime startedAt;
 
         public Builder id(Long id) { this.id = id; return this; }
         public Builder courseCode(String courseCode) { this.courseCode = courseCode; return this; }
@@ -104,10 +112,11 @@ public class ExamSubmission {
         public Builder submissionFileId(String submissionFileId) { this.submissionFileId = submissionFileId; return this; }
         public Builder submittedAt(LocalDateTime submittedAt) { this.submittedAt = submittedAt; return this; }
         public Builder isLate(boolean isLate) { this.isLate = isLate; return this; }
+        public Builder startedAt(LocalDateTime startedAt) { this.startedAt = startedAt; return this; }
 
         public ExamSubmission build() {
             return new ExamSubmission(courseCode, examType, rollNumber, studentEmail,
-                    submissionContent, submissionFileId, submittedAt, isLate);
+                    submissionContent, submissionFileId, submittedAt, isLate, startedAt);
         }
     }
 }

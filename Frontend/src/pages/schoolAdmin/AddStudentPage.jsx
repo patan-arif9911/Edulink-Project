@@ -39,11 +39,12 @@ export default function AddStudentPage() {
     { name: "fullName", label: "Full Name", placeholder: "Student Name" },
     { name: "email", label: "Email", type: "email", placeholder: "student@school.edu" },
     { name: "classId", label: "Class Name", type: "number", options: classOptions, placeholder: "— Select a class —" },
+    { name: "dob", label: "DOB", type: "date", placeholder: "mm/dd/yyyy" },
   ];
 
   return (
     <div>
-      <SectionHeader title="Add Student" subtitle="POST /admin/create-student" />
+      <SectionHeader title="Add Student" subtitle="Create a new student account" />
       <AlertBanner
         type="error"
         message={error}

@@ -124,6 +124,9 @@ public class CourseService {
     }
 
     public List<Course> getCoursesBySchool(String schoolId) { return courseRepo.findBySchoolId(schoolId); }
+
+    /** Used by the create-exam / create-assignment forms: list courses offered to a specific class. */
+    public List<Course> getCoursesByClassId(Long classId) { return courseRepo.findByClassId(classId); }
     public List<ClassRoom> getClassesBySchool(String schoolId) { return classRepo.findBySchoolId(schoolId); }
     public List<ClassRoom> getClassesByTeacher(String teacherEmail) { return classRepo.findByTeacherEmail(teacherEmail); }
     public List<LearningMaterial> getMaterialsByCourse(Long courseId) {
@@ -167,6 +170,11 @@ public class CourseService {
     }
     public List<Assignment> getAssignmentsByCourseCode(String courseCode) {
         return assignmentRepo.findByCourseCode(courseCode);
+    }
+
+    /** Every assignment this teacher has created across all their courses. */
+    public List<Assignment> getAssignmentsByTeacherEmail(String teacherEmail) {
+        return assignmentRepo.findByTeacherEmail(teacherEmail);
     }
 
     public Assignment getAssignmentByNumAndCourse(int assignmentNum, String courseCode) {

@@ -61,6 +61,12 @@ import GradeStudentPage from "../pages/teacher/GradeStudentPage";
 import RecordAttendancePage from "../pages/teacher/RecordAttendancePage";
 import SubmissionsCoursePicker from "../pages/teacher/SubmissionsCoursePicker";
 import ViewSubmissionsPage from "../pages/teacher/ViewSubmissionsPage";
+import ExamSubmissionsPage from "../pages/teacher/ExamSubmissionsPage";
+import ExamSubmissionsBrowserPage from "../pages/teacher/ExamSubmissionsBrowserPage";
+import EvaluateSubmissionPage from "../pages/teacher/EvaluateSubmissionPage";
+import AssignmentSubmissionsBrowserPage from "../pages/teacher/AssignmentSubmissionsBrowserPage";
+import AssignmentSubmissionsPage from "../pages/teacher/AssignmentSubmissionsPage";
+import EvaluateAssignmentSubmissionPage from "../pages/teacher/EvaluateAssignmentSubmissionPage";
 
 // ── Student ──
 import StudentDashboard from "../pages/student/StudentDashboard";
@@ -69,6 +75,7 @@ import EnrollCoursePage from "../pages/student/EnrollCoursePage";
 import CourseMaterialsPage from "../pages/student/CourseMaterialsPage";
 import CourseAssignmentsPage from "../pages/student/CourseAssignmentsPage";
 import StudentExamsPage from "../pages/student/StudentExamsPage";
+import TakeExamPage from "../pages/student/TakeExamPage";
 import SubmitAssignmentPage from "../pages/student/SubmitAssignmentPage";
 import ViewGradesPage from "../pages/student/ViewGradesPage";
 import ViewAttendancePage from "../pages/student/ViewAttendancePage";
@@ -100,13 +107,14 @@ export default function MasterRoutes() {
       </Route>
 
       {/* ════════ AUTHENTICATED ════════ */}
+    
       <Route element={<AuthGuard />}>
         {/* Change password – outside PasswordChangeGuard so forced-change works */}
         <Route element={<DashboardLayout />}>
           <Route path="/change-password" element={<ChangePasswordPage />} />
         </Route>
 
-        <Route element={<PasswordChangeGuard />}>
+        {/* <Route element={<PasswordChangeGuard />}> */}
           <Route element={<DashboardLayout />}>
 
             {/* ── Notifications (all roles) ── */}
@@ -169,8 +177,17 @@ export default function MasterRoutes() {
               <Route path="/teacher/new-exam" element={<NewExamPage />} />
               <Route path="/teacher/grade" element={<GradeStudentPage />} />
               <Route path="/teacher/attendance" element={<RecordAttendancePage />} />
-              <Route path="/teacher/submissions" element={<SubmissionsCoursePicker />} />
-              <Route path="/teacher/submissions/:courseCode" element={<ViewSubmissionsPage />} />
+               <Route path="/teacher/submissions" element={<SubmissionsCoursePicker />} />
+               <Route path="/teacher/submissions/:courseCode" element={<ViewSubmissionsPage />} />
+               <Route path="/teacher/exam-submissions-browser" element={<ExamSubmissionsBrowserPage />} />
+               {/* Per-exam roster: courseCode + examType identify the exam */}
+               <Route path="/teacher/exam-submissions/:courseCode/:examType" element={<ExamSubmissionsPage />} />
+               {/* Legacy per-course-only route — page detects missing examType and redirects to browser */}
+               <Route path="/teacher/exam-submissions/:courseCode" element={<ExamSubmissionsPage />} />
+               <Route path="/teacher/evaluate/:submissionId" element={<EvaluateSubmissionPage />} />
+               <Route path="/teacher/assignment-submissions-browser" element={<AssignmentSubmissionsBrowserPage />} />
+               <Route path="/teacher/assignment-submissions/:courseCode/:assignmentNum" element={<AssignmentSubmissionsPage />} />
+               <Route path="/teacher/evaluate-assignment/:submissionId" element={<EvaluateAssignmentSubmissionPage />} />
             </Route>
 
             {/* ── STUDENT ── */}
@@ -181,13 +198,14 @@ export default function MasterRoutes() {
               <Route path="/student/courses/:courseCode/materials" element={<CourseMaterialsPage />} />
               <Route path="/student/courses/:courseCode/assignments" element={<CourseAssignmentsPage />} />
               <Route path="/student/exams" element={<StudentExamsPage />} />
+              <Route path="/student/exams/take/:examId" element={<TakeExamPage />} />
               <Route path="/student/submit-assignment" element={<SubmitAssignmentPage />} />
               <Route path="/student/grades" element={<ViewGradesPage />} />
               <Route path="/student/attendance" element={<ViewAttendancePage />} />
             </Route>
 
           </Route>
-        </Route>
+        {/* </Route> */}
       </Route>
 
       {/* ════════ FALLBACKS ════════ */}

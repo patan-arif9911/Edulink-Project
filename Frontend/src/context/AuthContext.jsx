@@ -67,13 +67,8 @@ export function AuthProvider({ children }) {
     setCurrentUser(user);
     setAuthenticated(true);
 
-    const forceChange = body.mustChangePassword || body.data?.mustChangePassword || false;
-    setMustChangePassword(forceChange);
-
-    if (forceChange) {
-      return { user, forceChange: true, destination: "/change-password" };
-    }
-
+    // Always allow login, do not force password change
+    setMustChangePassword(false);
     const destination = getDashboardPath(user.role);
     return { user, forceChange: false, destination };
   };

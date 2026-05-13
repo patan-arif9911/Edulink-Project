@@ -4,7 +4,6 @@ import com.edulink.identityservice.dto.*;
 import com.edulink.identityservice.entity.*;
 import com.edulink.identityservice.exception.EduLinkException;
 import com.edulink.identityservice.repository.*;
-import com.edulink.identityservice.util.PasswordGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,7 +20,7 @@ public class UserManagementService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final PasswordGenerator passwordGenerator;
+
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
     private final ComplianceOfficerRepository complianceOfficerRepository;
@@ -31,14 +29,14 @@ public class UserManagementService {
     private final SchoolAdminRepository schoolAdminRepository;
     private final SchoolRepository schoolRepository;
 
-    public UserManagementService(UserRepository userRepository, PasswordEncoder passwordEncoder, PasswordGenerator passwordGenerator, 
+    public UserManagementService(UserRepository userRepository, PasswordEncoder passwordEncoder,
                                 StudentRepository studentRepository,
                                 TeacherRepository teacherRepository, ComplianceOfficerRepository complianceOfficerRepository,
                                 RegulatorRepository regulatorRepository, BoardOfficerRepository boardOfficerRepository,
                                 SchoolAdminRepository schoolAdminRepository, SchoolRepository schoolRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.passwordGenerator = passwordGenerator;
+
         this.studentRepository = studentRepository;
         this.teacherRepository = teacherRepository;
         this.complianceOfficerRepository = complianceOfficerRepository;
@@ -67,26 +65,21 @@ public class UserManagementService {
 
         String encodedPassword;
         String tempPassword;
-        if(request.getDob()!=null){
-            tempPassword=request.getFullName();
 
-            String tem=tempPassword.toUpperCase().charAt(0)+"";
-            for(int i=1;i<4;i++){
-                if(tempPassword.charAt(i)==' '){
-                    tem=tem+"x";
-                }else{
-                    tem=tem+(tempPassword.toLowerCase().charAt(i));
+            tempPassword = request.getFullName();
+
+            String tem = tempPassword.toUpperCase().charAt(0) + "";
+            for (int i = 1; i < 4; i++) {
+                if (tempPassword.charAt(i) == ' ') {
+                    tem = tem + "x";
+                } else {
+                    tem = tem + (tempPassword.toLowerCase().charAt(i));
                 }
             }
 
-            tempPassword=tem+"@"+request.getDob().substring(0,4);
-            encodedPassword=passwordEncoder.encode(tempPassword);
-        }else{
-            tempPassword = passwordGenerator.generateTemporaryPassword();
-            encodedPassword = needsTempPassword
-                    ? passwordEncoder.encode(tempPassword)
-                    : passwordEncoder.encode(passwordGenerator.generateTemporaryPassword());
-        }
+            tempPassword = tem + "@" + request.getDob().substring(0, 4);
+            encodedPassword = passwordEncoder.encode(tempPassword);
+
 
 
         User user = User.builder()
@@ -114,12 +107,12 @@ public class UserManagementService {
                 log.info("Student profile created for: {} with rollNumber: {}", saved.getEmail(), rollNumber);
                 break;
             case TEACHER:
-                teacherRepository.save(new Teacher(saved.getId(), saved.getEmail(), saved.getFullName(), 
+                teacherRepository.save(new Teacher(saved.getId(), saved.getEmail(), saved.getFullName(),
                         saved.getSchoolId(), null, tempPassword));
                 log.info("Teacher profile created for: {}", saved.getEmail());
                 break;
             case COMPLIANCE_OFFICER:
-                complianceOfficerRepository.save(new ComplianceOfficer(saved.getId(), saved.getEmail(), 
+                complianceOfficerRepository.save(new ComplianceOfficer(saved.getId(), saved.getEmail(),
                         saved.getFullName(), null, tempPassword));
                 log.info("Compliance Officer profile created for: {}", saved.getEmail());
                 break;
@@ -132,7 +125,7 @@ public class UserManagementService {
                 log.info("Regulator profile created for: {}", saved.getEmail());
                 break;
             case EDUCATION_BOARD_OFFICER:
-                boardOfficerRepository.save(new BoardOfficer(saved.getId(), saved.getEmail(), 
+                boardOfficerRepository.save(new BoardOfficer(saved.getId(), saved.getEmail(),
                         saved.getFullName(), null, tempPassword));
                 log.info("Board Officer profile created for: {}", saved.getEmail());
                 break;
@@ -142,6 +135,7 @@ public class UserManagementService {
 
         return mapToResponse(saved);
     }
+
 
     public List<UserResponse> getAllUsers() {
         return userRepository.findAll().stream()
@@ -207,8 +201,6 @@ public class UserManagementService {
         school.setAddress(request.getAddress());
         school.setPhone(request.getPhone());
         school.setEmail(request.getEmail());
-        school.setTeacherNumber(request.getTeacherNumber());
-        school.setStudentNumber(request.getStudentNumber());
         school.setPrincipalName(request.getPrincipalName());
         school.setEstablishedDate(request.getEstablishedDate());
         School saved = schoolRepository.save(school);

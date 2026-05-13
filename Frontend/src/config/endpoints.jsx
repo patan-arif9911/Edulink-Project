@@ -1,4 +1,4 @@
-const BASE = process.env.REACT_APP_GATEWAY_URL || "http://localhost:9090";
+const BASE = process.env.REACT_APP_GATEWAY_URL || "http://localhost:9090";;
 
 const Endpoints = {
   /* ═══════════════════════════════════════════════
@@ -63,6 +63,8 @@ const Endpoints = {
     grades:                         `${BASE}/exam/student/grades`,
     // ...existing code...
     attendance:                     `${BASE}/student/attendance`,
+    // ...existing code...
+    myAssignmentGrades:             `${BASE}/student/my-grades/assignments`,
   },
 
   /* ═══════════════════════════════════════════════
@@ -74,10 +76,13 @@ const Endpoints = {
     createClass:                    `${BASE}/course/admin/create-class`,
     adminClasses:                   `${BASE}/course/admin/classes`,
     adminCourses:                   `${BASE}/course/admin/courses`,
+    internalCourses:                `${BASE}/course/internal/courses`,
     attendanceReport:               `${BASE}/admin/attendance-report`,
 
     // Teacher
     teacherClasses:                 `${BASE}/course/teacher/classes`,
+    teacherAllAssignments:          `${BASE}/course/teacher/assignments`,
+    teacherCoursesByClass: (classId) => `${BASE}/course/teacher/courses-by-class/${classId}`,
     uploadMaterial:                 `${BASE}/course/teacher/upload-material`,
     teacherMaterials:    (code) =>  `${BASE}/course/teacher/materials/${code}`,
     downloadMaterial:    (fileId) => `${BASE}/course/teacher/materials/download/${fileId}`,
@@ -91,6 +96,8 @@ const Endpoints = {
     // Teacher: view student submissions (routed to student-service)
     teacherSubmissions:  (code) =>  `${BASE}/student/teacher-submissions/${code}`,
     teacherDownloadSubmission: (fileId) => `${BASE}/student/teacher-submissions/download/${fileId}`,
+    teacherSubmissionById:    (id) => `${BASE}/student/teacher-submission/${id}`,
+    teacherGradeAssignmentSubmission: (id) => `${BASE}/student/teacher-submission/${id}/grade`,
 
 
     // Student
@@ -104,23 +111,32 @@ const Endpoints = {
    *  EXAM SERVICE  (Port 8084 behind gateway)
    *  Controller: @RequestMapping("/exam")
    * ═══════════════════════════════════════════════ */
-  exam: {
-    // Teacher endpoints
-    createExam:                     `${BASE}/exam/teacher/create-exam`,
-    gradeStudent:                   `${BASE}/exam/teacher/grade-student`,
-    examSubmissions:     (examId) => `${BASE}/exam/teacher/exam-submissions/${examId}`,
-    // Student endpoints
-    studentExams:                   `${BASE}/exam/student/exams`,
-    studentGrades:                  `${BASE}/exam/student/grades`,
-    downloadExamQ:       (examId) => `${BASE}/exam/student/download-exam-questions/${examId}`,
-    submitExam:                     `${BASE}/exam/student/submit-exam`,
-  },
+   exam: {
+      // Teacher endpoints
+      createExam:                     `${BASE}/exam/teacher/create-exam`,
+      gradeStudent:                   `${BASE}/exam/teacher/grade-student`,
+      examSubmissions:     (courseCode) => `${BASE}/exam/teacher/exam-submissions/${courseCode}`,
+      submissionById:      (id) =>    `${BASE}/exam/teacher/submission/${id}`,
+      gradesByExam:                   `${BASE}/exam/teacher/grades`,
+      gradesByCourse:      (courseCode) => `${BASE}/exam/teacher/grades-by-course/${courseCode}`,
+      resetAttempt:                   `${BASE}/exam/teacher/reset-attempt`,
+      examsByCourseCode:   (code) =>  `${BASE}/exam/teacher/exams/${code}`,
+      teacherAllExams:                `${BASE}/exam/teacher/exams`,
+      // Student endpoints
+      studentExams:                   `${BASE}/exam/student/exams`,
+      studentGrades:                  `${BASE}/exam/student/grades`,
+      downloadExamQ:       (examId) => `${BASE}/exam/student/download-exam-questions/${examId}`,
+      submitExam:                     `${BASE}/exam/student/submit-exam`,
+      startExam:                      `${BASE}/exam/student/start-exam`,
+    },
 
   /* ═══════════════════════════════════════════════
    *  ATTENDANCE SERVICE  (Port 8085 behind gateway)
    * ═══════════════════════════════════════════════ */
   attendance: {
     markAttendance:                 `${BASE}/teacher/mark-attendance`,
+    markAttendanceBulk:             `${BASE}/teacher/mark-attendance/bulk`,
+    teacherClassAttendance:         `${BASE}/teacher/attendance`,
     studentAttendance:              `${BASE}/student/attendance`,
     adminReport:                    `${BASE}/admin/attendance-report`,
   },
@@ -130,22 +146,21 @@ const Endpoints = {
    * ═══════════════════════════════════════════════ */
   compliance: {
     // Compliance Officer
-    auditSchool:                    `${BASE}/compliance-service/compliance/audit-school`,
-    complianceStatus:               `${BASE}/compliance-service/compliance/compliance-status`,
-    createSchoolAdmin:              `${BASE}/compliance-service/compliance/create-school-admin`,
-    registerSchool:                 `${BASE}/compliance-service/compliance/register-school`,
-    auditRecords:                   `${BASE}/compliance-service/compliance/audit-records`,
+    auditSchool:                    `${BASE}/compliance/audit-school`,
+    complianceStatus:               `${BASE}/compliance/compliance-status`,
+    registerSchool:                 `${BASE}/compliance/register-school`,
+    auditRecords:                   `${BASE}/compliance/audit-records`,
 
     // Board Officer
-    boardSchools:                   `${BASE}/compliance-service/board/schools`,
-    boardAcademicPerformance:       `${BASE}/compliance-service/board/academic-performance`,
-    boardReports:                   `${BASE}/compliance-service/board/reports`,
-    boardComplianceSummary:         `${BASE}/compliance-service/board/compliance-summary`,
+    boardSchools:                   `${BASE}/board/schools`,
+    boardAcademicPerformance:       `${BASE}/board/academic-performance`,
+    boardReports:                   `${BASE}/board/reports`,
+    boardComplianceSummary:         `${BASE}/board/compliance-summary`,
 
     // Regulator
-    regulatorComplianceReports:     `${BASE}/compliance-service/regulator/compliance-reports`,
-    regulatorAccreditation:         `${BASE}/compliance-service/regulator/accreditation-status`,
-    regulatorSystemAudit:           `${BASE}/compliance-service/regulator/system-audit`,
+    regulatorComplianceReports:     `${BASE}/regulator/compliance-reports`,
+    regulatorAccreditation:         `${BASE}/regulator/accreditation-status`,
+    regulatorSystemAudit:           `${BASE}/regulator/system-audit`,
   },
 
   /* ═══════════════════════════════════════════════

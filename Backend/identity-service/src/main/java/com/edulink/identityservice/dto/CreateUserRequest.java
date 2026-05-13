@@ -10,6 +10,7 @@ public class CreateUserRequest {
     private String email;
     @NotBlank
     private String fullName;
+    @NotBlank
     private String dob;
     private Role role;
     private String schoolId;

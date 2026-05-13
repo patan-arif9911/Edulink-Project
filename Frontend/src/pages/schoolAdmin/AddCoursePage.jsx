@@ -90,7 +90,7 @@ export default function AddCoursePage() {
 
   return (
     <div>
-      <SectionHeader title="Create Course" subtitle="POST course/admin/create-course" />
+      <SectionHeader title="Create Course" subtitle="Create a new course" />
       <div className="page-form">
         <AlertBanner type="error" message={error} onClose={() => setError("")} />
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />

@@ -17,9 +17,35 @@ const examApi = {
   gradeStudent: (payload) =>
     httpClient.post(Endpoints.exam.gradeStudent, payload),
 
-  /* GET /exam/submissions/{examId} */
-  fetchExamSubmissions: (examId) =>
-    httpClient.get(Endpoints.exam.examSubmissions(examId)),
+  /* GET /exam/teacher/exam-submissions/{courseCode} — all submissions for a course (caller filters by examType) */
+  fetchExamSubmissions: (courseCode) =>
+    httpClient.get(Endpoints.exam.examSubmissions(courseCode)),
+
+  /* GET /exam/teacher/submission/{id} — single submission with content for the evaluate page */
+  fetchSubmissionById: (id) =>
+    httpClient.get(Endpoints.exam.submissionById(id)),
+
+  /* GET /exam/teacher/grades?courseCode=&examType= — used to mark "Graded" rows on the roster */
+  fetchGradesByExam: ({ courseCode, examType }) =>
+    httpClient.get(Endpoints.exam.gradesByExam, { params: { courseCode, examType } }),
+
+  /* GET /exam/teacher/grades-by-course/{courseCode} — every grade for a course */
+  fetchGradesByCourse: (courseCode) =>
+    httpClient.get(Endpoints.exam.gradesByCourse(courseCode)),
+
+  /* DELETE /exam/teacher/reset-attempt — wipe a student's submission so they can retake */
+  resetAttempt: ({ courseCode, examType, rollNumber }) =>
+    httpClient.delete(Endpoints.exam.resetAttempt, {
+      params: { courseCode, examType, rollNumber },
+    }),
+
+  /* GET /exam/teacher/exams/{courseCode} - Get exams by course code */
+  fetchExamsByCourseCode: (courseCode) =>
+    httpClient.get(Endpoints.exam.examsByCourseCode(courseCode)),
+
+  /* GET /exam/teacher/exams — every exam the teacher has created */
+  fetchTeacherExams: () =>
+    httpClient.get(Endpoints.exam.teacherAllExams),
 
   /* ── Student endpoints ── */
 
@@ -41,8 +67,13 @@ const examApi = {
       responseType: "blob",
     }),
 
-  /* POST /exam/student/submit — JSON body:
-     { examId, studentEmail, submissionContent } */
+  /* POST /exam/student/start-exam — JSON body: { examId, courseCode, examType }
+     Creates or returns the in-progress submission row carrying startedAt. */
+  startExam: ({ examId, courseCode, examType }) =>
+    httpClient.post(Endpoints.exam.startExam, { examId, courseCode, examType }),
+
+  /* POST /exam/student/submit-exam — JSON body:
+     { examId, courseCode, examType, submissionContent } */
   submitExam: (payload) =>
     httpClient.post(Endpoints.exam.submitExam, payload),
 };

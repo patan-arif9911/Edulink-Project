@@ -1,0 +1,2 @@
+2026-04-25T01:59:31.018+05:30  WARN 17456 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h36m35s38ms574µs500ns).
+2026-04-25T21:16:54.196+05:30  WARN 17456 --- [student-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19h17m29s566ms310µs100ns).

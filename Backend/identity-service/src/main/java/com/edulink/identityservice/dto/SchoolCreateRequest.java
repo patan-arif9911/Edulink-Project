@@ -8,31 +8,12 @@ public class SchoolCreateRequest {
     private String address;
     private String phone;
     private String email;
-    private long teacherNumber;
-    private long studentNumber;
     private String principalName;
     private LocalDate establishedDate;
 
     public SchoolCreateRequest() {}
 
     // Getters and setters
-
-    public long getTeacherNumber() {
-        return teacherNumber;
-    }
-
-    public void setTeacherNumber(long teacherNumber) {
-        this.teacherNumber = teacherNumber;
-    }
-
-    public long getStudentNumber() {
-        return studentNumber;
-    }
-
-    public void setStudentNumber(long studentNumber) {
-        this.studentNumber = studentNumber;
-    }
-
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
     public String getName() { return name; }

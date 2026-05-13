@@ -6,7 +6,7 @@ import CreateUserForm from "../../components/shared/CreateUserForm";
 const fields = [
   { name: "fullName", label: "Full Name", placeholder: "Jane Smith" },
   { name: "email", label: "Email", type: "email", placeholder: "board@education.gov" },
-  { name: "dob", label: "D.O.B", type: "date", placeholder: "MM/dd/yyyy" },
+  { name: "dob", label: "DOB", type: "date", placeholder: "mm/dd/yyyy" },
 ];
 
 export default function AddBoardOfficerPage() {

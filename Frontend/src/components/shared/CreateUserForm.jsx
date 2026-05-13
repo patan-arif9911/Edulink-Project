@@ -3,7 +3,14 @@ import AlertBanner from "../shared/AlertBanner";
 import { parseApiError } from "../../utils/apiErrorParser";
 import "../../styles/pages.css";
 
-
+/**
+ * Reusable form for creating users (compliance officer, board officer, regulator, school admin, teacher, student).
+ * Props:
+ *   - title: form heading
+ *   - fields: [{ name, label, type, placeholder, required }]
+ *   - onSubmit: async (formData) => response
+ *   - successExtractor: (response) => { message, tempPassword }
+ */
 export default function CreateUserForm({ title, fields, onSubmit, successExtractor, defaultValues }) {
   const [formData, setFormData] = useState(defaultValues || {});
   const [loading, setLoading] = useState(false);
@@ -14,20 +21,18 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
- 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setResult(null);
     setLoading(true);
+
     try {
-      
+      /* Clean payload: convert numeric fields, strip empty optional values */
       const cleaned = {};
       fields.forEach((f) => {
         const val = formData[f.name];
-        const dob= formData[f.dob];
-        if (val === undefined || val === "" || dob === undefined || dob === "") {
+        if (val === undefined || val === "") {
           if (f.required === false) return;         // skip empty optional fields
           cleaned[f.name] = f.type === "number" ? null : val;
         } else {
@@ -36,17 +41,16 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
       });
 
       const res = await onSubmit(cleaned);
-     
       const wrapper = res.data;                     // { success, message, data }
       const inner   = wrapper?.data || wrapper;
-      
       if (successExtractor) {
+        console.log("mess =",successExtractor(inner))
         setResult(successExtractor(inner));
       } else {
-        const tempPwd = inner?.temporaryPassword || inner?.tempPassword || inner?.password;
+        console.log("mess =",wrapper?.message)
         setResult({
-          message: wrapper?.message || inner?.message || "User created successfully!",
-          tempPassword: tempPwd,
+                  
+          message:  "User created successfully!"
         });
       }
       setFormData(defaultValues || {});
@@ -55,9 +59,6 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
     } finally {
       setLoading(false);
     }
-
-    console.log("inner",error);
-    console.log("typer",typeof error);
   };
 
   return (

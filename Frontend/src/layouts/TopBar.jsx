@@ -47,32 +47,26 @@ export default function TopBar({ user, onToggleSidebar }) {
 
       <div className="topbar-right">
         {/* Notifications bell */}
-        {
-            (user.role==="OPERATOR" || user.role==="SCHOOL_ADMIN" || user.role==="TEACHER" || user.role==="STUDENT")&&(
-                 <button
-                    className="topbar-icon-btn topbar-notif-btn"
-                    title="Notifications"
-                    onClick={() => navigate("/notifications")}
-                  >
-                    <span className="material-icons-round">notifications</span>
-                  </button>
-            )
-          }
+        <button
+          className="topbar-icon-btn topbar-notif-btn"
+          title="Notifications"
+          onClick={() => navigate("/notifications")}
+        >
+          <span className="material-icons-round">notifications</span>
+        </button>
 
         {/* Profile dropdown */}
         <div className="topbar-profile-wrapper" ref={dropdownRef}>
-
-          
-            <button
-              className="topbar-avatar-btn"
-              onClick={() => setProfileOpen((p) => !p)}
-              aria-label="Profile menu"
-            >
-              <span className="topbar-avatar">{initials}</span>
-              <span className="material-icons-round topbar-caret">
-                {profileOpen ? "expand_less" : "expand_more"}
-              </span>
-            </button>
+          <button
+            className="topbar-avatar-btn"
+            onClick={() => setProfileOpen((p) => !p)}
+            aria-label="Profile menu"
+          >
+            <span className="topbar-avatar">{initials}</span>
+            <span className="material-icons-round topbar-caret">
+              {profileOpen ? "expand_less" : "expand_more"}
+            </span>
+          </button>
 
           {profileOpen && (
             <div className="topbar-dropdown">

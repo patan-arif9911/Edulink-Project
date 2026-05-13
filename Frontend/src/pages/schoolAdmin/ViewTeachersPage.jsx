@@ -60,7 +60,7 @@ export default function ViewTeachersPage() {
 
   return (
     <div>
-      <SectionHeader title="Teachers" subtitle="GET /admin/teachers" />
+      <SectionHeader title="Teachers" subtitle="Manage your teachers and their details." />
       <AlertBanner type="error" message={error} onClose={() => setError("")} />
       <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
       <GenericTable columns={columns} data={teachers} emptyMessage="No teachers found." />

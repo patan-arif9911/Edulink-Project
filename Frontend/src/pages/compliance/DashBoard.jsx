@@ -117,6 +117,10 @@ export default function DashBoard(){
 
 
     return(
+        <>
+        {/* <div className="absolute bg-black min-h-[70px] w-[250px] right-[0px] rounded-l-[10px] p-[2px] flex justify-center items-center">
+            <h2>hiiiiiiiiiiiiiiii</h2>
+        </div> */}
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             {/* Loading Spinner */}
             {loading && (
@@ -187,5 +191,6 @@ export default function DashBoard(){
                 }
             `}</style>
         </div>
+        </>
     )
 }

@@ -26,12 +26,15 @@ public class Exam {
     private LocalDateTime examDate;
     private LocalDateTime createdAt;
 
+    /** How long the student has to complete the exam once started. Null = no time limit. */
+    private Integer durationMinutes;
+
     public Exam() {
     }
 
     public Exam(Long id, String courseCode, String teacherEmail, String examTitle, String examType,
                 int totalMarks, int passingMarks, String schoolId, String questionsFileId,
-                LocalDateTime examDate, LocalDateTime createdAt) {
+                LocalDateTime examDate, LocalDateTime createdAt, Integer durationMinutes) {
         this.id = id;
         this.courseCode = courseCode;
         this.teacherEmail = teacherEmail;
@@ -43,6 +46,7 @@ public class Exam {
         this.questionsFileId = questionsFileId;
         this.examDate = examDate;
         this.createdAt = createdAt;
+        this.durationMinutes = durationMinutes;
     }
 
     public Long getId() { return id; }
@@ -67,6 +71,8 @@ public class Exam {
     public void setExamDate(LocalDateTime examDate) { this.examDate = examDate; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public Integer getDurationMinutes() { return durationMinutes; }
+    public void setDurationMinutes(Integer durationMinutes) { this.durationMinutes = durationMinutes; }
 
     @PrePersist
     protected void onCreate() { createdAt = LocalDateTime.now(); }
@@ -85,6 +91,7 @@ public class Exam {
         private String questionsFileId;
         private LocalDateTime examDate;
         private LocalDateTime createdAt;
+        private Integer durationMinutes;
 
         public Builder id(Long id) { this.id = id; return this; }
         public Builder courseCode(String courseCode) { this.courseCode = courseCode; return this; }
@@ -97,9 +104,10 @@ public class Exam {
         public Builder questionsFileId(String questionsFileId) { this.questionsFileId = questionsFileId; return this; }
         public Builder examDate(LocalDateTime examDate) { this.examDate = examDate; return this; }
         public Builder createdAt(LocalDateTime createdAt) { this.createdAt = createdAt; return this; }
+        public Builder durationMinutes(Integer durationMinutes) { this.durationMinutes = durationMinutes; return this; }
 
         public Exam build() {
-            return new Exam(id, courseCode, teacherEmail, examTitle, examType, totalMarks, passingMarks, schoolId, questionsFileId, examDate, createdAt);
+            return new Exam(id, courseCode, teacherEmail, examTitle, examType, totalMarks, passingMarks, schoolId, questionsFileId, examDate, createdAt, durationMinutes);
         }
     }
 }

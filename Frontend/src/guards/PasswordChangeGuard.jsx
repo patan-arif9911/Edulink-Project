@@ -3,8 +3,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 export default function PasswordChangeGuard() {
-  const { mustChangePassword } = useContext(AuthContext);
-
-  if (mustChangePassword) return <Navigate to="/change-password" replace />;
+  // No longer force password change, just render children
   return <Outlet />;
 }

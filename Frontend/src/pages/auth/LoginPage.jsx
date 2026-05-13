@@ -39,11 +39,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const result = await signIn({ email: email.trim(), password });
-      if (result.forceChange) {
-        navigate("/change-password", { replace: true });
-      } else {
-        navigate(result.destination, { replace: true });
-      }
+      navigate(result.destination, { replace: true });
     } catch (err) {
       setError(parseApiError(err));
     } finally {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import courseApi from "../../api/courseApi";
 import SectionHeader from "../../components/shared/SectionHeader";
 import AlertBanner from "../../components/shared/AlertBanner";
@@ -9,7 +9,15 @@ import { formatDateTime } from "../../utils/dateFormatters";
 import "../../styles/pages.css";
 
 export default function UploadMaterialPage() {
-  const [courseCode, setCourseCode] = useState("");
+  // Cascading dropdowns: class → course. A single selection controls both upload and the listing.
+  const [classes, setClasses] = useState([]);
+  const [classesLoading, setClassesLoading] = useState(true);
+  const [selectedClassId, setSelectedClassId] = useState("");
+  const [courses, setCourses] = useState([]);
+  const [coursesLoading, setCoursesLoading] = useState(false);
+  const [selectedCourseCode, setSelectedCourseCode] = useState("");
+
+  // Upload form
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [materialType, setMaterialType] = useState("PDF");
@@ -18,36 +26,44 @@ export default function UploadMaterialPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Material listing state
-  const [listCourseCode, setListCourseCode] = useState("");
+  // Materials listing for the selected course
   const [materials, setMaterials] = useState([]);
   const [listLoading, setListLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(""); setSuccess("");
-    if (!file) { setError("Please select a file."); return; }
+  /* Load the teacher's classes once on mount. */
+  useEffect(() => {
+    courseApi
+      .fetchTeacherClasses()
+      .then((res) => setClasses(res.data?.data || res.data || []))
+      .catch((err) => setError(parseApiError(err) || "Failed to load classes."))
+      .finally(() => setClassesLoading(false));
+  }, []);
 
-    const formData = new FormData();
-    formData.append("courseCode", courseCode);
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("materialType", materialType);
-    formData.append("file", file);
-
-    setLoading(true);
-    try {
-      await courseApi.uploadMaterial(formData);
-      setSuccess("Material uploaded successfully!");
-      // Auto-refresh list if viewing same course
-      if (listCourseCode === courseCode) fetchMaterials(courseCode);
-      setCourseCode(""); setTitle(""); setDescription(""); setMaterialType("PDF"); setFile(null);
-    } catch (err) {
-      setError(parseApiError(err));
-    } finally {
-      setLoading(false);
+  /* When class changes, load its courses and clear the selected course. */
+  useEffect(() => {
+    if (!selectedClassId) {
+      setCourses([]);
+      setSelectedCourseCode("");
+      return;
     }
-  };
+    setCoursesLoading(true);
+    setSelectedCourseCode("");
+    courseApi
+      .fetchCoursesByClass(selectedClassId)
+      .then((res) => setCourses(res.data?.data || res.data || []))
+      .catch((err) => setError(parseApiError(err) || "Failed to load courses for this class."))
+      .finally(() => setCoursesLoading(false));
+  }, [selectedClassId]);
+
+  /* When course changes, fetch the existing materials for that course. */
+  useEffect(() => {
+    if (!selectedCourseCode) {
+      setMaterials([]);
+      return;
+    }
+    fetchMaterials(selectedCourseCode);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCourseCode]);
 
   const fetchMaterials = async (code) => {
     if (!code) return;
@@ -62,14 +78,43 @@ export default function UploadMaterialPage() {
     }
   };
 
-  const handleFetchMaterials = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetchMaterials(listCourseCode);
+    setError("");
+    setSuccess("");
+    if (!selectedClassId) { setError("Please select a class."); return; }
+    if (!selectedCourseCode) { setError("Please select a course."); return; }
+    if (!file) { setError("Please select a file."); return; }
+
+    const formData = new FormData();
+    formData.append("courseCode", selectedCourseCode);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("materialType", materialType);
+    formData.append("file", file);
+
+    setLoading(true);
+    try {
+      await courseApi.uploadMaterial(formData);
+      setSuccess("Material uploaded successfully!");
+      // Refresh the materials list — but keep the class/course selection so the teacher can upload more.
+      fetchMaterials(selectedCourseCode);
+      setTitle("");
+      setDescription("");
+      setMaterialType("PDF");
+      setFile(null);
+      const fileInput = document.getElementById("material-file");
+      if (fileInput) fileInput.value = "";
+    } catch (err) {
+      setError(parseApiError(err));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDownload = async (fileId, fileName) => {
     try {
-      const res = await courseApi.downloadMaterial(listCourseCode, fileId);
+      const res = await courseApi.downloadMaterial(selectedCourseCode, fileId);
       const blob = new Blob([res.data]);
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -86,7 +131,7 @@ export default function UploadMaterialPage() {
 
   const handlePreview = async (fileId) => {
     try {
-      const res = await courseApi.downloadMaterial(listCourseCode, fileId);
+      const res = await courseApi.downloadMaterial(selectedCourseCode, fileId);
       const blob = new Blob([res.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
       window.open(url, "_blank");
@@ -98,9 +143,9 @@ export default function UploadMaterialPage() {
   const handleDelete = async (fileId) => {
     if (!window.confirm("Are you sure you want to delete this material?")) return;
     try {
-      await courseApi.deleteMaterial(listCourseCode, fileId);
+      await courseApi.deleteMaterial(selectedCourseCode, fileId);
       setSuccess("Material deleted successfully!");
-      fetchMaterials(listCourseCode);
+      fetchMaterials(selectedCourseCode);
     } catch (err) {
       setError(parseApiError(err));
     }
@@ -152,17 +197,62 @@ export default function UploadMaterialPage() {
     },
   ];
 
+  if (classesLoading) return <Spinner />;
+
   return (
     <div>
-      <SectionHeader title="Upload Material" subtitle="POST /teacher/upload-material" />
+      <SectionHeader title="Upload Material" subtitle="Select a class and course, then upload" />
       <div className="page-form">
         <AlertBanner type="error" message={error} onClose={() => setError("")} />
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Course Code</label>
-            <input value={courseCode} onChange={(e) => setCourseCode(e.target.value)} required disabled={loading} placeholder="MATH101" />
+            <label>Class</label>
+            <select
+              value={selectedClassId}
+              onChange={(e) => setSelectedClassId(e.target.value)}
+              disabled={loading}
+              required
+            >
+              <option value="">— Select a class —</option>
+              {classes.map((c) => (
+                <option key={c.id || c.classId} value={c.id || c.classId}>
+                  {c.className || `Class ${c.grade || ""}${c.section || ""}`}
+                </option>
+              ))}
+            </select>
+            {classes.length === 0 && (
+              <small style={{ color: "#b45309" }}>
+                You aren't assigned to any classes yet. Ask your school admin to assign you.
+              </small>
+            )}
           </div>
+
+          <div className="form-group">
+            <label>Course</label>
+            <select
+              value={selectedCourseCode}
+              onChange={(e) => setSelectedCourseCode(e.target.value)}
+              disabled={loading || !selectedClassId || coursesLoading}
+              required
+            >
+              <option value="">
+                {!selectedClassId
+                  ? "— Select a class first —"
+                  : coursesLoading
+                    ? "Loading…"
+                    : courses.length === 0
+                      ? "No courses for this class"
+                      : "— Select a course —"}
+              </option>
+              {courses.map((c) => (
+                <option key={c.courseCode} value={c.courseCode}>
+                  {c.courseName ? `${c.courseName} (${c.courseCode})` : c.courseCode}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div className="form-group">
             <label>Title</label>
             <input value={title} onChange={(e) => setTitle(e.target.value)} required disabled={loading} placeholder="Chapter 1 Notes" />
@@ -182,30 +272,28 @@ export default function UploadMaterialPage() {
           </div>
           <div className="form-group">
             <label>File</label>
-            <input type="file" onChange={(e) => setFile(e.target.files[0])} disabled={loading} accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt" />
+            <input id="material-file" type="file" onChange={(e) => setFile(e.target.files[0])} disabled={loading} accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt" />
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Uploading…" : "Upload Material"}</button>
         </form>
       </div>
 
-      {/* ── Material Listing Section ── */}
+      {/* Existing materials for the currently-selected course */}
       <div style={{ marginTop: "2rem" }}>
-        <SectionHeader title="Uploaded Materials" subtitle="GET /teacher/materials/{courseCode}" />
-        <div className="page-form" style={{ marginBottom: "1rem" }}>
-          <form onSubmit={handleFetchMaterials} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-end" }}>
-            <div className="form-group" style={{ flex: 1, marginBottom: 0 }}>
-              <label>Course Code</label>
-              <input value={listCourseCode} onChange={(e) => setListCourseCode(e.target.value)} required placeholder="MATH101" />
-            </div>
-            <button type="submit" className="submit-btn" disabled={listLoading} style={{ marginBottom: "0.1rem" }}>
-              {listLoading ? "Loading…" : "Fetch Materials"}
-            </button>
-          </form>
-        </div>
+        <SectionHeader
+          title="Uploaded Materials"
+          subtitle={selectedCourseCode ? `Materials for ${selectedCourseCode}` : "Pick a class and course above to see existing materials"}
+        />
         {listLoading ? (
           <Spinner />
+        ) : !selectedCourseCode ? (
+          <p className="muted" style={{ padding: "1rem" }}>No course selected.</p>
         ) : (
-          <GenericTable columns={columns} data={materials} emptyMessage="No materials found. Enter a course code and click Fetch." />
+          <GenericTable
+            columns={columns}
+            data={materials}
+            emptyMessage="No materials uploaded for this course yet."
+          />
         )}
       </div>
     </div>

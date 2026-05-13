@@ -55,7 +55,7 @@ const identityApi = {
 
   /* ── Compliance Officer Actions ── */
   createSchoolAdmin: (payload) =>
-    httpClient.post(Endpoints.compliance.createSchoolAdmin, payload),
+    httpClient.post(Endpoints.identity.createSchoolAdmin, payload),
 
   createSchool: (payload) =>
     httpClient.post(Endpoints.identity.createSchool, payload),

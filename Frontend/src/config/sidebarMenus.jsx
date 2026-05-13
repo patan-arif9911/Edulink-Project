@@ -15,20 +15,20 @@ const menusByRole = {
     { label: "Register School",   path: "/compliance/register-school",  icon: "add_business" },
     { label: "Add School Admin",  path: "/compliance/add-school-admin", icon: "admin_panel_settings" },
     { label: "Audit Records",     path: "/compliance/audit-records",    icon: "history" },
-    // { label: "Notifications",     path: "/notifications",               icon: "notifications" },
+
   ],
 
   [EduLinkRoles.EDUCATION_BOARD_OFFICER]: [
      { label: "Dashboard",              path: "/board/dashboard",           icon: "dashboard" },
     { label: "Create Rule",            path: "/board/create-rule",         icon: "add_circle" },
     { label: "Activate Rules",         path: "/board/rules-activate",     icon: "toggle_on" },
-    // { label: "Notifications",          path: "/notifications",             icon: "notifications" },
+
   ],
 
   [EduLinkRoles.REGULATOR]: [
      { label: "Dashboard",           path: "/regulator/dashboard",           icon: "dashboard" },
     { label: "Rules Review",        path: "/regulator/rules-review",        icon: "flag" },
-    // { label: "Notifications",       path: "/notifications",                 icon: "notifications" },
+
   ],
 
   [EduLinkRoles.SCHOOL_ADMIN]: [
@@ -43,14 +43,15 @@ const menusByRole = {
   ],
 
   [EduLinkRoles.TEACHER]: [
-    { label: "Dashboard",           path: "/teacher/dashboard",       icon: "dashboard" },
-    { label: "My Classes",          path: "/teacher/classes",         icon: "class" },
-    { label: "Upload Material",     path: "/teacher/upload-material", icon: "cloud_upload" },
-    { label: "New Assignment",      path: "/teacher/new-assignment",  icon: "assignment" },
-    { label: "View Submissions",    path: "/teacher/submissions",     icon: "fact_check" },
-    { label: "New Exam",            path: "/teacher/new-exam",        icon: "quiz" },
-    { label: "Grade Student",       path: "/teacher/grade",           icon: "grading" },
-    { label: "Mark Attendance",     path: "/teacher/attendance",      icon: "how_to_reg" },
+    { label: "Dashboard",                path: "/teacher/dashboard",                       icon: "dashboard" },
+    { label: "My Classes",               path: "/teacher/classes",                         icon: "class" },
+    { label: "Upload Material",          path: "/teacher/upload-material",                 icon: "cloud_upload" },
+    { label: "New Assignment",           path: "/teacher/new-assignment",                  icon: "assignment" },
+    { label: "Assignment Submissions",   path: "/teacher/assignment-submissions-browser",  icon: "fact_check" },
+    { label: "New Exam",                 path: "/teacher/new-exam",                        icon: "quiz" },
+    { label: "Exam Submissions",         path: "/teacher/exam-submissions-browser",        icon: "fact_check" },
+    { label: "View Grades",              path: "/teacher/grade",                           icon: "grading" },
+    { label: "Mark Attendance",          path: "/teacher/attendance",                      icon: "how_to_reg" },
   ],
 
   [EduLinkRoles.STUDENT]: [
