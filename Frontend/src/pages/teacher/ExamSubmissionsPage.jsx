@@ -28,6 +28,8 @@ export default function ExamSubmissionsPage() {
   const [grades, setGrades] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [resettingRoll, setResettingRoll] = useState("");
 
   const missingContext = !courseCode || !examType;
 
@@ -82,6 +84,30 @@ export default function ExamSubmissionsPage() {
     });
   };
 
+  const handleResetAttempt = async (rollNumber) => {
+    const ok = window.confirm(
+      `Reset attempt for ${rollNumber}?\n\nThis deletes their submission so they can retake the exam.`
+    );
+    if (!ok) return;
+    setResettingRoll(rollNumber);
+    setError("");
+    setSuccess("");
+    try {
+      const res = await examApi.resetAttempt({ courseCode, examType, rollNumber });
+      const deleted = res.data?.data ?? 0;
+      setSuccess(
+        deleted === 0
+          ? `No submission to reset for ${rollNumber}.`
+          : `Reset complete — ${rollNumber} can retake the exam.`
+      );
+      loadAll();
+    } catch (err) {
+      setError(parseApiError(err) || "Failed to reset attempt.");
+    } finally {
+      setResettingRoll("");
+    }
+  };
+
   if (loading) return <Spinner />;
 
   if (missingContext) {
@@ -116,7 +142,8 @@ export default function ExamSubmissionsPage() {
         }
       />
 
-      <AlertBanner type="error" message={error} onClose={() => setError("")} />
+      <AlertBanner type="error"   message={error}   onClose={() => setError("")} />
+      <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
 
       <div className="sub-toolbar">
         <button type="button" className="submit-btn secondary" onClick={() => navigate(-1)}>← Back</button>
@@ -160,13 +187,25 @@ export default function ExamSubmissionsPage() {
                   </td>
                   <td><StatusPill status={r.status} /></td>
                   <td>
-                    <button
-                      type="button"
-                      className="link-btn"
-                      onClick={() => handleViewSubmission(r)}
-                    >
-                      {r.grade ? "View Grade" : "View Submission"}
-                    </button>
+                    <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+                      <button
+                        type="button"
+                        className="link-btn"
+                        onClick={() => handleViewSubmission(r)}
+                      >
+                        {r.grade ? "View Grade" : "View Submission"}
+                      </button>
+                      <button
+                        type="button"
+                        className="link-btn"
+                        style={{ color: "#b91c1c" }}
+                        onClick={() => handleResetAttempt(r.submission.rollNumber)}
+                        disabled={resettingRoll === r.submission.rollNumber}
+                        title="Delete this submission so the student can retake the exam"
+                      >
+                        {resettingRoll === r.submission.rollNumber ? "Resetting…" : "Reset"}
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

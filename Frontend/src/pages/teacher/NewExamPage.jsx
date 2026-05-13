@@ -194,7 +194,7 @@ export default function NewExamPage() {
             </small>
           </div>
           <div className="form-group">
-            <label>Questions File (optional)</label>
+            <label>Questions File</label>
             <input id="exam-questions-file" type="file" onChange={(e) => setFile(e.target.files[0])} disabled={loading} />
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Exam"}</button>

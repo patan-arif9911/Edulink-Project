@@ -81,7 +81,7 @@ export default function AddClassPage() {
 
   return (
     <div>
-      <SectionHeader title="Create Class" subtitle="POST /course/admin/create-class" />
+      <SectionHeader title="Create Class" subtitle="Create a new class" />
       <div className="page-form">
         <AlertBanner type="error" message={error} onClose={() => setError("")} />
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />

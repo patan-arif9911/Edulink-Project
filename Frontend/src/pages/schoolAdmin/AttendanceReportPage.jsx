@@ -39,7 +39,7 @@ export default function AttendanceReportPage() {
 
   return (
     <div>
-      <SectionHeader title="Attendance Report" subtitle="GET /admin/attendance-report" />
+      <SectionHeader title="Attendance Report" subtitle="View attendance records for all students." />
       <AlertBanner
         type="error"
         message={error}

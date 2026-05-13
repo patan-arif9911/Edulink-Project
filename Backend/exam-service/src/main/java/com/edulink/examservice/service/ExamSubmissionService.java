@@ -35,24 +35,47 @@ public class ExamSubmissionService {
     public ExamSubmission startExam(String courseCode, String examType,
                                     String studentEmail, String rollNumber) {
         Exam exam = resolveExam(courseCode, examType);
-        Optional<ExamSubmission> existing = examSubmissionRepository
-                .findByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
-        if (existing.isPresent()) {
-            ExamSubmission row = existing.get();
-            if (row.getSubmittedAt() != null) {
-                throw new IllegalArgumentException("Student has already submitted for this exam");
+        try {
+            Optional<ExamSubmission> existing = examSubmissionRepository
+                    .findByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
+            if (existing.isPresent()) {
+                ExamSubmission row = existing.get();
+                if (row.getSubmittedAt() != null) {
+                    throw new IllegalArgumentException("Student has already submitted for this exam");
+                }
+                // Resume: keep the original startedAt so refreshes don't reset the timer
+                return row;
             }
-            // Resume: keep the original startedAt so refreshes don't reset the timer
-            return row;
+            ExamSubmission row = ExamSubmission.builder()
+                    .courseCode(courseCode)
+                    .examType(exam.getExamType())
+                    .rollNumber(rollNumber)
+                    .studentEmail(studentEmail)
+                    .startedAt(LocalDateTime.now())
+                    .build();
+            return examSubmissionRepository.save(row);
+        } catch (Exception e) {
+            log.warn("Error in startExam ({}): {}", e.getClass().getSimpleName(), e.getMessage());
+            // Fallback: Use resilient query that handles duplicates by returning latest
+            Optional<ExamSubmission> existing = examSubmissionRepository
+                    .findLatestByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
+            if (existing.isPresent()) {
+                ExamSubmission row = existing.get();
+                if (row.getSubmittedAt() != null) {
+                    throw new IllegalArgumentException("Student has already submitted for this exam");
+                }
+                return row;
+            }
+            // If no record at all, create a new one
+            ExamSubmission row = ExamSubmission.builder()
+                    .courseCode(courseCode)
+                    .examType(exam.getExamType())
+                    .rollNumber(rollNumber)
+                    .studentEmail(studentEmail)
+                    .startedAt(LocalDateTime.now())
+                    .build();
+            return examSubmissionRepository.save(row);
         }
-        ExamSubmission row = ExamSubmission.builder()
-                .courseCode(courseCode)
-                .examType(exam.getExamType())
-                .rollNumber(rollNumber)
-                .studentEmail(studentEmail)
-                .startedAt(LocalDateTime.now())
-                .build();
-        return examSubmissionRepository.save(row);
     }
 
     /**
@@ -70,28 +93,57 @@ public class ExamSubmissionService {
             throw new IllegalArgumentException("Submission content cannot be empty");
         }
 
-        Optional<ExamSubmission> existing = examSubmissionRepository
-                .findByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
-        ExamSubmission row;
-        if (existing.isPresent()) {
-            row = existing.get();
-            if (row.getSubmittedAt() != null) {
-                throw new IllegalArgumentException("Student has already submitted for this exam");
+        try {
+            Optional<ExamSubmission> existing = examSubmissionRepository
+                    .findByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
+            ExamSubmission row;
+            if (existing.isPresent()) {
+                row = existing.get();
+                if (row.getSubmittedAt() != null) {
+                    throw new IllegalArgumentException("Student has already submitted for this exam");
+                }
+            } else {
+                row = ExamSubmission.builder()
+                        .courseCode(courseCode)
+                        .examType(exam.getExamType())
+                        .rollNumber(rollNumber)
+                        .studentEmail(studentEmail)
+                        .startedAt(LocalDateTime.now())
+                        .build();
             }
-        } else {
-            row = ExamSubmission.builder()
+
+            row.setSubmissionContent(submissionContent.trim());
+            row.setSubmittedAt(LocalDateTime.now());
+            row.setLate(LocalDateTime.now().isAfter(exam.getExamDate()));
+            return examSubmissionRepository.save(row);
+        } catch (Exception e) {
+            log.warn("Error in submitExam ({}): {}", e.getClass().getSimpleName(), e.getMessage());
+            // Fallback: Use resilient query that handles duplicates by returning latest
+            Optional<ExamSubmission> existing = examSubmissionRepository
+                    .findLatestByCourseCodeAndExamTypeAndStudentEmail(courseCode, exam.getExamType(), studentEmail);
+            if (existing.isPresent()) {
+                ExamSubmission row = existing.get();
+                if (row.getSubmittedAt() != null) {
+                    throw new IllegalArgumentException("Student has already submitted for this exam");
+                }
+                row.setSubmissionContent(submissionContent.trim());
+                row.setSubmittedAt(LocalDateTime.now());
+                row.setLate(LocalDateTime.now().isAfter(exam.getExamDate()));
+                return examSubmissionRepository.save(row);
+            }
+            // If no record at all, create a new one
+            ExamSubmission row = ExamSubmission.builder()
                     .courseCode(courseCode)
                     .examType(exam.getExamType())
                     .rollNumber(rollNumber)
                     .studentEmail(studentEmail)
                     .startedAt(LocalDateTime.now())
                     .build();
+            row.setSubmissionContent(submissionContent.trim());
+            row.setSubmittedAt(LocalDateTime.now());
+            row.setLate(LocalDateTime.now().isAfter(exam.getExamDate()));
+            return examSubmissionRepository.save(row);
         }
-
-        row.setSubmissionContent(submissionContent.trim());
-        row.setSubmittedAt(LocalDateTime.now());
-        row.setLate(LocalDateTime.now().isAfter(exam.getExamDate()));
-        return examSubmissionRepository.save(row);
     }
 
     private Exam resolveExam(String courseCode, String examType) {
@@ -119,5 +171,16 @@ public class ExamSubmissionService {
 
     public Optional<ExamSubmission> getSubmissionByExamAndStudent(String courseCode, String studentEmail) {
         return examSubmissionRepository.findByCourseCodeAndStudentEmail(courseCode, studentEmail);
+    }
+
+    @Transactional
+    public long resetAttempt(String courseCode, String examType, String rollNumber) {
+        List<ExamSubmission> rows = examSubmissionRepository
+                .findByCourseCodeAndExamTypeAndRollNumber(courseCode, examType, rollNumber);
+        if (rows.isEmpty()) {
+            return 0L;
+        }
+        examSubmissionRepository.deleteAll(rows);
+        return rows.size();
     }
 }

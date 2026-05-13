@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "exam_submissions")
+@Table(name = "exam_submissions", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"course_code", "exam_type", "student_email"})
+})
 public class ExamSubmission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,9 +43,9 @@ public class ExamSubmission {
     public ExamSubmission() {}
 
     public ExamSubmission(String courseCode, String examType, String rollNumber,
-                         String studentEmail, String submissionContent,
-                         String submissionFileId, LocalDateTime submittedAt, boolean isLate,
-                         LocalDateTime startedAt) {
+                          String studentEmail, String submissionContent,
+                          String submissionFileId, LocalDateTime submittedAt, boolean isLate,
+                          LocalDateTime startedAt) {
         this.courseCode = courseCode;
         this.examType = examType;
         this.rollNumber = rollNumber;
@@ -86,10 +88,6 @@ public class ExamSubmission {
     public LocalDateTime getStartedAt() { return startedAt; }
     public void setStartedAt(LocalDateTime startedAt) { this.startedAt = startedAt; }
 
-    @PrePersist
-    protected void onCreate() {
-        submittedAt = LocalDateTime.now();
-    }
 
     public static Builder builder() { return new Builder(); }
 

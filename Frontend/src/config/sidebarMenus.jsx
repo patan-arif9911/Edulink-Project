@@ -50,7 +50,7 @@ const menusByRole = {
     { label: "Assignment Submissions",   path: "/teacher/assignment-submissions-browser",  icon: "fact_check" },
     { label: "New Exam",                 path: "/teacher/new-exam",                        icon: "quiz" },
     { label: "Exam Submissions",         path: "/teacher/exam-submissions-browser",        icon: "fact_check" },
-    { label: "Grade Student",            path: "/teacher/grade",                           icon: "grading" },
+    { label: "View Grades",              path: "/teacher/grade",                           icon: "grading" },
     { label: "Mark Attendance",          path: "/teacher/attendance",                      icon: "how_to_reg" },
   ],
 

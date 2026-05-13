@@ -29,6 +29,16 @@ const examApi = {
   fetchGradesByExam: ({ courseCode, examType }) =>
     httpClient.get(Endpoints.exam.gradesByExam, { params: { courseCode, examType } }),
 
+  /* GET /exam/teacher/grades-by-course/{courseCode} — every grade for a course */
+  fetchGradesByCourse: (courseCode) =>
+    httpClient.get(Endpoints.exam.gradesByCourse(courseCode)),
+
+  /* DELETE /exam/teacher/reset-attempt — wipe a student's submission so they can retake */
+  resetAttempt: ({ courseCode, examType, rollNumber }) =>
+    httpClient.delete(Endpoints.exam.resetAttempt, {
+      params: { courseCode, examType, rollNumber },
+    }),
+
   /* GET /exam/teacher/exams/{courseCode} - Get exams by course code */
   fetchExamsByCourseCode: (courseCode) =>
     httpClient.get(Endpoints.exam.examsByCourseCode(courseCode)),
@@ -57,13 +67,13 @@ const examApi = {
       responseType: "blob",
     }),
 
-  /* POST /exam/student/start-exam — JSON body: { courseCode, examType }
+  /* POST /exam/student/start-exam — JSON body: { examId, courseCode, examType }
      Creates or returns the in-progress submission row carrying startedAt. */
-  startExam: ({ courseCode, examType }) =>
-    httpClient.post(Endpoints.exam.startExam, { courseCode, examType }),
+  startExam: ({ examId, courseCode, examType }) =>
+    httpClient.post(Endpoints.exam.startExam, { examId, courseCode, examType }),
 
   /* POST /exam/student/submit-exam — JSON body:
-     { courseCode, examType, submissionContent } */
+     { examId, courseCode, examType, submissionContent } */
   submitExam: (payload) =>
     httpClient.post(Endpoints.exam.submitExam, payload),
 };

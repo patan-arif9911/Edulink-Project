@@ -14,7 +14,7 @@ export default function AddTeacherPage() {
 
   return (
     <div>
-      <SectionHeader title="Add Teacher" subtitle="POST /admin/create-teacher" />
+      <SectionHeader title="Add Teacher" subtitle="Create a new teacher account" />
       <CreateUserForm
         title="New Teacher"
         fields={fields}

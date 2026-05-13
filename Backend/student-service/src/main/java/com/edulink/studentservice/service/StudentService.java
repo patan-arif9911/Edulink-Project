@@ -58,6 +58,7 @@ public class StudentService {
         // 4. Build and save submission
         AssignmentSubmission submission = AssignmentSubmission.builder()
                 .studentId(studentId)
+                .studentEmail(email)
                 .assignmentNum(assignmentNum)
                 .courseCode(courseCode)
                 .assignmentTitle(assignmentTitle)
@@ -96,6 +97,47 @@ public class StudentService {
 
     public List<AssignmentSubmission> getSubmissionsByCourseCode(String courseCode) {
         return submissionRepo.findByCourseCode(courseCode);
+    }
+
+    /** Used by the student's "My Grades" page to show their graded assignment submissions. */
+    public List<AssignmentSubmission> getGradedAssignmentsByEmail(String email) {
+        return submissionRepo.findByStudentEmail(email).stream()
+                .filter(s -> s.getMarksObtained() != null)
+                .toList();
+    }
+
+    /** Used by the teacher's Evaluate Assignment Submission page to load one row. */
+    public AssignmentSubmission getSubmissionById(Long id) {
+        return submissionRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Submission not found: " + id));
+    }
+
+    /**
+     * Teacher grades an assignment submission. Stores numeric marks + feedback, flips the
+     * status to GRADED, records who graded it and when. Re-grading is allowed (overwrite).
+     */
+    public AssignmentSubmission gradeAssignmentSubmission(Long id, Integer marksObtained,
+                                                          Integer maxMarks, String remarks,
+                                                          String teacherEmail) {
+        AssignmentSubmission row = getSubmissionById(id);
+
+        if (marksObtained == null || marksObtained < 0) {
+            throw new IllegalArgumentException("marksObtained must be 0 or greater");
+        }
+        if (maxMarks == null || maxMarks <= 0) {
+            throw new IllegalArgumentException("maxMarks must be greater than 0");
+        }
+        if (marksObtained > maxMarks) {
+            throw new IllegalArgumentException("marksObtained cannot exceed maxMarks");
+        }
+
+        row.setMarksObtained(marksObtained);
+        row.setMaxMarks(maxMarks);
+        row.setRemarks(remarks == null ? null : remarks.trim());
+        row.setEvaluatedBy(teacherEmail);
+        row.setEvaluatedAt(java.time.LocalDateTime.now());
+        row.setStatus("GRADED");
+        return submissionRepo.save(row);
     }
 
     private boolean hasText(String value) {

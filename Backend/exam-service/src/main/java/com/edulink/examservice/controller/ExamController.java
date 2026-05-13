@@ -1,7 +1,6 @@
 package com.edulink.examservice.controller;
 
 import com.edulink.examservice.dto.ApiResponse;
-import com.edulink.examservice.dto.CreateExamRequest;
 import com.edulink.examservice.dto.CreateGradeRequest;
 import com.edulink.examservice.dto.SubmitExamRequest;
 import com.edulink.examservice.entity.*;
@@ -13,7 +12,6 @@ import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
@@ -167,6 +165,30 @@ public class ExamController {
             @RequestParam String examType) {
         List<Grade> grades = gradeService.getGradesByCourseCodeAndExamType(courseCode, examType);
         return ResponseEntity.ok(ApiResponse.success("Grades retrieved", grades));
+    }
+
+    /** All grades for a course across every examType — backs the View Grades page. */
+    @GetMapping("/teacher/grades-by-course/{courseCode}")
+    @PreAuthorize("hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<List<Grade>>> getGradesByCourse(@PathVariable String courseCode) {
+        return ResponseEntity.ok(ApiResponse.success("Grades retrieved",
+                gradeService.getGradesByCourseCode(courseCode)));
+    }
+
+    /**
+     * Teacher-only "Reset Attempt": wipes a student's submission for an exam so they can retake.
+     * Idempotent — returns the number of rows deleted (0 if nothing was there).
+     */
+    @DeleteMapping("/teacher/reset-attempt")
+    @PreAuthorize("hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<Long>> resetAttempt(
+            @RequestParam String courseCode,
+            @RequestParam String examType,
+            @RequestParam String rollNumber) {
+        long deleted = examSubmissionService.resetAttempt(courseCode, examType, rollNumber);
+        return ResponseEntity.ok(ApiResponse.success(
+                deleted == 0 ? "Nothing to reset" : "Reset complete — " + deleted + " row(s) removed",
+                deleted));
     }
 
     @GetMapping("/teacher/exams/{courseCode}")

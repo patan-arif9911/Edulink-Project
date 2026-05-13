@@ -63,6 +63,8 @@ const Endpoints = {
     grades:                         `${BASE}/exam/student/grades`,
     // ...existing code...
     attendance:                     `${BASE}/student/attendance`,
+    // ...existing code...
+    myAssignmentGrades:             `${BASE}/student/my-grades/assignments`,
   },
 
   /* ═══════════════════════════════════════════════
@@ -94,6 +96,8 @@ const Endpoints = {
     // Teacher: view student submissions (routed to student-service)
     teacherSubmissions:  (code) =>  `${BASE}/student/teacher-submissions/${code}`,
     teacherDownloadSubmission: (fileId) => `${BASE}/student/teacher-submissions/download/${fileId}`,
+    teacherSubmissionById:    (id) => `${BASE}/student/teacher-submission/${id}`,
+    teacherGradeAssignmentSubmission: (id) => `${BASE}/student/teacher-submission/${id}/grade`,
 
 
     // Student
@@ -114,6 +118,8 @@ const Endpoints = {
       examSubmissions:     (courseCode) => `${BASE}/exam/teacher/exam-submissions/${courseCode}`,
       submissionById:      (id) =>    `${BASE}/exam/teacher/submission/${id}`,
       gradesByExam:                   `${BASE}/exam/teacher/grades`,
+      gradesByCourse:      (courseCode) => `${BASE}/exam/teacher/grades-by-course/${courseCode}`,
+      resetAttempt:                   `${BASE}/exam/teacher/reset-attempt`,
       examsByCourseCode:   (code) =>  `${BASE}/exam/teacher/exams/${code}`,
       teacherAllExams:                `${BASE}/exam/teacher/exams`,
       // Student endpoints

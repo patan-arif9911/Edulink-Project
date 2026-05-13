@@ -60,7 +60,7 @@ export default function ViewStudentsPage() {
 
   return (
     <div>
-      <SectionHeader title="Students" subtitle="GET /admin/students" />
+      <SectionHeader title="Students" subtitle="Manage your students and their details." />
       <AlertBanner type="error" message={error} onClose={() => setError("")} />
       <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
       <GenericTable columns={columns} data={students} emptyMessage="No students found." />

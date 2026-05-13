@@ -68,6 +68,14 @@ const courseApi = {
       responseType: "blob",
     }),
 
+  /* GET /student/teacher-submission/{id} — single assignment submission for the Evaluate page */
+  fetchAssignmentSubmissionById: (id) =>
+    httpClient.get(Endpoints.course.teacherSubmissionById(id)),
+
+  /* POST /student/teacher-submission/{id}/grade — body: { marksObtained, maxMarks, remarks } */
+  gradeAssignmentSubmission: (id, payload) =>
+    httpClient.post(Endpoints.course.teacherGradeAssignmentSubmission(id), payload),
+
   /* ── Student ── */
   fetchStudentMaterials: (courseCode) =>
     httpClient.get(Endpoints.course.studentMaterials(courseCode)),

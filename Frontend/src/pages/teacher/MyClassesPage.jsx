@@ -48,7 +48,7 @@ export default function MyClassesPage() {
 
   return (
     <div>
-      <SectionHeader title="My Classes" subtitle="GET /teacher/classes" />
+      <SectionHeader title="My Classes" subtitle=" View your assigned classes and their details." />
       <AlertBanner
         type="error"
         message={error}

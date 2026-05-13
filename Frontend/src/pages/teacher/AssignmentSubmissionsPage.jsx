@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import courseApi from "../../api/courseApi";
+// useNavigate is also used for navigating to the Evaluate page
 import SectionHeader from "../../components/shared/SectionHeader";
 import Spinner from "../../components/shared/Spinner";
 import AlertBanner from "../../components/shared/AlertBanner";
@@ -132,7 +133,9 @@ export default function AssignmentSubmissionsPage() {
                 <th>Student ID</th>
                 <th>Submitted At</th>
                 <th>Status</th>
+                <th>Marks</th>
                 <th>Content / File</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -146,6 +149,11 @@ export default function AssignmentSubmissionsPage() {
                     )}
                   </td>
                   <td><StatusPill status={s.status} /></td>
+                  <td>
+                    {s.marksObtained != null
+                      ? <strong>{s.marksObtained} / {s.maxMarks ?? meta.maxMarks ?? "—"}</strong>
+                      : <span className="muted">—</span>}
+                  </td>
                   <td>
                     <div style={{ display: "flex", gap: "0.5rem", flexDirection: "column" }}>
                       {s.submissionContent && (
@@ -166,6 +174,17 @@ export default function AssignmentSubmissionsPage() {
                       )}
                       {!s.submissionContent && !s.fileId && <span className="muted">—</span>}
                     </div>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="link-btn"
+                      onClick={() =>
+                        navigate(`/teacher/evaluate-assignment/${s.id}`, { state: { meta } })
+                      }
+                    >
+                      {s.marksObtained != null ? "Update Grade" : "Grade"}
+                    </button>
                   </td>
                 </tr>
               ))}

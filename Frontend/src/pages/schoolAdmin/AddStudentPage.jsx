@@ -43,7 +43,7 @@ export default function AddStudentPage() {
 
   return (
     <div>
-      <SectionHeader title="Add Student" subtitle="POST /admin/create-student" />
+      <SectionHeader title="Add Student" subtitle="Create a new student account" />
       <AlertBanner
         type="error"
         message={error}

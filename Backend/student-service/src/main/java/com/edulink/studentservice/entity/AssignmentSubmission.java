@@ -37,6 +37,9 @@ public class AssignmentSubmission {
     @Column(nullable = false)
     private String courseCode;
 
+    /** Student's email (from JWT) — used for student-side "my grades" lookup. */
+    private String studentEmail;
+
     private String submissionContent;
     private String fileId; // GridFS file ID for uploaded assignments
     private String fileName; // Original file name
@@ -46,6 +49,13 @@ public class AssignmentSubmission {
 
     @Column(nullable = false)
     private LocalDateTime submittedAt;
+
+    /* ── Grading fields, populated by teacher's Evaluate Assignment Submission flow ── */
+    private Integer marksObtained;
+    private Integer maxMarks;           // snapshot of the assignment's max marks at grading time
+    private String remarks;
+    private String evaluatedBy;          // teacher's email
+    private LocalDateTime evaluatedAt;
 
     @PrePersist
     protected void onCreate() {

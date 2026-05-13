@@ -163,7 +163,7 @@ export default function NewAssignmentPage() {
             <input type="number" value={maxMarks} onChange={(e) => setMaxMarks(e.target.value)} disabled={loading} />
           </div>
           <div className="form-group">
-            <label>Questions File (optional)</label>
+            <label>Questions File</label>
             <input id="assignment-questions-file" type="file" onChange={(e) => setFile(e.target.files[0])} disabled={loading} />
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Assignment"}</button>

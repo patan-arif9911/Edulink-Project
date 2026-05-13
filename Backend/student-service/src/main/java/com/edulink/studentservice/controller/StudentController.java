@@ -90,6 +90,15 @@ public class StudentController {
         return ResponseEntity.ok(ApiResponse.success("Assignment submitted successfully", sub));
     }
 
+    // ── Student: My graded assignment submissions (counterpart to /exam/student/grades) ──
+    @GetMapping("/my-grades/assignments")
+    public ResponseEntity<ApiResponse<List<AssignmentSubmission>>> getMyAssignmentGrades(HttpServletRequest req) {
+        String email = jwtExtractor.extractEmail(req);
+        return ResponseEntity.ok(ApiResponse.success(
+                "Assignment grades retrieved",
+                studentService.getGradedAssignmentsByEmail(email)));
+    }
+
     @PostMapping("/assignments/upload-legacy")
     public ResponseEntity<ApiResponse<AssignmentSubmission>> submitAssignmentLegacy(
             HttpServletRequest req, @Valid @RequestBody SubmitAssignmentRequest request) {
@@ -107,6 +116,33 @@ public class StudentController {
         log.info("Teacher {} fetching submissions for course {}", jwtExtractor.extractEmail(req), courseCode);
         List<AssignmentSubmission> submissions = studentService.getSubmissionsByCourseCode(courseCode);
         return ResponseEntity.ok(ApiResponse.success("Submissions fetched", submissions));
+    }
+
+    // ── Teacher: Get a single assignment submission by id (for the Evaluate page) ──
+    @GetMapping("/teacher-submission/{id}")
+    public ResponseEntity<ApiResponse<AssignmentSubmission>> getSubmissionById(
+            @PathVariable Long id, HttpServletRequest req) {
+        log.info("Teacher {} fetching submission {}", jwtExtractor.extractEmail(req), id);
+        AssignmentSubmission submission = studentService.getSubmissionById(id);
+        return ResponseEntity.ok(ApiResponse.success("Submission retrieved", submission));
+    }
+
+    // ── Teacher: Grade an assignment submission (numeric marks + feedback) ──
+    @PostMapping("/teacher-submission/{id}/grade")
+    public ResponseEntity<ApiResponse<AssignmentSubmission>> gradeAssignmentSubmission(
+            @PathVariable Long id,
+            @RequestBody Map<String, Object> body,
+            HttpServletRequest req) {
+        String teacherEmail = jwtExtractor.extractEmail(req);
+        Integer marksObtained = body.get("marksObtained") == null ? null
+                : Integer.valueOf(body.get("marksObtained").toString());
+        Integer maxMarks = body.get("maxMarks") == null ? null
+                : Integer.valueOf(body.get("maxMarks").toString());
+        String remarks = body.get("remarks") == null ? null : body.get("remarks").toString();
+
+        AssignmentSubmission graded = studentService.gradeAssignmentSubmission(
+                id, marksObtained, maxMarks, remarks, teacherEmail);
+        return ResponseEntity.ok(ApiResponse.success("Assignment graded", graded));
     }
 
     // ── Teacher: Download submitted assignment file ──

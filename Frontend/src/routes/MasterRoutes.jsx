@@ -66,6 +66,7 @@ import ExamSubmissionsBrowserPage from "../pages/teacher/ExamSubmissionsBrowserP
 import EvaluateSubmissionPage from "../pages/teacher/EvaluateSubmissionPage";
 import AssignmentSubmissionsBrowserPage from "../pages/teacher/AssignmentSubmissionsBrowserPage";
 import AssignmentSubmissionsPage from "../pages/teacher/AssignmentSubmissionsPage";
+import EvaluateAssignmentSubmissionPage from "../pages/teacher/EvaluateAssignmentSubmissionPage";
 
 // ── Student ──
 import StudentDashboard from "../pages/student/StudentDashboard";
@@ -185,6 +186,7 @@ export default function MasterRoutes() {
                <Route path="/teacher/evaluate/:submissionId" element={<EvaluateSubmissionPage />} />
                <Route path="/teacher/assignment-submissions-browser" element={<AssignmentSubmissionsBrowserPage />} />
                <Route path="/teacher/assignment-submissions/:courseCode/:assignmentNum" element={<AssignmentSubmissionsPage />} />
+               <Route path="/teacher/evaluate-assignment/:submissionId" element={<EvaluateAssignmentSubmissionPage />} />
             </Route>
 
             {/* ── STUDENT ── */}
