@@ -4,8 +4,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.65rem 1.5rem;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(230, 232, 240, 0.7);
   flex-shrink: 0;
   position: sticky;
   top: 0;
@@ -26,8 +28,13 @@
   padding: 0.35rem;
   border-radius: 6px;
 }
+.topbar-hamburger {
+  transition: background 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+              color 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
 .topbar-hamburger:hover {
-  background: #f0f0f0;
+  background: #eef2ff;
+  color: #6366f1;
 }
 .topbar-greeting {
   font-size: 1.05rem;
@@ -57,12 +64,15 @@
   color: #555;
   padding: 0.45rem;
   border-radius: 50%;
-  transition: background 0.15s;
+  transition: background 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+              color 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
   position: relative;
 }
 .topbar-icon-btn:hover {
-  background: #f0f0f0;
-  color: #1a73e8;
+  background: #eef2ff;
+  color: #6366f1;
+  transform: translateY(-1px);
 }
 
 /* ── Profile avatar button ── */
@@ -78,17 +88,20 @@
   border-radius: 40px;
   padding: 0.2rem 0.5rem 0.2rem 0.2rem;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .topbar-avatar-btn:hover {
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px rgba(102,126,234,0.12);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  transform: translateY(-1px);
 }
 .topbar-avatar {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 60%, #a855f7 100%);
   color: #fff;
   display: flex;
   align-items: center;
@@ -131,7 +144,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 60%, #a855f7 100%);
   color: #fff;
   display: flex;
   align-items: center;
@@ -156,8 +169,8 @@
 }
 .topbar-role-tag {
   font-size: 0.7rem;
-  background: #e8f0fe;
-  color: #1a73e8;
+  background: #eef2ff;
+  color: #6366f1;
   padding: 0.2rem 0.65rem;
   border-radius: 20px;
   font-weight: 600;
@@ -180,10 +193,17 @@
   cursor: pointer;
   font-size: 0.85rem;
   color: #333;
-  transition: background 0.12s;
+  transition: background 0.18s cubic-bezier(0.2, 0.7, 0.2, 1),
+              color 0.18s cubic-bezier(0.2, 0.7, 0.2, 1),
+              padding 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .topbar-dropdown-item:hover {
-  background: #f5f7fa;
+  background: #eef2ff;
+  color: #6366f1;
+  padding-left: 1.15rem;
+}
+.topbar-dropdown-item:hover .material-icons-round {
+  color: #6366f1;
 }
 .topbar-dropdown-item .material-icons-round {
   font-size: 1.15rem;

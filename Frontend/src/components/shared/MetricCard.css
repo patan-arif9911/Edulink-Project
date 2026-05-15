@@ -1,16 +1,46 @@
 .metric-card {
   background: #fff;
-  border-radius: 10px;
-  padding: 1rem;
+  border-radius: 14px;
+  padding: 1.05rem 1.1rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  gap: 0.85rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  border: 1px solid #eef1f5;
   border-left: 4px solid #1a73e8;
   min-width: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+              border-color 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.metric-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto auto;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at top right, currentColor 0%, transparent 70%);
+  opacity: 0;
+  color: #6366f1;
+  transition: opacity 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+  border-color: #dbe0ee;
+}
+.metric-card:hover::after {
+  opacity: 0.08;
 }
 .metric-icon {
-  font-size: 1.8rem;
+  font-size: 1.85rem;
+  transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.metric-card:hover .metric-icon {
+  transform: scale(1.06);
 }
 .metric-info {
   display: flex;
@@ -18,15 +48,17 @@
   min-width: 0;
 }
 .metric-value {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #1a1a2e;
-  line-height: 1.1;
+  font-size: clamp(1.35rem, 1.6vw, 1.6rem);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 .metric-label {
   font-size: 0.8rem;
-  color: #777;
-  margin-top: 2px;
+  color: #64748b;
+  margin-top: 3px;
+  font-weight: 500;
 }
 
 @media (min-width: 1024px) {

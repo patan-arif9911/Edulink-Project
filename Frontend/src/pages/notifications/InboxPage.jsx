@@ -42,7 +42,7 @@ export default function InboxPage() {
 
   return (
     <div>
-      <SectionHeader title="Notifications" subtitle="GET /notifications/my" />
+      <SectionHeader title="Notifications" subtitle="View your notifications" />
       <AlertBanner
         type="error"
         message={error}

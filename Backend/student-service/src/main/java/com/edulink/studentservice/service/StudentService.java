@@ -24,16 +24,22 @@ public class StudentService {
     private final com.edulink.studentservice.client.IdentityServiceClient identityServiceClient;
 
     public AssignmentSubmission submitAssignmentByEmail(String email, Integer assignmentNum, String courseCode, String assignmentTitle, String submissionContent, MultipartFile file, String token) {
-        // 1. Look up studentId from identity-service (if token available)
+        // 1. Look up studentId + rollNumber from identity-service (if token available)
         Long studentId = 0L;
+        String rollNumber = null;
         if (hasText(token)) {
             try {
                 Map<String, Object> userMap = identityServiceClient.getUserByEmail(email, token);
-                if (userMap != null && userMap.get("userId") != null) {
-                    studentId = Long.valueOf(userMap.get("userId").toString());
+                if (userMap != null) {
+                    if (userMap.get("userId") != null) {
+                        studentId = Long.valueOf(userMap.get("userId").toString());
+                    }
+                    if (userMap.get("rollNumber") != null) {
+                        rollNumber = userMap.get("rollNumber").toString();
+                    }
                 }
             } catch (Exception e) {
-                log.warn("Could not look up studentId for {}: {}", email, e.getMessage());
+                log.warn("Could not look up identity for {}: {}", email, e.getMessage());
             }
         }
 
@@ -59,6 +65,7 @@ public class StudentService {
         AssignmentSubmission submission = AssignmentSubmission.builder()
                 .studentId(studentId)
                 .studentEmail(email)
+                .rollNumber(rollNumber)
                 .assignmentNum(assignmentNum)
                 .courseCode(courseCode)
                 .assignmentTitle(assignmentTitle)

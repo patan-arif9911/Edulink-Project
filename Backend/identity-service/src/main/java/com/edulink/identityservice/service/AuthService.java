@@ -140,6 +140,9 @@ public class AuthService {
     public UserResponse getUserByEmail(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
+        String rollNumber = studentRepository.findByUserId(String.valueOf(user.getId()))
+                .map(s -> s.getRollNumber())
+                .orElse(null);
         return UserResponse.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -150,6 +153,7 @@ public class AuthService {
                 .temporaryPassword(user.isMustChangePassword() ? user.getTemporaryPassword() : null)
                 .schoolId(user.getSchoolId())
                 .classId(user.getClassId())
+                .rollNumber(rollNumber)
                 .createdAt(user.getCreatedAt())
                 .build();
     }
