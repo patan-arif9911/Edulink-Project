@@ -17,7 +17,9 @@ public interface ExamSubmissionRepository extends JpaRepository<ExamSubmission, 
 
     List<ExamSubmission> findByCourseCodeAndExamType(String courseCode, String examType);
 
-    List<ExamSubmission> findByCourseCodeAndExamTypeAndRollNumber(String courseCode, String examType, String rollNumber);
+    List<ExamSubmission> findByCourseCodeAndExamTypeAndRollNumber(
+            String courseCode, String examType, String rollNumber);
+
 
     Optional<ExamSubmission> findByCourseCodeAndStudentEmail(String courseCode, String studentEmail);
 

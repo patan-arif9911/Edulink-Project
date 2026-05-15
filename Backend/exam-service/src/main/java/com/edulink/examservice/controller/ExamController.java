@@ -1,6 +1,7 @@
 package com.edulink.examservice.controller;
 
 import com.edulink.examservice.dto.ApiResponse;
+import com.edulink.examservice.dto.CreateExamRequest;
 import com.edulink.examservice.dto.CreateGradeRequest;
 import com.edulink.examservice.dto.SubmitExamRequest;
 import com.edulink.examservice.entity.*;

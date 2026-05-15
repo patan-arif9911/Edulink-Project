@@ -55,7 +55,7 @@ export default function LoginPage() {
         <p>School Education & Digital Learning Platform</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="auth-form">
+      <form onSubmit={handleSubmit} className="auth-form" autoComplete="off">
         <h2>Sign In</h2>
         <p className="auth-hint">
           Use your assigned credentials. All roles sign in from this page.
@@ -71,7 +71,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@school.edu"
-            autoComplete="email"
+            autoComplete="off"
             disabled={loading}
             required
           />
@@ -85,7 +85,7 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
-            autoComplete="current-password"
+            autoComplete="new-password"
             disabled={loading}
             required
           />
@@ -94,19 +94,6 @@ export default function LoginPage() {
         <button type="submit" className="auth-submit-btn" disabled={loading}>
           {loading ? "Signing in…" : "Sign In"}
         </button>
-
-        <details className="auth-roles-info">
-          <summary>Who can sign in?</summary>
-          <ul>
-            <li><strong>Operator</strong> — System-level user management</li>
-            <li><strong>Compliance Officer</strong> — School audits & admin creation</li>
-            <li><strong>Board Officer</strong> — Academic oversight & reports</li>
-            <li><strong>Regulator</strong> — Accreditation & compliance</li>
-            <li><strong>School Admin</strong> — Teachers, students, courses, classes</li>
-            <li><strong>Teacher</strong> — Classes, materials, exams, grades, attendance</li>
-            <li><strong>Student</strong> — Courses, assignments, grades, attendance</li>
-          </ul>
-        </details>
       </form>
     </div>
   );

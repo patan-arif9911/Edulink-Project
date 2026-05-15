@@ -63,7 +63,7 @@ public class GridFsService {
                 return IOUtils.toByteArray(inputStream);
             }
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid file ID format: " + fileId, e);
+            throw new IllegalArgumentException("File not found with ID: " + fileId, e);
         }
     }
 

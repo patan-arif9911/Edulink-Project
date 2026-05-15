@@ -130,18 +130,18 @@ export default function AssignmentSubmissionsPage() {
           <table className="att-table">
             <thead>
               <tr>
-                <th>Student ID</th>
-                <th>Submitted At</th>
+                <th>Roll No</th>
+                <th>Student Email</th>
+                <th>Submission Time</th>
                 <th>Status</th>
-                <th>Marks</th>
-                <th>Content / File</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {submissions.map((s) => (
                 <tr key={s.id}>
-                  <td>{s.studentId ?? "—"}</td>
+                  <td>{s.rollNumber ?? "—"}</td>
+                  <td>{s.studentEmail ?? "—"}</td>
                   <td>
                     {s.submittedAt ? new Date(s.submittedAt).toLocaleString() : "—"}
                     {(s.status || "").toUpperCase() === "LATE" && (
@@ -149,32 +149,6 @@ export default function AssignmentSubmissionsPage() {
                     )}
                   </td>
                   <td><StatusPill status={s.status} /></td>
-                  <td>
-                    {s.marksObtained != null
-                      ? <strong>{s.marksObtained} / {s.maxMarks ?? meta.maxMarks ?? "—"}</strong>
-                      : <span className="muted">—</span>}
-                  </td>
-                  <td>
-                    <div style={{ display: "flex", gap: "0.5rem", flexDirection: "column" }}>
-                      {s.submissionContent && (
-                        <pre className="eval-answer" style={{ maxHeight: 140, margin: 0 }}>
-                          {s.submissionContent}
-                        </pre>
-                      )}
-                      {s.fileId && (
-                        <button
-                          type="button"
-                          className="link-btn"
-                          onClick={() => handleDownload(s)}
-                          disabled={downloadingId === s.id}
-                          style={{ alignSelf: "flex-start" }}
-                        >
-                          {downloadingId === s.id ? "Downloading…" : `Download ${s.fileName || "file"}`}
-                        </button>
-                      )}
-                      {!s.submissionContent && !s.fileId && <span className="muted">—</span>}
-                    </div>
-                  </td>
                   <td>
                     <button
                       type="button"

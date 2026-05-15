@@ -179,9 +179,10 @@ export default function StudentDashboard() {
                 <tbody>
                   {recentAttendance.map((a, idx) => {
                     const isPresent = a.status === "PRESENT";
+                    const coursecode=recentCourses.find(c=>c.courseId===a.courseId)?.courseCode || a.courseCode || "—";
                     return (
                       <tr key={a.id || `att-${idx}`}>
-                        <td>{a.courseCode || a.courseName || "—"}</td>
+                        <td>{coursecode}</td>
                         <td>{a.date || a.attendanceDate || "—"}</td>
                         <td>
                           <span className={`dashboard-chip ${isPresent ? "success" : "error"}`}>
@@ -212,7 +213,7 @@ export default function StudentDashboard() {
                 return (
                   <li key={course.courseCode || `${course.title || "course"}-${idx}`} className="dashboard-list-item">
                     <span className="dashboard-item-label">
-                      {course.courseCode || "COURSE"} - {course.courseTitle || course.title || "Untitled Course"}
+                      {course.courseCode || "COURSE"} - {course.courseName || course.title || "Untitled Course"}
                     </span>
                     <span className={`dashboard-chip ${isDone ? "success" : "error"}`}>
                       {isDone ? "Active" : "Inactive"}

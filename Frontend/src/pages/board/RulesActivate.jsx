@@ -154,21 +154,18 @@ export default function RulesActivate() {
 
 	}
 
-	async function deleteHandle(props){
-		
-		try{
-				const res=await axios.delete(BASE+BOARD_RULES_DELETE+"/"+props.id,{
+	async function deleteHandle(props) {
+		try {
+			await axios.delete(BASE + BOARD_RULES_DELETE + "/" + props.id, {
 				headers: {
 					Authorization: `Bearer ${key}`,
 					"Content-Type": "application/json"
 				}
-				
-		})
-		fetchRules();
-		}catch(e){
-			console.log(e);
+			});
+			fetchRules();
+		} catch (e) {
+			// Error deleting rule
 		}
-		
 	}
 
 	const columns = [

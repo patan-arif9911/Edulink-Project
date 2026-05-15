@@ -40,6 +40,9 @@ public class AssignmentSubmission {
     /** Student's email (from JWT) — used for student-side "my grades" lookup. */
     private String studentEmail;
 
+    /** Student's roll number (looked up from identity-service at submission time). */
+    private String rollNumber;
+
     private String submissionContent;
     private String fileId; // GridFS file ID for uploaded assignments
     private String fileName; // Original file name
