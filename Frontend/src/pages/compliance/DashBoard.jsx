@@ -20,6 +20,7 @@ const COLORS = {
 };
 
 export default function DashBoard(){
+    //-----------initialize the variable to store data--------------
     const key=localStorage.getItem("edu_access_token");
     const [loading, setLoading] = useState(true);
     const [totalRules, setTotalRules] = useState();
@@ -29,6 +30,7 @@ export default function DashBoard(){
     const [userChartData, setUserChartData] = useState([]);
     const [statusDatas,setStatusDatas]=useState();
     
+    //-----------this function belong to collect data of rules from backend----------------
     async function collectRulesData(){
         try{
 
@@ -76,6 +78,7 @@ export default function DashBoard(){
         }
     }
 
+    //-----------this function belong to collect data of users from backend----------------
     async function collectUsersData(){
         try{
             const res=await axios.get(BASE+"/compliance-service/board/usersStatus",            
@@ -122,9 +125,7 @@ export default function DashBoard(){
 
     return(
         <>
-        {/* <div className="absolute bg-black min-h-[70px] w-[250px] right-[0px] rounded-l-[10px] p-[2px] flex justify-center items-center">
-            <h2>hiiiiiiiiiiiiiiii</h2>
-        </div> */}
+
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             {/* Loading Spinner */}
             {loading && (
@@ -160,40 +161,6 @@ export default function DashBoard(){
                     </div>
                 </div>
             )}
-
-            {/* Add custom animations */}
-            <style>{`
-                @keyframes fadeDown {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes fadeUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                .animate-fadeDown {
-                    animation: fadeDown 0.6s ease-out;
-                }
-
-                .animate-fadeUp {
-                    animation: fadeUp 0.6s ease-out forwards;
-                    opacity: 0;
-                }
-            `}</style>
         </div>
         </>
     )

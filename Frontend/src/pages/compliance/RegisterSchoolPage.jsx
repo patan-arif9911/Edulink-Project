@@ -128,6 +128,7 @@ export default function RegisterSchoolPage() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  pattern="[0-9]{10}"
                   value={form.phone}
                   onChange={handleChange}
                   required

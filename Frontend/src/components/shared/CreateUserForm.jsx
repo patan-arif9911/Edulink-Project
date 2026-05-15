@@ -3,6 +3,7 @@ import AlertBanner from "../shared/AlertBanner";
 import { parseApiError } from "../../utils/apiErrorParser";
 import "../../styles/pages.css";
 
+
 /**
  * Reusable form for creating users (compliance officer, board officer, regulator, school admin, teacher, student).
  * Props:
@@ -11,7 +12,7 @@ import "../../styles/pages.css";
  *   - onSubmit: async (formData) => response
  *   - successExtractor: (response) => { message, tempPassword }
  */
-export default function CreateUserForm({ title, fields, onSubmit, successExtractor, defaultValues }) {
+export default function CreateUserForm({ title, fields, onSubmit,validate, successExtractor, defaultValues }) {
   const [formData, setFormData] = useState(defaultValues || {});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -26,6 +27,13 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
     setError("");
     setResult(null);
     setLoading(true);
+    
+    
+    if (validate && !validate(formData)) {
+      setLoading(false); 
+      return;
+    }
+
 
     try {
       /* Clean payload: convert numeric fields, strip empty optional values */
@@ -44,7 +52,6 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
       const wrapper = res.data;                     // { success, message, data }
       const inner   = wrapper?.data || wrapper;
       if (successExtractor) {
-        console.log("mess =",successExtractor(inner))
         setResult(successExtractor(inner));
       } else {
         console.log("mess =",wrapper?.message)

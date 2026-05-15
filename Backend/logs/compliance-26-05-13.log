@@ -1,0 +1,35 @@
+26-04-30 09:44:45 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 34696 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-04-30 09:44:45 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-30 09:44:45 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-30 09:45:01 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-30 09:45:07 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 25.212 seconds (process running for 48.332)
+26-04-30 09:49:43 [http-nio-8086-exec-1] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-30 09:49:43 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-30 09:53:05 [http-nio-8086-exec-8] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-30 09:53:05 [http-nio-8086-exec-2] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-30 10:17:29 [http-nio-8086-exec-4] ERROR c.e.c.exception.GlobalExceptional - Token in valid [403] during [GET] to [http://IDENTITY-SERVICE/compliance/identity/usersStatus] [SchoolClient#getUsers()]: [{"success":false,"message":"Access denied","data":null}]
+26-04-30 14:42:38 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 36416 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-04-30 14:42:38 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-04-30 14:42:38 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-04-30 14:43:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-04-30 14:43:19 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 46.163 seconds (process running for 50.463)
+26-05-13 15:35:59 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 832 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 15:35:59 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 15:35:59 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 15:36:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 15:36:10 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 12.416 seconds (process running for 13.308)
+26-05-13 17:42:01 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 31352 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 17:42:01 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 17:42:01 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 17:42:20 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 17:42:37 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 40.24 seconds (process running for 43.281)
+26-05-13 21:04:58 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 27220 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 21:04:58 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 21:04:58 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 21:05:06 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 21:05:10 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 13.84 seconds (process running for 15.564)
+26-05-13 23:11:22 [main] INFO  c.e.c.ComplianceServiceApplication - Starting ComplianceServiceApplication using Java 21.0.2 with PID 26572 (C:\Users\2479791\Documents\Project\Backend\compliance-service\target\classes started by 2479791 in C:\Users\2479791\Documents\Project\Backend)
+26-05-13 23:11:22 [main] DEBUG c.e.c.ComplianceServiceApplication - Running with Spring Boot v3.2.6, Spring v6.1.8
+26-05-13 23:11:22 [main] INFO  c.e.c.ComplianceServiceApplication - No active profile set, falling back to 1 default profile: "default"
+26-05-13 23:11:43 [main] DEBUG c.e.c.config.JwtFilter - Filter 'jwtFilter' configured for use
+26-05-13 23:11:55 [main] INFO  c.e.c.ComplianceServiceApplication - Started ComplianceServiceApplication in 35.03 seconds (process running for 36.496)

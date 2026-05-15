@@ -1,6 +1,5 @@
-
-
 import React, { useState, useEffect } from "react";
+import {  toast } from "react-toastify";
 import complianceApi from "../../api/complianceApi";
 import { FiCheck, FiX } from 'react-icons/fi';
 import axios from "axios";
@@ -34,7 +33,6 @@ export default function AuditRules({ complianceId }) {
             const pendingRules = allRules.filter(rule => !rule.active);
             setRules(pendingRules);
         } catch (err) {
-            console.error("Error fetching rules:", err);
             setError("Failed to load rules");
         } finally {
             setLoading(false);
@@ -55,10 +53,11 @@ export default function AuditRules({ complianceId }) {
                                             }
                                     );
             fetchRules();
-            alert(`Rule ${status} successfully`);
+            toast.success(`Rule ${status} successfully`);
+            console.log("i am");
         } catch (err) {
-            console.error("Error validating rule:", err);
-            alert("Failed to validate rule");
+            toast.error("Failed to validate rule");
+            
         }
     };
 
@@ -80,6 +79,8 @@ export default function AuditRules({ complianceId }) {
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
+            {/* <div className="absolute bg-black h-[100px] w-[150px]"></div> */}
+            {/* <ToastContainer autoClose={3000} newestOnTop /> */}
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-3xl font-bold text-gray-800 mb-6">Audit Rules</h1>
                 

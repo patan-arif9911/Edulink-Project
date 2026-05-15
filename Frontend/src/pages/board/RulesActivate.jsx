@@ -108,7 +108,7 @@ export default function RulesActivate() {
 			setReviewFlag("green")
 			
 		}else if(flagColor==='amber'){
-			setReviewFlag("blue")
+			setReviewFlag("#FFBF00")
 			
 		}else{
 			setReviewFlag("green")

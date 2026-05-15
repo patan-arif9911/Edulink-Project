@@ -3,6 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { AlertProvider } from "./context/AlertContext";
 import MasterRoutes from "./routes/MasterRoutes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 export default function App() {
@@ -10,6 +12,7 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <AlertProvider>
+          <ToastContainer autoClose={3000} newestOnTop />
           <MasterRoutes />
         </AlertProvider>
       </AuthProvider>

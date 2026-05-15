@@ -19,6 +19,7 @@ const COLORS = {
 };
 
 export default function RegulatorDashBoard() {
+    //-----------initialize the variable to store data--------------
     const key = localStorage.getItem("edu_access_token");
     const [loading, setLoading] = useState(true);
     const [rulesStatus,setRulesStatus]=useState();
@@ -32,6 +33,7 @@ export default function RegulatorDashBoard() {
     });
     const [rulesChartData, setRulesChartData] = useState([]);
 
+    //-----------this function belong to collect data of rules from backend----------------
     async function collectRulesData(){
         try{
             const res=await axios.get(BASE+"/compliance-service/regulator/getRules",
@@ -104,7 +106,7 @@ export default function RegulatorDashBoard() {
 
                     {/* Stats Cards Section */}
                                       
-                        <StatusCard props={rulesStatus} />
+                    <StatusCard props={rulesStatus} />
                    
 
                     {/* Charts Section */}

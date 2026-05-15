@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Heading from "../../components/compliance/Heading"
 import { FiFlag, FiMessageSquare, FiCheck, FiAlertTriangle, FiX  } from 'react-icons/fi';
+import { toast } from "react-toastify";
 import { FaStamp } from "react-icons/fa";
 import BgRandomIcons from "../../components/compliance/BgRandomIcons"
 const BASE = process.env.REACT_APP_GATEWAY_URL;
@@ -57,7 +58,7 @@ export default function RulesReview() {
 
     async function submitRuleReview(ruleId, flag, message) {
         if (!flag || !message.trim()) {
-            alert('Please select a flag and enter a review message.');
+            toast.info('Please select a flag and enter a review message.');
             return;
         }
 
@@ -89,10 +90,10 @@ export default function RulesReview() {
             // Refresh the rules list
             await fetchActiveRules();
 
-            alert('Rule review submitted successfully!');
+            toast.success('Rule review submitted successfully!');
         } catch (e) {
             console.log("Error submitting rule review:", e);
-            alert('Failed to submit rule review. Please try again.');
+            toast.error('Failed to submit rule review. Please try again.');
         } finally {
             setSubmitting(false);
         }
