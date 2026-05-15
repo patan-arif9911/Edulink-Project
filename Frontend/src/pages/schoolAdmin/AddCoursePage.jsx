@@ -6,6 +6,7 @@ import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
 import { parseApiError } from "../../utils/apiErrorParser";
 import { formatDateTime } from "../../utils/dateFormatters";
+import { required, validateForm, hasErrors } from "../../utils/formValidators";
 import "../../styles/pages.css";
 
 export default function AddCoursePage() {
@@ -13,6 +14,7 @@ export default function AddCoursePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const [classes, setClasses] = useState([]);
   const [classesLoading, setClassesLoading] = useState(true);
   const [courses, setCourses] = useState([]);
@@ -47,13 +49,34 @@ export default function AddCoursePage() {
     loadCourses();
   }, []);
 
+  const updateField = (name, value) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); setSuccess("");
-    if (!form.classId) {
-      setError("Please select a class.");
+
+    // Per-field validation — all four are required; description is optional.
+    const errs = validateForm(form, {
+      courseCode: [(v) => required(v, "Course Code")],
+      courseName: [(v) => required(v, "Course Name")],
+      classId:    [(v) => required(v, "Class")],
+      subject:    [(v) => required(v, "Subject")],
+    });
+    if (hasErrors(errs)) {
+      setFieldErrors(errs);
+      setError("Please fix the highlighted fields and try again.");
       return;
     }
+    setFieldErrors({});
     setLoading(true);
     try {
       await courseApi.createCourse({ ...form, classId: Number(form.classId) });
@@ -94,21 +117,43 @@ export default function AddCoursePage() {
       <div className="page-form">
         <AlertBanner type="error" message={error} onClose={() => setError("")} />
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
-            <label>Course Code</label>
-            <input value={form.courseCode} onChange={(e) => setForm({ ...form, courseCode: e.target.value })} required disabled={loading} placeholder="MATH101" />
+            <label>Course Code<span className="req-asterisk"> *</span></label>
+            <input
+              value={form.courseCode}
+              onChange={(e) => updateField("courseCode", e.target.value)}
+              disabled={loading}
+              placeholder="MATH101"
+              className={fieldErrors.courseCode ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.courseCode}
+            />
+            {fieldErrors.courseCode && <small className="field-error">{fieldErrors.courseCode}</small>}
           </div>
           <div className="form-group">
-            <label>Course Name</label>
-            <input value={form.courseName} onChange={(e) => setForm({ ...form, courseName: e.target.value })} required disabled={loading} placeholder="Mathematics" />
+            <label>Course Name<span className="req-asterisk"> *</span></label>
+            <input
+              value={form.courseName}
+              onChange={(e) => updateField("courseName", e.target.value)}
+              disabled={loading}
+              placeholder="Mathematics"
+              className={fieldErrors.courseName ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.courseName}
+            />
+            {fieldErrors.courseName && <small className="field-error">{fieldErrors.courseName}</small>}
           </div>
           <div className="form-group">
-            <label>Class</label>
+            <label>Class<span className="req-asterisk"> *</span></label>
             {classesLoading ? (
               <select disabled><option>Loading classes...</option></select>
             ) : (
-              <select value={form.classId} onChange={(e) => setForm({ ...form, classId: e.target.value })} required disabled={loading}>
+              <select
+                value={form.classId}
+                onChange={(e) => updateField("classId", e.target.value)}
+                disabled={loading}
+                className={fieldErrors.classId ? "input-invalid" : ""}
+                aria-invalid={!!fieldErrors.classId}
+              >
                 <option value="">— Select a class —</option>
                 {classes.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -117,14 +162,23 @@ export default function AddCoursePage() {
                 ))}
               </select>
             )}
+            {fieldErrors.classId && <small className="field-error">{fieldErrors.classId}</small>}
           </div>
           <div className="form-group">
-            <label>Subject</label>
-            <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} required disabled={loading} placeholder="Mathematics" />
+            <label>Subject<span className="req-asterisk"> *</span></label>
+            <input
+              value={form.subject}
+              onChange={(e) => updateField("subject", e.target.value)}
+              disabled={loading}
+              placeholder="Mathematics"
+              className={fieldErrors.subject ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.subject}
+            />
+            {fieldErrors.subject && <small className="field-error">{fieldErrors.subject}</small>}
           </div>
           <div className="form-group">
             <label>Description</label>
-            <textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} disabled={loading} />
+            <textarea rows={3} value={form.description} onChange={(e) => updateField("description", e.target.value)} disabled={loading} />
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Course"}</button>
         </form>

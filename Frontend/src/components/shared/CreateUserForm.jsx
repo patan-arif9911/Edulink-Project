@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AlertBanner from "../shared/AlertBanner";
 import { parseApiError } from "../../utils/apiErrorParser";
+import { required, email as emailValidator, validateForm, hasErrors } from "../../utils/formValidators";
 import "../../styles/pages.css";
 
 /**
@@ -10,21 +11,61 @@ import "../../styles/pages.css";
  *   - fields: [{ name, label, type, placeholder, required }]
  *   - onSubmit: async (formData) => response
  *   - successExtractor: (response) => { message, tempPassword }
+ *
+ * Validation:
+ *   - All fields are required by default; pass `required: false` on a field to make it optional.
+ *   - Fields with type="email" must also pass an email format check.
+ *   - Validation runs on submit and renders inline error messages beneath each invalid field.
  */
 export default function CreateUserForm({ title, fields, onSubmit, successExtractor, defaultValues }) {
   const [formData, setFormData] = useState(defaultValues || {});
+  const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
 
   const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear the inline error for this field as the user types
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
+  /** Build the rules map for validateForm from the field specs. */
+  const buildRules = () => {
+    const rules = {};
+    fields.forEach((f) => {
+      const list = [];
+      if (f.required !== false) {
+        list.push((v) => required(v, f.label || f.name));
+      }
+      if (f.type === "email") {
+        list.push(emailValidator);
+      }
+      if (list.length) rules[f.name] = list;
+    });
+    return rules;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setResult(null);
+
+    // Per-field validation first — show inline messages, no API call if any fail
+    const errs = validateForm(formData, buildRules());
+    if (hasErrors(errs)) {
+      setFieldErrors(errs);
+      setError("Please fix the highlighted fields and try again.");
+      return;
+    }
+    setFieldErrors({});
     setLoading(true);
 
     try {
@@ -44,14 +85,9 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
       const wrapper = res.data;                     // { success, message, data }
       const inner   = wrapper?.data || wrapper;
       if (successExtractor) {
-        console.log("mess =",successExtractor(inner))
         setResult(successExtractor(inner));
       } else {
-        console.log("mess =",wrapper?.message)
-        setResult({
-                  
-          message:  "User created successfully!"
-        });
+        setResult({ message: "User created successfully!" });
       }
       setFormData(defaultValues || {});
     } catch (err) {
@@ -81,36 +117,46 @@ export default function CreateUserForm({ title, fields, onSubmit, successExtract
         </div>
       )}
 
-      <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
-        {fields.map((f) => (
-          <div className="form-group" key={f.name}>
-            <label>{f.label}</label>
-            {f.options ? (
-              <select
-                name={f.name}
-                value={formData[f.name] || ""}
-                onChange={handleChange}
-                required={f.required !== false}
-                disabled={loading}
-              >
-                <option value="">{f.placeholder || `— Select ${f.label} —`}</option>
-                {f.options.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-            ) : (
-              <input
-                name={f.name}
-                type={f.type || "text"}
-                placeholder={f.placeholder || ""}
-                value={formData[f.name] || ""}
-                onChange={handleChange}
-                required={f.required !== false}
-                disabled={loading}
-              />
-            )}
-          </div>
-        ))}
+      <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }} noValidate>
+        {fields.map((f) => {
+          const isRequired = f.required !== false;
+          const fieldErr = fieldErrors[f.name];
+          return (
+            <div className="form-group" key={f.name}>
+              <label>
+                {f.label}
+                {isRequired && <span className="req-asterisk"> *</span>}
+              </label>
+              {f.options ? (
+                <select
+                  name={f.name}
+                  value={formData[f.name] || ""}
+                  onChange={handleChange}
+                  disabled={loading}
+                  className={fieldErr ? "input-invalid" : ""}
+                  aria-invalid={!!fieldErr}
+                >
+                  <option value="">{f.placeholder || `— Select ${f.label} —`}</option>
+                  {f.options.map((opt) => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  name={f.name}
+                  type={f.type || "text"}
+                  placeholder={f.placeholder || ""}
+                  value={formData[f.name] || ""}
+                  onChange={handleChange}
+                  disabled={loading}
+                  className={fieldErr ? "input-invalid" : ""}
+                  aria-invalid={!!fieldErr}
+                />
+              )}
+              {fieldErr && <small className="field-error">{fieldErr}</small>}
+            </div>
+          );
+        })}
         <button type="submit" className="submit-btn" disabled={loading}>
           {loading ? "Creating…" : "Create"}
         </button>

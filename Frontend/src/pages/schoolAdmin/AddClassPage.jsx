@@ -6,6 +6,7 @@ import AlertBanner from "../../components/shared/AlertBanner";
 import Spinner from "../../components/shared/Spinner";
 import { parseApiError } from "../../utils/apiErrorParser";
 import { formatDateTime } from "../../utils/dateFormatters";
+import { required, email as emailValidator, number, validateForm, hasErrors } from "../../utils/formValidators";
 import "../../styles/pages.css";
 
 export default function AddClassPage() {
@@ -13,6 +14,7 @@ export default function AddClassPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const [createdClass, setCreatedClass] = useState(null);
   const [classes, setClasses] = useState([]);
   const [classesLoading, setClassesLoading] = useState(true);
@@ -39,19 +41,43 @@ export default function AddClassPage() {
   const classId = form.grade && form.section ? `${form.grade}${form.section.toUpperCase()}` : "";
   const className = classId ? `Class ${classId}` : "";
 
+  const updateField = (name, value) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); setSuccess(""); setCreatedClass(null);
-    if (!form.grade || !form.section) {
-      setError("Grade and Section are required.");
+
+    // Per-field validation — all four fields required; grade 1–12; capacity ≥ 1; section must be letter(s).
+    const errs = validateForm(form, {
+      grade:        [(v) => required(v, "Grade"), (v) => number(v, 1, 12)],
+      section:      [
+        (v) => required(v, "Section"),
+        (v) => /^[A-Za-z]{1,2}$/.test(String(v).trim()) ? null : "Section must be 1–2 letters (e.g. A or AB).",
+      ],
+      teacherEmail: [(v) => required(v, "Teacher Email"), emailValidator],
+      capacity:     [(v) => required(v, "Capacity"), (v) => number(v, 1, 500)],
+    });
+    if (hasErrors(errs)) {
+      setFieldErrors(errs);
+      setError("Please fix the highlighted fields and try again.");
       return;
     }
+    setFieldErrors({});
     setLoading(true);
     try {
       const res = await courseApi.createClass({
         grade: Number(form.grade),
         section: form.section.toUpperCase(),
-        teacherEmail: form.teacherEmail,
+        teacherEmail: form.teacherEmail.trim(),
         capacity: Number(form.capacity) || 0,
       });
       const data = res.data?.data;
@@ -85,14 +111,34 @@ export default function AddClassPage() {
       <div className="page-form">
         <AlertBanner type="error" message={error} onClose={() => setError("")} />
         <AlertBanner type="success" message={success} onClose={() => setSuccess("")} />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
-            <label>Grade</label>
-            <input type="number" value={form.grade} onChange={(e) => setForm({ ...form, grade: e.target.value })} required disabled={loading} placeholder="10" min="1" max="12" />
+            <label>Grade<span className="req-asterisk"> *</span></label>
+            <input
+              type="number"
+              value={form.grade}
+              onChange={(e) => updateField("grade", e.target.value)}
+              disabled={loading}
+              placeholder="10"
+              min="1"
+              max="12"
+              className={fieldErrors.grade ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.grade}
+            />
+            {fieldErrors.grade && <small className="field-error">{fieldErrors.grade}</small>}
           </div>
           <div className="form-group">
-            <label>Section</label>
-            <input value={form.section} onChange={(e) => setForm({ ...form, section: e.target.value.toUpperCase() })} required disabled={loading} placeholder="A" maxLength={2} />
+            <label>Section<span className="req-asterisk"> *</span></label>
+            <input
+              value={form.section}
+              onChange={(e) => updateField("section", e.target.value.toUpperCase())}
+              disabled={loading}
+              placeholder="A"
+              maxLength={2}
+              className={fieldErrors.section ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.section}
+            />
+            {fieldErrors.section && <small className="field-error">{fieldErrors.section}</small>}
           </div>
           {classId && (
             <div style={{ marginBottom: "1rem", padding: "0.75rem", background: "#e8f5e9", borderRadius: "6px", fontSize: "0.9rem" }}>
@@ -110,12 +156,31 @@ export default function AddClassPage() {
             </div>
           )}
           <div className="form-group">
-            <label>Teacher Email</label>
-            <input type="email" value={form.teacherEmail} onChange={(e) => setForm({ ...form, teacherEmail: e.target.value })} required disabled={loading} placeholder="teacher@school.edu" />
+            <label>Teacher Email<span className="req-asterisk"> *</span></label>
+            <input
+              type="email"
+              value={form.teacherEmail}
+              onChange={(e) => updateField("teacherEmail", e.target.value)}
+              disabled={loading}
+              placeholder="teacher@school.edu"
+              className={fieldErrors.teacherEmail ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.teacherEmail}
+            />
+            {fieldErrors.teacherEmail && <small className="field-error">{fieldErrors.teacherEmail}</small>}
           </div>
           <div className="form-group">
-            <label>Capacity</label>
-            <input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} required disabled={loading} placeholder="35" min="1" />
+            <label>Capacity<span className="req-asterisk"> *</span></label>
+            <input
+              type="number"
+              value={form.capacity}
+              onChange={(e) => updateField("capacity", e.target.value)}
+              disabled={loading}
+              placeholder="35"
+              min="1"
+              className={fieldErrors.capacity ? "input-invalid" : ""}
+              aria-invalid={!!fieldErrors.capacity}
+            />
+            {fieldErrors.capacity && <small className="field-error">{fieldErrors.capacity}</small>}
           </div>
           <button type="submit" className="submit-btn" disabled={loading}>{loading ? "Creating…" : "Create Class"}</button>
         </form>

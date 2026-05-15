@@ -4,6 +4,34 @@
   gap: 1rem;
   margin-bottom: 1.25rem;
 }
+
+/* ─── Form validation helpers ─────────────────────────────── */
+.req-asterisk {
+  color: #dc2626;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.field-error {
+  display: block;
+  margin-top: 0.25rem;
+  color: #dc2626;
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+.input-invalid,
+input.input-invalid,
+select.input-invalid,
+textarea.input-invalid {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2;
+}
+.input-invalid:focus,
+input.input-invalid:focus,
+select.input-invalid:focus,
+textarea.input-invalid:focus {
+  outline-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
 .dashboard-page {
   display: flex;
   flex-direction: column;
@@ -269,10 +297,106 @@
   color: #888;
 }
 
+/* ═══════════ STUDENT TAKE EXAM LAYOUT ═══════════ */
+.take-exam-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.take-exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid #eef1f5;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.take-exam-header h2 {
+  font-size: 1.2rem;
+  color: #1e293b;
+}
+
+.take-exam-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.take-exam-questions,
+.take-exam-answer {
+  background: #fff;
+  border: 1px solid #eef1f5;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 1rem;
+}
+
+.take-exam-questions {
+  min-width: 0;
+}
+
+.take-exam-answer {
+  position: sticky;
+  top: 1rem;
+}
+
+.exam-timer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+  min-width: 120px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.exam-timer.is-danger {
+  background: #fff1f2;
+  color: #be123c;
+  border-color: #fecdd3;
+}
+
+.exam-timer-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.exam-timer-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 @media (max-width: 640px) {
   .page-form {
     padding: 1rem;
     border-radius: 8px;
+  }
+  .take-exam-header {
+    flex-direction: column;
+  }
+  .exam-timer {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .take-exam-body {
+    grid-template-columns: 1fr;
+  }
+  .take-exam-answer {
+    position: static;
   }
   .card-grid {
     grid-template-columns: 1fr;

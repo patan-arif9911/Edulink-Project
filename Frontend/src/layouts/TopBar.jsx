@@ -24,7 +24,7 @@ export default function TopBar({ user, onToggleSidebar }) {
   const handleLogout = () => {
     setProfileOpen(false);
     signOut();
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   };
 
   const initials = (user?.fullName || user?.email || "U")
